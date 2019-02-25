@@ -31,7 +31,7 @@
 
 
 
-UI_Signalswindow::UI_Signalswindow(QWidget *w_parent)
+UI_Signalswindow::UI_Signalswindow(QWidget *w_parent, bool autoClickAddSignalButton)
 {
   int i;
 
@@ -142,8 +142,11 @@ UI_Signalswindow::UI_Signalswindow(QWidget *w_parent)
   filelist->setCurrentRow(mainwindow->files_open - 1);
 
   signallist->setFocus();
-
-  SignalsDialog->exec();
+  if(autoClickAddSignalButton) {
+    DisplayButtonClicked();
+  } else {
+     SignalsDialog->exec();
+  }
 }
 
 

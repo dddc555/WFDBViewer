@@ -119,7 +119,7 @@ static char annotextlist[ANNOT_EXT_CNT][16]=
   };
 
 
-UI_MIT2EDFwindow::UI_MIT2EDFwindow(char *recent_dir, char *save_dir)
+UI_MIT2EDFwindow::UI_MIT2EDFwindow(char *recent_dir, char *save_dir, bool onlyShowFileOpenDialog)
 {
   char txt_string[2048];
 
@@ -153,7 +153,12 @@ UI_MIT2EDFwindow::UI_MIT2EDFwindow(char *recent_dir, char *save_dir)
   QObject::connect(pushButton1, SIGNAL(clicked()), this, SLOT(SelectFileButton()));
   QObject::connect(pushButton2, SIGNAL(clicked()), myobjectDialog, SLOT(close()));
 
-  myobjectDialog->exec();
+  if(!onlyShowFileOpenDialog){
+      myobjectDialog->exec();
+  }
+  else {
+      SelectFileButton();
+  }
 }
 
 void UI_MIT2EDFwindow::showOpen()

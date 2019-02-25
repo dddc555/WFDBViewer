@@ -70,7 +70,7 @@ class UI_Signalswindow : public QObject
   Q_OBJECT
 
 public:
-  UI_Signalswindow(QWidget *parent);
+  UI_Signalswindow(QWidget *parent, bool autoClickAddSignalButton = false);
 
   UI_Mainwindow *mainwindow;
 

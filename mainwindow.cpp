@@ -1383,17 +1383,13 @@ void UI_Mainwindow::show_spectrum_dock()
 
 void UI_Mainwindow::open_wfdb_file()
 {
-    UI_MIT2EDFwindow mit2edf(recent_opendir, recent_savedir);
+    UI_MIT2EDFwindow mit2edf(recent_opendir, recent_savedir, true);
     if(mit2edf.convertedEdfFilePath != NULL && mit2edf.isConverted){
-        open(mit2edf.convertedEdfFilePath);
-    } else {
-
-        //QMessageBox messagewindow(QMessageBox::Critical, "Error", "Cannot convert MIT to EDF");
-        //messagewindow.exec();
+        open(mit2edf.convertedEdfFilePath, true);
     }
-
 }
-void UI_Mainwindow::open(char *filePath) {
+
+void UI_Mainwindow::open(char *filePath, bool openDirect) {
     FILE *newfile;
 
     int i, len, present, position, button_nr=0;
@@ -1739,7 +1735,7 @@ void UI_Mainwindow::open(char *filePath) {
         {
           recent_file_mtg_path[0][0] = 0;
 
-          UI_Signalswindow signalwindow(this);
+          UI_Signalswindow signalwindow(this, openDirect);
         }
         else
         {
@@ -1747,13 +1743,13 @@ void UI_Mainwindow::open(char *filePath) {
 
           if(recent_file_mtg_path[0][0] == 0)
           {
-            UI_Signalswindow signalwindow(this);
+            UI_Signalswindow signalwindow(this, openDirect);
           }
         }
       }
       else
       {
-        UI_Signalswindow signalwindow(this);
+        UI_Signalswindow signalwindow(this, openDirect);
       }
     }
 
@@ -1761,6 +1757,7 @@ void UI_Mainwindow::open(char *filePath) {
 
     close_filemenu->addAction(QString::fromLocal8Bit(path));
 }
+
 void UI_Mainwindow::open_new_file()
 {
     open();

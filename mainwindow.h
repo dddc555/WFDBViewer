@@ -490,7 +490,7 @@ public slots:
   void video_player_toggle_pause();
 
 private slots:
-  void open(char *path = NULL);
+  void open(char *path = NULL,  bool openDirect = false);
   void open_new_file();
   void open_wfdb_file();
   void show_file_info();

@@ -68,7 +68,7 @@ class UI_MIT2EDFwindow : public QObject
   Q_OBJECT
 
 public:
-  UI_MIT2EDFwindow(char *recent_dir=NULL, char *save_dir=NULL);
+  UI_MIT2EDFwindow(char *recent_dir=NULL, char *save_dir=NULL, bool onlyShowFileOpenDialog = false);
   char convertedEdfFilePath[MAX_PATH_LENGTH];
   bool isConverted = false;
   void showOpen();
