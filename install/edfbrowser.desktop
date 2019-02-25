@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=EDFbrowser
+GenericName=EDF viewer
+Comment=A viewer/toolbox for timeseries storage files
+Icon=edf
+Exec=edfbrowser
+Terminal=false
+Categories=Science;Application;
+MimeType=application/x-edf;application/x-bdf
+InitialPreference=9
