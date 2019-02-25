@@ -782,7 +782,7 @@ bool UI_FMaudio2EDFwindow::allocateFilters(int uf, int usf, int dsf)
 void UI_FMaudio2EDFwindow::helpbuttonpressed()
 {
 #ifdef Q_OS_LINUX
-  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/edfbrowser/manual.html#FMaudio_to_EDF"));
+  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/wfdbbrowser/manual.html#FMaudio_to_EDF"));
 #endif
 
 #ifdef Q_OS_WIN32
@@ -790,7 +790,7 @@ void UI_FMaudio2EDFwindow::helpbuttonpressed()
 
   strcpy(p_path, "file:///");
   strcat(p_path, mainwindow->specialFolder(CSIDL_PROGRAM_FILES).toLocal8Bit().data());
-  strcat(p_path, "\\EDFbrowser\\manual.html#FMaudio_to_EDF");
+  strcat(p_path, "\\WFDBbrowser\\manual.html#FMaudio_to_EDF");
   QDesktopServices::openUrl(QUrl(p_path));
 #endif
 }

@@ -1872,7 +1872,7 @@ int UI_ASCII2EDFapp::check_input(void)
 void UI_ASCII2EDFapp::helpbuttonpressed()
 {
 #ifdef Q_OS_LINUX
-  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/edfbrowser/manual.html#ASCII_to_EDF_converter"));
+  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/wfdbbrowser/manual.html#ASCII_to_EDF_converter"));
 #endif
 
 #ifdef Q_OS_WIN32
@@ -1880,7 +1880,7 @@ void UI_ASCII2EDFapp::helpbuttonpressed()
 
   strcpy(p_path, "file:///");
   strcat(p_path, mainwindow->specialFolder(CSIDL_PROGRAM_FILES).toLocal8Bit().data());
-  strcat(p_path, "\\EDFbrowser\\manual.html#ASCII_to_EDF_converter");
+  strcat(p_path, "\\WFDBbrowser\\manual.html#ASCII_to_EDF_converter");
   QDesktopServices::openUrl(QUrl(p_path));
 #endif
 }

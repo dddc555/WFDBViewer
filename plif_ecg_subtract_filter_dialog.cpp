@@ -274,7 +274,7 @@ void UI_PLIF_ECG_filter_dialog::ApplyButtonClicked()
 void UI_PLIF_ECG_filter_dialog::helpbuttonpressed()
 {
 #ifdef Q_OS_LINUX
-  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/edfbrowser/manual.html#ECG_PLIF_filter"));
+  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/wfdbbrowser/manual.html#ECG_PLIF_filter"));
 #endif
 
 #ifdef Q_OS_WIN32
@@ -282,7 +282,7 @@ void UI_PLIF_ECG_filter_dialog::helpbuttonpressed()
 
   strcpy(p_path, "file:///");
   strcat(p_path, mainwindow->specialFolder(CSIDL_PROGRAM_FILES).toLocal8Bit().data());
-  strcat(p_path, "\\EDFbrowser\\manual.html#ECG_PLIF_filter");
+  strcat(p_path, "\\WFDBbrowser\\manual.html#ECG_PLIF_filter");
   QDesktopServices::openUrl(QUrl(p_path));
 #endif
 }

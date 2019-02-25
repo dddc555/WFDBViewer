@@ -65,13 +65,12 @@ UI_Aboutwindow::UI_Aboutwindow(UI_Mainwindow *mainwindow)
   textedit1->setReadOnly(true);
   textedit1->setLineWrapMode(QTextEdit::NoWrap);
   textedit1->setPlainText(
-        "\n " PROGRAM_NAME " " PROGRAM_VERSION "\n"
-        "\n This program is made by Teunis van Beelen.\n"
+        "\n " PROGRAM_NAME ", Based on EDF browser" PROGRAM_VERSION "\n"
+        "\n Modified by EMC Healthcare.\n"
         "\n Copyright (C) 2007 - 2019 Teunis van Beelen.\n"
-        "\n Email: teuniz@gmail.com\n"
         "\n Disclaimer:\n"
         " Despite this software is intend to be useful, there is no warranty, use this software at your own risk!\n"
-        " EDFbrowser may NOT be used in safety-critical applications, such as life-support medical systems.\n"
+        " WFDBbrowser may NOT be used in safety-critical applications, such as life-support medical systems.\n"
         " The author is NOT responsible for any consequences. For research and educational purpose only.\n");
   textedit1->append(str);
   textedit1->append(

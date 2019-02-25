@@ -1590,7 +1590,7 @@ void UI_Mainwindow::open(char *filePath, bool openDirect) {
       {
         if(edfhdr->edf)
         {
-          QMessageBox messagewindow(QMessageBox::Critical, "Error", "EDFbrowser can not show EDF+D (discontiguous) files.\n"
+          QMessageBox messagewindow(QMessageBox::Critical, "Error", "WFDBbrowser can not show EDF+D (discontiguous) files.\n"
                                                                     "Convert this file to EDF+C first. You can find this converter\n"
                                                                     "in the Tools menu (EDF+D to EDF+C converter).");
           messagewindow.exec();
@@ -1598,7 +1598,7 @@ void UI_Mainwindow::open(char *filePath, bool openDirect) {
 
         if(edfhdr->bdf)
         {
-          QMessageBox messagewindow(QMessageBox::Critical, "Error", "EDFbrowser can not show BDF+D (discontiguous) files.\n"
+          QMessageBox messagewindow(QMessageBox::Critical, "Error", "WFDBbrowser can not show BDF+D (discontiguous) files.\n"
                                                                     "Convert this file to BDF+C first. You can find this converter\n"
                                                                     "in the Tools menu (EDF+D to EDF+C converter).");
           messagewindow.exec();
@@ -3525,7 +3525,7 @@ void UI_Mainwindow::set_dc_offset_to_zero()
 void UI_Mainwindow::show_help()
 {
 #ifdef Q_OS_LINUX
-  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/edfbrowser/manual.html"));
+  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/wfdbbrowser/manual.html"));
 #endif
 
 #ifdef Q_OS_WIN32
@@ -3533,7 +3533,7 @@ void UI_Mainwindow::show_help()
 
   strcpy(p_path, "file:///");
   strcat(p_path, specialFolder(CSIDL_PROGRAM_FILES).toLocal8Bit().data());
-  strcat(p_path, "\\EDFbrowser\\manual.html");
+  strcat(p_path, "\\WFDBbrowser\\manual.html");
   QDesktopServices::openUrl(QUrl(p_path));
 #endif
 }

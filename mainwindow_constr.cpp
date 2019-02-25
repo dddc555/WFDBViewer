@@ -314,8 +314,8 @@ UI_Mainwindow::UI_Mainwindow()
 
   filemenu = new QMenu(this);
   filemenu->setTitle("&File");
-  filemenu->addAction("Open",         this, SLOT(open_new_file()), QKeySequence::Open);
-  filemenu->addAction("Open WFDB",         this, SLOT(open_wfdb_file()), QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_O));
+  //filemenu->addAction("Open",         this, SLOT(open_new_file()), QKeySequence::Open);
+  filemenu->addAction("Open WFDB",         this, SLOT(open_wfdb_file()), QKeySequence::Open);
   filemenu->addSeparator();
   filemenu->addAction("Open stream",  this, SLOT(open_stream()), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_O));
   filemenu->addSeparator();
@@ -784,14 +784,14 @@ UI_Mainwindow::UI_Mainwindow()
 
   helpmenu = new QMenu(this);
   helpmenu->setTitle("&Help");
-#ifdef Q_OS_LINUX
-  helpmenu->addAction("Manual",  this, SLOT(show_help()));
-#endif
-#ifdef Q_OS_WIN32
-  helpmenu->addAction("Manual",  this, SLOT(show_help()));
-#endif
+//#ifdef Q_OS_LINUX
+//  helpmenu->addAction("Manual",  this, SLOT(show_help()));
+//#endif
+//#ifdef Q_OS_WIN32
+//  helpmenu->addAction("Manual",  this, SLOT(show_help()));
+//#endif
   helpmenu->addAction("Keyboard shortcuts", this, SLOT(show_kb_shortcuts()));
-  helpmenu->addAction("About EDFbrowser", this, SLOT(show_about_dialog()));
+  helpmenu->addAction("About WFDBbrowser", this, SLOT(show_about_dialog()));
   helpmenu->addAction("Show splashscreen", this, SLOT(show_splashscreen()));
   menubar->addMenu(helpmenu);
 
@@ -1055,7 +1055,7 @@ UI_Mainwindow::UI_Mainwindow()
 
   if((QT_VERSION < MINIMUM_QT4_VERSION) || ((QT_VERSION >= 0x050000) && (QT_VERSION < MINIMUM_QT5_VERSION)))
   {
-    QMessageBox messagewindow(QMessageBox::Critical, "Error", "EDFbrowser has been compiled with a version of Qt\n"
+    QMessageBox messagewindow(QMessageBox::Critical, "Error", "WFDBbrowser has been compiled with a version of Qt\n"
                                                               "which is too old and will likely cause problems!");
     messagewindow.exec();
   }

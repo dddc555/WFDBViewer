@@ -36,27 +36,27 @@
 
 Check_for_updates::Check_for_updates()
 {
-  QNetworkRequest request;
-  QNetworkReply *reply;
+//  QNetworkRequest request;
+//  QNetworkReply *reply;
 
-  manager = new QNetworkAccessManager(this);
+//  manager = new QNetworkAccessManager(this);
 
-  request.setUrl(QUrl("http://www.teuniz.net/edfbrowser/latest_version.txt"));
-  request.setRawHeader("User-Agent", PROGRAM_NAME " " PROGRAM_VERSION " OS_UNKNOWN");
-#ifdef Q_OS_LINUX
-  request.setRawHeader("User-Agent", PROGRAM_NAME " " PROGRAM_VERSION " Q_OS_LINUX");
-#elif defined (Q_OS_MAC)
-  request.setRawHeader("User-Agent", PROGRAM_NAME " " PROGRAM_VERSION " Q_OS_MAC");
-#elif defined (Q_OS_WIN32)
-  request.setRawHeader("User-Agent", PROGRAM_NAME " " PROGRAM_VERSION " Q_OS_WIN32");
-#else
-  request.setRawHeader("User-Agent", PROGRAM_NAME " " PROGRAM_VERSION " Q_OS_OTHER");
-#endif
-  request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
+//  request.setUrl(QUrl("http://www.teuniz.net/edfbrowser/latest_version.txt"));
+//  request.setRawHeader("User-Agent", PROGRAM_NAME " " PROGRAM_VERSION " OS_UNKNOWN");
+//#ifdef Q_OS_LINUX
+//  request.setRawHeader("User-Agent", PROGRAM_NAME " " PROGRAM_VERSION " Q_OS_LINUX");
+//#elif defined (Q_OS_MAC)
+//  request.setRawHeader("User-Agent", PROGRAM_NAME " " PROGRAM_VERSION " Q_OS_MAC");
+//#elif defined (Q_OS_WIN32)
+//  request.setRawHeader("User-Agent", PROGRAM_NAME " " PROGRAM_VERSION " Q_OS_WIN32");
+//#else
+//  request.setRawHeader("User-Agent", PROGRAM_NAME " " PROGRAM_VERSION " Q_OS_OTHER");
+//#endif
+//  request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
 
-  reply = manager->get(request);
+//  reply = manager->get(request);
 
-  connect(reply, SIGNAL(finished()), this, SLOT(replyFinished()));
+//  connect(reply, SIGNAL(finished()), this, SLOT(replyFinished()));
 }
 
 
@@ -98,7 +98,7 @@ void Check_for_updates::replyFinished()
 
   buf[30] = 0;
 
-  if(strncmp(buf, "EDFbrowser latest version: ", 27))
+  if(strncmp(buf, "WFDBbrowser latest version: ", 27))
   {
     return;
   }

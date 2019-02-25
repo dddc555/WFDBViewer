@@ -24,7 +24,7 @@ contains(QT_MINOR_VERSION, 9) {
 
 
 TEMPLATE = app
-TARGET = edfbrowser
+TARGET = wfdbbrowser
 DEPENDPATH += .
 INCLUDEPATH += .
 CONFIG += qt
@@ -254,17 +254,17 @@ SOURCES += third_party/fidlib/fidlib.c
 RESOURCES = images.qrc
 
 win32 {
- RC_FILE = edfbrowser.rc
+ RC_FILE = wfdbbrowser.rc
 }
 
 QMAKE_CXXFLAGS += -Wextra -Wshadow -Wformat-nonliteral -Wformat-security -Wtype-limits -Wfatal-errors -fpermissive
 
 unix {
 target.path = /usr/bin
-target.files = edfbrowser
+target.files = wfdbbrowser
 INSTALLS += target
 
-documentation.path = /usr/share/doc/edfbrowser
+documentation.path = /usr/share/doc/wfdbbrowser
 documentation.files = doc/*
 INSTALLS += documentation
 
@@ -285,11 +285,11 @@ icon_d.files = images/edf.png
 INSTALLS += icon_d
 
 desktop_link.path += /usr/share/applications
-desktop_link.files += install/edfbrowser.desktop
+desktop_link.files += install/wfdbbrowser.desktop
 INSTALLS += desktop_link
 
 mime.path += /usr/share/mime/packages
-mime.files += install/edfbrowser.xml
+mime.files += install/wfdbbrowser.xml
 INSTALLS += mime
 }
 

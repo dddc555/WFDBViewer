@@ -26,8 +26,8 @@
 */
 
 
-#ifndef EDFBROWSER_GLOBAL_H
-#define EDFBROWSER_GLOBAL_H
+#ifndef WFDBBROWSER_GLOBAL_H
+#define WFDBBROWSER_GLOBAL_H
 
 #include <stdio.h>
 
@@ -43,7 +43,7 @@
 
 #endif
 
-#define PROGRAM_NAME "EDFbrowser"
+#define PROGRAM_NAME "WFDBbrowser"
 #define PROGRAM_VERSION "1.67"
 #define MINIMUM_QT4_VERSION 0x040701
 #define MINIMUM_QT5_VERSION 0x050901

@@ -444,7 +444,7 @@ void UI_ECGExport::load_signalcomps(void)
 void UI_ECGExport::helpbuttonpressed()
 {
 #ifdef Q_OS_LINUX
-  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/edfbrowser/manual.html#ECG_detection"));
+  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/wfdbbrowser/manual.html#ECG_detection"));
 #endif
 
 #ifdef Q_OS_WIN32
@@ -452,7 +452,7 @@ void UI_ECGExport::helpbuttonpressed()
 
   strcpy(p_path, "file:///");
   strcat(p_path, mainwindow->specialFolder(CSIDL_PROGRAM_FILES).toLocal8Bit().data());
-  strcat(p_path, "\\EDFbrowser\\manual.html#ECG_detection");
+  strcat(p_path, "\\WFDBbrowser\\manual.html#ECG_detection");
   QDesktopServices::openUrl(QUrl(p_path));
 #endif
 }
