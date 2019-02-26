@@ -1,3 +1,4 @@
+USE_WFDB_LIB = false
 
 contains(QT_MAJOR_VERSION, 4) {
 
@@ -32,6 +33,9 @@ CONFIG += warn_on
 CONFIG += release
 CONFIG += static
 CONFIG += largefile
+mac {
+CONFIG-=app_bundle
+}
 QT += network
 
 contains(QT_MAJOR_VERSION, 5) {
@@ -48,9 +52,10 @@ win32 {
 OBJECTS_DIR = ./objects
 MOC_DIR = ./moc
 
-HEADERS += third_party/wfdb.h
-HEADERS += third_party/wfdblib.h
-
+USE_WFDB_LIB {
+    HEADERS += third_party/wfdb.h
+    HEADERS += third_party/wfdblib.h
+}
 
 HEADERS += global.h
 HEADERS += mainwindow.h
@@ -152,11 +157,12 @@ SOURCES += main.cpp
 SOURCES += third_party/kiss_fft/kiss_fft.c
 SOURCES += third_party/kiss_fft/kiss_fftr.c
 
-
-SOURCES += third_party/wfdbinit.cpp
-SOURCES += third_party/wfdbio.cpp
-SOURCES += third_party/annot.cpp
-SOURCES += third_party/signal.cpp
+USE_WFDB_LIB {
+    SOURCES += third_party/wfdbinit.cpp
+    SOURCES += third_party/wfdbio.cpp
+    SOURCES += third_party/annot.cpp
+    SOURCES += third_party/signal.cpp
+}
 
 SOURCES += mainwindow_constr.cpp
 SOURCES += mainwindow.cpp
