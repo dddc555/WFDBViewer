@@ -27,8 +27,8 @@
 
 
 #include "mainwindow.h"
-
-
+#include "third_party/rdsamp.h"
+#include "mit2csv.h"
 UI_Mainwindow::~UI_Mainwindow()
 {
   delete pixmap;
@@ -3314,6 +3314,10 @@ void UI_Mainwindow::export_to_ascii()
   UI_AsciiExportwindow exportdialog(this);
 }
 
+void UI_Mainwindow::export2_to_ascii()
+{
+  UI_MIT2CSVwindow mit2csv(recent_opendir, recent_savedir);
+}
 
 void UI_Mainwindow::export_ecg_rr_interval_to_ascii()
 {

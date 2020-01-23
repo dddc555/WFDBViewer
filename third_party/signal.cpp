@@ -1251,10 +1251,10 @@ static int readheader(const char *record)
 	/* Determine the ADC zero (assumed to be zero if missing). */
 	
 	hs->info.adczero = (p=strtok((char *)NULL,sep)) ? strtol(p,NULL,10) : 0;
-	wfdb_error("wang: ****************** \n ADC string = %s, strtol(p,NULL,10) %d, adczero = %d\n", p, strtol(p,NULL,10), hs->info.adczero);    
+
 	/* Set the baseline to adczero if no baseline field was found. */
 	if (nobaseline) hs->info.baseline = hs->info.adczero;
-	wfdb_error("wang: ****************** \n hs->info.baseline = %d\n", hs->info.baseline);
+
 	
 	/* Determine the initial value (assumed to be equal to the ADC 
 	   zero if missing). */

@@ -49,8 +49,9 @@ OBJECTS_DIR = ./objects
 MOC_DIR = ./moc
 
 HEADERS += third_party/wfdb.h
-HEADERS += third_party/wfdblib.h
 
+HEADERS += third_party/wfdblib.h
+HEADERS += third_party/rdsamp.h
 
 HEADERS += global.h
 HEADERS += mainwindow.h
@@ -128,6 +129,7 @@ HEADERS += date_time_stamp_parser.h
 HEADERS += spike_filter.h
 HEADERS += spike_filter_dialog.h
 HEADERS += mit2edf.h
+HEADERS += mit2csv.h
 HEADERS += biox2edf.h
 HEADERS += edf_helper.h
 HEADERS += plif_ecg_subtract_filter.h
@@ -147,7 +149,9 @@ HEADERS += third_party/kiss_fft/kiss_fft.h
 HEADERS += third_party/kiss_fft/_kiss_fft_guts.h
 HEADERS += third_party/kiss_fft/kiss_fftr.h
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    mit2csv.cpp \
+    third_party/rdsamp.cpp
 
 SOURCES += third_party/kiss_fft/kiss_fft.c
 SOURCES += third_party/kiss_fft/kiss_fftr.c
@@ -157,6 +161,8 @@ SOURCES += third_party/wfdbinit.cpp
 SOURCES += third_party/wfdbio.cpp
 SOURCES += third_party/annot.cpp
 SOURCES += third_party/signal.cpp
+SOURCES +=
+
 
 SOURCES += mainwindow_constr.cpp
 SOURCES += mainwindow.cpp

@@ -158,9 +158,9 @@ void UI_AsciiExportwindow::ExportButtonClicked()
   len = strlen(path);
   get_filename_from_path(path + len, mainwindow->edfheaderlist[n]->filename, MAX_PATH_LENGTH - len);
   remove_extension_from_filename(path);
-  strcat(path, "_data.txt");
+  //strcat(path, "_data.txt");
 
-  strcpy(path, QFileDialog::getSaveFileName(0, "Export to ASCII", QString::fromLocal8Bit(path), "Text files (*.txt *.TXT)").toLocal8Bit().data());
+  strcpy(path, QFileDialog::getSaveFileName(0, "Export to ASCII", QString::fromLocal8Bit(path), "CSV files (*.csv *.CSV)").toLocal8Bit().data());
 
   if(!strcmp(path, ""))
   {
@@ -178,10 +178,10 @@ void UI_AsciiExportwindow::ExportButtonClicked()
     return;
   }
 
-  if(!(strcmp(path + strlen(path) - 9, "_data.txt")))
-  {
-    path[strlen(path) - 9] = 0;
-  }
+//  if(!(strcmp(path + strlen(path) - 9, "_data.txt")))
+//  {
+//    path[strlen(path) - 9] = 0;
+//  }
 
   scratchpad = (char *)calloc(1, 128);
   if(scratchpad==NULL)
@@ -390,7 +390,7 @@ void UI_AsciiExportwindow::ExportButtonClicked()
   }
 
 /***************** write header ******************************/
-
+/*
   strcpy(ascii_path, path);
   remove_extension_from_filename(ascii_path);
   strcat(ascii_path, "_header.txt");
@@ -431,9 +431,9 @@ void UI_AsciiExportwindow::ExportButtonClicked()
   fprintf(outputfile, "%i\n", atoi(scratchpad) - nr_annot_chns);
 
   fclose(outputfile);
-
+//*/
 /***************** write signals ******************************/
-
+/*
   strcpy(ascii_path, path);
   remove_extension_from_filename(ascii_path);
   strcat(ascii_path, "_signals.txt");
@@ -482,9 +482,9 @@ void UI_AsciiExportwindow::ExportButtonClicked()
   }
 
   fclose(outputfile);
-
+//*/
 /***************** open annotation file ******************************/
-
+/*
   strcpy(ascii_path, path);
   remove_extension_from_filename(ascii_path);
   strcat(ascii_path, "_annotations.txt");
@@ -504,18 +504,18 @@ void UI_AsciiExportwindow::ExportButtonClicked()
   }
 
   fprintf(annotationfile, "Onset,Duration,Annotation\n");
-
+//*/
 /***************** write data ******************************/
 
   strcpy(ascii_path, path);
-  remove_extension_from_filename(ascii_path);
-  strcat(ascii_path, "_data.txt");
+  //remove_extension_from_filename(ascii_path);
+//  strcat(ascii_path, "_data.txt");
   outputfile = fopeno(ascii_path, "wb");
   if(outputfile==NULL)
   {
     QMessageBox messagewindow(QMessageBox::Critical, "Error", "Error, can not open datafile for writing.");
     messagewindow.exec();
-    fclose(annotationfile);
+    //fclose(annotationfile);
     free(edf_hdr);
     free(edfparamascii);
     free(cnv_buf);
@@ -537,7 +537,7 @@ void UI_AsciiExportwindow::ExportButtonClicked()
   {
     QMessageBox messagewindow(QMessageBox::Critical, "Error", "An error occurred when writing to outputfile.");
     messagewindow.exec();
-    fclose(annotationfile);
+    //fclose(annotationfile);
     fclose(outputfile);
     free(edf_hdr);
     free(edfparamascii);

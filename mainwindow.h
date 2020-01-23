@@ -165,6 +165,8 @@
 #include "spike_filter.h"
 #include "spike_filter_dialog.h"
 #include "mit2edf.h"
+#include "mit2csv.h"
+
 #include "biox2edf.h"
 #include "plif_ecg_subtract_filter.h"
 #include "plif_ecg_subtract_filter_dialog.h"
@@ -522,6 +524,7 @@ private slots:
   void forward();
   void show_splashscreen();
   void export_to_ascii();
+  void export2_to_ascii();
   void check_edf_compatibility();
   void add_new_filter();
   void add_plif_ecg_filter();

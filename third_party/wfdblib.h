@@ -193,11 +193,11 @@ symbols reserved to the library begin with the characters "wfdb_".
 #endif
 
 #ifndef TRUE
-#define TRUE 1 
-#endif 
+#define TRUE 1
+#endif
 #ifndef FALSE
 #define FALSE 0
-#endif 
+#endif
 
 /* Structures used by internal WFDB library functions only */
 struct WFDB_FILE {
@@ -219,7 +219,7 @@ typedef struct WFDB_FILE WFDB_FILE;
    Otherwise, the WFDB library uses only the ANSI/ISO standard I/O library. */
 #if WFDB_NETFILES
 #if WFDB_NETFILES_LIBCURL
-# include <curl/curl.h>
+//# include <curl/curl.h>
 #else
 # include <WWWLib.h>
 # include <WWWInit.h>

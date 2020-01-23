@@ -31,9 +31,9 @@ _______________________________________________________________________________
 /* WFDB library version. */
 #define WFDB_MAJOR   10
 #define WFDB_MINOR   6
-#define WFDB_RELEASE 1
+#define WFDB_RELEASE 2
 #define WFDB_NETFILES 0	/* if 1, library includes code for HTTP, FTP clients */
-#define WFDB_NETFILES_LIBCURL 0
+#define WFDB_NETFILES_LIBCURL 1
 
 /* Determine what type of compiler is being used. */
 #ifdef __STDC__		/* true for ANSI C compilers only */
@@ -231,7 +231,7 @@ typedef struct WFDB_seginfo WFDB_Seginfo;
 #define SALLOC(P, N, S) { SFREE(P); SUALLOC(P, (N), (S)) }
 #define SREALLOC(P, N, S) { if (!(P = realloc(P, (N)*(S)))) MEMERR(P,(N),(S)); }
 #define SSTRCPY(P, Q) { const char *WFDB_tmp = (Q); if (WFDB_tmp) { \
-     SALLOC(P, (size_t)strlen(WFDB_tmp)+1,1); strcpy(P, WFDB_tmp); } }
+	 SALLOC(P, (size_t)strlen(WFDB_tmp)+1,1); strcpy(P, WFDB_tmp); } }
 
 /* Function types */
 #ifndef _WINDLL	/* for everything *except* MS Windows applications */

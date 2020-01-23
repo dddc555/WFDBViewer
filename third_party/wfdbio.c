@@ -1,5 +1,5 @@
 /* file: wfdbio.c	G. Moody	18 November 1988
-                        Last revised:   28 November 2018      wfdblib 10.6.1
+                        Last revised:     8 March 2019        wfdblib 10.6.2
 Low-level I/O functions for the WFDB library
 
 _______________________________________________________________________________
@@ -463,7 +463,7 @@ int wfdb_parse_path(char *p)
     char *q;
     int current_type, found_end;
     struct wfdb_path_component *c0 = NULL, *c1 = wfdb_path_list;
-    static int first_call = 1;
+    static first_call = 1;
 
     /* First, free the existing wfdb_path_list, if any. */
     wfdb_free_path_list();
@@ -592,6 +592,7 @@ void wfdb_free_config(void)
     SFREE(p_wfdbgvmode);
     SFREE(wfdbpath);
     SFREE(wfdbpath_init);
+    SFREE(wfdb_filename);
 }
 
 void wfdb_export_config(void)
@@ -1112,7 +1113,7 @@ WFDB_FILE *wfdb_open(const char *s, const char *record, int mode)
 	if (!buf)
 	    continue;
 
-	spr1(&wfdb_filename, record, s);
+	spr1(&wfdb_filename, buf, s);
 	if ((ifile = wfdb_fopen(wfdb_filename, RB)) != NULL) {
 	    /* Found it! Add its path info to the WFDB path. */
 	    wfdb_addtopath(wfdb_filename);
@@ -1419,43 +1420,43 @@ static void wfdb_wwwquit(void)
 static void www_init(void)
 {
     if (!www_done_init) {
-    char *p;
+	char *p;
 
-    if ((p = getenv("WFDB_PAGESIZE")) && *p)
-        page_size = strtol(p, NULL, 10);
+	if ((p = getenv("WFDB_PAGESIZE")) && *p)
+	    page_size = strtol(p, NULL, 10);
 
-    /* Initialize the curl "easy" handle. */
-    curl_global_init(CURL_GLOBAL_ALL);
-    curl_ua = curl_easy_init();
-    /* Buffer for error messages */
-    curl_easy_setopt(curl_ua, CURLOPT_ERRORBUFFER, curl_error_buf);
-    /* String to send as a User-Agent header */
-    curl_easy_setopt(curl_ua, CURLOPT_USERAGENT, curl_get_ua_string());
+	/* Initialize the curl "easy" handle. */
+	curl_global_init(CURL_GLOBAL_ALL);
+	curl_ua = curl_easy_init();
+	/* Buffer for error messages */
+	curl_easy_setopt(curl_ua, CURLOPT_ERRORBUFFER, curl_error_buf);
+	/* String to send as a User-Agent header */
+	curl_easy_setopt(curl_ua, CURLOPT_USERAGENT, curl_get_ua_string());
 #ifdef USE_NETRC
-    /* Search $HOME/.netrc for passwords */
-    curl_easy_setopt(curl_ua, CURLOPT_NETRC, CURL_NETRC_OPTIONAL);
+	/* Search $HOME/.netrc for passwords */
+	curl_easy_setopt(curl_ua, CURLOPT_NETRC, CURL_NETRC_OPTIONAL);
 #endif
-    /* Get password information from the environment if available */
-    if ((p = getenv("WFDBPASSWORD")) && *p)
+	/* Get password information from the environment if available */
+	if ((p = getenv("WFDBPASSWORD")) && *p)
             www_parse_passwords(p);
 
-    /* Get the name of the CA bundle file */
-    if ((p = getenv("CURL_CA_BUNDLE")) && *p)
-        curl_easy_setopt(curl_ua, CURLOPT_CAINFO, p);
+	/* Get the name of the CA bundle file */
+	if ((p = getenv("CURL_CA_BUNDLE")) && *p)
+	    curl_easy_setopt(curl_ua, CURLOPT_CAINFO, p);
 
-    /* Use any available authentication method */
-    curl_easy_setopt(curl_ua, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+	/* Use any available authentication method */
+	curl_easy_setopt(curl_ua, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
 
-    /* Follow up to 5 redirections */
-    curl_easy_setopt(curl_ua, CURLOPT_FOLLOWLOCATION, 1L);
-    curl_easy_setopt(curl_ua, CURLOPT_MAXREDIRS, 5L);
+	/* Follow up to 5 redirections */
+	curl_easy_setopt(curl_ua, CURLOPT_FOLLOWLOCATION, 1L);
+	curl_easy_setopt(curl_ua, CURLOPT_MAXREDIRS, 5L);
 
-    /* Show details of URL requests if WFDB_NET_DEBUG is set */
-    if ((p = getenv("WFDB_NET_DEBUG")) && *p)
-        curl_easy_setopt(curl_ua, CURLOPT_VERBOSE, 1L);
+	/* Show details of URL requests if WFDB_NET_DEBUG is set */
+	if ((p = getenv("WFDB_NET_DEBUG")) && *p)
+	    curl_easy_setopt(curl_ua, CURLOPT_VERBOSE, 1L);
 
-    atexit(wfdb_wwwquit);
-    www_done_init = TRUE;
+	atexit(wfdb_wwwquit);
+	www_done_init = TRUE;
     }
 }
 
@@ -1465,9 +1466,9 @@ static int www_perform_request(CURL *c)
 {
     long code;
     if (curl_easy_perform(c))
-    return (-1);
+	return (-1);
     if (curl_easy_getinfo(c, CURLINFO_HTTP_CODE, &code))
-    return (0);
+	return (0);
     return (code < 400 ? 0 : -1);
 }
 
@@ -1477,26 +1478,26 @@ static long www_get_cont_len(const char *url)
 
     length = 0;
     if (/* We just want the content length; NOBODY means we want to
-       send a HEAD request rather than GET */
-    curl_try(curl_easy_setopt(curl_ua, CURLOPT_NOBODY, 1L))
-    /* Set the URL to retrieve */
-    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_URL, url))
-    /* Set username/password */
-    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_USERPWD,
-                                 www_userpwd(url)))
-    /* Don't send a range request */
-    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_RANGE, NULL))
-    /* Ignore both headers and body */
-    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_WRITEFUNCTION,
-                     curl_null_write))
-    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_HEADERFUNCTION,
-                     curl_null_write))
-    /* Actually perform the request and wait for a response */
-    || www_perform_request(curl_ua))
-    return (0);
+	   send a HEAD request rather than GET */
+	curl_try(curl_easy_setopt(curl_ua, CURLOPT_NOBODY, 1L))
+	/* Set the URL to retrieve */
+	|| curl_try(curl_easy_setopt(curl_ua, CURLOPT_URL, url))
+	/* Set username/password */
+	|| curl_try(curl_easy_setopt(curl_ua, CURLOPT_USERPWD,
+	                             www_userpwd(url)))
+	/* Don't send a range request */
+	|| curl_try(curl_easy_setopt(curl_ua, CURLOPT_RANGE, NULL))
+	/* Ignore both headers and body */
+	|| curl_try(curl_easy_setopt(curl_ua, CURLOPT_WRITEFUNCTION,
+				     curl_null_write))
+	|| curl_try(curl_easy_setopt(curl_ua, CURLOPT_HEADERFUNCTION,
+				     curl_null_write))
+	/* Actually perform the request and wait for a response */
+	|| www_perform_request(curl_ua))
+	return (0);
 
     if (curl_easy_getinfo(curl_ua, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &length))
-    return (0);
+	return (0);
 
     return ((long) length);
 }
@@ -1521,9 +1522,9 @@ static CHUNK *curl_chunk_new(long len)
 static void curl_chunk_delete(struct chunk *c)
 {
     if (c) {
-    SFREE(c->data);
-    SFREE(c->url);
-    SFREE(c);
+	SFREE(c->data);
+	SFREE(c->url);
+	SFREE(c);
     }
 }
 
@@ -1532,18 +1533,18 @@ static void curl_chunk_delete(struct chunk *c)
    points to the data received, size*nmemb is the number of bytes, and
    stream is the user data specified by CURLOPT_WRITEHEADER. */
 static size_t curl_chunk_header_write(void *ptr, size_t size, size_t nmemb,
-                      void *stream)
+				      void *stream)
 {
     char *s = (char *) ptr;
     struct chunk *c = (struct chunk *) stream;
 
     if (0 == strncasecmp(s, "Content-Range:", 14)) {
-    s += 14;
-    while (*s == ' ')
-        s++;
-    if (0 == strncasecmp(s, "bytes ", 6))
-        sscanf(s + 6, "%lu-%lu/%lu",
-           &c->start_pos, &c->end_pos, &c->total_size);
+	s += 14;
+	while (*s == ' ')
+	    s++;
+	if (0 == strncasecmp(s, "bytes ", 6))
+	    sscanf(s + 6, "%lu-%lu/%lu",
+		   &c->start_pos, &c->end_pos, &c->total_size);
     }
     return (size * nmemb);
 }
@@ -1553,24 +1554,24 @@ static size_t curl_chunk_header_write(void *ptr, size_t size, size_t nmemb,
    received, size*nmemb is the number of bytes, and stream is the user
    data specified by CURLOPT_WRITEDATA. */
 static size_t curl_chunk_write(void *ptr, size_t size, size_t nmemb,
-                   void *stream)
+			       void *stream)
 {
     size_t count=0;
     char *p;
     struct chunk *c = (struct chunk *) stream;
 
     while (nmemb > 0) {
-    while ((c->size + size) > c->buffer_size) {
-        c->buffer_size += 1024;
-        SREALLOC(c->data, 1, c->buffer_size);
-    }
-    if (c->data)
-        memcpy(c->data + c->size, ptr, size);
-    c->size += size;
-    count += size;
-    p = (char *)ptr + size;	/* avoid arithmetic on void pointer */
-    ptr = (void *)p;
-    nmemb--;
+	while ((c->size + size) > c->buffer_size) {
+	    c->buffer_size += 1024;
+	    SREALLOC(c->data, 1, c->buffer_size);
+	}
+	if (c->data)
+	    memcpy(c->data + c->size, ptr, size);
+	c->size += size;
+	count += size;
+	p = (char *)ptr + size;	/* avoid arithmetic on void pointer */
+	ptr = (void *)p;
+	nmemb--;
     }
     return (count);
 }
@@ -1588,47 +1589,47 @@ static CHUNK *www_get_url_range_chunk(const char *url, long startb, long len)
     const char *url2 = NULL;
 
     if (url && *url) {
-    sprintf(range_req_str, "%ld-%ld", startb, startb+len-1);
-    chunk = chunk_new(len);
-    if (!chunk)
-        return (NULL);
+	sprintf(range_req_str, "%ld-%ld", startb, startb+len-1);
+	chunk = chunk_new(len);
+	if (!chunk)
+	    return (NULL);
 
-    if (/* In this case we want to send a GET request rather than
-           a HEAD */
-        curl_try(curl_easy_setopt(curl_ua, CURLOPT_NOBODY, 0L))
-        || curl_try(curl_easy_setopt(curl_ua, CURLOPT_HTTPGET, 1L))
-        /* URL to retrieve */
-        || curl_try(curl_easy_setopt(curl_ua, CURLOPT_URL, url))
-        /* Set username/password */
-        || curl_try(curl_easy_setopt(curl_ua, CURLOPT_USERPWD,
-                                     www_userpwd(url)))
-        /* Range request */
-        || curl_try(curl_easy_setopt(curl_ua, CURLOPT_RANGE,
-                     range_req_str))
-        /* This function will be used to "write" data as it is received */
-        || curl_try(curl_easy_setopt(curl_ua, CURLOPT_WRITEFUNCTION,
-                     curl_chunk_write))
-        /* The pointer to pass to the write function */
-        || curl_try(curl_easy_setopt(curl_ua, CURLOPT_WRITEDATA, chunk))
-        /* This function will be used to parse HTTP headers */
-        || curl_try(curl_easy_setopt(curl_ua, CURLOPT_HEADERFUNCTION,
-                     curl_chunk_header_write))
-        /* The pointer to pass to the header function */
-        || curl_try(curl_easy_setopt(curl_ua, CURLOPT_WRITEHEADER, chunk))
-        /* Perform the request */
-        || www_perform_request(curl_ua)) {
+	if (/* In this case we want to send a GET request rather than
+	       a HEAD */
+	    curl_try(curl_easy_setopt(curl_ua, CURLOPT_NOBODY, 0L))
+	    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_HTTPGET, 1L))
+	    /* URL to retrieve */
+	    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_URL, url))
+	    /* Set username/password */
+	    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_USERPWD,
+	                                 www_userpwd(url)))
+	    /* Range request */
+	    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_RANGE,
+					 range_req_str))
+	    /* This function will be used to "write" data as it is received */
+	    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_WRITEFUNCTION,
+					 curl_chunk_write))
+	    /* The pointer to pass to the write function */
+	    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_WRITEDATA, chunk))
+	    /* This function will be used to parse HTTP headers */
+	    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_HEADERFUNCTION,
+					 curl_chunk_header_write))
+	    /* The pointer to pass to the header function */
+	    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_WRITEHEADER, chunk))
+	    /* Perform the request */
+	    || www_perform_request(curl_ua)) {
 
-        chunk_delete(chunk);
-        return (NULL);
-    }
-    if (!chunk->data) {
-        chunk_delete(chunk);
-        chunk = NULL;
-    }
-    else if (!curl_easy_getinfo(curl_ua, CURLINFO_EFFECTIVE_URL, &url2) &&
-         url2 && *url2 && strcmp(url, url2)) {
-        SSTRCPY(chunk->url, url2);
-    }
+	    chunk_delete(chunk);
+	    return (NULL);
+	}
+	if (!chunk->data) {
+	    chunk_delete(chunk);
+	    chunk = NULL;
+	}
+	else if (!curl_easy_getinfo(curl_ua, CURLINFO_EFFECTIVE_URL, &url2) &&
+		 url2 && *url2 && strcmp(url, url2)) {
+	    SSTRCPY(chunk->url, url2);
+	}
     }
     return (chunk);
 }
@@ -1639,35 +1640,35 @@ static CHUNK *www_get_url_chunk(const char *url)
 
     chunk = chunk_new(1024);
     if (!chunk)
-    return (NULL);
+	return (NULL);
 
     if (/* Send a GET request */
-    curl_try(curl_easy_setopt(curl_ua, CURLOPT_NOBODY, 0L))
-    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_HTTPGET, 1L))
-    /* URL to retrieve */
-    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_URL, url))
-    /* Set username/password */
-    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_USERPWD,
-                     www_userpwd(url)))
-    /* No range request */
-    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_RANGE, NULL))
-    /* Write to the chunk specified ... */
-    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_WRITEFUNCTION,
-                     curl_chunk_write))
-    /* ... by this pointer */
-    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_HEADERFUNCTION,
-                     curl_null_write))
-    /* and ignore the header data */
-    || curl_try(curl_easy_setopt(curl_ua, CURLOPT_WRITEDATA, chunk))
-    /* perform the request */
-    || www_perform_request(curl_ua)) {
+	curl_try(curl_easy_setopt(curl_ua, CURLOPT_NOBODY, 0L))
+	|| curl_try(curl_easy_setopt(curl_ua, CURLOPT_HTTPGET, 1L))
+	/* URL to retrieve */
+	|| curl_try(curl_easy_setopt(curl_ua, CURLOPT_URL, url))
+	/* Set username/password */
+	|| curl_try(curl_easy_setopt(curl_ua, CURLOPT_USERPWD,
+				     www_userpwd(url)))
+	/* No range request */
+	|| curl_try(curl_easy_setopt(curl_ua, CURLOPT_RANGE, NULL))
+	/* Write to the chunk specified ... */
+	|| curl_try(curl_easy_setopt(curl_ua, CURLOPT_WRITEFUNCTION,
+				     curl_chunk_write))
+	/* ... by this pointer */
+	|| curl_try(curl_easy_setopt(curl_ua, CURLOPT_HEADERFUNCTION,
+				     curl_null_write))
+	/* and ignore the header data */
+	|| curl_try(curl_easy_setopt(curl_ua, CURLOPT_WRITEDATA, chunk))
+	/* perform the request */
+	|| www_perform_request(curl_ua)) {
 
-    chunk_delete(chunk);
-    return (NULL);
+	chunk_delete(chunk);
+	return (NULL);
     }
     if (!chunk->data) {
-    chunk_delete(chunk);
-    chunk = NULL;
+	chunk_delete(chunk);
+	chunk = NULL;
     }
 
     return (chunk);
@@ -1695,17 +1696,17 @@ static CHUNK *nf_get_url_range_chunk(netfile *nf, long startb, long len)
        assumed to be out-of-date.) */
     request_time = www_time();
     if (request_time - nf->redirect_time > REDIRECT_CACHE_TIME) {
-    SFREE(nf->redirect_url);
+	SFREE(nf->redirect_url);
     }
     url = (nf->redirect_url ? nf->redirect_url : nf->url);
 
     chunk = www_get_url_range_chunk(url, startb, len);
 
     if (chunk && chunk->url) {
-    /* don't update redirect_time if we didn't hit nf->url */
-    if (!nf->redirect_url)
-        nf->redirect_time = request_time;
-    SSTRCPY(nf->redirect_url, chunk->url);
+	/* don't update redirect_time if we didn't hit nf->url */
+	if (!nf->redirect_url)
+	    nf->redirect_time = request_time;
+	SSTRCPY(nf->redirect_url, chunk->url);
     }
     return (chunk);
 }
@@ -1734,75 +1735,75 @@ static netfile *nf_new(const char* url)
 
     SUALLOC(nf, 1, sizeof(netfile));
     if (nf && url && *url) {
-    SSTRCPY(nf->url, url);
-    nf->base_addr = 0;
-    nf->pos = 0;
-    nf->data = NULL;
-    nf->err = NF_NO_ERR;
-    nf->fd = -1;
-    nf->redirect_url = NULL;
+	SSTRCPY(nf->url, url);
+	nf->base_addr = 0;
+	nf->pos = 0;
+	nf->data = NULL;
+	nf->err = NF_NO_ERR;
+	nf->fd = -1;
+	nf->redirect_url = NULL;
 
-    if (page_size > 0L)
-        /* Try to read the first part of the file. */
-        chunk = nf_get_url_range_chunk(nf, 0L, page_size);
-    else
-        /* Try to read the entire file. */
-        chunk = www_get_url_chunk(nf->url);
+	if (page_size > 0L)
+	    /* Try to read the first part of the file. */
+	    chunk = nf_get_url_range_chunk(nf, 0L, page_size);
+	else
+	    /* Try to read the entire file. */
+	    chunk = www_get_url_chunk(nf->url);
 
-    if (!chunk) {
-        nf_delete(nf);
-        return (NULL);
-    }
+	if (!chunk) {
+	    nf_delete(nf);
+	    return (NULL);
+	}
 
-    if (chunk->start_pos == 0 &&
-        chunk->end_pos == chunk->size - 1 &&
-        chunk->total_size >= chunk->size &&
-        (chunk->size == page_size || chunk->size == chunk->total_size)) {
-        /* Range request works and the total file size is known. */
-        nf->cont_len = chunk->total_size;
-        nf->mode = NF_CHUNK_MODE;
-    }
-    else if (chunk->total_size == 0) {
-        if (page_size > 0 && chunk->size == page_size)
-        /* This might be a range response from a protocol that
-           doesn't report the file size, or might be a file
-           that happens to be exactly the size we requested.
-           Check the full size of the file. */
-        nf->cont_len = www_get_cont_len(nf->url);
-        else
-        nf->cont_len = chunk->size;
+	if (chunk->start_pos == 0 &&
+	    chunk->end_pos == chunk->size - 1 &&
+	    chunk->total_size >= chunk->size &&
+	    (chunk->size == page_size || chunk->size == chunk->total_size)) {
+	    /* Range request works and the total file size is known. */
+	    nf->cont_len = chunk->total_size;
+	    nf->mode = NF_CHUNK_MODE;
+	}
+	else if (chunk->total_size == 0) {
+	    if (page_size > 0 && chunk->size == page_size)
+		/* This might be a range response from a protocol that
+		   doesn't report the file size, or might be a file
+		   that happens to be exactly the size we requested.
+		   Check the full size of the file. */
+		nf->cont_len = www_get_cont_len(nf->url);
+	    else
+		nf->cont_len = chunk->size;
 
-        if (nf->cont_len > chunk->size)
-        nf->mode = NF_CHUNK_MODE;
-        else
-        nf->mode = NF_FULL_MODE;
-    }
-    else {
-        wfdb_error("nf_new: unexpected range response (%lu-%lu/%lu)\n",
-               chunk->start_pos, chunk->end_pos, chunk->total_size);
-        chunk_delete(chunk);
-        nf_delete(nf);
-        return (NULL);
-    }
-    if (chunk->size > 0L) {
-        nf->data = chunk->data;
-        chunk->data = NULL;
-    }
-    if (nf->data == NULL) {
-        if (chunk->size > 0L)
-        wfdb_error("nf_new: insufficient memory (needed %ld bytes)\n",
-               chunk->size);
-        /* If no bytes were received, the remote file probably doesn't
-           exist.  This happens routinely while searching the WFDB path, so
-           it's not flagged as an error.  Note, however, that we can't tell
-           the difference between a nonexistent file and an empty one.
-           Another possibility is that range requests are unsupported
-           (e.g., if we're trying to read an ftp url), and there is
-           insufficient memory for the entire file. */
-        nf_delete(nf);
-        nf = NULL;
-    }
-    if (chunk) chunk_delete(chunk);
+	    if (nf->cont_len > chunk->size)
+		nf->mode = NF_CHUNK_MODE;
+	    else
+		nf->mode = NF_FULL_MODE;
+	}
+	else {
+	    wfdb_error("nf_new: unexpected range response (%lu-%lu/%lu)\n",
+		       chunk->start_pos, chunk->end_pos, chunk->total_size);
+	    chunk_delete(chunk);
+	    nf_delete(nf);
+	    return (NULL);
+	}
+	if (chunk->size > 0L) {
+	    nf->data = chunk->data;
+	    chunk->data = NULL;
+	}
+	if (nf->data == NULL) {
+	    if (chunk->size > 0L)
+		wfdb_error("nf_new: insufficient memory (needed %ld bytes)\n",
+			   chunk->size);
+	    /* If no bytes were received, the remote file probably doesn't
+	       exist.  This happens routinely while searching the WFDB path, so
+	       it's not flagged as an error.  Note, however, that we can't tell
+	       the difference between a nonexistent file and an empty one.
+	       Another possibility is that range requests are unsupported
+	       (e.g., if we're trying to read an ftp url), and there is
+	       insufficient memory for the entire file. */
+	    nf_delete(nf);
+	    nf = NULL;
+	}
+	if (chunk) chunk_delete(chunk);
     }
     return(nf);
 }
@@ -1815,63 +1816,63 @@ static long nf_get_range(netfile* nf, long startb, long len, char *rbuf)
 
     if (len > avail) len = avail;	/* limit request to available bytes */
     if (nf == NULL || nf->url == NULL || *nf->url == '\0' ||
-    startb < 0L || startb >= nf->cont_len || len <= 0L || rbuf == NULL)
-    return (0L);	/* invalid inputs -- fail silently */
+	startb < 0L || startb >= nf->cont_len || len <= 0L || rbuf == NULL)
+	return (0L);	/* invalid inputs -- fail silently */
 
     if (nf->mode == NF_CHUNK_MODE) {	/* range requests acceptable */
-    long rlen = (avail >= page_size) ? page_size : avail;
+	long rlen = (avail >= page_size) ? page_size : avail;
 
-    if (len <= page_size) {	/* short request -- check if cached */
-        if ((startb < nf->base_addr) ||
-        ((startb + len) > (nf->base_addr + page_size))) {
-        /* requested data not in cache -- update the cache */
-        if (chunk = nf_get_url_range_chunk(nf, startb, rlen)) {
-            if (chunk_size(chunk) != rlen) {
-            wfdb_error(
-             "nf_get_range: requested %ld bytes, received %ld bytes\n",
-                           rlen, (long)chunk_size(chunk));
-            len = 0L;
-            }
-            else {
-            nf->base_addr = startb;
-            memcpy(nf->data, chunk_data(chunk), rlen);
-            }
-        }
-        else {	/* attempt to update cache failed */
-            wfdb_error(
-         "nf_get_range: couldn't read %ld bytes of %s starting at %ld\n",
-                           len, nf->url, startb);
-            len = 0L;
-        }
-        }
+	if (len <= page_size) {	/* short request -- check if cached */
+	    if ((startb < nf->base_addr) ||
+		((startb + len) > (nf->base_addr + page_size))) {
+		/* requested data not in cache -- update the cache */
+		if (chunk = nf_get_url_range_chunk(nf, startb, rlen)) {
+		    if (chunk_size(chunk) != rlen) {
+			wfdb_error(
+		     "nf_get_range: requested %ld bytes, received %ld bytes\n",
+		                   rlen, (long)chunk_size(chunk));
+			len = 0L;
+		    }
+		    else {
+			nf->base_addr = startb;
+			memcpy(nf->data, chunk_data(chunk), rlen);
+		    }
+		}
+		else {	/* attempt to update cache failed */
+		    wfdb_error(
+	     "nf_get_range: couldn't read %ld bytes of %s starting at %ld\n", 
+	                       len, nf->url, startb);
+		    len = 0L;
+		}
+	    } 
+      
+	    /* move cached data to the return buffer */
+	    rp = nf->data + startb - nf->base_addr;
+	}
 
-        /* move cached data to the return buffer */
-        rp = nf->data + startb - nf->base_addr;
-    }
-
-    else if (chunk = nf_get_url_range_chunk(nf, startb, len)) {
-        /* long request (> page_size) */
-        if (chunk_size(chunk) != len) {
-        wfdb_error(
-             "nf_get_range: requested %ld bytes, received %ld bytes\n",
-                   len, (long)chunk_size(chunk));
-        len = 0L;
-        }
-        rp = chunk_data(chunk);
-    }
-    else {
-        wfdb_error(
-           "nf_get_range: couldn't read %ld bytes of %s starting at %ld\n",
-               len, nf->url, startb);
-        len = 0L;
-    }
+	else if (chunk = nf_get_url_range_chunk(nf, startb, len)) {
+	    /* long request (> page_size) */
+	    if (chunk_size(chunk) != len) {
+		wfdb_error(
+		     "nf_get_range: requested %ld bytes, received %ld bytes\n",
+		           len, (long)chunk_size(chunk));
+		len = 0L;
+	    }
+	    rp = chunk_data(chunk);
+	}
+	else {
+	    wfdb_error(
+	       "nf_get_range: couldn't read %ld bytes of %s starting at %ld\n",
+		       len, nf->url, startb);
+	    len = 0L;
+	}
     }
 
     else  /* cannot use range requests -- cache contains full file */
-    rp = nf->data + startb;
+	rp = nf->data + startb;		
 
     if (rp != NULL && len > 0)
-    memcpy(rbuf, rp, len);
+	memcpy(rbuf, rp, len);
     if (chunk) chunk_delete(chunk);
     return (len);
 }
@@ -1894,13 +1895,13 @@ static netfile* nf_fopen(const char *url, const char *mode)
     netfile* nf = NULL;
 
     if (!www_done_init)
-    www_init();
+	www_init();
     if (*mode == 'w' || *mode == 'a')
-    errno = EROFS;	/* no support for output */
+	errno = EROFS;	/* no support for output */
     else if (*mode != 'r')
-    errno = EINVAL;	/* invalid mode string */
+	errno = EINVAL;	/* invalid mode string */
     else if (nf = nf_new(url))
-    nf_open_files++;
+	nf_open_files++;
     return (nf);
 }
 
@@ -1916,18 +1917,18 @@ static int nf_fgetc(netfile *nf)
     char c;
 
     if (nf_get_range(nf, nf->pos++, 1, &c))
-    return (c & 0xff);
+	return (c & 0xff);
     nf->err = (nf->pos >= nf->cont_len) ? NF_EOF_ERR : NF_REAL_ERR;
     return (EOF);
 }
 
 static char* nf_fgets(char *s, int size, netfile *nf)
 {
-    int c = 0, i = 0;
+    int c = 0, i = 0; 
 
     if (s == NULL) return (NULL);
     while (c != '\n' && i < (size-1) && (c = nf_fgetc(nf)) != EOF)
-    s[i++] = c;
+	s[i++] = c;
     if ((c == EOF) && (i == 0))	return (NULL);
     s[i] = 0;
     return (s);
@@ -2070,14 +2071,14 @@ int wfdb_fflush(WFDB_FILE *wp)
 char* wfdb_fgets(char *s, int size, WFDB_FILE *wp)
 {
     if (wp->type == WFDB_NET)
-    return (nf_fgets(s, size, wp->netfp));
+	return (nf_fgets(s, size, wp->netfp));
     return (fgets(s, size, wp->fp));
 }
 
 size_t wfdb_fread(void *ptr, size_t size, size_t nmemb, WFDB_FILE *wp)
 {
     if (wp->type == WFDB_NET)
-    return (nf_fread(ptr, size, nmemb, wp->netfp));
+	return (nf_fread(ptr, size, nmemb, wp->netfp));
     return (fread(ptr, size, nmemb, wp->fp));
 }
 
@@ -2105,7 +2106,7 @@ size_t wfdb_fwrite(void *ptr, size_t size, size_t nmemb, WFDB_FILE *wp)
 int wfdb_getc(WFDB_FILE *wp)
 {
     if (wp->type == WFDB_NET)
-    return (nf_fgetc(wp->netfp));
+	return (nf_fgetc(wp->netfp));
     return (getc(wp->fp));
 }
 
