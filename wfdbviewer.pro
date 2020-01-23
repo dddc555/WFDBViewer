@@ -267,7 +267,7 @@ win32 {
  RC_FILE = wfdbbrowser.rc
 }
 
-QMAKE_CXXFLAGS += -Wextra -Wshadow -Wformat-nonliteral -Wformat-security -Wtype-limits -Wfatal-errors -fpermissive
+QMAKE_CXXFLAGS += -Wextra -Wshadow -Wformat-nonliteral -Wformat-security -Wtype-limits -Wfatal-errors -fpermissive -pedantic
 
 unix {
 target.path = /usr/bin
