@@ -1,3 +1,4 @@
+USE_WFDB_LIB = false
 
 contains(QT_MAJOR_VERSION, 4) {
 
@@ -32,6 +33,9 @@ CONFIG += warn_on
 CONFIG += release
 CONFIG += static
 CONFIG += largefile
+mac {
+CONFIG-=app_bundle
+}
 QT += network
 
 contains(QT_MAJOR_VERSION, 5) {
