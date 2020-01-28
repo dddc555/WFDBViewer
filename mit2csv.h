@@ -31,6 +31,8 @@
 
 #include <stdio.h>
 #include "third_party/wfdb.h"
+#include "third_party/rdsamp.h"
+
 
 #define EDFMAXBLOCK	61440	/* maximum data block length, in bytes */
 

@@ -154,17 +154,17 @@ HEADERS += third_party/kiss_fft/_kiss_fft_guts.h
 HEADERS += third_party/kiss_fft/kiss_fftr.h
 
 SOURCES += main.cpp \
-    mit2csv.cpp \
-    third_party/rdsamp.cpp
+    mit2csv.cpp
 
 SOURCES += third_party/kiss_fft/kiss_fft.c
 SOURCES += third_party/kiss_fft/kiss_fftr.c
 
 
-SOURCES += third_party/wfdbinit.cpp
-SOURCES += third_party/wfdbio.cpp
-SOURCES += third_party/annot.cpp
-SOURCES += third_party/signal.cpp
+SOURCES += third_party/wfdbinit.c
+SOURCES += third_party/wfdbio.c
+SOURCES += third_party/annot.c
+SOURCES += third_party/signal.c
+SOURCES += third_party/rdsamp.c
 SOURCES +=
 
 

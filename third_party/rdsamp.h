@@ -27,6 +27,16 @@ _______________________________________________________________________________
 #include <stdio.h>
 #include "wfdb.h"
 
+#ifdef c_plusplus	/* true for some other C++ compilers */
+#define wfdb_CPP
+#define wfdb_PROTO
+#endif
+
+/* Specify C linkage for C++ compilers. */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* values for timeunits */
 #define SECONDS     1
 #define MINUTES     2
@@ -46,4 +56,6 @@ _______________________________________________________________________________
 int convertWFDB2CSV(int argc, char *record, char *output);
 
 char *myescapify(char *s);
-
+#ifdef __cplusplus
+}
+#endif
