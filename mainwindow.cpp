@@ -4004,29 +4004,8 @@ struct signalcompblock * UI_Mainwindow::create_signalcomp_copy(struct signalcomp
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void UI_Mainwindow::resizeEvent(QResizeEvent* event){
+   QMainWindow::resizeEvent(event);
+   int wid = 600;
+   navtoolbarGroupWidget->setGeometry((width() - wid) / 2, 0, wid, 60);
+}

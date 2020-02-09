@@ -343,7 +343,7 @@ public:
 
 
 private:
-  QWidget *navtoolbarGroupWidget;
+
   QMenuBar     *menubar;
 
   QMenu        *filemenu,

@@ -342,7 +342,7 @@ void UI_Mainwindow::start_stop_video()
 
   video_act->setText("Stop video");
 
-  navtoolbar->setVisible(true);
+  //navtoolbar->setVisible(true);
 
   slidertoolbar->setVisible(true);
 
