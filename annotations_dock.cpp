@@ -48,7 +48,8 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 
   docklist = new QDockWidget("Annotations", w_parent);
   docklist->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-  docklist->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable);
+//  docklist->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable);
+  docklist->setFeatures(QDockWidget::DockWidgetMovable);
 
   palette.setColor(QPalette::Text, mainwindow->maincurve->text_color);
   palette.setColor(QPalette::Base, mainwindow->maincurve->backgroundcolor);
@@ -104,7 +105,7 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   unhide_all_NK_triggers_act = new QAction("Unhide all Nihon Kohden triggers", list);
   unhide_all_BS_triggers_act = new QAction("Unhide all Biosemi triggers", list);
   filt_ival_time_act = new QAction("Filter Interval Time", list);
-  show_stats_act = new QAction("Heart Rate Variability", list);
+  show_stats_act = new QPushButton("Heart Rate Variability", list);
 
   list->setContextMenuPolicy(Qt::ActionsContextMenu);
   list->insertAction(NULL, show_between_act);
@@ -114,19 +115,22 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   list->insertAction(NULL, unhide_same_annots_act);
   list->insertAction(NULL, unhide_all_annots_act);
   list->insertAction(NULL, average_annot_act);
-  list->insertAction(NULL, hide_all_NK_triggers_act);
-  list->insertAction(NULL, unhide_all_NK_triggers_act);
-  list->insertAction(NULL, hide_all_BS_triggers_act);
-  list->insertAction(NULL, unhide_all_BS_triggers_act);
+//  list->insertAction(NULL, hide_all_NK_triggers_act);
+//  list->insertAction(NULL, unhide_all_NK_triggers_act);
+//  list->insertAction(NULL, hide_all_BS_triggers_act);
+//  list->insertAction(NULL, unhide_all_BS_triggers_act);
   list->insertAction(NULL, filt_ival_time_act);
-  list->insertAction(NULL, show_stats_act);
+//  QListWidgetItem *item2 = new QListWidgetItem();
+
+//  list->insertItem(NULL, item2);
+//  list->setItemWidget(item2, show_stats_act );
 
   h_layout = new QHBoxLayout;
   h_layout->addWidget(checkbox1);
   h_layout->addWidget(label1);
   h_layout->addWidget(lineedit1);
   h_layout->addWidget(checkbox2);
-  h_layout->addWidget(more_button);
+  h_layout->addWidget(show_stats_act);
 
   v_layout = new QVBoxLayout(dialog1);
   v_layout->addLayout(h_layout);
@@ -154,7 +158,7 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   QObject::connect(unhide_all_NK_triggers_act, SIGNAL(triggered(bool)),                this, SLOT(unhide_all_NK_triggers(bool)));
   QObject::connect(unhide_all_BS_triggers_act, SIGNAL(triggered(bool)),                this, SLOT(unhide_all_BS_triggers(bool)));
   QObject::connect(filt_ival_time_act,         SIGNAL(triggered(bool)),                this, SLOT(filt_ival_time(bool)));
-  QObject::connect(show_stats_act,             SIGNAL(triggered(bool)),                this, SLOT(show_stats(bool)));
+  QObject::connect(show_stats_act,             SIGNAL(clicked(bool)),                this, SLOT(show_stats(bool)));
   QObject::connect(lineedit1,                  SIGNAL(textEdited(const QString)),      this, SLOT(filter_edited(const QString)));
 }
 
@@ -180,12 +184,12 @@ void UI_Annotationswindow::show_stats(bool)
     return;
   }
 
-  if(mainwindow->annot_editor_active)
-  {
-    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Close the annotation editor and try again.");
-    messagewindow.exec();
-    return;
-  }
+//  if(mainwindow->annot_editor_active)
+//  {
+//    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Close the annotation editor and try again.");
+//    messagewindow.exec();
+//    return;
+//  }
 
   if(list->count() < 1)
   {

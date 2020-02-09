@@ -71,12 +71,12 @@ class UI_MIT2CSVwindow : public QObject
   Q_OBJECT
 
 public:
-  UI_MIT2CSVwindow(char *recent_dir=NULL, char *save_dir=NULL, bool onlyShowFileOpenDialog = false);
+  UI_MIT2CSVwindow(char *recent_dir=NULL, char *save_dir=NULL, bool onlyShowFileOpenDialog = false, char *wfdb_path = NULL);
   char convertedEdfFilePath[MAX_PATH_LENGTH];
   bool isConverted = false;
   void showOpen();
 private:
-
+char* wfdb_path;
 
 QPushButton  *pushButton1,
              *pushButton2;

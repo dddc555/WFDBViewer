@@ -229,7 +229,7 @@ private:
       updates_enabled,
       fillsurface,
       *ibuf;
-
+  bool isIninitedCursor;
   char h_label[32],
        v_label[21],
        upperlabel1[64],

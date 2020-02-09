@@ -705,7 +705,6 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
   label4_10 = new QLabel(tab4);
   label4_10->setGeometry(20, 455, 310, 25);
   label4_10->setText("Window title content");
-
   combobox4_3 = new QComboBox(tab4);
   combobox4_3->setGeometry(200, 455, 180, 25);
   combobox4_3->addItem("Subject info");
@@ -735,6 +734,19 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
   checkbox4_6 = new QCheckBox(tab4);
   checkbox4_6->setGeometry(325, 538, 20, 20);
   checkbox4_6->setTristate(false);
+
+  label_language = new QLabel(tab4);
+  label_language->setGeometry(20, 575, 310, 25);
+  label_language->setText("Language");
+
+  combobox_language = new QComboBox(tab4);
+  combobox_language->setGeometry(200, 575, 180, 25);
+  combobox_language->addItem("English");
+  combobox_language->addItem("Japanese");
+  combobox_language->setCurrentIndex(0);
+
+  QObject::connect(combobox_language, SIGNAL(currentIndexChanged(int)), this, SLOT(combobox_language_IndexChanged(int)));
+
   if(mainwindow->linear_interpol)
   {
     checkbox4_6->setCheckState(Qt::Checked);
@@ -821,6 +833,11 @@ void UI_OptionsDialog::combobox4_3IndexChanged(int index)
   mainwindow->setMainwindowTitle(mainwindow->edfheaderlist[mainwindow->sel_viewtime]);
 }
 
+void UI_OptionsDialog::combobox_language_IndexChanged(int index)
+{
+
+
+}
 
 void UI_OptionsDialog::spinBox4_1ValueChanged(int interval)
 {

@@ -1381,15 +1381,98 @@ void UI_Mainwindow::show_spectrum_dock()
   UI_SignalChooser signalchooserdialog(this, 1);
 }
 
-void UI_Mainwindow::open_wfdb_file()
+void UI_Mainwindow::record_recent(char *path)
 {
-    UI_MIT2EDFwindow mit2edf(recent_opendir, recent_savedir, true);
-    if(mit2edf.convertedEdfFilePath != NULL && mit2edf.isConverted){
-        open(mit2edf.convertedEdfFilePath, true);
+    int present = 0;
+    int position = 0;
+    int i = 0;
+    for(i=0; i<MAX_RECENTFILES; i++)
+    {
+      if(!strcmp(&recent_file_path[i][0], path))
+      {
+        present = 1;
+
+        position = i;
+
+        if(cmdlineargument != 2)
+        {
+          strcpy(montagepath, &recent_file_mtg_path[i][0]);
+        }
+
+        break;
+      }
+    }
+
+    if(present)
+    {
+      for(i=position; i>0; i--)
+      {
+        strcpy(&recent_file_path[i][0], &recent_file_path[i-1][0]);
+        strcpy(&recent_file_mtg_path[i][0], &recent_file_mtg_path[i-1][0]);
+      }
+    }
+    else
+    {
+      for(i=MAX_RECENTFILES-1; i>0; i--)
+      {
+        strcpy(&recent_file_path[i][0], &recent_file_path[i-1][0]);
+        strcpy(&recent_file_mtg_path[i][0], &recent_file_mtg_path[i-1][0]);
+      }
+    }
+
+    strcpy(&recent_file_path[0][0], path);
+    strcpy(&recent_file_mtg_path[0][0], montagepath);
+    recent_filesmenu->clear();
+
+    for(i=0; i<MAX_RECENTFILES; i++)
+    {
+      if(recent_file_path[i][0] == 0)
+      {
+        break;
+      }
+      QAction *act;
+      act = new QAction(QString::fromLocal8Bit(&recent_file_path[i][0]), recent_filesmenu);
+      act->setData(QVariant(i));
+      recent_filesmenu->addAction(act);
+    }
+
+    present = 0;
+
+    for(i=0; i<files_open; i++)
+    {
+      if(!strcmp(edfheaderlist[i]->filename, path))
+      {
+        present = 1;
+
+        break;
+      }
+    }
+}
+void UI_Mainwindow::_open_wfdb(char *wfdb_path){
+    if( close_all_files()){
+        UI_MIT2EDFwindow mit2edf(recent_opendir, recent_savedir, true, wfdb_path);
+        if(mit2edf.convertedEdfFilePath != NULL && mit2edf.isConverted){
+            record_recent(mit2edf.selectedWFDBHeaderFilePath);
+            strcpy(selectedWFDBHeaderFilePath, mit2edf.selectedWFDBHeaderFilePath);
+            open(mit2edf.convertedEdfFilePath, true, false);
+            //maincurve->exec_sidemenu(0);
+            int i = 0;
+            for(i=0; i<MAXSPECTRUMDOCKS; i++)
+            {
+              if(spectrumdock[i]->dock->isHidden())  break;
+            }
+            spectrumdock[i]->init(0);
+            annotation_editor();
+        }
     }
 }
 
-void UI_Mainwindow::open(char *filePath, bool openDirect) {
+void UI_Mainwindow::open_wfdb_file()
+{
+    _open_wfdb(NULL);
+}
+
+void UI_Mainwindow::open(char *filePath, bool openDirect, bool storeRecent) {
     FILE *newfile;
 
     int i, len, present, position, button_nr=0;
@@ -1398,22 +1481,20 @@ void UI_Mainwindow::open(char *filePath, bool openDirect) {
 
     str[0] = 0;
 
-    QAction *act;
-
     struct edfhdrblock *edfhdr=NULL;
 
     if(edflib_version() != 115)  return;
 
-    if(annot_editor_active && files_open)
-    {
-      QMessageBox messagewindow(QMessageBox::Critical, "Error", "You can not open multiple files when editing annotations.\n"
-                                                                "Close the annotation edit window first.");
-      messagewindow.exec();
+//    if(annot_editor_active && files_open)
+//    {
+//      QMessageBox messagewindow(QMessageBox::Critical, "Error", "You can not open multiple files when editing annotations.\n"
+//                                                                "Close the annotation edit window first.");
+//      messagewindow.exec();
 
-      cmdlineargument = 0;
+//      cmdlineargument = 0;
 
-      return;
-    }
+//      return;
+//    }
 
     if((files_open > 0) && (live_stream_active))
     {
@@ -1459,68 +1540,10 @@ void UI_Mainwindow::open(char *filePath, bool openDirect) {
     }
 
     present = 0;
-
-    for(i=0; i<MAX_RECENTFILES; i++)
-    {
-      if(!strcmp(&recent_file_path[i][0], path))
-      {
-        present = 1;
-
-        position = i;
-
-        if(cmdlineargument != 2)
-        {
-          strcpy(montagepath, &recent_file_mtg_path[i][0]);
-        }
-
-        break;
-      }
+    if(storeRecent){
+        record_recent(path);
     }
 
-    if(present)
-    {
-      for(i=position; i>0; i--)
-      {
-        strcpy(&recent_file_path[i][0], &recent_file_path[i-1][0]);
-        strcpy(&recent_file_mtg_path[i][0], &recent_file_mtg_path[i-1][0]);
-      }
-    }
-    else
-    {
-      for(i=MAX_RECENTFILES-1; i>0; i--)
-      {
-        strcpy(&recent_file_path[i][0], &recent_file_path[i-1][0]);
-        strcpy(&recent_file_mtg_path[i][0], &recent_file_mtg_path[i-1][0]);
-      }
-    }
-
-    strcpy(&recent_file_path[0][0], path);
-    strcpy(&recent_file_mtg_path[0][0], montagepath);
-
-    recent_filesmenu->clear();
-
-    for(i=0; i<MAX_RECENTFILES; i++)
-    {
-      if(recent_file_path[i][0] == 0)
-      {
-        break;
-      }
-      act = new QAction(QString::fromLocal8Bit(&recent_file_path[i][0]), recent_filesmenu);
-      act->setData(QVariant(i));
-      recent_filesmenu->addAction(act);
-    }
-
-    present = 0;
-
-    for(i=0; i<files_open; i++)
-    {
-      if(!strcmp(edfheaderlist[i]->filename, path))
-      {
-        present = 1;
-
-        break;
-      }
-    }
 
     if(!present)
     {
@@ -1760,14 +1783,30 @@ void UI_Mainwindow::open(char *filePath, bool openDirect) {
 
 void UI_Mainwindow::open_new_file()
 {
-    open();
-}
+    size_t len = strlen(path);
 
+    if((strcmp(path + (len - 4), ".edf") == 0)
+       ||(strcmp(path + (len - 4), ".EDF") == 0)
+       ||(strcmp(path + (len - 4), ".rec") == 0)
+       ||(strcmp(path + (len - 4), ".REC") == 0)
+       ||(strcmp(path + (len - 4), ".bdf") == 0)
+       ||(strcmp(path + (len - 4), ".BDF")) == 0)
+    {
+        open(path, true, false);
+        qDebug()<<"edf";
+    }
+    else if(strcmp(path + (len - 4), ".hea") == 0 || strcmp(path + (len - 4), ".HEA") == 0){
+        _open_wfdb(path);
+        qDebug()<<"wfdb";
+    }
+    else {
+        qDebug()<<"else";
+    }
+}
 
 void UI_Mainwindow::remove_recent_file_mtg_path(const char *mtg_path)
 {
   int i;
-
 
   for(i=0; i<MAX_RECENTFILES; i++)
   {
@@ -2367,7 +2406,7 @@ void UI_Mainwindow::close_file_action_func(QAction *action)
 }
 
 
-void UI_Mainwindow::close_all_files()
+bool UI_Mainwindow::close_all_files()
 {
   int i, j, k,
       button_nr=0;
@@ -2404,7 +2443,7 @@ void UI_Mainwindow::close_all_files()
 
   if(button_nr == QMessageBox::Cancel)
   {
-    return;
+    return false;
   }
 
   annotations_edited = 0;
@@ -2482,6 +2521,7 @@ void UI_Mainwindow::close_all_files()
   {
     setup_viewbuf();
   }
+  return true;
 }
 
 
@@ -3314,9 +3354,14 @@ void UI_Mainwindow::export_to_ascii()
   UI_AsciiExportwindow exportdialog(this);
 }
 
+void UI_Mainwindow::_export2_to_ascii(char *_path)
+{
+  UI_MIT2CSVwindow mit2csv(recent_opendir, recent_savedir, _path);
+}
+
 void UI_Mainwindow::export2_to_ascii()
 {
-  UI_MIT2CSVwindow mit2csv(recent_opendir, recent_savedir);
+    _export2_to_ascii(NULL);
 }
 
 void UI_Mainwindow::export_ecg_rr_interval_to_ascii()
@@ -3507,6 +3552,10 @@ void UI_Mainwindow::print_to_bdf()
   print_screen_to_bdf(this);
 }
 
+void UI_Mainwindow::print_to_csv()
+{
+    _export2_to_ascii(selectedWFDBHeaderFilePath);
+}
 
 void UI_Mainwindow::set_dc_offset_to_zero()
 {
@@ -3542,6 +3591,55 @@ void UI_Mainwindow::show_help()
 #endif
 }
 
+void UI_Mainwindow::language_en()
+{
+//    mainwindow_language = index;
+    qApp->removeTranslator(&m_translator);
+
+    // load the new translator
+    QString path = QApplication::applicationDirPath();
+    path.append("/languages/");
+    QFile *file =new QFile(path + "translation_en.qm");
+    if(file->exists()){
+        qDebug()<<"File Exist";
+    }else{
+        qDebug()<<"File no Exist";
+    }
+    if(m_translator.load(path + "translation_en.qm")) //Here Path and Filename has to be entered because the system didn't find the QM Files else
+    {
+        qDebug()<<"Successfull";
+        qApp->installTranslator(&m_translator);
+        qDebug()<<(tr("Open WFDB").arg("en"));
+
+    } else {
+        qDebug()<<"Error Translate";
+    }
+}
+
+void UI_Mainwindow::language_jp()
+{
+    //    mainwindow_language = index;
+        qApp->removeTranslator(&m_translator);
+
+        // load the new translator
+        QString path = QApplication::applicationDirPath();
+        path.append("/languages/");
+        QFile *file =new QFile(path + "translation_jp.qm");
+        if(file->exists()){
+            qDebug()<<"File Exist";
+        }else{
+            qDebug()<<"File no Exist";
+        }
+        if(m_translator.load(path + "translation_en.qm")) //Here Path and Filename has to be entered because the system didn't find the QM Files else
+        {
+            qDebug()<<"Successfull";
+            qApp->installTranslator(&m_translator);
+            qDebug()<<(tr("Open WFDB").arg("en"));
+
+        } else {
+            qDebug()<<"Error Translate";
+        }
+}
 
 void UI_Mainwindow::show_kb_shortcuts()
 {

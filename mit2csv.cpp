@@ -31,8 +31,9 @@
 
 
 
-UI_MIT2CSVwindow::UI_MIT2CSVwindow(char *recent_dir, char *save_dir, bool onlyShowFileOpenDialog)
+UI_MIT2CSVwindow::UI_MIT2CSVwindow(char *recent_dir, char *save_dir, bool onlyShowFileOpenDialog, char *wfdb_path)
 {
+  this->wfdb_path = wfdb_path;
   char txt_string[2048];
 
   recent_opendir = recent_dir;
@@ -90,7 +91,11 @@ void UI_MIT2CSVwindow::SelectFileButton()
             filename_x[MAX_PATH_LENGTH];
 
     pushButton1->setEnabled(false);
-    strcpy(header_filename, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "MIT header files (*.hea *.HEA)").toLocal8Bit().data());
+    if(this->wfdb_path == NULL){
+        strcpy(header_filename, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "MIT header files (*.hea *.HEA)").toLocal8Bit().data());
+    } else {
+        strcpy(header_filename,  this->wfdb_path);
+    }
 
     if(!strcmp(header_filename, ""))
     {

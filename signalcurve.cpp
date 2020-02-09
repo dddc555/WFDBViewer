@@ -79,7 +79,7 @@ SignalCurve::SignalCurve(QWidget *w_parent) : QWidget(w_parent)
   extra_button = 0;
   extra_button_txt[0] = 0;
   use_move_events = 0;
-  crosshair_1_active = 0;
+  crosshair_1_active = 1;
   crosshair_1_moving = 0;
   crosshair_1_value = 0.0;
   crosshair_1_value_2 = 0.0;
@@ -104,6 +104,7 @@ SignalCurve::SignalCurve(QWidget *w_parent) : QWidget(w_parent)
   spectrum_color = NULL;
 
   old_w = 10000;
+
 }
 
 
@@ -124,6 +125,7 @@ void SignalCurve::clear()
   use_move_events = 0;
   crosshair_1_active = 0;
   crosshair_1_moving = 0;
+
   crosshair_1_value = 0.0;
   crosshair_1_value_2 = 0.0;
   crosshair_1_x_position = 0;
@@ -135,7 +137,12 @@ void SignalCurve::clear()
   Marker2MovableEnabled = false;
   line1Enabled = false;
 
-  update();
+  w = width();
+
+  crosshair_1_active = 1;
+
+
+//*/
 }
 
 
@@ -184,13 +191,16 @@ void SignalCurve::mousePressEvent(QMouseEvent *press_event)
 
     if(cursorEnabled == true)
     {
+
       if((m_y<41)&&(m_y>23)&&(m_x>((w - (bordersize * 2)) - 43))&&(m_x<((w - (bordersize * 2)) - 3)))
       {
+          qDebug()<<"crosshair_1_active " << crosshair_1_active;
         if(crosshair_1_active)
         {
           crosshair_1_active = 0;
           crosshair_1_moving = 0;
           use_move_events = 0;
+
           setMouseTracking(false);
         }
         else
@@ -203,6 +213,7 @@ void SignalCurve::mousePressEvent(QMouseEvent *press_event)
             crosshair_1_y_position = (h - (bordersize * 2)) / 2;
             mouse_old_x = crosshair_1_x_position;
             mouse_old_y = crosshair_1_y_position;
+            qDebug()<<"Mouse Event " << w<<" b " << bordersize <<" d " <<crosshair_1_x_position;
           }
         }
 
@@ -1354,10 +1365,24 @@ void SignalCurve::paintEvent(QPaintEvent *)
 #if QT_VERSION >= 0x050000
     paint.setRenderHint(QPainter::Qt4CompatiblePainting, true);
 #endif
-
+    if(!isIninitedCursor){
+        isIninitedCursor = true;
+        if(crosshair_1_active && !crosshair_1_x_position)
+        {
+          w = width();
+          h = height();
+          crosshair_1_value = 0.0;
+          crosshair_1_x_position = (w - (bordersize * 2)) / 2;
+          qDebug()<<"paintEvent " << w<<" b " << bordersize <<" d " <<crosshair_1_x_position;
+          crosshair_1_y_position = (h - (bordersize * 2)) / 2;
+          mouse_old_x = crosshair_1_x_position;
+          mouse_old_y = crosshair_1_y_position;
+        }
+    }
     drawWidget(&paint, width(), height());
 
     old_w = width();
+
   }
 }
 

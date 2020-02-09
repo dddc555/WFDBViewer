@@ -68,8 +68,9 @@ class UI_MIT2EDFwindow : public QObject
   Q_OBJECT
 
 public:
-  UI_MIT2EDFwindow(char *recent_dir=NULL, char *save_dir=NULL, bool onlyShowFileOpenDialog = false);
+  UI_MIT2EDFwindow(char *recent_dir=NULL, char *save_dir=NULL, bool onlyShowFileOpenDialog = false, char *wfdb_path = NULL);
   char convertedEdfFilePath[MAX_PATH_LENGTH];
+  char selectedWFDBHeaderFilePath[MAX_PATH_LENGTH];
   bool isConverted = false;
   void showOpen();
 private:
@@ -84,7 +85,7 @@ QDialog      *myobjectDialog;
 
 char  *recent_opendir,
       *recent_savedir;
-
+char *wfdb_path;
 
 struct {
         int chns;

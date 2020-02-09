@@ -161,6 +161,7 @@ QLabel         *label1,
                *label4_10,
                *label4_11,
                *label4_12,
+               *label_language,
                *label2_2,
                *label2_4,
                *label1_3,
@@ -181,7 +182,8 @@ QDoubleSpinBox *dspinbox3_2,
 
 QComboBox      *combobox4_1,
                *combobox4_2,
-               *combobox4_3;
+               *combobox4_3,
+               *combobox_language;
 
 QCheckBox      *checkbox1,
                *checkbox2,
@@ -253,6 +255,8 @@ void spinBox4_1ValueChanged(int);
 void combobox4_1IndexChanged(int);
 void combobox4_2IndexChanged(int);
 void combobox4_3IndexChanged(int);
+void combobox_language_IndexChanged(int);
+
 void spinBox4_2ValueChanged(int);
 void spinBox4_3ValueChanged(int);
 void saveColorSchemaButtonClicked();

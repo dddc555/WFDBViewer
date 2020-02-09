@@ -302,6 +302,7 @@ UI_Mainwindow::UI_Mainwindow()
   printmenu->addMenu(print_img_menu);
   printmenu->addAction("to EDF",        this,      SLOT(print_to_edf()));
   printmenu->addAction("to BDF",        this,      SLOT(print_to_bdf()));
+  printmenu->addAction("to CSV",        this,      SLOT(print_to_csv()));
 
   save_act = new QAction("Save as", this);
   save_act->setShortcut(QKeySequence::Save);
@@ -315,20 +316,20 @@ UI_Mainwindow::UI_Mainwindow()
   filemenu = new QMenu(this);
   filemenu->setTitle("&File");
   //filemenu->addAction("Open",         this, SLOT(open_new_file()), QKeySequence::Open);
-  filemenu->addAction("Open WFDB",         this, SLOT(open_wfdb_file()), QKeySequence::Open);
+  filemenu->addAction(tr("Open WFDB"),         this, SLOT(open_wfdb_file()), QKeySequence::Open);
   filemenu->addSeparator();
-  filemenu->addAction("Open stream",  this, SLOT(open_stream()), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_O));
-  filemenu->addSeparator();
-  filemenu->addAction(video_act);
-  filemenu->addSeparator();
-  filemenu->addAction("Playback file", this, SLOT(playback_file()), QKeySequence("Ctrl+Space"));
+//  filemenu->addAction("Open stream",  this, SLOT(open_stream()), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_O));
+//  filemenu->addSeparator();
+//  filemenu->addAction(video_act);
+//  filemenu->addSeparator();
+//  filemenu->addAction("Playback file", this, SLOT(playback_file()), QKeySequence("Ctrl+Space"));
   filemenu->addSeparator();
   filemenu->addAction(save_act);
   filemenu->addMenu(recent_filesmenu);
   filemenu->addMenu(printmenu);
-  filemenu->addAction("Info",         this, SLOT(show_file_info()));
-  filemenu->addMenu(close_filemenu);
-  filemenu->addAction("Close all",    this, SLOT(close_all_files()), QKeySequence::Close);
+//  filemenu->addAction("Info",         this, SLOT(show_file_info()));
+//  filemenu->addMenu(close_filemenu);
+//  filemenu->addAction("Close all",    this, SLOT(close_all_files()), QKeySequence::Close);
   filemenu->addAction("Exit",         this, SLOT(exit_program()), QKeySequence::Quit);
   menubar->addMenu(filemenu);
 
@@ -689,7 +690,7 @@ UI_Mainwindow::UI_Mainwindow()
   {
     montagemenu->addAction(load_predefined_mtg_act[i]);
   }
-  menubar->addMenu(montagemenu);
+//  menubar->addMenu(montagemenu);
 
 //   patternmenu = new QMenu(this);
 //   patternmenu->setTitle("&Pattern");
@@ -775,14 +776,14 @@ UI_Mainwindow::UI_Mainwindow()
   timemenu->addSeparator();
   timemenu->addAction("synchronize by crosshairs", this, SLOT(sync_by_crosshairs()));
   timemenu->addSeparator()->setText("Time reference");
-  menubar->addMenu(timemenu);
+//  menubar->addMenu(timemenu);
 
   windowmenu = new QMenu(this);
   windowmenu->setTitle("&Window");
   windowmenu->addAction("Annotations", this, SLOT(show_annotations()));
   windowmenu->addAction("Annotation editor", this, SLOT(annotation_editor()));
   windowmenu->addAction("Power Spectrum", this, SLOT(show_spectrum_dock()));
-  menubar->addMenu(windowmenu);
+//  menubar->addMenu(windowmenu);
 
   helpmenu = new QMenu(this);
   helpmenu->setTitle("&Help");
@@ -795,12 +796,19 @@ UI_Mainwindow::UI_Mainwindow()
   helpmenu->addAction("Keyboard shortcuts", this, SLOT(show_kb_shortcuts()));
   helpmenu->addAction("About WFDBbrowser", this, SLOT(show_about_dialog()));
   helpmenu->addAction("Show splashscreen", this, SLOT(show_splashscreen()));
-  menubar->addMenu(helpmenu);
+//  menubar->addMenu(helpmenu);
+  languagemenu =  new QMenu(this);
+  languagemenu ->setTitle("&Language");
+  languagemenu ->addAction("English", this, SLOT(language_en()));
+  languagemenu ->addAction("Japanese", this, SLOT(language_jp()));
+  menubar->addMenu(languagemenu);
 
-  navtoolbar = new QToolBar("Navigation Bar");
+  navtoolbar = new QToolBar(maincurve);
   navtoolbar->setFloatable(false);
   navtoolbar->setAllowedAreas(Qt::AllToolBarAreas);
+
   addToolBar(Qt::BottomToolBarArea, navtoolbar);
+
 
   former_page_Act = new QAction(QIcon(":/images/go-first-symbolic.symbolic.png"), "<<", this);
   former_page_Act->setToolTip("Former Page");

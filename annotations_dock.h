@@ -122,8 +122,8 @@ private:
           *hide_all_BS_triggers_act,
           *unhide_all_NK_triggers_act,
           *unhide_all_BS_triggers_act,
-          *filt_ival_time_act,
-          *show_stats_act;
+          *filt_ival_time_act;
+  QPushButton *show_stats_act;
 
 private slots:
 

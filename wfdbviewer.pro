@@ -33,6 +33,7 @@ CONFIG += warn_on
 CONFIG += release
 CONFIG += static
 CONFIG += largefile
+#CONFIG += lrelease
 mac {
 CONFIG-=app_bundle
 }
@@ -303,10 +304,4 @@ mime.files += install/wfdbbrowser.xml
 INSTALLS += mime
 }
 
-
-
-
-
-
-
-
+TRANSLATIONS = languages/translation_en.ts  languages/translation_jp.ts

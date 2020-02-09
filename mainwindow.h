@@ -195,7 +195,8 @@ class UI_Mainwindow : public QMainWindow
 public:
   UI_Mainwindow();
   ~UI_Mainwindow();
-
+  QTranslator m_translator; // contains the translations for this application
+  QTranslator m_translatorQt; // contains the translations for qt
   int files_open,
       signalcomps,
       totalviewbufsize,
@@ -239,6 +240,7 @@ public:
       timescale_doubler,
       viewtime_indicator_type,
       mainwindow_title_type,
+      mainwindow_language,
       linear_interpol,
       average_period;
 
@@ -351,6 +353,7 @@ private:
                *toolsmenu,
                *settingsmenu,
                *helpmenu,
+               *languagemenu,
                *printmenu,
                *filtermenu,
 //               *math_func_menu,
@@ -367,6 +370,7 @@ private:
        montagepath[MAX_PATH_LENGTH],
        recent_file_path[MAX_RECENTFILES][MAX_PATH_LENGTH],
        option_str[MAX_PATH_LENGTH];
+  char selectedWFDBHeaderFilePath[MAX_PATH_LENGTH];
 
   QAction  *former_page_Act,
            *shift_page_left_Act,
@@ -484,7 +488,9 @@ private:
   long long check_edf_file_datarecords(struct edfhdrblock *);
   void mpr_write(const char *);
   int mpr_read(char *, int);
-
+  void record_recent(char *);
+  void _open_wfdb(char *wfdb_path);
+  void _export2_to_ascii(char *wfdb_path = NULL);
 public slots:
   void remove_all_signals();
   void edfplus_remove_duplicate_annotations();
@@ -492,12 +498,12 @@ public slots:
   void video_player_toggle_pause();
 
 private slots:
-  void open(char *path = NULL,  bool openDirect = false);
+  void open(char *path = NULL,  bool openDirect = false, bool storeRecent = true);
   void open_new_file();
   void open_wfdb_file();
   void show_file_info();
   void close_file_action_func(QAction *);
-  void close_all_files();
+  bool close_all_files();
   void exit_program();
   void signalproperties_dialog();
   void filterproperties_dialog();
@@ -554,9 +560,14 @@ private slots:
   void show_this_montage();
   void show_help();
   void show_kb_shortcuts();
+  void language_en();
+  void language_jp();
+
   void print_to_edf();
   void set_user_defined_display_time();
   void print_to_bdf();
+  void print_to_csv();
+
   void print_to_img_640x480();
   void print_to_img_800x600();
   void print_to_img_1024x768();

@@ -51,7 +51,7 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
 
   busy = 0;
 
-  dashboard = 0;
+  dashboard = 1;
 
   signalcomp = NULL;
 
@@ -89,7 +89,8 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
     dock = new QDockWidget("Power Spectrum", w_parent);
   }
 
-  dock->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
+//  dock->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
+  dock->setFeatures(QDockWidget::DockWidgetMovable);
   dock->setAllowedAreas(Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);
   dock->setMinimumHeight(300);
   if(dashboard)
