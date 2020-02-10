@@ -51,7 +51,8 @@
 #include <QMessageBox>
 #include <QVariant>
 #include <QPushButton>
-
+#include <QFile>
+#include <QTextStream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -86,6 +87,8 @@ public:
   QListWidget  *list;
 
   void updateList(void);
+signals:
+  void on_edit_button_clicked();
 
 private:
 
@@ -98,7 +101,7 @@ private:
 
   QDialog *dialog1;
 
-  QHBoxLayout *h_layout;
+  QHBoxLayout *h_layout, *h_layout2;
 
   QVBoxLayout *v_layout;
 
@@ -109,7 +112,11 @@ private:
 
   QLineEdit *lineedit1;
 
-  QPushButton *more_button;
+
+  QPushButton *edit_button,
+              *hrv_button,
+              *export_button;
+
 
   QAction *show_between_act,
           *average_annot_act,
@@ -123,7 +130,6 @@ private:
           *unhide_all_NK_triggers_act,
           *unhide_all_BS_triggers_act,
           *filt_ival_time_act;
-  QPushButton *show_stats_act;
 
 private slots:
 
@@ -131,7 +137,8 @@ private slots:
   void hide_editdock(bool);
   void checkbox1_clicked(int);
   void checkbox2_clicked(int);
-  void more_button_clicked(bool);
+  void edit_button_clicked(bool);
+  void export_button_clicked(bool);
   void show_between(bool);
   void average_annot(bool);
   void hide_annot(bool);

@@ -288,7 +288,7 @@ void UI_ECGExport::Export_RR_intervals()
     if(mainwindow->annotations_dock[signalcomp->filenum] == NULL)
     {
       mainwindow->annotations_dock[filenum] = new UI_Annotationswindow(filenum, mainwindow);
-
+      QObject::connect(mainwindow->annotations_dock[filenum],  SIGNAL(on_edit_button_clicked()),  mainwindow, SLOT(annotation_editor()));
       mainwindow->addDockWidget(Qt::RightDockWidgetArea, mainwindow->annotations_dock[filenum]->docklist, Qt::Vertical);
 
       if(edfplus_annotation_size(&mainwindow->edfheaderlist[filenum]->annot_list) < 1)

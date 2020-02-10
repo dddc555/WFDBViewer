@@ -1301,6 +1301,7 @@ void UI_Mainwindow::show_annotations()
           if(annotations_dock[i] == NULL)
           {
             annotations_dock[i] = new UI_Annotationswindow(i, this);
+            QObject::connect(annotations_dock[i],  SIGNAL(on_edit_button_clicked()),    this, SLOT(annotation_editor()));
 
             addDockWidget(Qt::RightDockWidgetArea, annotations_dock[i]->docklist, Qt::Vertical);
           }
@@ -1321,6 +1322,7 @@ void UI_Mainwindow::show_annotations()
 
 void UI_Mainwindow::annotation_editor()
 {
+    qDebug()<<"annotation_editor" <<files_open;
   stop_video_generic(0);
 
   stop_playback();
@@ -1358,7 +1360,7 @@ void UI_Mainwindow::annotation_editor()
     if(annotations_dock[0]==NULL)
     {
       annotations_dock[0] = new UI_Annotationswindow(0, this);
-
+      QObject::connect(annotations_dock[0],  SIGNAL(on_edit_button_clicked()),      this, SLOT(annotation_editor()));
       addDockWidget(Qt::RightDockWidgetArea, annotations_dock[0]->docklist, Qt::Vertical);
     }
 
@@ -1462,7 +1464,7 @@ void UI_Mainwindow::_open_wfdb(char *wfdb_path){
               if(spectrumdock[i]->dock->isHidden())  break;
             }
             spectrumdock[i]->init(0);
-            annotation_editor();
+//            annotation_editor();
         }
     }
 }
@@ -1662,7 +1664,7 @@ void UI_Mainwindow::open(char *filePath, bool openDirect, bool storeRecent) {
           else
           {
             annotations_dock[files_open] = new UI_Annotationswindow(files_open, this);
-
+            QObject::connect(annotations_dock[files_open],  SIGNAL(on_edit_button_clicked()),      this, SLOT(annotation_editor()));
             addDockWidget(Qt::RightDockWidgetArea, annotations_dock[files_open]->docklist, Qt::Vertical);
 
             if(!edfheaderlist[files_open]->annot_list.sz)
@@ -1686,7 +1688,7 @@ void UI_Mainwindow::open(char *filePath, bool openDirect, bool storeRecent) {
           bdf_triggers_obj.get_triggers(edfhdr);
 
           annotations_dock[files_open] = new UI_Annotationswindow(files_open, this);
-
+          QObject::connect(annotations_dock[files_open],  SIGNAL(on_edit_button_clicked()),      this, SLOT(annotation_editor()));
           addDockWidget(Qt::RightDockWidgetArea, annotations_dock[files_open]->docklist, Qt::Vertical);
 
           if(!edfhdr->annot_list.sz)

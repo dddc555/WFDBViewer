@@ -84,8 +84,14 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   checkbox2->setTristate(false);
   checkbox2->setCheckState(Qt::Unchecked);
 
-  more_button = new QPushButton("More");
-  more_button->setMaximumWidth(40);
+  hrv_button = new QPushButton("hrv");
+  hrv_button->setMaximumWidth(60);
+
+  edit_button = new QPushButton("Edit");
+  edit_button->setMaximumWidth(60);
+
+  export_button = new QPushButton("Export");
+  export_button->setMaximumWidth(60);
 
   list = new QListWidget(dialog1);
   list->setFont(*mainwindow->monofont);
@@ -105,7 +111,7 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   unhide_all_NK_triggers_act = new QAction("Unhide all Nihon Kohden triggers", list);
   unhide_all_BS_triggers_act = new QAction("Unhide all Biosemi triggers", list);
   filt_ival_time_act = new QAction("Filter Interval Time", list);
-  show_stats_act = new QPushButton("Heart Rate Variability", list);
+  hrv_button = new QPushButton("HRV");
 
   list->setContextMenuPolicy(Qt::ActionsContextMenu);
   list->insertAction(NULL, show_between_act);
@@ -126,14 +132,21 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 //  list->setItemWidget(item2, show_stats_act );
 
   h_layout = new QHBoxLayout;
+  h_layout2 = new QHBoxLayout;
+
   h_layout->addWidget(checkbox1);
   h_layout->addWidget(label1);
   h_layout->addWidget(lineedit1);
   h_layout->addWidget(checkbox2);
-  h_layout->addWidget(show_stats_act);
+
+  h_layout2->addWidget(edit_button);
+  h_layout2->addWidget(export_button);
+  h_layout2->addWidget(hrv_button);
 
   v_layout = new QVBoxLayout(dialog1);
   v_layout->addLayout(h_layout);
+  v_layout->addLayout(h_layout2);
+
   v_layout->addWidget(list);
   v_layout->setSpacing(1);
 
@@ -145,7 +158,11 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   QObject::connect(docklist,                   SIGNAL(visibilityChanged(bool)),        this, SLOT(hide_editdock(bool)));
   QObject::connect(checkbox1,                  SIGNAL(stateChanged(int)),              this, SLOT(checkbox1_clicked(int)));
   QObject::connect(checkbox2,                  SIGNAL(stateChanged(int)),              this, SLOT(checkbox2_clicked(int)));
-  QObject::connect(more_button,                SIGNAL(clicked(bool)),                  this, SLOT(more_button_clicked(bool)));
+
+  QObject::connect(hrv_button,                 SIGNAL(clicked(bool)),                  this, SLOT(show_stats(bool)));
+  QObject::connect(edit_button,                SIGNAL(clicked(bool)),                  this, SLOT(edit_button_clicked(bool)));
+  QObject::connect(export_button,              SIGNAL(clicked(bool)),                  this, SLOT(export_button_clicked(bool)));
+
   QObject::connect(hide_annot_act,             SIGNAL(triggered(bool)),                this, SLOT(hide_annot(bool)));
   QObject::connect(unhide_annot_act,           SIGNAL(triggered(bool)),                this, SLOT(unhide_annot(bool)));
   QObject::connect(hide_same_annots_act,       SIGNAL(triggered(bool)),                this, SLOT(hide_same_annots(bool)));
@@ -158,16 +175,14 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   QObject::connect(unhide_all_NK_triggers_act, SIGNAL(triggered(bool)),                this, SLOT(unhide_all_NK_triggers(bool)));
   QObject::connect(unhide_all_BS_triggers_act, SIGNAL(triggered(bool)),                this, SLOT(unhide_all_BS_triggers(bool)));
   QObject::connect(filt_ival_time_act,         SIGNAL(triggered(bool)),                this, SLOT(filt_ival_time(bool)));
-  QObject::connect(show_stats_act,             SIGNAL(clicked(bool)),                this, SLOT(show_stats(bool)));
+
   QObject::connect(lineedit1,                  SIGNAL(textEdited(const QString)),      this, SLOT(filter_edited(const QString)));
 }
 
 
-void UI_Annotationswindow::more_button_clicked(bool)
+void UI_Annotationswindow::edit_button_clicked(bool)
 {
-  QMessageBox messagewindow(QMessageBox::Information, "Info", "Right-click on an annotation for more options.");
-  messagewindow.exec();
-  return;
+  emit on_edit_button_clicked();
 }
 
 
@@ -1105,25 +1120,92 @@ void UI_Annotationswindow::annotation_selected(QListWidgetItem * item, int cente
   mainwindow->setup_viewbuf();
 }
 
+void UI_Annotationswindow::export_button_clicked(bool)
+{
+    char f_path[MAX_PATH_LENGTH], txt_string[MAX_PATH_LENGTH];
+
+    if(!mainwindow->files_open)
+    {
+      return;
+    }
+
+    strcpy(f_path, mainwindow->recent_savedir);
+
+    strcpy(f_path, QFileDialog::getSaveFileName(0, "Save file", QString::fromLocal8Bit(f_path), "Annotation CSV files (*.csv *.CSV)").toLocal8Bit().data());
+
+    if(strlen(f_path) == 0)
+    {
+      return;
+    }
+
+    get_directory_from_path( mainwindow->recent_savedir, f_path, MAX_PATH_LENGTH);
+    FILE *outputfile = fopeno(f_path, "wb");
+
+    if(outputfile == NULL)
+    {
+      snprintf(txt_string, ASCII_MAX_LINE_LEN, "Can not open file %s for writing.", f_path);
+      QMessageBox messagewindow(QMessageBox::Critical, "Error", txt_string);
+      messagewindow.exec();
+      fclose(outputfile);
+      return;
+    }
+
+    char str[MAX_ANNOTATION_LEN + 32];
+
+    int j, sz;
+
+    struct annotationblock *annot;
+
+    struct annotation_list *annot_list;
+
+    annot_list = &mainwindow->edfheaderlist[file_num]->annot_list;
+
+    sz = edfplus_annotation_size(annot_list);
+
+    edfplus_annotation_sort(annot_list, &process_events);
+
+    for(j=0; j<sz; j++)
+    {
+      annot = edfplus_annotation_get_item(annot_list, j);
+
+      if(annot->hided_in_list)
+      {
+        continue;
+      }
+
+      if(relative)
+      {
+        if((annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) < 0LL)
+        {
+          snprintf(str, (MAX_ANNOTATION_LEN + 32) / 2, "-%2i:%02i:%02i.%04i",
+                  (int)((-(annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) / TIME_DIMENSION)/ 3600),
+                  (int)(((-(annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) / TIME_DIMENSION) % 3600) / 60),
+                  (int)((-(annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) / TIME_DIMENSION) % 60),
+                  (int)((-(annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) % TIME_DIMENSION) / 1000LL));
+        }
+        else
+        {
+          snprintf(str, (MAX_ANNOTATION_LEN + 32) / 2, "%3i:%02i:%02i.%04i",
+                  (int)(((annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) / TIME_DIMENSION)/ 3600),
+                  (int)((((annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) / TIME_DIMENSION) % 3600) / 60),
+                  (int)(((annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) / TIME_DIMENSION) % 60),
+                  (int)(((annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) % TIME_DIMENSION) / 1000LL));
+        }
+      }
+      else
+      {
+        snprintf(str, MAX_ANNOTATION_LEN + 32, "  %3i:%02i:%02i.%04i",
+                (int)((((annot->onset + mainwindow->edfheaderlist[file_num]->l_starttime) / TIME_DIMENSION)/ 3600) % 24),
+                (int)((((annot->onset + mainwindow->edfheaderlist[file_num]->l_starttime) / TIME_DIMENSION) % 3600) / 60),
+                (int)(((annot->onset + mainwindow->edfheaderlist[file_num]->l_starttime) / TIME_DIMENSION) % 60),
+                (int)(((annot->onset + mainwindow->edfheaderlist[file_num]->l_starttime) % TIME_DIMENSION) / 1000LL));
+      }
+
+      remove_trailing_zeros(str);
+      fprintf(outputfile, "%s,%s\n", str, annot->annotation);
+    }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  fclose(outputfile);
+//*/
+}

@@ -634,7 +634,7 @@ void UI_ImportAnnotationswindow::ImportButtonClicked()
   if(mainwindow->annotations_dock[0] == NULL)
   {
     mainwindow->annotations_dock[0] = new UI_Annotationswindow(0, mainwindow);
-
+    QObject::connect(mainwindow->annotations_dock[0],  SIGNAL(on_edit_button_clicked()), mainwindow, SLOT(annotation_editor()));
     mainwindow->addDockWidget(Qt::RightDockWidgetArea, mainwindow->annotations_dock[0]->docklist, Qt::Vertical);
 
     if(edfplus_annotation_size(&mainwindow->edfheaderlist[0]->annot_list) < 1)
