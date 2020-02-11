@@ -447,25 +447,3 @@ void UI_AnnotationEditwindow::set_selected_annotation(struct annotationblock *an
 
   deletebutton->setEnabled(false);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

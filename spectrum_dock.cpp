@@ -82,11 +82,11 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
 
   if(mainwindow->spectrumdock_sqrt)
   {
-    dock = new QDockWidget("Amplitude Spectrum", w_parent);
+    dock = new QDockWidget(tr("Amplitude Spectrum"), w_parent);
   }
   else
   {
-    dock = new QDockWidget("Power Spectrum", w_parent);
+    dock = new QDockWidget(tr("Power Spectrum"), w_parent);
   }
 
 //  dock->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
@@ -202,7 +202,7 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
 
   colorBarButton = new QCheckBox;
   colorBarButton->setMinimumSize(50, 20);
-  colorBarButton->setText("Colorbar");
+  colorBarButton->setText(tr("Colorbar"));
   colorBarButton->setTristate(false);
   if(mainwindow->spectrumdock_colorbars)
   {
@@ -215,16 +215,16 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
 
   windowBox = new QComboBox;
   windowBox->setMinimumSize(70, 25);
-  windowBox->addItem("Rectangular");
-  windowBox->addItem("Hamming");
-  windowBox->addItem("4-term Blackman-Harris");
-  windowBox->addItem("7-term Blackman-Harris");
-  windowBox->addItem("Nuttall3b");
-  windowBox->addItem("Nuttall4c");
-  windowBox->addItem("Hann");
-  windowBox->addItem("HFT223D");
+  windowBox->addItem(tr("Rectangular"));
+  windowBox->addItem(tr("Hamming"));
+  windowBox->addItem(tr("4-term Blackman-Harris"));
+  windowBox->addItem(tr("7-term Blackman-Harris"));
+  windowBox->addItem(tr("Nuttall3b"));
+  windowBox->addItem(tr("Nuttall4c"));
+  windowBox->addItem(tr("Hann"));
+  windowBox->addItem(tr("HFT223D"));
   windowBox->setCurrentIndex(window_type);
-  windowBox->setToolTip("Window");
+  windowBox->setToolTip(tr("Window"));
 
   dftsz_label = new QLabel;
   dftsz_label->setText("Blocksize:");
@@ -270,7 +270,7 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
   spanSlider->setMinimumSize(500, 15);
 
   spanLabel = new QLabel;
-  spanLabel->setText("Span");
+  spanLabel->setText(tr("Span"));
   spanLabel->setMinimumSize(100, 15);
   spanLabel->setAlignment(Qt::AlignHCenter);
 
@@ -282,7 +282,7 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
   centerSlider->setMinimumSize(500, 15);
 
   centerLabel = new QLabel;
-  centerLabel->setText("Center");
+  centerLabel->setText(tr("Center"));
   centerLabel->setMinimumSize(100, 15);
   centerLabel->setAlignment(Qt::AlignHCenter);
 

@@ -321,6 +321,7 @@ public:
   void get_rgbcolor_settings(struct xml_handle *, const char *, int, QColor *);
 
   struct signalcompblock * create_signalcomp_copy(struct signalcompblock *);
+  void export_wfdb_button_clicked();
 
 #ifdef Q_OS_WIN32
   QString specialFolder(int);

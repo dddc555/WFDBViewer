@@ -29,6 +29,38 @@
 #include "mainwindow.h"
 #include "third_party/rdsamp.h"
 #include "mit2csv.h"
+
+
+static char annotdescrlist[42][48]=
+  {"not-QRS","normal beat",
+  "left bundle branch block beat", "right bundle branch block beat",
+  "aberrated atrial premature beat", "premature ventricular contraction",
+  "fusion of ventricular and normal beat", "nodal (junctional) premature beat",
+  "atrial premature contraction", "premature or ectopic supraventricular beat",
+  "ventricular escape beat", "nodal (junctional) escape beat",
+  "paced beat", "unclassifiable beat",
+  "signal quality change", "isolated QRS-like artifact",
+  "ST change", "T-wave change",
+  "systole", "diastole",
+  "comment annotation", "measurement annotation",
+  "P-wave peak", "left or right bundle branch block",
+  "non-conducted pacer spike", "T-wave peak",
+  "rhythm change", "U-wave peak",
+  "learning", "ventricular flutter wave",
+  "start of ventricular flutter/fibrillation", "end of ventricular flutter/fibrillation",
+  "atrial escape beat", "supraventricular escape beat",
+  "link to external data (aux contains URL)", "non-conducted P-wave (blocked APB)",
+  "fusion of paced and normal beat", "waveform onset",
+  "waveform end", "R-on-T premature ventricular contraction"};
+
+int getAnnotCode(char*description){
+    for(int i = 0;i< 42;i++){
+        if(strcmp(annotdescrlist[i], description) == 0)return  i;
+    }
+    return -1;
+}
+
+
 UI_Mainwindow::~UI_Mainwindow()
 {
   delete pixmap;
@@ -277,92 +309,93 @@ long long UI_Mainwindow::check_edf_file_datarecords(struct edfhdrblock *hdr)
 
 void UI_Mainwindow::save_file()
 {
-  int len;
+    export_wfdb_button_clicked();
+//  int len;
 
-  char f_path[MAX_PATH_LENGTH];
+//  char f_path[MAX_PATH_LENGTH];
 
-  struct edfhdrblock *hdr;
+//  struct edfhdrblock *hdr;
 
-  FILE *outputfile;
+//  FILE *outputfile;
 
 
-  if((!annotations_edited)||(!files_open))
-  {
-    save_act->setEnabled(false);
+//  if((!annotations_edited)||(!files_open))
+//  {
+//    save_act->setEnabled(false);
 
-    return;
-  }
+//    return;
+//  }
 
-  hdr = edfheaderlist[0];
+//  hdr = edfheaderlist[0];
 
-  strcpy(f_path, recent_savedir);
-  strcat(f_path, "/");
-  len = strlen(f_path);
-  get_filename_from_path(f_path + len, hdr->filename, MAX_PATH_LENGTH - len);
-  remove_extension_from_filename(f_path);
-  if(hdr->edf)
-  {
-    strcat(f_path, "_edited.edf");
-  }
-  else
-  {
-    strcat(f_path, "_edited.bdf");
-  }
+//  strcpy(f_path, recent_savedir);
+//  strcat(f_path, "/");
+//  len = strlen(f_path);
+//  get_filename_from_path(f_path + len, hdr->filename, MAX_PATH_LENGTH - len);
+//  remove_extension_from_filename(f_path);
+//  if(hdr->edf)
+//  {
+//    strcat(f_path, "_edited.edf");
+//  }
+//  else
+//  {
+//    strcat(f_path, "_edited.bdf");
+//  }
 
-  strcpy(f_path, QFileDialog::getSaveFileName(this, "Save file", QString::fromLocal8Bit(f_path), "EDF/BDF files (*.edf *.EDF *.bdf *.BDF *.rec *.REC)").toLocal8Bit().data());
+//  strcpy(f_path, QFileDialog::getSaveFileName(this, "Save file", QString::fromLocal8Bit(f_path), "EDF/BDF files (*.edf *.EDF *.bdf *.BDF *.rec *.REC)").toLocal8Bit().data());
 
-  if(!strcmp(f_path, ""))
-  {
-    return;
-  }
+//  if(!strcmp(f_path, ""))
+//  {
+//    return;
+//  }
 
-  get_directory_from_path(recent_savedir, f_path, MAX_PATH_LENGTH);
+//  get_directory_from_path(recent_savedir, f_path, MAX_PATH_LENGTH);
 
-  if(file_is_opened(f_path))
-  {
-    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Selected file is in use.");
-    messagewindow.exec();
-    return;
-  }
+//  if(file_is_opened(f_path))
+//  {
+//    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Selected file is in use.");
+//    messagewindow.exec();
+//    return;
+//  }
 
-  outputfile = fopeno(f_path, "wb");
-  if(outputfile==NULL)
-  {
-    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Can not create a file for writing.");
-    messagewindow.exec();
-    return;
-  }
+//  outputfile = fopeno(f_path, "wb");
+//  if(outputfile==NULL)
+//  {
+//    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Can not create a file for writing.");
+//    messagewindow.exec();
+//    return;
+//  }
 
-  if(save_annotations(this, outputfile, hdr))
-  {
-    QMessageBox messagewindow(QMessageBox::Critical, "Error", "An error occurred during saving.");
-    messagewindow.exec();
-    fclose(outputfile);
-    return;
-  }
+//  if(save_annotations(this, outputfile, hdr))
+//  {
+//    QMessageBox messagewindow(QMessageBox::Critical, "Error", "An error occurred during saving.");
+//    messagewindow.exec();
+//    fclose(outputfile);
+//    return;
+//  }
 
-  fclose(outputfile);
+//  fclose(outputfile);
 
-  edfplus_annotation_empty_list(&hdr->annot_list);
+//  edfplus_annotation_empty_list(&hdr->annot_list);
 
-  if(annotationlist_backup != NULL)
-  {
-    hdr->annot_list = *annotationlist_backup;
+//  if(annotationlist_backup != NULL)
+//  {
+//    hdr->annot_list = *annotationlist_backup;
 
-    free(annotationlist_backup);
+//    free(annotationlist_backup);
 
-    annotationlist_backup = NULL;
-  }
+//    annotationlist_backup = NULL;
+//  }
 
-  annotations_dock[0]->updateList();
+//  annotations_dock[0]->updateList();
 
-  annotations_edited = 0;
+//  annotations_edited = 0;
 
-  save_act->setEnabled(false);
+//  save_act->setEnabled(false);
 
-  annotationEditDock->dockedit->hide();
+//  annotationEditDock->dockedit->hide();
 
-  maincurve->update();
+//  maincurve->update();
 }
 
 
@@ -4006,3 +4039,112 @@ void UI_Mainwindow::resizeEvent(QResizeEvent* event){
    int wid = 600;
    navtoolbarGroupWidget->setGeometry((width() - wid) / 2, 0, wid, 60);
 }
+
+
+void UI_Mainwindow::export_wfdb_button_clicked()
+{
+    int file_num = 0;// ?
+    char f_path[MAX_PATH_LENGTH], txt_string[MAX_PATH_LENGTH];
+
+    if(!files_open)
+    {
+      return;
+    }
+
+    strcpy(f_path, recent_savedir);
+
+//    strcpy(f_path, QFileDialog::getSaveFileName(0, "Save file", QString::fromLocal8Bit(f_path), "Annotation CSV files (*.csv *.CSV)").toLocal8Bit().data());
+    strcpy(f_path, "f://07.qrs");
+    if(strlen(f_path) == 0)
+    {
+      return;
+    }
+
+    get_directory_from_path( recent_savedir, f_path, MAX_PATH_LENGTH);
+    FILE *outputfile = fopeno(f_path, "wb");
+
+    if(outputfile == NULL)
+    {
+      snprintf(txt_string, ASCII_MAX_LINE_LEN, "Can not open file %s for writing.", f_path);
+      QMessageBox messagewindow(QMessageBox::Critical, "Error", txt_string);
+      messagewindow.exec();
+      fclose(outputfile);
+      return;
+    }
+
+    char str[MAX_ANNOTATION_LEN + 32];
+
+    int j, sz;
+
+    struct annotationblock *annot;
+
+    struct annotation_list *annot_list;
+
+    annot_list = &edfheaderlist[file_num]->annot_list;
+
+    sz = edfplus_annotation_size(annot_list);
+
+    edfplus_annotation_sort(annot_list, NULL);
+    qDebug()<<"TEST "
+            <<edfheaderlist[file_num]->edfparam->smp_per_record
+            << edfheaderlist[file_num]->edfparam->sf_f
+            <<edfheaderlist[file_num]->edfparam->sf_int
+            <<edfheaderlist[file_num]->edfparam->smpls;
+    long long beforeTimeIndex = -1;
+    int beforeCode = -1;
+    int frequency =  edfheaderlist[file_num]->edfparam->sf_int;
+    long long starttime_offset = edfheaderlist[file_num]->starttime_offset;
+    for(j=0; j<sz; j++)
+    {
+      annot = edfplus_annotation_get_item(annot_list, j);
+
+      if(annot->hided_in_list)
+      {
+        continue;
+      }
+      long long  time = annot->onset - starttime_offset;
+      long long timeIndex = time * frequency / TIME_DIMENSION;
+      qDebug()<<frequency<<timeIndex;
+
+      if(beforeTimeIndex != -1) {
+          int word = (beforeCode << 10) + ((timeIndex - beforeTimeIndex) & 0xFFF);
+          unsigned char arrByte[10];
+          arrByte[0] =  (byte(word & 0x00FF));
+          arrByte[1] = ((byte) ((word & 0xFF00) >> 8));
+          fwrite(arrByte, 2,1,outputfile);
+      }
+      beforeTimeIndex = timeIndex;
+      beforeCode = getAnnotCode(annot->annotation);
+    }
+
+    unsigned char arrByte[2];
+    arrByte[0] = 0;
+    arrByte[1] = 0;
+    fwrite(arrByte, 2,1,outputfile);
+    fclose(outputfile);
+    //*/
+}
+
+//      int word = (1 << 10) + (250 & 0xFFF);
+//      unsigned char arrByte[10];
+//      arrByte[0] =  (byte(word & 0x00FF));
+//      arrByte[1] = ((byte) ((word & 0xFF00) >> 8));
+//      fwrite(arrByte, 2,1,outputfile);
+
+//      word = (28 << 10) + (250 & 0xFFF);
+
+//      arrByte[0] = ((byte) (word & 0x00FF));
+//      arrByte[1] = ((byte) ((word & 0xFF00) >> 8));
+
+//      //                             6 letters "(AFIB"
+//      word = (63 << 10) + (6 & 0xFFF);
+//      arrByte[2] = ((byte) (word & 0x00FF));
+//      arrByte[3] = ((byte) ((word & 0xFF00) >> 8));
+
+//      arrByte[4] = ((byte) 40); // '('
+//      arrByte[5] = ((byte) 65); // 'A'
+//      arrByte[6] = ((byte) 70); // 'F'
+//      arrByte[7] = ((byte) 73); // 'I'
+//      arrByte[8] = ((byte) 66); // 'B'
+//      arrByte[9] = ((byte) 0);  //  make (2 * n) bytes
+//      fwrite(arrByte, 10,1,outputfile);

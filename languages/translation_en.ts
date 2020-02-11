@@ -807,6 +807,244 @@
 <context>
     <name></name>
     <message>
+        <source>Amplitude</source>
+        <translation type="vanished">Amplitude</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Invert</source>
+        <translation type="vanished">Invert</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Amplitude Spectrum</source>
+        <translation type="vanished">Amplitude Spectrum</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Power Spectrum</source>
+        <translation type="vanished">Power Spectrum</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Colorbar</source>
+        <translation type="vanished">Colorbar</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Rectangular</source>
+        <translation type="vanished">Rectangular</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Hamming</source>
+        <translation type="vanished">Hamming</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>4-term Blackman-Harris</source>
+        <translation type="vanished">4-term Blackman-Harris</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>7-term Blackman-Harris</source>
+        <translation type="vanished">7-term Blackman-Harris</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Nuttall3b</source>
+        <translation type="vanished">Nuttall3b</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Nuttall4c</source>
+        <translation type="vanished">Nuttall4c</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Hann</source>
+        <translation type="vanished">Hann</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>HFT223D</source>
+        <translation type="vanished">HFT223D</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Blocksize</source>
+        <translation type="vanished">Blocksize</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Span</source>
+        <translation type="vanished">Span</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Center</source>
+        <translation type="vanished">Center</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>ctls</source>
+        <translation type="vanished">ctls</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>cursor</source>
+        <translation type="vanished">cursor</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Edit</source>
+        <translation type="vanished">Edit</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Export</source>
+        <translation type="vanished">Export</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>WFDB Export</source>
+        <translation type="vanished">WFDB Export</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Set timescale from here to next annotation</source>
+        <translation type="vanished">Set timescale from here to next annotation</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Hide</source>
+        <translation type="vanished">Hide</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Unhide</source>
+        <translation type="vanished">Unhide</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Hide similar</source>
+        <translation type="vanished">Hide similar</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Unhide similar</source>
+        <translation type="vanished">Unhide similar</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Average</source>
+        <translation type="vanished">Average</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Hide all Nihon Kohden triggers</source>
+        <translation type="vanished">Hide all Nihon Kohden triggers</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Hide all Biosemi triggers</source>
+        <translation type="vanished">Hide all Biosemi triggers</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Unhide all Nihon Kohden triggers</source>
+        <translation type="vanished">Unhide all Nihon Kohden triggers</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Unhide all Biosemi triggers</source>
+        <translation type="vanished">Unhide all Biosemi triggers</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Filter Interval Time</source>
+        <translation type="vanished">Filter Interval Time</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Exit</source>
+        <translation type="vanished">Exit</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
+        <source>Exit</source>
+        <translation type="vanished">Exit</translation>
+    </message>
+</context>
+<context>
+    <name></name>
+    <message>
         <source>Exit</source>
         <translation type="vanished">Exit</translation>
     </message>

@@ -2216,17 +2216,17 @@ void SignalCurve::drawWidget(QPainter *painter, int curve_w, int curve_h)
   if(printEnabled == true)
   {
     painter->fillRect(curve_w - 43, 3, 40, 18, Qt::gray);
-    painter->drawText(curve_w - 38, 16, "print");
+    painter->drawText(curve_w - 38, 16, tr("print"));
   }
   if(cursorEnabled == true)
   {
     painter->fillRect(curve_w - 43, 23, 40, 18, Qt::gray);
-    painter->drawText(curve_w - 38, 36, "cursor");
+    painter->drawText(curve_w - 38, 36, tr("cursor"));
   }
   if(dashBoardEnabled == true)
   {
     painter->fillRect(curve_w - 43, 43, 40, 18, Qt::gray);
-    painter->drawText(curve_w - 38, 56, "ctls");
+    painter->drawText(curve_w - 38, 56, tr("ctls"));
   }
 }
 

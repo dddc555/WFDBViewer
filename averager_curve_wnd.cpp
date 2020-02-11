@@ -117,11 +117,11 @@ UI_AverageCurveWindow::UI_AverageCurveWindow(struct signalcompblock *signal_comp
   amplitudeSlider->setMinimumSize(15, 280);
 
   amplitudeLabel = new QLabel;
-  amplitudeLabel->setText("Amplitude");
+  amplitudeLabel->setText(tr("Amplitude"));
   amplitudeLabel->setMinimumSize(100, 15);
   amplitudeLabel->setAlignment(Qt::AlignHCenter);
 
-  inversionCheckBox = new QCheckBox("Invert");
+  inversionCheckBox = new QCheckBox(tr("Invert"));
   inversionCheckBox->setMinimumSize(70, 25);
   inversionCheckBox->setTristate(false);
   if(mainwindow->average_upsidedown == 1)
