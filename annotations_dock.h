@@ -115,7 +115,8 @@ private:
 
   QPushButton *edit_button,
               *hrv_button,
-              *export_button;
+              *export_button,
+              *export_wfdb_button;
 
 
   QAction *show_between_act,
@@ -139,6 +140,7 @@ private slots:
   void checkbox2_clicked(int);
   void edit_button_clicked(bool);
   void export_button_clicked(bool);
+  void export_wfdb_button_clicked(bool);
   void show_between(bool);
   void average_annot(bool);
   void hide_annot(bool);

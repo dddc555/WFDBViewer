@@ -93,6 +93,10 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   export_button = new QPushButton("Export");
   export_button->setMaximumWidth(60);
 
+  export_wfdb_button = new QPushButton("WFDB Export");
+  export_wfdb_button->setMaximumWidth(60);
+
+
   list = new QListWidget(dialog1);
   list->setFont(*mainwindow->monofont);
   list->setAutoFillBackground(true);
@@ -141,6 +145,8 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 
   h_layout2->addWidget(edit_button);
   h_layout2->addWidget(export_button);
+  h_layout2->addWidget(export_wfdb_button);
+
   h_layout2->addWidget(hrv_button);
 
   v_layout = new QVBoxLayout(dialog1);
@@ -162,6 +168,8 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   QObject::connect(hrv_button,                 SIGNAL(clicked(bool)),                  this, SLOT(show_stats(bool)));
   QObject::connect(edit_button,                SIGNAL(clicked(bool)),                  this, SLOT(edit_button_clicked(bool)));
   QObject::connect(export_button,              SIGNAL(clicked(bool)),                  this, SLOT(export_button_clicked(bool)));
+  QObject::connect(export_wfdb_button,         SIGNAL(clicked(bool)),                  this, SLOT(export_wfdb_button_clicked(bool)));
+
 
   QObject::connect(hide_annot_act,             SIGNAL(triggered(bool)),                this, SLOT(hide_annot(bool)));
   QObject::connect(unhide_annot_act,           SIGNAL(triggered(bool)),                this, SLOT(unhide_annot(bool)));
@@ -1209,3 +1217,121 @@ void UI_Annotationswindow::export_button_clicked(bool)
   fclose(outputfile);
 //*/
 }
+
+
+void UI_Annotationswindow::export_wfdb_button_clicked(bool)
+{
+    char f_path[MAX_PATH_LENGTH], txt_string[MAX_PATH_LENGTH];
+
+    if(!mainwindow->files_open)
+    {
+      return;
+    }
+
+    strcpy(f_path, mainwindow->recent_savedir);
+
+//    strcpy(f_path, QFileDialog::getSaveFileName(0, "Save file", QString::fromLocal8Bit(f_path), "Annotation CSV files (*.csv *.CSV)").toLocal8Bit().data());
+    strcpy(f_path, "f://1.csv");
+    if(strlen(f_path) == 0)
+    {
+      return;
+    }
+
+    get_directory_from_path( mainwindow->recent_savedir, f_path, MAX_PATH_LENGTH);
+    FILE *outputfile = fopeno(f_path, "wb");
+
+    if(outputfile == NULL)
+    {
+      snprintf(txt_string, ASCII_MAX_LINE_LEN, "Can not open file %s for writing.", f_path);
+      QMessageBox messagewindow(QMessageBox::Critical, "Error", txt_string);
+      messagewindow.exec();
+      fclose(outputfile);
+      return;
+    }
+
+    char str[MAX_ANNOTATION_LEN + 32];
+
+    int j, sz;
+
+    struct annotationblock *annot;
+
+    struct annotation_list *annot_list;
+
+    annot_list = &mainwindow->edfheaderlist[file_num]->annot_list;
+
+    sz = edfplus_annotation_size(annot_list);
+
+    edfplus_annotation_sort(annot_list, &process_events);
+
+    for(j=0; j<sz; j++)
+    {
+      annot = edfplus_annotation_get_item(annot_list, j);
+
+      if(annot->hided_in_list)
+      {
+        continue;
+      }
+
+      if(relative)
+      {
+        if((annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) < 0LL)
+        {
+          snprintf(str, (MAX_ANNOTATION_LEN + 32) / 2, "-%2i:%02i:%02i.%04i",
+                  (int)((-(annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) / TIME_DIMENSION)/ 3600),
+                  (int)(((-(annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) / TIME_DIMENSION) % 3600) / 60),
+                  (int)((-(annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) / TIME_DIMENSION) % 60),
+                  (int)((-(annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) % TIME_DIMENSION) / 1000LL));
+        }
+        else
+        {
+          snprintf(str, (MAX_ANNOTATION_LEN + 32) / 2, "%3i:%02i:%02i.%04i",
+                  (int)(((annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) / TIME_DIMENSION)/ 3600),
+                  (int)((((annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) / TIME_DIMENSION) % 3600) / 60),
+                  (int)(((annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) / TIME_DIMENSION) % 60),
+                  (int)(((annot->onset - mainwindow->edfheaderlist[file_num]->starttime_offset) % TIME_DIMENSION) / 1000LL));
+        }
+      }
+      else
+      {
+        snprintf(str, MAX_ANNOTATION_LEN + 32, "  %3i:%02i:%02i.%04i",
+                (int)((((annot->onset + mainwindow->edfheaderlist[file_num]->l_starttime) / TIME_DIMENSION)/ 3600) % 24),
+                (int)((((annot->onset + mainwindow->edfheaderlist[file_num]->l_starttime) / TIME_DIMENSION) % 3600) / 60),
+                (int)(((annot->onset + mainwindow->edfheaderlist[file_num]->l_starttime) / TIME_DIMENSION) % 60),
+                (int)(((annot->onset + mainwindow->edfheaderlist[file_num]->l_starttime) % TIME_DIMENSION) / 1000LL));
+      }
+
+      remove_trailing_zeros(str);
+//      fprintf(outputfile, "%s,%s\n", str, annot->annotation);
+      int word = (1 << 10) + (250 & 0xFFF);
+      unsigned char arrByte[10];
+      arrByte[0] =  (byte(word & 0x00FF));
+      arrByte[1] = ((byte) ((word & 0xFF00) >> 8));
+      fwrite(arrByte, 2,1,outputfile);
+
+      word = (28 << 10) + (250 & 0xFFF);
+
+      arrByte[0] = ((byte) (word & 0x00FF));
+      arrByte[1] = ((byte) ((word & 0xFF00) >> 8));
+
+      //                             6 letters "(AFIB"
+      word = (63 << 10) + (6 & 0xFFF);
+      arrByte[2] = ((byte) (word & 0x00FF));
+      arrByte[3] = ((byte) ((word & 0xFF00) >> 8));
+
+      arrByte[4] = ((byte) 40); // '('
+      arrByte[5] = ((byte) 65); // 'A'
+      arrByte[6] = ((byte) 70); // 'F'
+      arrByte[7] = ((byte) 73); // 'I'
+      arrByte[8] = ((byte) 66); // 'B'
+      arrByte[9] = ((byte) 0);  //  make (2 * n) bytes
+      fwrite(arrByte, 10,1,outputfile);
+    }
+
+    unsigned char arrByte[2];
+    arrByte[0] = 0;
+    arrByte[1] = 0;
+    fwrite(arrByte, 2,1,outputfile);
+    fclose(outputfile);
+//*/
+}
+

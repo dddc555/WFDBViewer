@@ -600,7 +600,7 @@ UI_Aboutwindow::UI_Aboutwindow(UI_Mainwindow *mainwindow)
         "                      END OF TERMS AND CONDITIONS\n\n");
 
   pushButton1 = new QPushButton;
-  pushButton1->setText("Close");
+  pushButton1->setText(tr("Close"));
 
   hlayout1 = new QHBoxLayout;
   hlayout1->insertStretch(0, 100);

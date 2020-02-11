@@ -1373,7 +1373,6 @@ void SignalCurve::paintEvent(QPaintEvent *)
           h = height();
           crosshair_1_value = 0.0;
           crosshair_1_x_position = (w - (bordersize * 2)) / 2;
-          qDebug()<<"paintEvent " << w<<" b " << bordersize <<" d " <<crosshair_1_x_position;
           crosshair_1_y_position = (h - (bordersize * 2)) / 2;
           mouse_old_x = crosshair_1_x_position;
           mouse_old_y = crosshair_1_y_position;

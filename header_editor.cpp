@@ -235,8 +235,8 @@ UI_headerEditorWindow::UI_headerEditorWindow(QWidget *w_parent)
   connect(pushButton3, SIGNAL(clicked()), this, SLOT(open_file()));
   connect(helpButton,  SIGNAL(clicked()), this, SLOT(helpbuttonpressed()));
 
-  tabholder->addTab(tab1, "Header");
-  tabholder->addTab(tab2, "Signals");
+  tabholder->addTab(tab1, tr("Header"));
+  tabholder->addTab(tab2, tr("Signals"));
 
   hdr = (char *)malloc(256 * 2050);
 

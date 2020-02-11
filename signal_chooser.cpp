@@ -46,13 +46,13 @@ UI_SignalChooser::UI_SignalChooser(QWidget *w_parent, int job, int *sgnl_nr)
   {
     signalchooser_dialog->setMinimumSize(265, 420);
     signalchooser_dialog->setMaximumSize(265, 420);
-    signalchooser_dialog->setWindowTitle("Organize signals");
+    signalchooser_dialog->setWindowTitle(tr("Organize signals"));
   }
   else
   {
     signalchooser_dialog->setMinimumSize(200, 420);
     signalchooser_dialog->setMaximumSize(200, 420);
-    signalchooser_dialog->setWindowTitle("Signals");
+    signalchooser_dialog->setWindowTitle(tr("Signals"));
   }
   signalchooser_dialog->setModal(true);
   signalchooser_dialog->setAttribute(Qt::WA_DeleteOnClose, true);
@@ -77,19 +77,19 @@ UI_SignalChooser::UI_SignalChooser(QWidget *w_parent, int job, int *sgnl_nr)
   {
     UpButton = new QPushButton(signalchooser_dialog);
     UpButton->setGeometry(155, 180, 100, 25);
-    UpButton->setText("Up");
+    UpButton->setText(tr("Up"));
 
     DownButton = new QPushButton(signalchooser_dialog);
     DownButton->setGeometry(155, 220, 100, 25);
-    DownButton->setText("Down");
+    DownButton->setText(tr("Down"));
 
     InvertButton = new QPushButton(signalchooser_dialog);
     InvertButton->setGeometry(155, 260, 100, 25);
-    InvertButton->setText("Invert");
+    InvertButton->setText(tr("Invert"));
 
     DeleteButton = new QPushButton(signalchooser_dialog);
     DeleteButton->setGeometry(155, 300, 100, 25);
-    DeleteButton->setText("Remove");
+    DeleteButton->setText(tr("Remove"));
   }
 
   load_signalcomps();

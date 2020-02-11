@@ -276,16 +276,18 @@ UI_Mainwindow::UI_Mainwindow()
 
   menubar = menuBar();
 
+  language_en();
+
   recent_filesmenu = new QMenu(this);
-  recent_filesmenu->setTitle("Recent files");
+  recent_filesmenu->setTitle(tr("Recent files"));
   connect(recent_filesmenu, SIGNAL(triggered(QAction *)), this, SLOT(recent_file_action_func(QAction *)));
 
   close_filemenu = new QMenu(this);
-  close_filemenu->setTitle("Close");
+  close_filemenu->setTitle(tr("Close"));
   connect(close_filemenu, SIGNAL(triggered(QAction *)), this, SLOT(close_file_action_func(QAction *)));
 
   print_img_menu = new QMenu(this);
-  print_img_menu->setTitle("to Image");
+  print_img_menu->setTitle(tr("to Image"));
   print_img_menu->addAction("640 x 480",   this, SLOT(print_to_img_640x480()));
   print_img_menu->addAction("800 x 600",   this, SLOT(print_to_img_800x600()));
   print_img_menu->addAction("1024 x 768",  this, SLOT(print_to_img_1024x768()));
@@ -293,18 +295,18 @@ UI_Mainwindow::UI_Mainwindow()
   print_img_menu->addAction("1600 x 1200", this, SLOT(print_to_img_1600x1200()));
 
   printmenu = new QMenu(this);
-  printmenu->setTitle("Print");
-  printmenu->addAction("to Printer",    maincurve, SLOT(print_to_printer()), QKeySequence::Print);
+  printmenu->setTitle(tr("Print"));
+  printmenu->addAction(tr("to Printer"),    maincurve, SLOT(print_to_printer()), QKeySequence::Print);
 #if QT_VERSION < 0x050000
   printmenu->addAction("to PostScript", maincurve, SLOT(print_to_postscript()));
 #endif
-  printmenu->addAction("to PDF",        maincurve, SLOT(print_to_pdf()));
+  printmenu->addAction(tr("to PDF"),        maincurve, SLOT(print_to_pdf()));
   printmenu->addMenu(print_img_menu);
-  printmenu->addAction("to EDF",        this,      SLOT(print_to_edf()));
-  printmenu->addAction("to BDF",        this,      SLOT(print_to_bdf()));
-  printmenu->addAction("to CSV",        this,      SLOT(print_to_csv()));
+  printmenu->addAction(tr("to EDF"),        this,      SLOT(print_to_edf()));
+  printmenu->addAction(tr("to BDF"),        this,      SLOT(print_to_bdf()));
+  printmenu->addAction(tr("to CSV"),        this,      SLOT(print_to_csv()));
 
-  save_act = new QAction("Save as", this);
+  save_act = new QAction(tr("Save as"), this);
   save_act->setShortcut(QKeySequence::Save);
   save_act->setEnabled(false);
   connect(save_act, SIGNAL(triggered()), this, SLOT(save_file()));
@@ -314,142 +316,137 @@ UI_Mainwindow::UI_Mainwindow()
   video_act->setShortcut(QKeySequence("Ctrl+Shift+V"));
 
   filemenu = new QMenu(this);
-  filemenu->setTitle("&File");
+
+
+
+  filemenu->setTitle("&"+tr("File"));
   //filemenu->addAction("Open",         this, SLOT(open_new_file()), QKeySequence::Open);
   filemenu->addAction(tr("Open WFDB"),         this, SLOT(open_wfdb_file()), QKeySequence::Open);
-  filemenu->addSeparator();
-//  filemenu->addAction("Open stream",  this, SLOT(open_stream()), QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_O));
-//  filemenu->addSeparator();
-//  filemenu->addAction(video_act);
-//  filemenu->addSeparator();
-//  filemenu->addAction("Playback file", this, SLOT(playback_file()), QKeySequence("Ctrl+Space"));
   filemenu->addSeparator();
   filemenu->addAction(save_act);
   filemenu->addMenu(recent_filesmenu);
   filemenu->addMenu(printmenu);
-//  filemenu->addAction("Info",         this, SLOT(show_file_info()));
-//  filemenu->addMenu(close_filemenu);
-//  filemenu->addAction("Close all",    this, SLOT(close_all_files()), QKeySequence::Close);
-  filemenu->addAction("Exit",         this, SLOT(exit_program()), QKeySequence::Quit);
+
+  filemenu->addAction(tr("Exit"),         this, SLOT(exit_program()), QKeySequence::Quit);
   menubar->addMenu(filemenu);
 
   signalmenu = new QMenu(this);
-  signalmenu->setTitle("&Signals");
-  signalmenu->addAction("Properties", this, SLOT(signalproperties_dialog()));
-  signalmenu->addAction("Add",        this, SLOT(add_signals_dialog()));
-  signalmenu->addAction("Organize",   this, SLOT(organize_signals()));
-  signalmenu->addAction("Remove all", this, SLOT(remove_all_signals()));
+  signalmenu->setTitle("&" + tr("Signals"));
+  signalmenu->addAction(tr("Properties"), this, SLOT(signalproperties_dialog()));
+  signalmenu->addAction(tr("Add"),        this, SLOT(add_signals_dialog()));
+  signalmenu->addAction(tr("Organize"),   this, SLOT(organize_signals()));
+  signalmenu->addAction(tr("Remove all"), this, SLOT(remove_all_signals()));
   menubar->addMenu(signalmenu);
 
   displaymenu = new QMenu(this);
   displaymenu->setTitle("&Timescale");
 
-  displaymenu->addAction("3 cm/sec",  this, SLOT(page_3cmsec()));
-  displaymenu->addAction("25 mm/sec", this, SLOT(page_25mmsec()));
-  displaymenu->addAction("50 mm/sec", this, SLOT(page_50mmsec()));
+  displaymenu->addAction(tr("3 cm/sec"),  this, SLOT(page_3cmsec()));
+  displaymenu->addAction(tr("25 mm/sec"), this, SLOT(page_25mmsec()));
+  displaymenu->addAction(tr("50 mm/sec"), this, SLOT(page_50mmsec()));
 
   displaymenu->addSeparator();
 
-  page_10u = new QAction("10 uSec/page", this);
+  page_10u = new QAction(tr("10 uSec/page"), this);
   displaymenu->addAction(page_10u);
 
-  page_20u = new QAction("20 uSec/page", this);
+  page_20u = new QAction(tr("20 uSec/page"), this);
   displaymenu->addAction(page_20u);
 
-  page_50u = new QAction("50 uSec/page", this);
+  page_50u = new QAction(tr("50 uSec/page"), this);
   displaymenu->addAction(page_50u);
 
-  page_100u = new QAction("100 uSec/page", this);
+  page_100u = new QAction(tr("100 uSec/page"), this);
   displaymenu->addAction(page_100u);
 
-  page_200u = new QAction("200 uSec/page", this);
+  page_200u = new QAction(tr("200 uSec/page"), this);
   displaymenu->addAction(page_200u);
 
-  page_500u = new QAction("500 uSec/page", this);
+  page_500u = new QAction(tr("500 uSec/page"), this);
   displaymenu->addAction(page_500u);
 
-  page_1m = new QAction("1 mSec/page", this);
+  page_1m = new QAction(tr("1 mSec/page"), this);
   displaymenu->addAction(page_1m);
 
-  page_2m = new QAction("2 mSec/page", this);
+  page_2m = new QAction(tr("2 mSec/page"), this);
   displaymenu->addAction(page_2m);
 
-  page_5m = new QAction("5 mSec/page", this);
+  page_5m = new QAction(tr("5 mSec/page"), this);
   displaymenu->addAction(page_5m);
 
-  page_10m = new QAction("10 mSec/page", this);
+  page_10m = new QAction(tr("10 mSec/page"), this);
   displaymenu->addAction(page_10m);
 
-  page_20m = new QAction("20 mSec/page", this);
+  page_20m = new QAction(tr("20 mSec/page"), this);
   displaymenu->addAction(page_20m);
 
-  page_50m = new QAction("50 mSec/page", this);
+  page_50m = new QAction(tr("50 mSec/page"), this);
   displaymenu->addAction(page_50m);
 
-  page_100m = new QAction("100 mSec/page", this);
+  page_100m = new QAction(tr("100 mSec/page"), this);
   displaymenu->addAction(page_100m);
 
-  page_200m = new QAction("200 mSec/page", this);
+  page_200m = new QAction(tr("200 mSec/page"), this);
   displaymenu->addAction(page_200m);
 
-  page_500m = new QAction("500 mSec/page", this);
+  page_500m = new QAction(tr("500 mSec/page"), this);
   displaymenu->addAction(page_500m);
 
-  page_1 = new QAction("1 Sec/page", this);
+  page_1 = new QAction(tr("1 Sec/page"), this);
   displaymenu->addAction(page_1);
 
-  page_2 = new QAction("2 Sec/page", this);
+  page_2 = new QAction(tr("2 Sec/page"), this);
   displaymenu->addAction(page_2);
 
-  page_5 = new QAction("5 Sec/page", this);
+  page_5 = new QAction(tr("5 Sec/page"), this);
   displaymenu->addAction(page_5);
 
-  page_10 = new QAction("10 Sec/page", this);
+  page_10 = new QAction(tr("10 Sec/page"), this);
   displaymenu->addAction(page_10);
 
-  page_15 = new QAction("15 Sec/page", this);
+  page_15 = new QAction(tr("15 Sec/page"), this);
   displaymenu->addAction(page_15);
 
-  page_20 = new QAction("20 Sec/page", this);
+  page_20 = new QAction(tr("20 Sec/page"), this);
   displaymenu->addAction(page_20);
 
-  page_30 = new QAction("30 Sec/page", this);
+  page_30 = new QAction(tr("30 Sec/page"), this);
   page_30->setChecked(true);
   displaymenu->addAction(page_30);
 
-  page_60 = new QAction("60 Sec/page", this);
+  page_60 = new QAction(tr("60 Sec/page"), this);
   displaymenu->addAction(page_60);
 
-  page_300 = new QAction("5 min/page", this);
+  page_300 = new QAction(tr("5 min/page"), this);
   displaymenu->addAction(page_300);
 
-  page_1200 = new QAction("20 min/page", this);
+  page_1200 = new QAction(tr("20 min/page"), this);
   displaymenu->addAction(page_1200);
 
-  page_3600 = new QAction("1 hour/page", this);
+  page_3600 = new QAction(tr("1 hour/page"), this);
   displaymenu->addAction(page_3600);
 
   displaymenu->addSeparator();
 
-  page_div2 = new QAction("Timescale / 2", this);
+  page_div2 = new QAction(tr("Timescale / 2"), this);
   page_div2->setShortcut(QKeySequence::ZoomIn);
   connect(page_div2, SIGNAL(triggered()), this, SLOT(set_page_div2()));
   displaymenu->addAction(page_div2);
 
-  page_mult2 = new QAction("Timescale x 2", this);
+  page_mult2 = new QAction(tr("Timescale x 2"), this);
   page_mult2->setShortcut(QKeySequence::ZoomOut);
   connect(page_mult2, SIGNAL(triggered()), this, SLOT(set_page_mult2()));
   displaymenu->addAction(page_mult2);
 
   displaymenu->addSeparator();
 
-  page_user_defined = new QAction("user defined", this);
+  page_user_defined = new QAction(tr("user defined"), this);
   connect(page_user_defined, SIGNAL(triggered()), this, SLOT(set_user_defined_display_time()));
   displaymenu->addAction(page_user_defined);
 
   displaymenu->addSeparator();
 
-  page_whole_rec = new QAction("whole recording", this);
+  page_whole_rec = new QAction(tr("whole recording"), this);
   connect(page_whole_rec, SIGNAL(triggered()), this, SLOT(set_display_time_whole_rec()));
   displaymenu->addAction(page_whole_rec);
 
@@ -485,17 +482,17 @@ UI_Mainwindow::UI_Mainwindow()
   connect(DisplayGroup, SIGNAL(triggered(QAction *)), this, SLOT(set_display_time(QAction *)));
 
   amplitudemenu = new QMenu(this);
-  amplitudemenu->setTitle("&Amplitude");
+  amplitudemenu->setTitle("&"+tr("Amplitude"));
 
-  fit_to_pane = new QAction("Fit to pane", this);
+  fit_to_pane = new QAction(tr("Fit to pane"), this);
   connect(fit_to_pane, SIGNAL(triggered()), this, SLOT(fit_signals_to_pane()));
   amplitudemenu->addAction(fit_to_pane);
 
-  fit_to_dc = new QAction("Adjust offset", this);
+  fit_to_dc = new QAction(tr("Adjust offset"), this);
   connect(fit_to_dc, SIGNAL(triggered()), this, SLOT(fit_signals_dc_offset()));
   amplitudemenu->addAction(fit_to_dc);
 
-  amplitudemenu->addAction("Offset -> 0", this, SLOT(set_dc_offset_to_zero()));
+  amplitudemenu->addAction(tr("Offset -> 0"), this, SLOT(set_dc_offset_to_zero()));
 
   amplitudemenu->addSeparator();
 
@@ -582,12 +579,12 @@ UI_Mainwindow::UI_Mainwindow()
 
   amplitudemenu->addSeparator();
 
-  amp_plus = new QAction("Amplitude x 2", this);
+  amp_plus = new QAction(tr("Amplitude x 2"), this);
   amp_plus->setShortcut(Qt::Key_Minus);
   connect(amp_plus, SIGNAL(triggered()), this, SLOT(set_amplitude_mult2()));
   amplitudemenu->addAction(amp_plus);
 
-  amp_minus = new QAction("Amplitude / 2", this);
+  amp_minus = new QAction(tr("Amplitude / 2"), this);
   amp_minus->setShortcut(Qt::Key_Plus);
   connect(amp_minus, SIGNAL(triggered()), this, SLOT(set_amplitude_div2()));
   amplitudemenu->addAction(amp_minus);
@@ -625,19 +622,19 @@ UI_Mainwindow::UI_Mainwindow()
   connect(AmplitudeGroup, SIGNAL(triggered(QAction *)), this, SLOT(set_amplitude(QAction *)));
 
   filtermenu = new QMenu(this);
-  filtermenu->setTitle("&Filter");
-  filtermenu->addAction("New", this, SLOT(add_new_filter()));
-  filtermenu->addAction("Adjust", this, SLOT(filterproperties_dialog()));
-  filtermenu->addAction("Remove all", this, SLOT(remove_all_filters()));
+  filtermenu->setTitle("&"+tr("Filter"));
+  filtermenu->addAction(tr("New"), this, SLOT(add_new_filter()));
+  filtermenu->addAction(tr("Adjust"), this, SLOT(filterproperties_dialog()));
+  filtermenu->addAction(tr("Remove all"), this, SLOT(remove_all_filters()));
   filtermenu->addSeparator();
-  filtermenu->addAction("Powerline interference removal for ECG", this, SLOT(add_plif_ecg_filter()));
-  filtermenu->addAction("Remove all Powerline interference filters", this, SLOT(remove_all_plif_ecg_filters()));
+  filtermenu->addAction(tr("Powerline interference removal for ECG"), this, SLOT(add_plif_ecg_filter()));
+  filtermenu->addAction(tr("Remove all Powerline interference filters"), this, SLOT(remove_all_plif_ecg_filters()));
   filtermenu->addSeparator();
-  filtermenu->addAction("Customizable FIR filter", this, SLOT(add_fir_filter()));
-  filtermenu->addAction("Remove all FIR filters", this, SLOT(remove_all_fir_filters()));
+  filtermenu->addAction(tr("Customizable FIR filter"), this, SLOT(add_fir_filter()));
+  filtermenu->addAction(tr("Remove all FIR filters"), this, SLOT(remove_all_fir_filters()));
   filtermenu->addSeparator();
-  filtermenu->addAction("Spike", this, SLOT(add_spike_filter()));
-  filtermenu->addAction("Remove all spike filters", this, SLOT(remove_all_spike_filters()));
+  filtermenu->addAction(tr("Spike"), this, SLOT(add_spike_filter()));
+  filtermenu->addAction(tr("Remove all spike filters"), this, SLOT(remove_all_spike_filters()));
   menubar->addMenu(filtermenu);
 
 //   math_func_menu = new QMenu(this);
@@ -698,7 +695,7 @@ UI_Mainwindow::UI_Mainwindow()
 //   menubar->addMenu(patternmenu);
 
   toolsmenu = new QMenu(this);
-  toolsmenu->setTitle("T&ools");
+  toolsmenu->setTitle(tr("Tools"));
   /*toolsmenu->addAction("Check EDF/BDF compatibility", this, SLOT(check_edf_compatibility()));
   toolsmenu->addSeparator();
   toolsmenu->addAction("Header editor", this, SLOT(edit_header()));
@@ -715,8 +712,8 @@ UI_Mainwindow::UI_Mainwindow()
   toolsmenu->addAction("Convert ASCII (CSV) to EDF/BDF", this, SLOT(convert_ascii_to_edf()));
   toolsmenu->addAction("Convert Manscan to EDF+", this, SLOT(convert_manscan_to_edf()));
   toolsmenu->addAction("Convert SCP ECG to EDF+", this, SLOT(convert_scpecg_to_edf()));//*/
-  toolsmenu->addAction("Convert MIT (PhysioBank) to EDF+", this, SLOT(convert_mit_to_edf()));
-  toolsmenu->addAction("Convert MIT (PhysioBank) to CSV", this, SLOT(export2_to_ascii()));
+  toolsmenu->addAction(tr("Convert MIT (PhysioBank) to EDF+"), this, SLOT(convert_mit_to_edf()));
+  toolsmenu->addAction(tr("Convert MIT (PhysioBank) to CSV"), this, SLOT(export2_to_ascii()));
 
   /*toolsmenu->addAction("Convert Finometer to EDF", this, SLOT(convert_fino_to_edf()));
   toolsmenu->addAction("Convert Nexfin to EDF", this, SLOT(convert_nexfin_to_edf()));
@@ -798,13 +795,12 @@ UI_Mainwindow::UI_Mainwindow()
   helpmenu->addAction("Show splashscreen", this, SLOT(show_splashscreen()));
 //  menubar->addMenu(helpmenu);
   languagemenu =  new QMenu(this);
-  languagemenu ->setTitle("&Language");
-  languagemenu ->addAction("English", this, SLOT(language_en()));
-  languagemenu ->addAction("Japanese", this, SLOT(language_jp()));
+  languagemenu ->setTitle("&"+tr("Language"));
+  languagemenu ->addAction(tr("English"), this, SLOT(language_en()));
+  languagemenu ->addAction(tr("Japanese"), this, SLOT(language_jp()));
   menubar->addMenu(languagemenu);
   navtoolbarGroupWidget = new QWidget(maincurve);
   int wid = 600;
-  qDebug()<<"width() "<<width();
   navtoolbarGroupWidget->setGeometry(100, 0, wid, 60);
 
   navtoolbar = new QHBoxLayout(navtoolbarGroupWidget);

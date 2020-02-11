@@ -362,8 +362,8 @@ UI_EDFhdrwindow::UI_EDFhdrwindow(QWidget *w_parent)
   signalsHBoxLayout1->addWidget(signallist);
   tab2->setLayout(signalsHBoxLayout1);
 
-  tabholder->addTab(tab1, "General");
-  tabholder->addTab(tab2, "Signals");
+  tabholder->addTab(tab1, tr("General"));
+  tabholder->addTab(tab2, tr("Signals"));
 
   mainHBoxLayout1 = new QHBoxLayout;
   mainHBoxLayout1->addStretch(100);

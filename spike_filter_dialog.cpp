@@ -46,13 +46,13 @@ UI_SpikeFilterDialog::UI_SpikeFilterDialog(QWidget *w_parent)
 
   spikefilterdialog->setMinimumSize(620, 365);
   spikefilterdialog->setMaximumSize(620, 365);
-  spikefilterdialog->setWindowTitle("Add a spike filter");
+  spikefilterdialog->setWindowTitle(tr("Add a spike filter"));
   spikefilterdialog->setModal(true);
   spikefilterdialog->setAttribute(Qt::WA_DeleteOnClose, true);
 
   velocityLabel = new QLabel(spikefilterdialog);
   velocityLabel->setGeometry(20, 45, 60, 25);
-  velocityLabel->setText("Velocity");
+  velocityLabel->setText(tr("Velocity"));
 
   velocitySpinBox = new QDoubleSpinBox(spikefilterdialog);
   velocitySpinBox->setGeometry(90, 45, 230, 25);
@@ -64,18 +64,18 @@ UI_SpikeFilterDialog::UI_SpikeFilterDialog(QWidget *w_parent)
 
   holdOffLabel = new QLabel(spikefilterdialog);
   holdOffLabel->setGeometry(20, 90, 60, 25);
-  holdOffLabel->setText("Hold-off");
+  holdOffLabel->setText(tr("Hold-off"));
 
   holdOffSpinBox = new QSpinBox(spikefilterdialog);
   holdOffSpinBox->setGeometry(90, 90, 230, 25);
-  holdOffSpinBox->setSuffix(" milliSec");
+  holdOffSpinBox->setSuffix(tr(" milliSec"));
   holdOffSpinBox->setMinimum(10);
   holdOffSpinBox->setMaximum(1000);
   holdOffSpinBox->setValue(100);
 
   listlabel = new QLabel(spikefilterdialog);
   listlabel->setGeometry(440, 20, 100, 25);
-  listlabel->setText("Select signals:");
+  listlabel->setText(tr("Select signals:"));
 
   list = new QListWidget(spikefilterdialog);
   list->setGeometry(440, 45, 160, 300);
@@ -84,11 +84,11 @@ UI_SpikeFilterDialog::UI_SpikeFilterDialog(QWidget *w_parent)
 
   CancelButton = new QPushButton(spikefilterdialog);
   CancelButton->setGeometry(300, 320, 100, 25);
-  CancelButton->setText("&Close");
+  CancelButton->setText(tr("&Close"));
 
   ApplyButton = new QPushButton(spikefilterdialog);
   ApplyButton->setGeometry(20, 320, 100, 25);
-  ApplyButton->setText("&Apply");
+  ApplyButton->setText(tr("&Apply"));
   ApplyButton->setVisible(false);
 
   for(i=0; i<mainwindow->signalcomps; i++)

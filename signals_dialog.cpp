@@ -41,7 +41,7 @@ UI_Signalswindow::UI_Signalswindow(QWidget *w_parent, bool autoClickAddSignalBut
 
   SignalsDialog->setMinimumSize(800, 500);
   SignalsDialog->setMaximumSize(800, 500);
-  SignalsDialog->setWindowTitle("Signals");
+  SignalsDialog->setWindowTitle(tr("Signals"));
   SignalsDialog->setModal(true);
   SignalsDialog->setAttribute(Qt::WA_DeleteOnClose, true);
 

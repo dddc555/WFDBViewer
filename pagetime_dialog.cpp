@@ -40,7 +40,7 @@ UI_Userdefined_timepage_Dialog::UI_Userdefined_timepage_Dialog(QWidget *w_parent
 
   set_diplaytime_dialog->setMinimumSize(335, 200);
   set_diplaytime_dialog->setMaximumSize(335, 200);
-  set_diplaytime_dialog->setWindowTitle("Set timescale");
+  set_diplaytime_dialog->setWindowTitle(tr("Set timescale"));
   set_diplaytime_dialog->setModal(true);
   set_diplaytime_dialog->setAttribute(Qt::WA_DeleteOnClose, true);
 
@@ -55,11 +55,11 @@ UI_Userdefined_timepage_Dialog::UI_Userdefined_timepage_Dialog(QWidget *w_parent
 
   OKButton = new QPushButton(set_diplaytime_dialog);
   OKButton->setGeometry(10, 165, 100, 25);
-  OKButton->setText("OK");
+  OKButton->setText(tr("OK"));
 
   CloseButton = new QPushButton(set_diplaytime_dialog);
   CloseButton->setGeometry(225, 165, 100, 25);
-  CloseButton->setText("Cancel");
+  CloseButton->setText(tr("Cancel"));
 
   QObject::connect(CloseButton, SIGNAL(clicked()), set_diplaytime_dialog, SLOT(close()));
   QObject::connect(OKButton,    SIGNAL(clicked()), this,                  SLOT(okbutton_pressed()));

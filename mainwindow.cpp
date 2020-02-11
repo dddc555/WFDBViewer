@@ -1795,14 +1795,9 @@ void UI_Mainwindow::open_new_file()
        ||(strcmp(path + (len - 4), ".BDF")) == 0)
     {
         open(path, true, false);
-        qDebug()<<"edf";
     }
     else if(strcmp(path + (len - 4), ".hea") == 0 || strcmp(path + (len - 4), ".HEA") == 0){
         _open_wfdb(path);
-        qDebug()<<"wfdb";
-    }
-    else {
-        qDebug()<<"else";
     }
 }
 
@@ -3611,7 +3606,7 @@ void UI_Mainwindow::language_en()
     {
         qDebug()<<"Successfull";
         qApp->installTranslator(&m_translator);
-        qDebug()<<(tr("Open WFDB").arg("en"));
+        qDebug()<<(tr("Open WFDB"));
 
     } else {
         qDebug()<<"Error Translate";
@@ -3636,7 +3631,7 @@ void UI_Mainwindow::language_jp()
         {
             qDebug()<<"Successfull";
             qApp->installTranslator(&m_translator);
-            qDebug()<<(tr("Open WFDB").arg("en"));
+            qDebug()<<(tr("Open WFDB"));
 
         } else {
             qDebug()<<"Error Translate";

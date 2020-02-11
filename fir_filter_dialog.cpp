@@ -52,17 +52,17 @@ UI_FIRFilterDialog::UI_FIRFilterDialog(char *recent_dir, char *save_dir, QWidget
 
   firfilterdialog->setMinimumSize(620, 415);
   firfilterdialog->setMaximumSize(620, 415);
-  firfilterdialog->setWindowTitle("Add a Custom FIR filter");
+  firfilterdialog->setWindowTitle(tr("Add a Custom FIR filter"));
   firfilterdialog->setModal(true);
   firfilterdialog->setAttribute(Qt::WA_DeleteOnClose, true);
 
   varsLabel = new QLabel(firfilterdialog);
   varsLabel->setGeometry(20, 20, 100, 25);
-  varsLabel->setText("Filter taps: 0");
+  varsLabel->setText(tr("Filter taps: 0"));
 
   listlabel = new QLabel(firfilterdialog);
   listlabel->setGeometry(440, 20, 100, 25);
-  listlabel->setText("Select signals:");
+  listlabel->setText(tr("Select signals:"));
 
   textEdit = new QPlainTextEdit(firfilterdialog);
   textEdit->setGeometry(20, 45, 250, 300);
@@ -76,16 +76,16 @@ UI_FIRFilterDialog::UI_FIRFilterDialog(char *recent_dir, char *save_dir, QWidget
 
   CancelButton = new QPushButton(firfilterdialog);
   CancelButton->setGeometry(20, 370, 100, 25);
-  CancelButton->setText("&Close");
+  CancelButton->setText(tr("Close"));
 
   fileButton = new QPushButton(firfilterdialog);
   fileButton->setGeometry(160, 370, 100, 25);
-  fileButton->setText("&File");
-  fileButton->setToolTip("Load values from text file");
+  fileButton->setText(tr("File"));
+  fileButton->setToolTip(tr("Load values from text file"));
 
   ApplyButton = new QPushButton(firfilterdialog);
   ApplyButton->setGeometry(300, 370, 100, 25);
-  ApplyButton->setText("&Apply");
+  ApplyButton->setText(tr("Apply"));
 
   helpButton = new QPushButton(firfilterdialog);
   helpButton->setGeometry(440, 370, 100, 25);

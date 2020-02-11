@@ -48,13 +48,13 @@ UI_PLIF_ECG_filter_dialog::UI_PLIF_ECG_filter_dialog(QWidget *w_parent)
 
   plifecgfilterdialog->setMinimumSize(620, 365);
   plifecgfilterdialog->setMaximumSize(620, 365);
-  plifecgfilterdialog->setWindowTitle("Add a powerline interference filter");
+  plifecgfilterdialog->setWindowTitle(tr("Add a powerline interference filter"));
   plifecgfilterdialog->setModal(true);
   plifecgfilterdialog->setAttribute(Qt::WA_DeleteOnClose, true);
 
   plfLabel = new QLabel(plifecgfilterdialog);
   plfLabel->setGeometry(20, 90, 200, 25);
-  plfLabel->setText("Powerline frequency");
+  plfLabel->setText(tr("Powerline frequency"));
 
   plfBox = new QComboBox(plifecgfilterdialog);
   plfBox->setGeometry(240, 90, 150, 25);
@@ -63,28 +63,28 @@ UI_PLIF_ECG_filter_dialog::UI_PLIF_ECG_filter_dialog(QWidget *w_parent)
 
   listlabel = new QLabel(plifecgfilterdialog);
   listlabel->setGeometry(440, 20, 100, 25);
-  listlabel->setText("Select signals:");
+  listlabel->setText(tr("Select signals:"));
 
   list = new QListWidget(plifecgfilterdialog);
   list->setGeometry(440, 45, 160, 300);
   list->setSelectionBehavior(QAbstractItemView::SelectRows);
   list->setSelectionMode(QAbstractItemView::ExtendedSelection);
-  list->setToolTip("Only signals with a physical dimension V, mV or uV and\n"
+  list->setToolTip(tr("Only signals with a physical dimension V, mV or uV and\n"
                    "a samplerate of >= 500Hz and\n"
-                   "an integer ratio to 50 or 60 Hz will be listed here.");
+                   "an integer ratio to 50 or 60 Hz will be listed here."));
 
   CancelButton = new QPushButton(plifecgfilterdialog);
   CancelButton->setGeometry(300, 320, 100, 25);
-  CancelButton->setText("&Close");
+  CancelButton->setText(tr("Close"));
 
   ApplyButton = new QPushButton(plifecgfilterdialog);
   ApplyButton->setGeometry(20, 270, 100, 25);
-  ApplyButton->setText("&Apply");
+  ApplyButton->setText(tr("Apply"));
   ApplyButton->setVisible(false);
 
   helpButton = new QPushButton(plifecgfilterdialog);
   helpButton->setGeometry(20, 320, 100, 25);
-  helpButton->setText("Help");
+  helpButton->setText(tr("Help"));
 
   for(i=0; i<mainwindow->signalcomps; i++)
   {

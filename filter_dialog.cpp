@@ -88,46 +88,46 @@ UI_FilterDialog::UI_FilterDialog(QWidget *w_parent)
 
   filterdialog->setMinimumSize(620, 365);
   filterdialog->setMaximumSize(620, 365);
-  filterdialog->setWindowTitle("Add a filter");
+  filterdialog->setWindowTitle(tr("Add a filter"));
   filterdialog->setModal(true);
   filterdialog->setAttribute(Qt::WA_DeleteOnClose, true);
 
   typeboxlabel = new QLabel(filterdialog);
   typeboxlabel->setGeometry(20, 20, 120, 25);
-  typeboxlabel->setText("Type");
+  typeboxlabel->setText(tr("Type"));
 
   freqboxlabel = new QLabel(filterdialog);
   freqboxlabel->setGeometry(160, 20, 120, 25);
-  freqboxlabel->setText("Frequency");
+  freqboxlabel->setText(tr("Frequency"));
 
   freqbox2label = new QLabel(filterdialog);
   freqbox2label->setGeometry(300, 20, 120, 25);
-  freqbox2label->setText("Frequency 2");
+  freqbox2label->setText(tr("Frequency 2"));
   freqbox2label->setVisible(false);
 
   orderboxlabel = new QLabel(filterdialog);
   orderboxlabel->setGeometry(160, 80, 120, 25);
-  orderboxlabel->setText("Order");
+  orderboxlabel->setText(tr("Order"));
 
   modelboxlabel = new QLabel(filterdialog);
   modelboxlabel->setGeometry(20, 80, 120, 25);
-  modelboxlabel->setText("Model");
+  modelboxlabel->setText(tr("Model"));
 
   orderlabel = new QLabel(filterdialog);
   orderlabel->setGeometry(300, 80, 120, 25);
-  orderlabel->setText("Slope roll-off:");
+  orderlabel->setText(tr("Slope roll-off:"));
 
   ordervaluelabel = new QLabel(filterdialog);
   ordervaluelabel->setGeometry(300, 105, 120, 25);
-  ordervaluelabel->setText("6 dB / octave");
+  ordervaluelabel->setText(tr("6 dB / octave"));
 
   typebox = new QComboBox(filterdialog);
   typebox->setGeometry(20, 45, 120, 25);
-  typebox->addItem("Highpass");
-  typebox->addItem("Lowpass");
-  typebox->addItem("Notch");
-  typebox->addItem("Bandpass");
-  typebox->addItem("Bandstop");
+  typebox->addItem(tr("Highpass"));
+  typebox->addItem(tr("Lowpass"));
+  typebox->addItem(tr("Notch"));
+  typebox->addItem(tr("Bandpass"));
+  typebox->addItem(tr("Bandstop"));
 
   freqbox = new QDoubleSpinBox(filterdialog);
   freqbox->setGeometry(160, 45, 120, 25);
@@ -155,10 +155,10 @@ UI_FilterDialog::UI_FilterDialog(QWidget *w_parent)
 
   modelbox = new QComboBox(filterdialog);
   modelbox->setGeometry(20, 105, 120, 25);
-  modelbox->addItem("Butterworth");
-  modelbox->addItem("Chebyshev");
-  modelbox->addItem("Bessel");
-  modelbox->addItem("Moving Average");
+  modelbox->addItem(tr("Butterworth"));
+  modelbox->addItem(tr("Chebyshev"));
+  modelbox->addItem(tr("Bessel"));
+  modelbox->addItem(tr("Moving Average"));
 
   ripplebox = new QDoubleSpinBox(filterdialog);
   ripplebox->setGeometry(300, 105, 120, 25);
@@ -171,7 +171,7 @@ UI_FilterDialog::UI_FilterDialog(QWidget *w_parent)
 
   listlabel = new QLabel(filterdialog);
   listlabel->setGeometry(440, 20, 100, 25);
-  listlabel->setText("Select signals:");
+  listlabel->setText(tr("Select signals:"));
 
   list = new QListWidget(filterdialog);
   list->setGeometry(440, 45, 160, 300);
@@ -180,11 +180,11 @@ UI_FilterDialog::UI_FilterDialog(QWidget *w_parent)
 
   CancelButton = new QPushButton(filterdialog);
   CancelButton->setGeometry(300, 320, 100, 25);
-  CancelButton->setText("&Cancel");
+  CancelButton->setText(tr("Cancel"));
 
   ApplyButton = new QPushButton(filterdialog);
   ApplyButton->setGeometry(20, 320, 100, 25);
-  ApplyButton->setText("&Apply");
+  ApplyButton->setText(tr("Apply"));
 
   curve1 = new FilterCurve(filterdialog);
   curve1->setGeometry(20, 145, 400, 150);
@@ -431,7 +431,7 @@ void UI_FilterDialog::filtermodelboxvaluechanged(int model)
   if(model == FILTERMODEL_BUTTERWORTH)
   {
     ripplebox->setVisible(false);
-    orderlabel->setText("Slope roll-off:");
+    orderlabel->setText(tr("Slope roll-off:"));
     orderlabel->setVisible(true);
     ordervaluelabel->setText(QString::number(6 * orderbox->value(), 'f', 0).append(" dB / octave"));
     ordervaluelabel->setVisible(true);
@@ -439,7 +439,7 @@ void UI_FilterDialog::filtermodelboxvaluechanged(int model)
 
   if(model == FILTERMODEL_CHEBYSHEV)
   {
-    orderlabel->setText("passband ripple");
+    orderlabel->setText(tr("passband ripple"));
     orderlabel->setVisible(true);
     ordervaluelabel->setVisible(false);
     ripplebox->setVisible(true);
@@ -460,7 +460,7 @@ void UI_FilterDialog::filtermodelboxvaluechanged(int model)
     freqbox2label->setVisible(false);
     freqbox->setVisible(false);
     ripplebox->setVisible(false);
-    orderboxlabel->setText("Samples");
+    orderboxlabel->setText(tr("Samples"));
     orderbox->setMaximum(10000);
     orderbox->setSingleStep(1);
     orderbox->setMinimum(2);

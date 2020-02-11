@@ -84,7 +84,7 @@ UI_ASCII2EDFapp::UI_ASCII2EDFapp(QWidget *w_parent, char *recent_dir, char *save
 
   SignalsLabel = new QLabel(ascii2edfDialog);
   SignalsLabel->setGeometry(20, 300, 140, 25);
-  SignalsLabel->setText("Signals");
+  SignalsLabel->setText(tr("Signals"));
 
   groupbox1 = new QGroupBox(ascii2edfDialog);
   groupbox1->setGeometry(530, 20, 160, 90);

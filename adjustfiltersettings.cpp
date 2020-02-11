@@ -135,11 +135,11 @@ AdjustFilterSettings::AdjustFilterSettings(struct signalcompblock *signal_comp, 
 
   RemoveButton = new QPushButton(filtersettings_dialog);
   RemoveButton->setGeometry(120, 220, 80, 25);
-  RemoveButton->setText("Remove");
+  RemoveButton->setText(tr("Remove"));
 
   CloseButton = new QPushButton(filtersettings_dialog);
   CloseButton->setGeometry(360, 220, 80, 25);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   filter_cnt = 0;
 
