@@ -801,7 +801,7 @@ UI_Mainwindow::UI_Mainwindow()
 
   tools_option_act = new QAction(tr("Options"));
   toolsmenu->addAction(tools_option_act);
-  connect(tools_option_act, SIGNAL(triggered(QAction *)), this, SLOT(show_options_dialog(QAction *)));
+  connect(tools_option_act, SIGNAL(triggered()), this, SLOT(show_options_dialog()));
   menubar->addMenu(toolsmenu);
 
   settingsmenu = new QMenu(this);
