@@ -384,7 +384,7 @@ private:
   *filter_remove_all_Powerline_act,
   *filter_customize_fir_act,
   *filter_remove_all_fir_act,
-  *filter_spike_act;
+  *filter_spike_act,
   *filter_remove_all_spike_act,
   *tools_mit_to_edf_act,
   *tools_mit_to_csv_act,

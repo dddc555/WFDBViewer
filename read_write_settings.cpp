@@ -28,6 +28,7 @@
 
 #include "mainwindow.h"
 
+#define SETTING_FILE_NAME "\\settings_v1.xml"
 
 void UI_Mainwindow::get_rgbcolor_settings(struct xml_handle *xml_hdl, const char *id, int cnt, QColor *rgb_color)
 {
@@ -502,7 +503,7 @@ void UI_Mainwindow::read_general_settings()
   strcpy(cfg_path, specialFolder(CSIDL_APPDATA).toLocal8Bit().data());
   strcat(cfg_path, "\\");
   strcat(cfg_path, PROGRAM_NAME);
-  strcat(cfg_path, "\\settings.xml");
+  strcat(cfg_path, SETTING_FILE_NAME);
 #else
   strcpy(cfg_path, getenv("HOME"));
   strcat(cfg_path, "/.");
@@ -541,6 +542,24 @@ void UI_Mainwindow::read_general_settings()
     xml_close(xml_hdl);
     return;
   }
+
+  if(xml_goto_nth_element_inside(xml_hdl, "language", 0))
+  {
+      qDebug()<<"xml error";
+    xml_close(xml_hdl);
+    return;
+  }
+
+
+  if(xml_get_content_of_element(xml_hdl, result, XML_STRBUFLEN))
+  {
+      qDebug()<<"xml erro 2r";
+    xml_close(xml_hdl);
+    return;
+  }
+
+  mainwindow_language = atof(result);
+  qDebug()<<"mainwindow_language " <<mainwindow_language;
 
   if(xml_goto_nth_element_inside(xml_hdl, "pixelsizefactor", 0))
   {
@@ -1841,7 +1860,7 @@ void UI_Mainwindow::write_settings()
   strcat(cfg_path, "\\");
   strcat(cfg_path, PROGRAM_NAME);
   mkdir(cfg_path);
-  strcat(cfg_path, "\\settings.xml");
+  strcat(cfg_path, SETTING_FILE_NAME);
 #else
   strcpy(cfg_path, getenv("HOME"));
   strcat(cfg_path, "/.");
@@ -1857,7 +1876,8 @@ void UI_Mainwindow::write_settings()
                      "<config>\n"
                      "  <cfg_app_version>" PROGRAM_NAME " " PROGRAM_VERSION "</cfg_app_version>\n"
                      "  <UI>\n"
-                     "    <colors>\n");
+                     "<language>%d</language>"
+                     "    <colors>\n", mainwindow_language);
 
     fprintf(cfgfile, "      <backgroundcolor>\n"
                     "        <red>%i</red>\n"

@@ -297,6 +297,7 @@ UI_Mainwindow::UI_Mainwindow()
   printmenu = new QMenu(this);
   printmenu->setTitle(tr("Print"));
   to_Printer_act = new QAction(tr("to Printer"));
+
   printmenu->addAction(to_Printer_act);
   to_Printer_act->setShortcut(QKeySequence::Print);
   connect(to_Printer_act, SIGNAL(triggered()), maincurve, SLOT(print_to_printer()));
@@ -658,44 +659,44 @@ UI_Mainwindow::UI_Mainwindow()
   filter_new_act = new QAction(tr("New"));
 
   filtermenu->addAction(filter_new_act);
-  connect(filter_new_act, SIGNAL(triggered(QAction *)), this, SLOT(add_new_filter(QAction *)));
+  connect(filter_new_act, SIGNAL(triggered()), this, SLOT(add_new_filter()));
 
   filter_Adjust_act = new QAction(tr("Adjust"));
   filtermenu->addAction(filter_Adjust_act);
-  connect(filter_Adjust_act, SIGNAL(triggered(QAction *)), this, SLOT(filterproperties_dialog(QAction *)));
+  connect(filter_Adjust_act, SIGNAL(triggered()), this, SLOT(filterproperties_dialog()));
 
   filter_remove_all_act = new QAction(tr("Remove all"));
   filtermenu->addAction(filter_remove_all_act);
-  connect(filter_remove_all_act, SIGNAL(triggered(QAction *)), this, SLOT(remove_all_filters(QAction *)));
+  connect(filter_remove_all_act, SIGNAL(triggered()), this, SLOT(remove_all_filters()));
 
   filtermenu->addSeparator();
   filter_Powerline_act = new QAction(tr("Powerline interference removal for ECG"));
   filtermenu->addAction(filter_Powerline_act);
-  connect(filter_Powerline_act, SIGNAL(triggered(QAction *)), this, SLOT(add_plif_ecg_filter(QAction *)));
+  connect(filter_Powerline_act, SIGNAL(triggered()), this, SLOT(add_plif_ecg_filter()));
 
   filter_remove_all_Powerline_act = new QAction(tr("Remove all Powerline interference filters"));
   filtermenu->addAction(filter_remove_all_Powerline_act);
-  connect(filter_remove_all_Powerline_act, SIGNAL(triggered(QAction *)), this, SLOT(remove_all_plif_ecg_filters(QAction *)));
+  connect(filter_remove_all_Powerline_act, SIGNAL(triggered()), this, SLOT(remove_all_plif_ecg_filters()));
 
   filtermenu->addSeparator();
 
   filter_customize_fir_act = new QAction(tr("Customizable FIR filter"));
   filtermenu->addAction(filter_customize_fir_act);
-  connect(filter_customize_fir_act, SIGNAL(triggered(QAction *)), this, SLOT(add_fir_filter(QAction *)));
+  connect(filter_customize_fir_act, SIGNAL(triggered()), this, SLOT(add_fir_filter()));
 
   filter_remove_all_fir_act = new QAction(tr("Remove all FIR filters"));
   filtermenu->addAction(filter_remove_all_fir_act);
-  connect(filter_remove_all_fir_act, SIGNAL(triggered(QAction *)), this, SLOT(remove_all_fir_filters(QAction *)));
+  connect(filter_remove_all_fir_act, SIGNAL(triggered()), this, SLOT(remove_all_fir_filters()));
 
   filtermenu->addSeparator();
 
   filter_spike_act = new QAction(tr("Spike"));
   filtermenu->addAction(filter_spike_act);
-  connect(filter_spike_act, SIGNAL(triggered(QAction *)), this, SLOT(add_spike_filter(QAction *)));
+  connect(filter_spike_act, SIGNAL(triggered()), this, SLOT(add_spike_filter()));
 
   filter_remove_all_spike_act = new QAction(tr("Remove all spike filters"));
   filtermenu->addAction(filter_remove_all_spike_act);
-  connect(filter_remove_all_spike_act, SIGNAL(triggered(QAction *)), this, SLOT(remove_all_spike_filters(QAction *)));
+  connect(filter_remove_all_spike_act, SIGNAL(triggered()), this, SLOT(remove_all_spike_filters()));
   
   menubar->addMenu(filtermenu);
 
@@ -776,11 +777,11 @@ UI_Mainwindow::UI_Mainwindow()
   toolsmenu->addAction("Convert SCP ECG to EDF+", this, SLOT(convert_scpecg_to_edf()));//*/
   tools_mit_to_edf_act = new QAction(tr("Convert MIT (PhysioBank) to EDF+"));
   toolsmenu->addAction(tools_mit_to_edf_act);
-  connect(tools_mit_to_edf_act, SIGNAL(triggered(QAction *)), this, SLOT(convert_mit_to_edf(QAction *)));
-  
+  connect(tools_mit_to_edf_act, SIGNAL(triggered()), this, SLOT(convert_mit_to_edf()));
+
   tools_mit_to_csv_act = new QAction(tr("Convert MIT (PhysioBank) to CSV"));
   toolsmenu->addAction(tools_mit_to_csv_act);
-  connect(tools_mit_to_csv_act, SIGNAL(triggered(QAction *)), this, SLOT(export2_to_ascii(QAction *)));
+  connect(tools_mit_to_csv_act, SIGNAL(triggered()), this, SLOT(export2_to_ascii()));
 
 
   /*toolsmenu->addAction("Convert Finometer to EDF", this, SLOT(convert_fino_to_edf()));
@@ -1214,56 +1215,57 @@ UI_Mainwindow::UI_Mainwindow()
 }
 
 void UI_Mainwindow::updateText(){
+
   recent_filesmenu->setTitle(tr("Recent files"));
   close_filemenu->setTitle(tr("Close"));
   print_img_menu->setTitle(tr("to Image"));
   printmenu->setTitle(tr("Print"));
-  to_Printer_act->setTitle(tr("to Printer"));
+  to_Printer_act->setText(tr("to Printer"));
 
-  to_EDF_act->setTitle(tr("to EDF"));
-  to_BDF_act->setTitle(tr("to BDF"));
-  to_CSV_act->setTitle(tr("to CSV"));
-  save_act->setTitle(tr("Save as"));
+  to_EDF_act->setText(tr("to EDF"));
+  to_BDF_act->setText(tr("to BDF"));
+  to_CSV_act->setText(tr("to CSV"));
+  save_act->setText(tr("Save as"));
   
   filemenu->setTitle("&"+tr("File"));
 
-  Open_WFDB_act->setTitle(tr("Open WFDB"));
+  Open_WFDB_act->setText(tr("Open WFDB"));
   
-  exit_act->setTitle(tr("Exit"));
+  exit_act->setText(tr("Exit"));
   
   signalmenu->setTitle("&" + tr("Signals"));
-  signal_Properties_act->setTitle(tr("Properties"));
-  signal_add_act->setTitle(tr("Add"));
-  signal_organize_act->setTitle(tr("Organize"));
-  signal_remove_all_act->setTitle(tr("Remove all"));
+  signal_Properties_act->setText(tr("Properties"));
+  signal_add_act->setText(tr("Add"));
+  signal_organize_act->setText(tr("Organize"));
+  signal_remove_all_act->setText(tr("Remove all"));
   displaymenu->setTitle(tr("Timescale"));
-  page_div2->setTitle(tr("Timescale / 2"));
+  page_div2->setText(tr("Timescale / 2"));
 
-  page_mult2->setTitle(tr("Timescale x 2"));
-  page_user_defined->setTitle(tr("user defined"));
+  page_mult2->setText(tr("Timescale x 2"));
+  page_user_defined->setText(tr("user defined"));
 
-  page_whole_rec->setTitle(tr("whole recording"));
+  page_whole_rec->setText(tr("whole recording"));
   
   amplitudemenu->setTitle("&"+tr("Amplitude"));
-  fit_to_pane->setTitle(tr("Fit to pane"));
-  fit_to_dc->setTitle(tr("Adjust offset"));
+  fit_to_pane->setText(tr("Fit to pane"));
+  fit_to_dc->setText(tr("Adjust offset"));
 
-  amp_plus->setTitle(tr("Amplitude x 2"));
-  amp_minus->setTitle(tr("Amplitude / 2"));
+  amp_plus->setText(tr("Amplitude x 2"));
+  amp_minus->setText(tr("Amplitude / 2"));
 
   filtermenu->setTitle("&"+tr("Filter"));
-  filter_new_act->setTitle(tr("New"));
-  filter_Adjust_act->setTitle(tr("Adjust"));
-  filter_remove_all_act->setTitle(tr("Remove all"));
-  filter_Powerline_act->setTitle(tr("Powerline interference removal for ECG"));
-  filter_remove_all_Powerline_act->setTitle(tr("Remove all Powerline interference filters"));
-  filter_customize_fir_act->setTitle(tr("Customizable FIR filter"));
-  filter_remove_all_fir_act->setTitle(tr("Remove all FIR filters"));
-  filter_spike_act ->setTitle(tr("Spike"));
-  filter_remove_all_spike_act->setTitle(tr("Remove all spike filters"));
+  filter_new_act->setText(tr("New"));
+  filter_Adjust_act->setText(tr("Adjust"));
+  filter_remove_all_act->setText(tr("Remove all"));
+  filter_Powerline_act->setText(tr("Powerline interference removal for ECG"));
+  filter_remove_all_Powerline_act->setText(tr("Remove all Powerline interference filters"));
+  filter_customize_fir_act->setText(tr("Customizable FIR filter"));
+  filter_remove_all_fir_act->setText(tr("Remove all FIR filters"));
+  filter_spike_act ->setText(tr("Spike"));
+  filter_remove_all_spike_act->setText(tr("Remove all spike filters"));
 
   toolsmenu->setTitle(tr("Tools"));
-  tools_mit_to_edf_act->setTitle(tr("Convert MIT (PhysioBank) to EDF+"));
-  tools_mit_to_csv_act->setTitle(tr("Convert MIT (PhysioBank) to CSV"));
-  tools_option_act->setTitle(tr("Options"));
+  tools_mit_to_edf_act->setText(tr("Convert MIT (PhysioBank) to EDF+"));
+  tools_mit_to_csv_act->setText(tr("Convert MIT (PhysioBank) to CSV"));
+  tools_option_act->setText(tr("Options"));
 }
