@@ -276,7 +276,7 @@ UI_Mainwindow::UI_Mainwindow()
 
   menubar = menuBar();
 
-  language_en();
+
 
   recent_filesmenu = new QMenu(this);
   recent_filesmenu->setTitle(tr("Recent files"));
@@ -296,15 +296,28 @@ UI_Mainwindow::UI_Mainwindow()
 
   printmenu = new QMenu(this);
   printmenu->setTitle(tr("Print"));
-  printmenu->addAction(tr("to Printer"),    maincurve, SLOT(print_to_printer()), QKeySequence::Print);
+  to_Printer_act = new QAction(tr("to Printer"));
+  printmenu->addAction(to_Printer_act);
+  to_Printer_act->setShortcut(QKeySequence::Print);
+  connect(to_Printer_act, SIGNAL(triggered()), maincurve, SLOT(print_to_printer()));
+
 #if QT_VERSION < 0x050000
   printmenu->addAction("to PostScript", maincurve, SLOT(print_to_postscript()));
 #endif
-  printmenu->addAction(tr("to PDF"),        maincurve, SLOT(print_to_pdf()));
+
   printmenu->addMenu(print_img_menu);
-  printmenu->addAction(tr("to EDF"),        this,      SLOT(print_to_edf()));
-  printmenu->addAction(tr("to BDF"),        this,      SLOT(print_to_bdf()));
-  printmenu->addAction(tr("to CSV"),        this,      SLOT(print_to_csv()));
+
+  to_EDF_act = new QAction(tr("to EDF"));
+  printmenu->addAction(to_EDF_act);
+  connect(to_EDF_act, SIGNAL(triggered()), this, SLOT(print_to_edf()));
+
+  to_BDF_act = new QAction(tr("to BDF"));
+  printmenu->addAction(to_BDF_act);
+  connect(to_BDF_act, SIGNAL(triggered()), this, SLOT(print_to_bdf()));
+
+  to_CSV_act = new QAction(tr("to CSV"));
+  printmenu->addAction(to_CSV_act);
+  connect(to_CSV_act, SIGNAL(triggered()), this, SLOT(print_to_csv()));
 
   save_act = new QAction(tr("Save as"), this);
   save_act->setShortcut(QKeySequence::Save);
@@ -318,28 +331,46 @@ UI_Mainwindow::UI_Mainwindow()
   filemenu = new QMenu(this);
 
 
-
   filemenu->setTitle("&"+tr("File"));
-  //filemenu->addAction("Open",         this, SLOT(open_new_file()), QKeySequence::Open);
-  filemenu->addAction(tr("Open WFDB"),         this, SLOT(open_wfdb_file()), QKeySequence::Open);
+
+  Open_WFDB_act = new QAction(tr("Open WFDB"));
+  filemenu->addAction(Open_WFDB_act);
+  Open_WFDB_act->setShortcut(QKeySequence::Open);
+  connect(Open_WFDB_act, SIGNAL(triggered()), this, SLOT(open_wfdb_file()));
+
   filemenu->addSeparator();
   filemenu->addAction(save_act);
   filemenu->addMenu(recent_filesmenu);
   filemenu->addMenu(printmenu);
+  exit_act = new QAction(tr("Exit"));
+  filemenu->addAction(exit_act);
+  exit_act->setShortcut( QKeySequence::Quit);
+  connect(exit_act, SIGNAL(triggered()), this, SLOT(exit_program()));
 
-  filemenu->addAction(tr("Exit"),         this, SLOT(exit_program()), QKeySequence::Quit);
   menubar->addMenu(filemenu);
 
   signalmenu = new QMenu(this);
   signalmenu->setTitle("&" + tr("Signals"));
-  signalmenu->addAction(tr("Properties"), this, SLOT(signalproperties_dialog()));
-  signalmenu->addAction(tr("Add"),        this, SLOT(add_signals_dialog()));
-  signalmenu->addAction(tr("Organize"),   this, SLOT(organize_signals()));
-  signalmenu->addAction(tr("Remove all"), this, SLOT(remove_all_signals()));
+  signal_Properties_act = new QAction(tr("Properties"));
+  signalmenu->addAction(signal_Properties_act);
+  connect(signal_Properties_act, SIGNAL(triggered()), this, SLOT(signalproperties_dialog()));
+
+  signal_add_act = new QAction(tr("Add"));
+  signalmenu->addAction(signal_add_act);
+  connect(signal_add_act, SIGNAL(triggered()), this, SLOT(add_signals_dialog()));
+
+  signal_organize_act = new QAction(tr("Organize"));
+  signalmenu->addAction(signal_organize_act);
+  connect(signal_organize_act, SIGNAL(triggered()), this, SLOT(organize_signals()));
+
+  signal_remove_all_act = new QAction(tr("Remove all"));
+  signalmenu->addAction(signal_remove_all_act);
+  connect(signal_remove_all_act, SIGNAL(triggered()), this, SLOT(remove_all_signals()));
+
   menubar->addMenu(signalmenu);
 
   displaymenu = new QMenu(this);
-  displaymenu->setTitle("&Timescale");
+  displaymenu->setTitle(tr("Timescale"));
 
   displaymenu->addAction(tr("3 cm/sec"),  this, SLOT(page_3cmsec()));
   displaymenu->addAction(tr("25 mm/sec"), this, SLOT(page_25mmsec()));
@@ -623,18 +654,49 @@ UI_Mainwindow::UI_Mainwindow()
 
   filtermenu = new QMenu(this);
   filtermenu->setTitle("&"+tr("Filter"));
-  filtermenu->addAction(tr("New"), this, SLOT(add_new_filter()));
-  filtermenu->addAction(tr("Adjust"), this, SLOT(filterproperties_dialog()));
-  filtermenu->addAction(tr("Remove all"), this, SLOT(remove_all_filters()));
+
+  filter_new_act = new QAction(tr("New"));
+
+  filtermenu->addAction(filter_new_act);
+  connect(filter_new_act, SIGNAL(triggered(QAction *)), this, SLOT(add_new_filter(QAction *)));
+
+  filter_Adjust_act = new QAction(tr("Adjust"));
+  filtermenu->addAction(filter_Adjust_act);
+  connect(filter_Adjust_act, SIGNAL(triggered(QAction *)), this, SLOT(filterproperties_dialog(QAction *)));
+
+  filter_remove_all_act = new QAction(tr("Remove all"));
+  filtermenu->addAction(filter_remove_all_act);
+  connect(filter_remove_all_act, SIGNAL(triggered(QAction *)), this, SLOT(remove_all_filters(QAction *)));
+
   filtermenu->addSeparator();
-  filtermenu->addAction(tr("Powerline interference removal for ECG"), this, SLOT(add_plif_ecg_filter()));
-  filtermenu->addAction(tr("Remove all Powerline interference filters"), this, SLOT(remove_all_plif_ecg_filters()));
+  filter_Powerline_act = new QAction(tr("Powerline interference removal for ECG"));
+  filtermenu->addAction(filter_Powerline_act);
+  connect(filter_Powerline_act, SIGNAL(triggered(QAction *)), this, SLOT(add_plif_ecg_filter(QAction *)));
+
+  filter_remove_all_Powerline_act = new QAction(tr("Remove all Powerline interference filters"));
+  filtermenu->addAction(filter_remove_all_Powerline_act);
+  connect(filter_remove_all_Powerline_act, SIGNAL(triggered(QAction *)), this, SLOT(remove_all_plif_ecg_filters(QAction *)));
+
   filtermenu->addSeparator();
-  filtermenu->addAction(tr("Customizable FIR filter"), this, SLOT(add_fir_filter()));
-  filtermenu->addAction(tr("Remove all FIR filters"), this, SLOT(remove_all_fir_filters()));
+
+  filter_customize_fir_act = new QAction(tr("Customizable FIR filter"));
+  filtermenu->addAction(filter_customize_fir_act);
+  connect(filter_customize_fir_act, SIGNAL(triggered(QAction *)), this, SLOT(add_fir_filter(QAction *)));
+
+  filter_remove_all_fir_act = new QAction(tr("Remove all FIR filters"));
+  filtermenu->addAction(filter_remove_all_fir_act);
+  connect(filter_remove_all_fir_act, SIGNAL(triggered(QAction *)), this, SLOT(remove_all_fir_filters(QAction *)));
+
   filtermenu->addSeparator();
-  filtermenu->addAction(tr("Spike"), this, SLOT(add_spike_filter()));
-  filtermenu->addAction(tr("Remove all spike filters"), this, SLOT(remove_all_spike_filters()));
+
+  filter_spike_act = new QAction(tr("Spike"));
+  filtermenu->addAction(filter_spike_act);
+  connect(filter_spike_act, SIGNAL(triggered(QAction *)), this, SLOT(add_spike_filter(QAction *)));
+
+  filter_remove_all_spike_act = new QAction(tr("Remove all spike filters"));
+  filtermenu->addAction(filter_remove_all_spike_act);
+  connect(filter_remove_all_spike_act, SIGNAL(triggered(QAction *)), this, SLOT(remove_all_spike_filters(QAction *)));
+  
   menubar->addMenu(filtermenu);
 
 //   math_func_menu = new QMenu(this);
@@ -712,8 +774,14 @@ UI_Mainwindow::UI_Mainwindow()
   toolsmenu->addAction("Convert ASCII (CSV) to EDF/BDF", this, SLOT(convert_ascii_to_edf()));
   toolsmenu->addAction("Convert Manscan to EDF+", this, SLOT(convert_manscan_to_edf()));
   toolsmenu->addAction("Convert SCP ECG to EDF+", this, SLOT(convert_scpecg_to_edf()));//*/
-  toolsmenu->addAction(tr("Convert MIT (PhysioBank) to EDF+"), this, SLOT(convert_mit_to_edf()));
-  toolsmenu->addAction(tr("Convert MIT (PhysioBank) to CSV"), this, SLOT(export2_to_ascii()));
+  tools_mit_to_edf_act = new QAction(tr("Convert MIT (PhysioBank) to EDF+"));
+  toolsmenu->addAction(tools_mit_to_edf_act);
+  connect(tools_mit_to_edf_act, SIGNAL(triggered(QAction *)), this, SLOT(convert_mit_to_edf(QAction *)));
+  
+  tools_mit_to_csv_act = new QAction(tr("Convert MIT (PhysioBank) to CSV"));
+  toolsmenu->addAction(tools_mit_to_csv_act);
+  connect(tools_mit_to_csv_act, SIGNAL(triggered(QAction *)), this, SLOT(export2_to_ascii(QAction *)));
+
 
   /*toolsmenu->addAction("Convert Finometer to EDF", this, SLOT(convert_fino_to_edf()));
   toolsmenu->addAction("Convert Nexfin to EDF", this, SLOT(convert_nexfin_to_edf()));
@@ -729,7 +797,10 @@ UI_Mainwindow::UI_Mainwindow()
   toolsmenu->addAction("Convert Mortara ECG XML to EDF", this, SLOT(convert_mortara_to_edf()));
   toolsmenu->addAction("Convert Binary/raw data to EDF", this, SLOT(convert_binary_to_edf()));//*/
   toolsmenu->addSeparator();
-  toolsmenu->addAction("Options", this, SLOT(show_options_dialog()));
+
+  tools_option_act = new QAction(tr("Options"));
+  toolsmenu->addAction(tools_option_act);
+  connect(tools_option_act, SIGNAL(triggered(QAction *)), this, SLOT(show_options_dialog(QAction *)));
   menubar->addMenu(toolsmenu);
 
   settingsmenu = new QMenu(this);
@@ -1139,5 +1210,60 @@ UI_Mainwindow::UI_Mainwindow()
   {
     update_checker = new Check_for_updates;
   }
+  loadLanguage();
 }
 
+void UI_Mainwindow::updateText(){
+  recent_filesmenu->setTitle(tr("Recent files"));
+  close_filemenu->setTitle(tr("Close"));
+  print_img_menu->setTitle(tr("to Image"));
+  printmenu->setTitle(tr("Print"));
+  to_Printer_act->setTitle(tr("to Printer"));
+
+  to_EDF_act->setTitle(tr("to EDF"));
+  to_BDF_act->setTitle(tr("to BDF"));
+  to_CSV_act->setTitle(tr("to CSV"));
+  save_act->setTitle(tr("Save as"));
+  
+  filemenu->setTitle("&"+tr("File"));
+
+  Open_WFDB_act->setTitle(tr("Open WFDB"));
+  
+  exit_act->setTitle(tr("Exit"));
+  
+  signalmenu->setTitle("&" + tr("Signals"));
+  signal_Properties_act->setTitle(tr("Properties"));
+  signal_add_act->setTitle(tr("Add"));
+  signal_organize_act->setTitle(tr("Organize"));
+  signal_remove_all_act->setTitle(tr("Remove all"));
+  displaymenu->setTitle(tr("Timescale"));
+  page_div2->setTitle(tr("Timescale / 2"));
+
+  page_mult2->setTitle(tr("Timescale x 2"));
+  page_user_defined->setTitle(tr("user defined"));
+
+  page_whole_rec->setTitle(tr("whole recording"));
+  
+  amplitudemenu->setTitle("&"+tr("Amplitude"));
+  fit_to_pane->setTitle(tr("Fit to pane"));
+  fit_to_dc->setTitle(tr("Adjust offset"));
+
+  amp_plus->setTitle(tr("Amplitude x 2"));
+  amp_minus->setTitle(tr("Amplitude / 2"));
+
+  filtermenu->setTitle("&"+tr("Filter"));
+  filter_new_act->setTitle(tr("New"));
+  filter_Adjust_act->setTitle(tr("Adjust"));
+  filter_remove_all_act->setTitle(tr("Remove all"));
+  filter_Powerline_act->setTitle(tr("Powerline interference removal for ECG"));
+  filter_remove_all_Powerline_act->setTitle(tr("Remove all Powerline interference filters"));
+  filter_customize_fir_act->setTitle(tr("Customizable FIR filter"));
+  filter_remove_all_fir_act->setTitle(tr("Remove all FIR filters"));
+  filter_spike_act ->setTitle(tr("Spike"));
+  filter_remove_all_spike_act->setTitle(tr("Remove all spike filters"));
+
+  toolsmenu->setTitle(tr("Tools"));
+  tools_mit_to_edf_act->setTitle(tr("Convert MIT (PhysioBank) to EDF+"));
+  tools_mit_to_csv_act->setTitle(tr("Convert MIT (PhysioBank) to CSV"));
+  tools_option_act->setTitle(tr("Options"));
+}

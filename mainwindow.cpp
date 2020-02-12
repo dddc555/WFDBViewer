@@ -3621,55 +3621,58 @@ void UI_Mainwindow::show_help()
 #endif
 }
 
+
+
+void UI_Mainwindow::loadLanguage()
+{
+    QString path = QApplication::applicationDirPath();
+    path.append("/languages/");
+    QFile *file =new QFile(path + "translation_default.qm");
+    if(!file->exists()){
+        file =new QFile(path + "translation_en.qm");
+        if(file->exists()){
+            file->copy("translation_default.qm");
+        }
+    }
+    if(m_translator.load(path + "translation_default.qm")) //Here Path and Filename has to be entered because the system didn't find the QM Files else
+    {
+        qDebug()<<"Successfull";
+        qApp->installTranslator(&m_translator);
+        qDebug()<<(tr("Open WFDB"));
+        updateText();
+    }
+}
+
 void UI_Mainwindow::language_en()
 {
-//    mainwindow_language = index;
     qApp->removeTranslator(&m_translator);
 
     // load the new translator
     QString path = QApplication::applicationDirPath();
     path.append("/languages/");
+
     QFile *file =new QFile(path + "translation_en.qm");
     if(file->exists()){
-        qDebug()<<"File Exist";
-    }else{
-        qDebug()<<"File no Exist";
+        file->copy("translation_default.qm");
     }
-    if(m_translator.load(path + "translation_en.qm")) //Here Path and Filename has to be entered because the system didn't find the QM Files else
-    {
-        qDebug()<<"Successfull";
-        qApp->installTranslator(&m_translator);
-        qDebug()<<(tr("Open WFDB"));
-
-    } else {
-        qDebug()<<"Error Translate";
-    }
+    loadLanguage();
 }
 
 void UI_Mainwindow::language_jp()
 {
-    //    mainwindow_language = index;
-        qApp->removeTranslator(&m_translator);
+    qApp->removeTranslator(&m_translator);
 
-        // load the new translator
-        QString path = QApplication::applicationDirPath();
-        path.append("/languages/");
-        QFile *file =new QFile(path + "translation_jp.qm");
-        if(file->exists()){
-            qDebug()<<"File Exist";
-        }else{
-            qDebug()<<"File no Exist";
-        }
-        if(m_translator.load(path + "translation_en.qm")) //Here Path and Filename has to be entered because the system didn't find the QM Files else
-        {
-            qDebug()<<"Successfull";
-            qApp->installTranslator(&m_translator);
-            qDebug()<<(tr("Open WFDB"));
-
-        } else {
-            qDebug()<<"Error Translate";
-        }
+    // load the new translator
+    QString path = QApplication::applicationDirPath();
+    path.append("/languages/");
+    QFile *file =new QFile(path + "translation_jp.qm");
+    if(file->exists()){
+        file->copy("translation_default.qm");
+    }
+    loadLanguage();
 }
+
+
 
 void UI_Mainwindow::show_kb_shortcuts()
 {

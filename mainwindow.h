@@ -322,6 +322,8 @@ public:
 
   struct signalcompblock * create_signalcomp_copy(struct signalcompblock *);
   void export_wfdb_button_clicked();
+  void loadLanguage();
+  void updateText();
 
 #ifdef Q_OS_WIN32
   QString specialFolder(int);
@@ -365,6 +367,29 @@ private:
                *montagemenu,
                *patternmenu,
                *print_img_menu;
+  QAction *to_Printer_act,
+          *to_EDF_act,
+          *to_BDF_act,
+          *to_CSV_act,
+          *Open_WFDB_act,
+          *exit_act,
+ *signal_Properties_act,
+  *signal_add_act,
+  *signal_organize_act,
+  *signal_remove_all_act,
+  *filter_new_act,
+  *filter_Adjust_act,
+  *filter_remove_all_act,
+  *filter_Powerline_act,
+  *filter_remove_all_Powerline_act,
+  *filter_customize_fir_act,
+  *filter_remove_all_fir_act,
+  *filter_spike_act;
+  *filter_remove_all_spike_act,
+  *tools_mit_to_edf_act,
+  *tools_mit_to_csv_act,
+  *tools_option_act
+  ;
 
   char path[MAX_PATH_LENGTH],
        videopath[MAX_PATH_LENGTH],
