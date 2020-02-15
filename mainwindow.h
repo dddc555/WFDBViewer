@@ -29,6 +29,8 @@
 #ifndef UI_VIEW_MAINFORM_H
 #define UI_VIEW_MAINFORM_H
 
+
+
 #include <QtGlobal>
 #include <QApplication>
 #include <QEventLoop>
@@ -388,7 +390,9 @@ private:
   *filter_remove_all_spike_act,
   *tools_mit_to_edf_act,
   *tools_mit_to_csv_act,
-  *tools_option_act
+  *tools_option_act,
+  *language_en_act,
+  *language_jp_act
   ;
 
   char path[MAX_PATH_LENGTH],

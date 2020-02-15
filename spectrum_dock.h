@@ -116,7 +116,7 @@ void init(int);
 void clear();
 void getsettings(struct spectrumdocksettings *);
 void setsettings(struct spectrumdocksettings);
-
+void updateText();
 
 private:
 
@@ -212,22 +212,3 @@ void open_close_dock(bool);
 
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

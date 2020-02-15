@@ -166,13 +166,13 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
   log_minslider->setMinimumSize(15, 110);
 
   amplitudeLabel = new QLabel;
-  amplitudeLabel->setText("Amplitude");
+  amplitudeLabel->setText(tr("Amplitude"));
   amplitudeLabel->setMinimumSize(100, 15);
   amplitudeLabel->setAlignment(Qt::AlignHCenter);
 
   sqrtButton = new QCheckBox;
   sqrtButton->setMinimumSize(50, 20);
-  sqrtButton->setText("Amplitude");
+  sqrtButton->setText(tr("Amplitude"));
   sqrtButton->setTristate(false);
   if(mainwindow->spectrumdock_sqrt)
   {
@@ -1478,22 +1478,63 @@ UI_SpectrumDockWindow::~UI_SpectrumDockWindow()
   delete SpectrumDialog;
 }
 
+void UI_SpectrumDockWindow::updateText(){
+    char str[1024];
 
+    QLabel *label = new QLabel(" " + tr("Amplitude Spectrum"));
 
+    if(mainwindow->spectrumdock_sqrt)
+    {
+    }
+    else
+    {
+        label->setText(" " + tr("Power Spectrum"));
+    }
+    dock->setTitleBarWidget(label);
+    label->setGeometry(5, 9, label->width(), label->height());
 
+    curve1->setH_label("Hz");
+    curve1->setLowerLabel("Frequency");
+    if(mainwindow->spectrumdock_sqrt)
+    {
+      if(mainwindow->spectrumdock_vlog)
+      {
+        snprintf(str, 512, "log10(%s)", physdimension);
+        curve1->setV_label(str);
+      }
+      else
+      {
+        curve1->setV_label(physdimension);
+      }
+    }
+    else
+    {
+      if(mainwindow->spectrumdock_vlog)
+      {
+        snprintf(str, 512, "log((%s)^2/Hz)", physdimension);
+      }
+      else
+      {
+        snprintf(str, 512, "(%s)^2/Hz", physdimension);
+      }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      curve1->setV_label(str);
+    }
+    curve1->create_button("to Text");
+    amplitudeLabel->setText(tr("Amplitude"));
+    sqrtButton->setText(tr("Amplitude"));
+    vlogButton->setText(tr("Log"));
+    colorBarButton->setText(tr("Colorbar"));
+    windowBox->setItemText(0, tr("Rectangular"));
+    windowBox->setItemText(1, tr("Hamming"));
+    windowBox->setItemText(2, tr("4-term Blackman-Harris"));
+    windowBox->setItemText(3, tr("7-term Blackman-Harris"));
+    windowBox->setItemText(4, tr("Nuttall3b"));
+    windowBox->setItemText(5, tr("Nuttall4c"));
+    windowBox->setItemText(6, tr("Hann"));
+    windowBox->setItemText(7, tr("HFT223D"));
+    windowBox->setToolTip(tr("Window"));
+    dftsz_label->setText(tr("Blocksize:"));
+    spanLabel->setText(tr("Span"));
+    centerLabel->setText(tr("Center"));
+}

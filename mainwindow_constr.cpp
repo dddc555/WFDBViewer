@@ -368,7 +368,7 @@ UI_Mainwindow::UI_Mainwindow()
   signalmenu->addAction(signal_remove_all_act);
   connect(signal_remove_all_act, SIGNAL(triggered()), this, SLOT(remove_all_signals()));
 
-  menubar->addMenu(signalmenu);
+//  menubar->addMenu(signalmenu);
 
   displaymenu = new QMenu(this);
   displaymenu->setTitle(tr("Timescale"));
@@ -868,8 +868,15 @@ UI_Mainwindow::UI_Mainwindow()
 //  menubar->addMenu(helpmenu);
   languagemenu =  new QMenu(this);
   languagemenu ->setTitle("&"+tr("Language"));
-  languagemenu ->addAction(tr("English"), this, SLOT(language_en()));
-  languagemenu ->addAction(tr("Japanese"), this, SLOT(language_jp()));
+
+  language_en_act = new QAction(tr("English"));
+  languagemenu ->addAction(language_en_act);
+  connect(language_en_act, SIGNAL(triggered()), this, SLOT(language_en()));
+
+  language_jp_act = new QAction(tr("Japanese"));
+  languagemenu ->addAction(language_jp_act);
+  connect(language_jp_act, SIGNAL(triggered()), this, SLOT(language_jp()));
+
   menubar->addMenu(languagemenu);
   navtoolbarGroupWidget = new QWidget(maincurve);
   int wid = 600;
@@ -1232,12 +1239,7 @@ void UI_Mainwindow::updateText(){
   Open_WFDB_act->setText(tr("Open WFDB"));
   
   exit_act->setText(tr("Exit"));
-  
-  signalmenu->setTitle("&" + tr("Signals"));
-  signal_Properties_act->setText(tr("Properties"));
-  signal_add_act->setText(tr("Add"));
-  signal_organize_act->setText(tr("Organize"));
-  signal_remove_all_act->setText(tr("Remove all"));
+
   displaymenu->setTitle(tr("Timescale"));
   page_div2->setText(tr("Timescale / 2"));
 
@@ -1268,4 +1270,16 @@ void UI_Mainwindow::updateText(){
   tools_mit_to_edf_act->setText(tr("Convert MIT (PhysioBank) to EDF+"));
   tools_mit_to_csv_act->setText(tr("Convert MIT (PhysioBank) to CSV"));
   tools_option_act->setText(tr("Options"));
+
+  language_en_act->setText(tr("English"));
+  language_jp_act->setText(tr("Japanese"));
+  languagemenu->setTitle(tr("Language"));
+
+  int i = 0;
+  for(i=0; i<MAXSPECTRUMDOCKS; i++)
+  {
+    if(spectrumdock[i] != NULL && spectrumdock[i]->dock->isHidden())  break;
+  }
+
+  if(spectrumdock[i] != NULL) spectrumdock[i]->updateText();
 }

@@ -1243,6 +1243,18 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
         <source>Center</source>
         <translation type="unfinished">Center</translation>
     </message>
+    <message>
+        <source>Amplitude</source>
+        <translation type="unfinished">Amplitude</translation>
+    </message>
+    <message>
+        <source>Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blocksize:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_SpikeFilterDialog</name>

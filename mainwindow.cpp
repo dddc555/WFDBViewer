@@ -30,6 +30,7 @@
 #include "third_party/rdsamp.h"
 #include "mit2csv.h"
 
+#define PLAY_CONTROL_WIDTH 600
 
 static char annotdescrlist[42][48]=
   {"not-QRS","normal beat",
@@ -1490,14 +1491,13 @@ void UI_Mainwindow::_open_wfdb(char *wfdb_path){
             record_recent(mit2edf.selectedWFDBHeaderFilePath);
             strcpy(selectedWFDBHeaderFilePath, mit2edf.selectedWFDBHeaderFilePath);
             open(mit2edf.convertedEdfFilePath, true, false);
-            //maincurve->exec_sidemenu(0);
             int i = 0;
             for(i=0; i<MAXSPECTRUMDOCKS; i++)
             {
               if(spectrumdock[i]->dock->isHidden())  break;
             }
             spectrumdock[i]->init(0);
-//            annotation_editor();
+            navtoolbarGroupWidget->setGeometry((maincurve->width() - PLAY_CONTROL_WIDTH) / 2, 0, PLAY_CONTROL_WIDTH, 60);
         }
     }
 }
@@ -1510,7 +1510,7 @@ void UI_Mainwindow::open_wfdb_file()
 void UI_Mainwindow::open(char *filePath, bool openDirect, bool storeRecent) {
     FILE *newfile;
 
-    int i, len, present, position, button_nr=0;
+    int i, len, present, button_nr=0;
 
     char str[2048];
 
@@ -1519,17 +1519,6 @@ void UI_Mainwindow::open(char *filePath, bool openDirect, bool storeRecent) {
     struct edfhdrblock *edfhdr=NULL;
 
     if(edflib_version() != 115)  return;
-
-//    if(annot_editor_active && files_open)
-//    {
-//      QMessageBox messagewindow(QMessageBox::Critical, "Error", "You can not open multiple files when editing annotations.\n"
-//                                                                "Close the annotation edit window first.");
-//      messagewindow.exec();
-
-//      cmdlineargument = 0;
-
-//      return;
-//    }
 
     if((files_open > 0) && (live_stream_active))
     {
@@ -4018,10 +4007,8 @@ struct signalcompblock * UI_Mainwindow::create_signalcomp_copy(struct signalcomp
 
 void UI_Mainwindow::resizeEvent(QResizeEvent* event){
    QMainWindow::resizeEvent(event);
-   int wid = 600;
-   navtoolbarGroupWidget->setGeometry((width() - wid) / 2, 0, wid, 60);
+   navtoolbarGroupWidget->setGeometry((maincurve->width() - PLAY_CONTROL_WIDTH) / 2, 0, PLAY_CONTROL_WIDTH, 60);
 }
-
 
 void UI_Mainwindow::export_wfdb_button_clicked()
 {

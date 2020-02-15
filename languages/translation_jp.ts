@@ -13,55 +13,55 @@
     </message>
     <message>
         <source>Save as</source>
-        <translation type="vanished">名前を付けて保存</translation>
+        <translation type="vanished">として保存</translation>
     </message>
     <message>
         <source>to Image</source>
-        <translation type="vanished">to Image</translation>
+        <translation type="vanished">画像へ</translation>
     </message>
     <message>
         <source>Recent files</source>
-        <translation type="vanished">Recent files</translation>
+        <translation type="vanished">最近使用したファイル</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="vanished">Close</translation>
+        <translation type="vanished">閉じる</translation>
     </message>
     <message>
         <source>Print</source>
-        <translation type="vanished">Print</translation>
+        <translation type="vanished">印刷する</translation>
     </message>
     <message>
         <source>to Printer</source>
-        <translation type="vanished">to Printer</translation>
+        <translation type="vanished">プリンターへ</translation>
     </message>
     <message>
         <source>to PDF</source>
-        <translation type="vanished">to PDF</translation>
+        <translation type="vanished">PDFへ</translation>
     </message>
     <message>
         <source>to EDF</source>
-        <translation type="vanished">to EDF</translation>
+        <translation type="vanished">EDFへ</translation>
     </message>
     <message>
         <source>to BDF</source>
-        <translation type="vanished">to BDF</translation>
+        <translation type="vanished">BDFへ</translation>
     </message>
     <message>
         <source>to CSV</source>
-        <translation type="vanished">to CSV</translation>
+        <translation type="vanished">CSVへ</translation>
     </message>
     <message>
         <source>Signals</source>
-        <translation type="vanished">Signals</translation>
+        <translation type="vanished">信号</translation>
     </message>
     <message>
         <source>Properties</source>
-        <translation type="vanished">Properties</translation>
+        <translation type="vanished">プロパティ</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="vanished">Add</translation>
+        <translation type="vanished">追加</translation>
     </message>
     <message>
         <source>Organize</source>
@@ -69,283 +69,163 @@
     </message>
     <message>
         <source>Remove all</source>
-        <translation type="vanished">Remove all</translation>
+        <translation type="vanished">整理する</translation>
     </message>
     <message>
         <source>Timescale</source>
-        <translation type="vanished">Timescale</translation>
-    </message>
-    <message>
-        <source>3 cm/sec</source>
-        <translation type="vanished">3 cm/sec</translation>
-    </message>
-    <message>
-        <source>25 mm/sec</source>
-        <translation type="vanished">25 mm/sec</translation>
-    </message>
-    <message>
-        <source>50 mm/sec</source>
-        <translation type="vanished">50 mm/sec</translation>
-    </message>
-    <message>
-        <source>10 uSec/page</source>
-        <translation type="vanished">10 uSec/page</translation>
-    </message>
-    <message>
-        <source>20 uSec/page</source>
-        <translation type="vanished">20 uSec/page</translation>
-    </message>
-    <message>
-        <source>50 uSec/page</source>
-        <translation type="vanished">50 uSec/page</translation>
-    </message>
-    <message>
-        <source>100 uSec/page</source>
-        <translation type="vanished">100 uSec/page</translation>
-    </message>
-    <message>
-        <source>200 uSec/page</source>
-        <translation type="vanished">200 uSec/page</translation>
-    </message>
-    <message>
-        <source>500 uSec/page</source>
-        <translation type="vanished">500 uSec/page</translation>
-    </message>
-    <message>
-        <source>1 mSec/page</source>
-        <translation type="vanished">1 mSec/page</translation>
-    </message>
-    <message>
-        <source>2 mSec/page</source>
-        <translation type="vanished">2 mSec/page</translation>
-    </message>
-    <message>
-        <source>5 mSec/page</source>
-        <translation type="vanished">5 mSec/page</translation>
-    </message>
-    <message>
-        <source>10 mSec/page</source>
-        <translation type="vanished">10 mSec/page</translation>
-    </message>
-    <message>
-        <source>20 mSec/page</source>
-        <translation type="vanished">20 mSec/page</translation>
-    </message>
-    <message>
-        <source>50 mSec/page</source>
-        <translation type="vanished">50 mSec/page</translation>
-    </message>
-    <message>
-        <source>100 mSec/page</source>
-        <translation type="vanished">100 mSec/page</translation>
-    </message>
-    <message>
-        <source>200 mSec/page</source>
-        <translation type="vanished">200 mSec/page</translation>
-    </message>
-    <message>
-        <source>500 mSec/page</source>
-        <translation type="vanished">500 mSec/page</translation>
-    </message>
-    <message>
-        <source>1 Sec/page</source>
-        <translation type="vanished">1 Sec/page</translation>
-    </message>
-    <message>
-        <source>2 Sec/page</source>
-        <translation type="vanished">2 Sec/page</translation>
-    </message>
-    <message>
-        <source>5 Sec/page</source>
-        <translation type="vanished">5 Sec/page</translation>
-    </message>
-    <message>
-        <source>10 Sec/page</source>
-        <translation type="vanished">10 Sec/page</translation>
-    </message>
-    <message>
-        <source>15 Sec/page</source>
-        <translation type="vanished">15 Sec/page</translation>
-    </message>
-    <message>
-        <source>20 Sec/page</source>
-        <translation type="vanished">20 Sec/page</translation>
-    </message>
-    <message>
-        <source>30 Sec/page</source>
-        <translation type="vanished">30 Sec/page</translation>
-    </message>
-    <message>
-        <source>60 Sec/page</source>
-        <translation type="vanished">60 Sec/page</translation>
-    </message>
-    <message>
-        <source>5 min/page</source>
-        <translation type="vanished">5 min/page</translation>
-    </message>
-    <message>
-        <source>20 min/page</source>
-        <translation type="vanished">20 min/page</translation>
-    </message>
-    <message>
-        <source>1 hour/page</source>
-        <translation type="vanished">1 hour/page</translation>
+        <translation type="vanished">タイムスケール</translation>
     </message>
     <message>
         <source>Timescale / 2</source>
-        <translation type="vanished">Timescale / 2</translation>
+        <translation type="vanished">タイムスケール/ 2</translation>
     </message>
     <message>
         <source>Timescale x 2</source>
-        <translation type="vanished">Timescale x 2</translation>
+        <translation type="vanished">タイムスケールx 2</translation>
     </message>
     <message>
         <source>user defined</source>
-        <translation type="vanished">user defined</translation>
+        <translation type="vanished">ユーザー定義の</translation>
     </message>
     <message>
         <source>whole recording</source>
-        <translation type="vanished">whole recording</translation>
+        <translation type="vanished">全記録</translation>
     </message>
     <message>
         <source>Amplitude</source>
-        <translation type="vanished">Amplitude</translation>
+        <translation type="vanished">振幅</translation>
     </message>
     <message>
         <source>Fit to pane</source>
-        <translation type="vanished">Fit to pane</translation>
+        <translation type="vanished">ペインに合わせる</translation>
     </message>
     <message>
         <source>Adjust offset</source>
-        <translation type="vanished">Adjust offset</translation>
-    </message>
-    <message>
-        <source>Offset -&gt; 0</source>
-        <translation type="vanished">Offset -&gt; 0</translation>
+        <translation type="vanished">オフセットを調整</translation>
     </message>
     <message>
         <source>Amplitude x 2</source>
-        <translation type="vanished">Amplitude x 2</translation>
+        <translation type="vanished">振幅 x 2</translation>
     </message>
     <message>
         <source>Amplitude / 2</source>
-        <translation type="vanished">Amplitude / 2</translation>
+        <translation type="vanished">振幅 / 2</translation>
     </message>
     <message>
         <source>Filter</source>
-        <translation type="vanished">Filter</translation>
+        <translation type="vanished">フィルタ</translation>
     </message>
     <message>
         <source>New</source>
-        <translation type="vanished">New</translation>
+        <translation type="vanished">新着</translation>
     </message>
     <message>
         <source>Adjust</source>
-        <translation type="vanished">Adjust</translation>
+        <translation type="vanished">調整する</translation>
     </message>
     <message>
         <source>Powerline interference removal for ECG</source>
-        <translation type="vanished">Powerline interference removal for ECG</translation>
+        <translation type="vanished">ECGの電力線干渉除去</translation>
     </message>
     <message>
         <source>Remove all Powerline interference filters</source>
-        <translation type="vanished">Remove all Powerline interference filters</translation>
+        <translation type="vanished">すべての電力線干渉フィルターを取り外します</translation>
     </message>
     <message>
         <source>Customizable FIR filter</source>
-        <translation type="vanished">Customizable FIR filter</translation>
+        <translation type="vanished">カスタマイズ可能なFIRフィルター</translation>
     </message>
     <message>
         <source>Remove all FIR filters</source>
-        <translation type="vanished">Remove all FIR filters</translation>
+        <translation type="vanished">すべてのFIRフィルターを削除する</translation>
     </message>
     <message>
         <source>Spike</source>
-        <translation type="vanished">Spike</translation>
+        <translation type="vanished">スパイク</translation>
     </message>
     <message>
         <source>Remove all spike filters</source>
-        <translation type="vanished">Remove all spike filters</translation>
+        <translation type="vanished">すべてのスパイクフィルターを削除する</translation>
     </message>
     <message>
         <source>Tools</source>
-        <translation type="vanished">Tools</translation>
+        <translation type="vanished">道具</translation>
     </message>
     <message>
         <source>Convert MIT (PhysioBank) to EDF+</source>
-        <translation type="vanished">Convert MIT (PhysioBank) to EDF+</translation>
+        <translation type="vanished">MIT（PhysioBank）をEDF +に変換する</translation>
     </message>
     <message>
         <source>Convert MIT (PhysioBank) to CSV</source>
-        <translation type="vanished">Convert MIT (PhysioBank) to CSV</translation>
+        <translation type="vanished">MIT（PhysioBank）をCSVに変換する</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation type="vanished">Language</translation>
+        <translation type="vanished">言語</translation>
     </message>
     <message>
         <source>English</source>
-        <translation type="vanished">English</translation>
+        <translation type="vanished">英語</translation>
     </message>
     <message>
         <source>Japanese</source>
-        <translation type="vanished">Japanese</translation>
+        <translation type="vanished">日本語</translation>
     </message>
     <message>
         <source>Organize signals</source>
-        <translation type="vanished">Organize signals</translation>
+        <translation type="vanished">信号を整理する</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">Up</translation>
+        <translation type="vanished">アップ</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">Down</translation>
+        <translation type="vanished">ダウン</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="vanished">Invert</translation>
+        <translation type="vanished">反転</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="vanished">Remove</translation>
+        <translation type="vanished">削除する</translation>
     </message>
     <message>
         <source>Set timescale</source>
-        <translation type="vanished">Set timescale</translation>
+        <translation type="vanished">タイムスケールを設定する</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="vanished">Cancel</translation>
+        <translation type="vanished">キャンセル</translation>
     </message>
     <message>
         <source>Add a filter</source>
-        <translation type="vanished">Add a filter</translation>
+        <translation type="vanished">フィルターを追加する</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="vanished">Type</translation>
+        <translation type="vanished">タイプ</translation>
     </message>
     <message>
         <source>Frequency</source>
-        <translation type="vanished">Frequency</translation>
+        <translation type="vanished">周波数</translation>
     </message>
     <message>
         <source>Frequency 2</source>
-        <translation type="vanished">Frequency 2</translation>
+        <translation type="vanished">周波数 2</translation>
     </message>
     <message>
         <source>Order</source>
-        <translation type="vanished">Order</translation>
+        <translation type="vanished">注文</translation>
     </message>
     <message>
         <source>Model</source>
-        <translation type="vanished">Model</translation>
+        <translation type="vanished">モデル</translation>
     </message>
     <message>
         <source>Slope roll-off:</source>
-        <translation type="vanished">Slope roll-off:</translation>
+        <translation type="vanished">傾斜ロールオフ：</translation>
     </message>
     <message>
         <source>6 dB / octave</source>
@@ -353,7 +233,7 @@
     </message>
     <message>
         <source>Highpass</source>
-        <translation type="vanished">Highpass</translation>
+        <translation type="vanished">ハイパス</translation>
     </message>
     <message>
         <source>Lowpass</source>
@@ -361,87 +241,87 @@
     </message>
     <message>
         <source>Notch</source>
-        <translation type="vanished">Notch</translation>
+        <translation type="vanished">ローパス</translation>
     </message>
     <message>
         <source>Bandpass</source>
-        <translation type="vanished">Bandpass</translation>
+        <translation type="vanished">バンドパス</translation>
     </message>
     <message>
         <source>Bandstop</source>
-        <translation type="vanished">Bandstop</translation>
+        <translation type="vanished">バンドストップ</translation>
     </message>
     <message>
         <source>Butterworth</source>
-        <translation type="vanished">Butterworth</translation>
+        <translation type="vanished">バターワース</translation>
     </message>
     <message>
         <source>Chebyshev</source>
-        <translation type="vanished">Chebyshev</translation>
+        <translation type="vanished">チェビシェフ</translation>
     </message>
     <message>
         <source>Bessel</source>
-        <translation type="vanished">Bessel</translation>
+        <translation type="vanished">ベッセル</translation>
     </message>
     <message>
         <source>Moving Average</source>
-        <translation type="vanished">Moving Average</translation>
+        <translation type="vanished">移動平均</translation>
     </message>
     <message>
         <source>Select signals:</source>
-        <translation type="vanished">Select signals:</translation>
+        <translation type="vanished">信号を選択:</translation>
     </message>
     <message>
         <source>Apply</source>
-        <translation type="vanished">Apply</translation>
+        <translation type="vanished">適用する</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="vanished">Exit</translation>
+        <translation type="vanished">出口</translation>
     </message>
     <message>
         <source>passband ripple</source>
-        <translation type="vanished">passband ripple</translation>
+        <translation type="vanished">通過帯域リップル</translation>
     </message>
     <message>
         <source>Samples</source>
-        <translation type="vanished">Samples</translation>
+        <translation type="vanished">サンプル</translation>
     </message>
     <message>
         <source>Add a spike filter</source>
-        <translation type="vanished">Add a spike filter</translation>
+        <translation type="vanished">スパイクフィルターを追加する</translation>
     </message>
     <message>
         <source>Velocity</source>
-        <translation type="vanished">Velocity</translation>
+        <translation type="vanished">速度</translation>
     </message>
     <message>
         <source>Hold-off</source>
-        <translation type="vanished">Hold-off</translation>
+        <translation type="vanished">ホールドオフ</translation>
     </message>
     <message>
         <source> milliSec</source>
-        <translation type="vanished"> milliSec</translation>
+        <translation type="vanished"> ミリ秒</translation>
     </message>
     <message>
         <source>Add a Custom FIR filter</source>
-        <translation type="vanished">Add a Custom FIR filter</translation>
+        <translation type="vanished">カスタムFIRフィルターを追加する</translation>
     </message>
     <message>
         <source>Filter taps: 0</source>
-        <translation type="vanished">Filter taps: 0</translation>
+        <translation type="vanished">フィルタータップ: 0</translation>
     </message>
     <message>
         <source>Load values from text file</source>
-        <translation type="vanished">Load values from text file</translation>
+        <translation type="vanished">テキストファイルから値を読み込む</translation>
     </message>
     <message>
         <source>Add a powerline interference filter</source>
-        <translation type="vanished">Add a powerline interference filter</translation>
+        <translation type="vanished">電力線干渉フィルターを追加する</translation>
     </message>
     <message>
         <source>Powerline frequency</source>
-        <translation type="vanished">Powerline frequency</translation>
+        <translation type="vanished">電力線周波数</translation>
     </message>
     <message>
         <source>&quot;Only signals with a physical dimension V, mV or uV and\n&quot;
@@ -452,32 +332,36 @@
                    &quot;an integer ratio to 50 or 60 Hz will be listed here.&quot;</translation>
     </message>
     <message>
+        <source>Log</source>
+        <translation type="vanished">ログ</translation>
+    </message>
+    <message>
         <source>Amplitude Spectrum</source>
-        <translation type="vanished">Amplitude Spectrum</translation>
+        <translation type="vanished">振幅スペクトル</translation>
     </message>
     <message>
         <source>Power Spectrum</source>
-        <translation type="vanished">Power Spectrum</translation>
+        <translation type="vanished">パワースペクトル</translation>
     </message>
     <message>
         <source>Colorbar</source>
-        <translation type="vanished">Colorbar</translation>
+        <translation type="vanished">カラーバー</translation>
     </message>
     <message>
         <source>Rectangular</source>
-        <translation type="vanished">Rectangular</translation>
+        <translation type="vanished">長方形</translation>
     </message>
     <message>
         <source>Hamming</source>
-        <translation type="vanished">Hamming</translation>
+        <translation type="vanished">ハミング</translation>
     </message>
     <message>
         <source>4-term Blackman-Harris</source>
-        <translation type="vanished">4-term Blackman-Harris</translation>
+        <translation type="vanished">4期ブラックマン・ハリス</translation>
     </message>
     <message>
         <source>7-term Blackman-Harris</source>
-        <translation type="vanished">7-term Blackman-Harris</translation>
+        <translation type="vanished">7期ブラックマン・ハリス</translation>
     </message>
     <message>
         <source>Nuttall3b</source>
@@ -489,7 +373,7 @@
     </message>
     <message>
         <source>Hann</source>
-        <translation type="vanished">Hann</translation>
+        <translation type="vanished">ハン</translation>
     </message>
     <message>
         <source>HFT223D</source>
@@ -497,15 +381,15 @@
     </message>
     <message>
         <source>Blocksize</source>
-        <translation type="vanished">Blocksize</translation>
+        <translation type="vanished">ブロックサイズ</translation>
     </message>
     <message>
         <source>Span</source>
-        <translation type="vanished">Span</translation>
+        <translation type="vanished">スパン</translation>
     </message>
     <message>
         <source>Center</source>
-        <translation type="vanished">Center</translation>
+        <translation type="vanished">センター</translation>
     </message>
     <message>
         <source>ctls</source>
@@ -513,74 +397,74 @@
     </message>
     <message>
         <source>cursor</source>
-        <translation type="vanished">cursor</translation>
+        <translation type="vanished">カーソル</translation>
     </message>
     <message>
         <source>Edit</source>
-        <translation type="vanished">Edit</translation>
+        <translation type="vanished">編集</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">Export</translation>
+        <translation type="vanished">書き出す</translation>
     </message>
     <message>
         <source>WFDB Export</source>
-        <translation type="vanished">WFDB Export</translation>
+        <translation type="vanished">WFDB 書き出す</translation>
     </message>
     <message>
         <source>Set timescale from here to next annotation</source>
-        <translation type="vanished">Set timescale from here to next annotation</translation>
+        <translation type="vanished">ここから次の注釈までのタイムスケールを設定します</translation>
     </message>
     <message>
         <source>Hide</source>
-        <translation type="vanished">Hide</translation>
+        <translation type="vanished">隠す</translation>
     </message>
     <message>
         <source>Unhide</source>
-        <translation type="vanished">Unhide</translation>
+        <translation type="vanished">再表示</translation>
     </message>
     <message>
         <source>Hide similar</source>
-        <translation type="vanished">Hide similar</translation>
+        <translation type="vanished">類似を隠す</translation>
     </message>
     <message>
         <source>Unhide similar</source>
-        <translation type="vanished">Unhide similar</translation>
+        <translation type="vanished">類似を再表示</translation>
     </message>
     <message>
         <source>Average</source>
-        <translation type="vanished">Average</translation>
+        <translation type="vanished">平均</translation>
     </message>
     <message>
         <source>Hide all Nihon Kohden triggers</source>
-        <translation type="vanished">Hide all Nihon Kohden triggers</translation>
+        <translation type="vanished">日本光電のトリガーをすべて非表示にする</translation>
     </message>
     <message>
         <source>Hide all Biosemi triggers</source>
-        <translation type="vanished">Hide all Biosemi triggers</translation>
+        <translation type="vanished">すべてのBiosemiトリガーを非表示</translation>
     </message>
     <message>
         <source>Unhide all Nihon Kohden triggers</source>
-        <translation type="vanished">Unhide all Nihon Kohden triggers</translation>
+        <translation type="vanished">すべての日本光電のトリガーを再表示</translation>
     </message>
     <message>
         <source>Unhide all Biosemi triggers</source>
-        <translation type="vanished">Unhide all Biosemi triggers</translation>
+        <translation type="vanished">すべてのBiosemiトリガーを再表示</translation>
     </message>
     <message>
         <source>Filter Interval Time</source>
-        <translation type="vanished">Filter Interval Time</translation>
+        <translation type="vanished">フィルター間隔時間</translation>
     </message>
 </context>
 <context>
     <name>AdjustFilterSettings</name>
     <message>
         <source>Remove</source>
-        <translation type="unfinished">Remove</translation>
+        <translation type="unfinished">削除する</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished">Close</translation>
+        <translation type="unfinished">閉じる</translation>
     </message>
 </context>
 <context>
@@ -591,7 +475,7 @@
     </message>
     <message>
         <source>cursor</source>
-        <translation type="unfinished">cursor</translation>
+        <translation type="unfinished">カーソル</translation>
     </message>
     <message>
         <source>ctls</source>
@@ -602,14 +486,14 @@
     <name>UI_ASCII2EDFapp</name>
     <message>
         <source>Signals</source>
-        <translation type="unfinished">Signals</translation>
+        <translation type="unfinished">信号</translation>
     </message>
 </context>
 <context>
     <name>UI_Aboutwindow</name>
     <message>
         <source>Close</source>
-        <translation type="unfinished">Close</translation>
+        <translation type="unfinished">閉じる</translation>
     </message>
 </context>
 <context>
@@ -620,35 +504,35 @@
     </message>
     <message>
         <source>Edit</source>
-        <translation type="unfinished">Edit</translation>
+        <translation type="unfinished">編集</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="unfinished">Export</translation>
+        <translation type="unfinished">書き出す</translation>
     </message>
     <message>
         <source>WFDB Export</source>
-        <translation type="unfinished">WFDB Export</translation>
+        <translation type="unfinished">WFDB 書き出す</translation>
     </message>
     <message>
         <source>Set timescale from here to next annotation</source>
-        <translation type="unfinished">Set timescale from here to next annotation</translation>
+        <translation type="unfinished">ここから次の注釈までのタイムスケールを設定します</translation>
     </message>
     <message>
         <source>Hide</source>
-        <translation type="unfinished">Hide</translation>
+        <translation type="unfinished">隠す</translation>
     </message>
     <message>
         <source>Unhide</source>
-        <translation type="unfinished">Unhide</translation>
+        <translation type="unfinished">再表示</translation>
     </message>
     <message>
         <source>Hide similar</source>
-        <translation type="unfinished">Hide similar</translation>
+        <translation type="unfinished">類似を隠す</translation>
     </message>
     <message>
         <source>Unhide similar</source>
-        <translation type="unfinished">Unhide similar</translation>
+        <translation type="unfinished">類似を再表示</translation>
     </message>
     <message>
         <source>Unhide all</source>
@@ -656,38 +540,38 @@
     </message>
     <message>
         <source>Average</source>
-        <translation type="unfinished">Average</translation>
+        <translation type="unfinished">平均</translation>
     </message>
     <message>
         <source>Hide all Nihon Kohden triggers</source>
-        <translation type="unfinished">Hide all Nihon Kohden triggers</translation>
+        <translation type="unfinished">日本光電のトリガーをすべて非表示にする</translation>
     </message>
     <message>
         <source>Hide all Biosemi triggers</source>
-        <translation type="unfinished">Hide all Biosemi triggers</translation>
+        <translation type="unfinished">すべてのBiosemiトリガーを非表示</translation>
     </message>
     <message>
         <source>Unhide all Nihon Kohden triggers</source>
-        <translation type="unfinished">Unhide all Nihon Kohden triggers</translation>
+        <translation type="unfinished">すべての日本光電のトリガーを再表示</translation>
     </message>
     <message>
         <source>Unhide all Biosemi triggers</source>
-        <translation type="unfinished">Unhide all Biosemi triggers</translation>
+        <translation type="unfinished">すべてのBiosemiトリガーを再表示</translation>
     </message>
     <message>
         <source>Filter Interval Time</source>
-        <translation type="unfinished">Filter Interval Time</translation>
+        <translation type="unfinished">フィルター間隔時間</translation>
     </message>
 </context>
 <context>
     <name>UI_AverageCurveWindow</name>
     <message>
         <source>Amplitude</source>
-        <translation type="unfinished">Amplitude</translation>
+        <translation type="unfinished">振幅</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="unfinished">Invert</translation>
+        <translation type="unfinished">反転</translation>
     </message>
 </context>
 <context>
@@ -698,26 +582,26 @@
     </message>
     <message>
         <source>Signals</source>
-        <translation type="unfinished">Signals</translation>
+        <translation type="unfinished">信号</translation>
     </message>
 </context>
 <context>
     <name>UI_FIRFilterDialog</name>
     <message>
         <source>Add a Custom FIR filter</source>
-        <translation type="unfinished">Add a Custom FIR filter</translation>
+        <translation type="unfinished">カスタムFIRフィルターを追加する</translation>
     </message>
     <message>
         <source>Filter taps: 0</source>
-        <translation type="unfinished">Filter taps: 0</translation>
+        <translation type="unfinished">フィルタータップ: 0</translation>
     </message>
     <message>
         <source>Select signals:</source>
-        <translation type="unfinished">Select signals:</translation>
+        <translation type="unfinished">信号を選択:</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished">Close</translation>
+        <translation type="unfinished">閉じる</translation>
     </message>
     <message>
         <source>File</source>
@@ -725,42 +609,42 @@
     </message>
     <message>
         <source>Load values from text file</source>
-        <translation type="unfinished">Load values from text file</translation>
+        <translation type="unfinished">テキストファイルから値を読み込む</translation>
     </message>
     <message>
         <source>Apply</source>
-        <translation type="unfinished">Apply</translation>
+        <translation type="unfinished">適用する</translation>
     </message>
 </context>
 <context>
     <name>UI_FilterDialog</name>
     <message>
         <source>Add a filter</source>
-        <translation type="unfinished">Add a filter</translation>
+        <translation type="unfinished">フィルターを追加する</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished">Type</translation>
+        <translation type="unfinished">タイプ</translation>
     </message>
     <message>
         <source>Frequency</source>
-        <translation type="unfinished">Frequency</translation>
+        <translation type="unfinished">周波数</translation>
     </message>
     <message>
         <source>Frequency 2</source>
-        <translation type="unfinished">Frequency 2</translation>
+        <translation type="unfinished">周波数 2</translation>
     </message>
     <message>
         <source>Order</source>
-        <translation type="unfinished">Order</translation>
+        <translation type="unfinished">注文</translation>
     </message>
     <message>
         <source>Model</source>
-        <translation type="unfinished">Model</translation>
+        <translation type="unfinished">モデル</translation>
     </message>
     <message>
         <source>Slope roll-off:</source>
-        <translation type="unfinished">Slope roll-off:</translation>
+        <translation type="unfinished">傾斜ロールオフ：</translation>
     </message>
     <message>
         <source>6 dB / octave</source>
@@ -768,7 +652,7 @@
     </message>
     <message>
         <source>Highpass</source>
-        <translation type="unfinished">Highpass</translation>
+        <translation type="unfinished">ハイパス</translation>
     </message>
     <message>
         <source>Lowpass</source>
@@ -776,35 +660,35 @@
     </message>
     <message>
         <source>Notch</source>
-        <translation type="unfinished">Notch</translation>
+        <translation type="unfinished">ローパス</translation>
     </message>
     <message>
         <source>Bandpass</source>
-        <translation type="unfinished">Bandpass</translation>
+        <translation type="unfinished">バンドパス</translation>
     </message>
     <message>
         <source>Bandstop</source>
-        <translation type="unfinished">Bandstop</translation>
+        <translation type="unfinished">バンドストップ</translation>
     </message>
     <message>
         <source>Butterworth</source>
-        <translation type="unfinished">Butterworth</translation>
+        <translation type="unfinished">バターワース</translation>
     </message>
     <message>
         <source>Chebyshev</source>
-        <translation type="unfinished">Chebyshev</translation>
+        <translation type="unfinished">チェビシェフ</translation>
     </message>
     <message>
         <source>Bessel</source>
-        <translation type="unfinished">Bessel</translation>
+        <translation type="unfinished">ベッセル</translation>
     </message>
     <message>
         <source>Moving Average</source>
-        <translation type="unfinished">Moving Average</translation>
+        <translation type="unfinished">移動平均</translation>
     </message>
     <message>
         <source>Select signals:</source>
-        <translation type="unfinished">Select signals:</translation>
+        <translation type="unfinished">信号を選択:</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -812,78 +696,78 @@
     </message>
     <message>
         <source>Apply</source>
-        <translation type="unfinished">Apply</translation>
+        <translation type="unfinished">適用する</translation>
     </message>
     <message>
         <source>passband ripple</source>
-        <translation type="unfinished">passband ripple</translation>
+        <translation type="unfinished">通過帯域リップル</translation>
     </message>
     <message>
         <source>Samples</source>
-        <translation type="unfinished">Samples</translation>
+        <translation type="unfinished">サンプル</translation>
     </message>
 </context>
 <context>
     <name>UI_Mainwindow</name>
     <message>
-        <source>Open WFDB</source>
-        <translation type="unfinished">開いた WFDB</translation>
-    </message>
-    <message>
         <source>Recent files</source>
-        <translation type="unfinished">Recent files</translation>
+        <translation type="unfinished">最近使用したファイル</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished">Close</translation>
+        <translation type="unfinished">閉じる</translation>
     </message>
     <message>
         <source>to Image</source>
-        <translation type="unfinished">to Image</translation>
+        <translation type="unfinished">画像へ</translation>
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished">Print</translation>
+        <translation type="unfinished">印刷する</translation>
     </message>
     <message>
         <source>to Printer</source>
-        <translation type="unfinished">to Printer</translation>
+        <translation type="unfinished">プリンターへ</translation>
     </message>
     <message>
         <source>to EDF</source>
-        <translation type="unfinished">to EDF</translation>
+        <translation type="unfinished">EDFへ</translation>
     </message>
     <message>
         <source>to BDF</source>
-        <translation type="unfinished">to BDF</translation>
+        <translation type="unfinished">BDFへ</translation>
     </message>
     <message>
         <source>to CSV</source>
-        <translation type="unfinished">to CSV</translation>
+        <translation type="unfinished">CSVへ</translation>
     </message>
     <message>
         <source>Save as</source>
-        <translation type="unfinished">名前を付けて保存</translation>
+        <translation type="unfinished">として保存</translation>
     </message>
     <message>
         <source>File</source>
         <translation type="unfinished">ファイル</translation>
     </message>
     <message>
+        <source>Open WFDB</source>
+        <translation type="unfinished">開いた WFDB</translation>
+    </message>
+    <message>
         <source>Exit</source>
-        <translation type="unfinished">Exit</translation>
+        <translation type="unfinished">出口</translation>
     </message>
     <message>
         <source>Signals</source>
-        <translation type="unfinished">Signals</translation>
+        <translation type="unfinished">信号</translation>
     </message>
     <message>
         <source>Properties</source>
-        <translation type="unfinished">Properties</translation>
+        <translation type="unfinished">プロパティ</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="unfinished">Add</translation>
+        <translation type="unfinished">追加</translation>
     </message>
     <message>
         <source>Organize</source>
@@ -891,246 +775,246 @@
     </message>
     <message>
         <source>Remove all</source>
-        <translation type="unfinished">Remove all</translation>
+        <translation type="unfinished">整理する</translation>
     </message>
     <message>
         <source>Timescale</source>
-        <translation type="unfinished">Timescale</translation>
+        <translation type="unfinished">タイムスケール</translation>
     </message>
     <message>
         <source>3 cm/sec</source>
-        <translation type="unfinished">3 cm/sec</translation>
-    </message>
-    <message>
-        <source>25 mm/sec</source>
-        <translation type="unfinished">25 mm/sec</translation>
-    </message>
-    <message>
-        <source>50 mm/sec</source>
-        <translation type="unfinished">50 mm/sec</translation>
-    </message>
-    <message>
-        <source>10 uSec/page</source>
-        <translation type="unfinished">10 uSec/page</translation>
-    </message>
-    <message>
-        <source>20 uSec/page</source>
-        <translation type="unfinished">20 uSec/page</translation>
-    </message>
-    <message>
-        <source>50 uSec/page</source>
-        <translation type="unfinished">50 uSec/page</translation>
-    </message>
-    <message>
-        <source>100 uSec/page</source>
-        <translation type="unfinished">100 uSec/page</translation>
-    </message>
-    <message>
-        <source>200 uSec/page</source>
-        <translation type="unfinished">200 uSec/page</translation>
-    </message>
-    <message>
-        <source>500 uSec/page</source>
-        <translation type="unfinished">500 uSec/page</translation>
-    </message>
-    <message>
-        <source>1 mSec/page</source>
-        <translation type="unfinished">1 mSec/page</translation>
-    </message>
-    <message>
-        <source>2 mSec/page</source>
-        <translation type="unfinished">2 mSec/page</translation>
-    </message>
-    <message>
-        <source>5 mSec/page</source>
-        <translation type="unfinished">5 mSec/page</translation>
-    </message>
-    <message>
-        <source>10 mSec/page</source>
-        <translation type="unfinished">10 mSec/page</translation>
-    </message>
-    <message>
-        <source>20 mSec/page</source>
-        <translation type="unfinished">20 mSec/page</translation>
-    </message>
-    <message>
-        <source>50 mSec/page</source>
-        <translation type="unfinished">50 mSec/page</translation>
-    </message>
-    <message>
-        <source>100 mSec/page</source>
-        <translation type="unfinished">100 mSec/page</translation>
-    </message>
-    <message>
-        <source>200 mSec/page</source>
-        <translation type="unfinished">200 mSec/page</translation>
-    </message>
-    <message>
-        <source>500 mSec/page</source>
-        <translation type="unfinished">500 mSec/page</translation>
-    </message>
-    <message>
-        <source>1 Sec/page</source>
-        <translation type="unfinished">1 Sec/page</translation>
-    </message>
-    <message>
-        <source>2 Sec/page</source>
-        <translation type="unfinished">2 Sec/page</translation>
-    </message>
-    <message>
-        <source>5 Sec/page</source>
-        <translation type="unfinished">5 Sec/page</translation>
-    </message>
-    <message>
-        <source>10 Sec/page</source>
-        <translation type="unfinished">10 Sec/page</translation>
-    </message>
-    <message>
-        <source>15 Sec/page</source>
-        <translation type="unfinished">15 Sec/page</translation>
-    </message>
-    <message>
-        <source>20 Sec/page</source>
-        <translation type="unfinished">20 Sec/page</translation>
-    </message>
-    <message>
-        <source>30 Sec/page</source>
-        <translation type="unfinished">30 Sec/page</translation>
-    </message>
-    <message>
-        <source>60 Sec/page</source>
-        <translation type="unfinished">60 Sec/page</translation>
-    </message>
-    <message>
-        <source>5 min/page</source>
-        <translation type="unfinished">5 min/page</translation>
-    </message>
-    <message>
-        <source>20 min/page</source>
-        <translation type="unfinished">20 min/page</translation>
-    </message>
-    <message>
-        <source>1 hour/page</source>
-        <translation type="unfinished">1 hour/page</translation>
-    </message>
-    <message>
-        <source>Timescale / 2</source>
-        <translation type="unfinished">Timescale / 2</translation>
-    </message>
-    <message>
-        <source>Timescale x 2</source>
-        <translation type="unfinished">Timescale x 2</translation>
-    </message>
-    <message>
-        <source>user defined</source>
-        <translation type="unfinished">user defined</translation>
-    </message>
-    <message>
-        <source>whole recording</source>
-        <translation type="unfinished">whole recording</translation>
-    </message>
-    <message>
-        <source>Amplitude</source>
-        <translation type="unfinished">Amplitude</translation>
-    </message>
-    <message>
-        <source>Fit to pane</source>
-        <translation type="unfinished">Fit to pane</translation>
-    </message>
-    <message>
-        <source>Adjust offset</source>
-        <translation type="unfinished">Adjust offset</translation>
-    </message>
-    <message>
-        <source>Offset -&gt; 0</source>
-        <translation type="unfinished">Offset -&gt; 0</translation>
-    </message>
-    <message>
-        <source>Amplitude x 2</source>
-        <translation type="unfinished">Amplitude x 2</translation>
-    </message>
-    <message>
-        <source>Amplitude / 2</source>
-        <translation type="unfinished">Amplitude / 2</translation>
-    </message>
-    <message>
-        <source>Filter</source>
-        <translation type="unfinished">Filter</translation>
-    </message>
-    <message>
-        <source>New</source>
-        <translation type="unfinished">New</translation>
-    </message>
-    <message>
-        <source>Adjust</source>
-        <translation type="unfinished">Adjust</translation>
-    </message>
-    <message>
-        <source>Powerline interference removal for ECG</source>
-        <translation type="unfinished">Powerline interference removal for ECG</translation>
-    </message>
-    <message>
-        <source>Remove all Powerline interference filters</source>
-        <translation type="unfinished">Remove all Powerline interference filters</translation>
-    </message>
-    <message>
-        <source>Customizable FIR filter</source>
-        <translation type="unfinished">Customizable FIR filter</translation>
-    </message>
-    <message>
-        <source>Remove all FIR filters</source>
-        <translation type="unfinished">Remove all FIR filters</translation>
-    </message>
-    <message>
-        <source>Spike</source>
-        <translation type="unfinished">Spike</translation>
-    </message>
-    <message>
-        <source>Remove all spike filters</source>
-        <translation type="unfinished">Remove all spike filters</translation>
-    </message>
-    <message>
-        <source>Tools</source>
-        <translation type="unfinished">Tools</translation>
-    </message>
-    <message>
-        <source>Convert MIT (PhysioBank) to EDF+</source>
-        <translation type="unfinished">Convert MIT (PhysioBank) to EDF+</translation>
-    </message>
-    <message>
-        <source>Convert MIT (PhysioBank) to CSV</source>
-        <translation type="unfinished">Convert MIT (PhysioBank) to CSV</translation>
-    </message>
-    <message>
-        <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>25 mm/sec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>50 mm/sec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>10 uSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>20 uSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>50 uSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>100 uSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>200 uSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>500 uSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1 mSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2 mSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5 mSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>10 mSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>20 mSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>50 mSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>100 mSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>200 mSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>500 mSec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1 Sec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2 Sec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5 Sec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>10 Sec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>15 Sec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>20 Sec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>30 Sec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>60 Sec/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5 min/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>20 min/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1 hour/page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timescale / 2</source>
+        <translation type="unfinished">タイムスケール/ 2</translation>
+    </message>
+    <message>
+        <source>Timescale x 2</source>
+        <translation type="unfinished">タイムスケールx 2</translation>
+    </message>
+    <message>
+        <source>user defined</source>
+        <translation type="unfinished">ユーザー定義の</translation>
+    </message>
+    <message>
+        <source>whole recording</source>
+        <translation type="unfinished">全記録</translation>
+    </message>
+    <message>
+        <source>Amplitude</source>
+        <translation type="unfinished">振幅</translation>
+    </message>
+    <message>
+        <source>Fit to pane</source>
+        <translation type="unfinished">ペインに合わせる</translation>
+    </message>
+    <message>
+        <source>Adjust offset</source>
+        <translation type="unfinished">オフセットを調整</translation>
+    </message>
+    <message>
+        <source>Offset -&gt; 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Amplitude x 2</source>
+        <translation type="unfinished">振幅 x 2</translation>
+    </message>
+    <message>
+        <source>Amplitude / 2</source>
+        <translation type="unfinished">振幅 / 2</translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation type="unfinished">フィルタ</translation>
+    </message>
+    <message>
+        <source>New</source>
+        <translation type="unfinished">新着</translation>
+    </message>
+    <message>
+        <source>Adjust</source>
+        <translation type="unfinished">調整する</translation>
+    </message>
+    <message>
+        <source>Powerline interference removal for ECG</source>
+        <translation type="unfinished">ECGの電力線干渉除去</translation>
+    </message>
+    <message>
+        <source>Remove all Powerline interference filters</source>
+        <translation type="unfinished">すべての電力線干渉フィルターを取り外します</translation>
+    </message>
+    <message>
+        <source>Customizable FIR filter</source>
+        <translation type="unfinished">カスタマイズ可能なFIRフィルター</translation>
+    </message>
+    <message>
+        <source>Remove all FIR filters</source>
+        <translation type="unfinished">すべてのFIRフィルターを削除する</translation>
+    </message>
+    <message>
+        <source>Spike</source>
+        <translation type="unfinished">スパイク</translation>
+    </message>
+    <message>
+        <source>Remove all spike filters</source>
+        <translation type="unfinished">すべてのスパイクフィルターを削除する</translation>
+    </message>
+    <message>
+        <source>Tools</source>
+        <translation type="unfinished">道具</translation>
+    </message>
+    <message>
+        <source>Convert MIT (PhysioBank) to EDF+</source>
+        <translation type="unfinished">MIT（PhysioBank）をEDF +に変換する</translation>
+    </message>
+    <message>
+        <source>Convert MIT (PhysioBank) to CSV</source>
+        <translation type="unfinished">MIT（PhysioBank）をCSVに変換する</translation>
+    </message>
+    <message>
+        <source>Options</source>
+        <translation type="unfinished">オプション</translation>
+    </message>
+    <message>
         <source>Language</source>
-        <translation type="unfinished">Language</translation>
+        <translation type="unfinished">言語</translation>
     </message>
     <message>
         <source>English</source>
-        <translation type="unfinished">English</translation>
+        <translation type="unfinished">英語</translation>
     </message>
     <message>
         <source>Japanese</source>
-        <translation type="unfinished">Japanese</translation>
+        <translation type="unfinished">日本語</translation>
     </message>
 </context>
 <context>
     <name>UI_PLIF_ECG_filter_dialog</name>
     <message>
         <source>Add a powerline interference filter</source>
-        <translation type="unfinished">Add a powerline interference filter</translation>
+        <translation type="unfinished">電力線干渉フィルターを追加する</translation>
     </message>
     <message>
         <source>Powerline frequency</source>
-        <translation type="unfinished">Powerline frequency</translation>
+        <translation type="unfinished">電力線周波数</translation>
     </message>
     <message>
         <source>Select signals:</source>
-        <translation type="unfinished">Select signals:</translation>
+        <translation type="unfinished">信号を選択:</translation>
     </message>
     <message>
         <source>Only signals with a physical dimension V, mV or uV and
@@ -1140,11 +1024,11 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished">Close</translation>
+        <translation type="unfinished">閉じる</translation>
     </message>
     <message>
         <source>Apply</source>
-        <translation type="unfinished">Apply</translation>
+        <translation type="unfinished">適用する</translation>
     </message>
     <message>
         <source>Help</source>
@@ -1155,65 +1039,65 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <name>UI_SignalChooser</name>
     <message>
         <source>Organize signals</source>
-        <translation type="unfinished">Organize signals</translation>
+        <translation type="unfinished">信号を整理する</translation>
     </message>
     <message>
         <source>Signals</source>
-        <translation type="unfinished">Signals</translation>
+        <translation type="unfinished">信号</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="unfinished">Up</translation>
+        <translation type="unfinished">アップ</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="unfinished">Down</translation>
+        <translation type="unfinished">ダウン</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="unfinished">Invert</translation>
+        <translation type="unfinished">反転</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="unfinished">Remove</translation>
+        <translation type="unfinished">削除する</translation>
     </message>
 </context>
 <context>
     <name>UI_Signalswindow</name>
     <message>
         <source>Signals</source>
-        <translation type="unfinished">Signals</translation>
+        <translation type="unfinished">信号</translation>
     </message>
 </context>
 <context>
     <name>UI_SpectrumDockWindow</name>
     <message>
         <source>Amplitude Spectrum</source>
-        <translation type="unfinished">Amplitude Spectrum</translation>
+        <translation type="unfinished">振幅スペクトル</translation>
     </message>
     <message>
         <source>Power Spectrum</source>
-        <translation type="unfinished">Power Spectrum</translation>
+        <translation type="unfinished">パワースペクトル</translation>
     </message>
     <message>
         <source>Colorbar</source>
-        <translation type="unfinished">Colorbar</translation>
+        <translation type="unfinished">カラーバー</translation>
     </message>
     <message>
         <source>Rectangular</source>
-        <translation type="unfinished">Rectangular</translation>
+        <translation type="unfinished">長方形</translation>
     </message>
     <message>
         <source>Hamming</source>
-        <translation type="unfinished">Hamming</translation>
+        <translation type="unfinished">ハミング</translation>
     </message>
     <message>
         <source>4-term Blackman-Harris</source>
-        <translation type="unfinished">4-term Blackman-Harris</translation>
+        <translation type="unfinished">4期ブラックマン・ハリス</translation>
     </message>
     <message>
         <source>7-term Blackman-Harris</source>
-        <translation type="unfinished">7-term Blackman-Harris</translation>
+        <translation type="unfinished">7期ブラックマン・ハリス</translation>
     </message>
     <message>
         <source>Nuttall3b</source>
@@ -1225,7 +1109,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Hann</source>
-        <translation type="unfinished">Hann</translation>
+        <translation type="unfinished">ハン</translation>
     </message>
     <message>
         <source>HFT223D</source>
@@ -1237,34 +1121,46 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Span</source>
-        <translation type="unfinished">Span</translation>
+        <translation type="unfinished">スパン</translation>
     </message>
     <message>
         <source>Center</source>
-        <translation type="unfinished">Center</translation>
+        <translation type="unfinished">センター</translation>
+    </message>
+    <message>
+        <source>Amplitude</source>
+        <translation type="unfinished">振幅</translation>
+    </message>
+    <message>
+        <source>Log</source>
+        <translation type="unfinished">ログ</translation>
+    </message>
+    <message>
+        <source>Blocksize:</source>
+        <translation type="unfinished">ブロックサイズ:</translation>
     </message>
 </context>
 <context>
     <name>UI_SpikeFilterDialog</name>
     <message>
         <source>Add a spike filter</source>
-        <translation type="unfinished">Add a spike filter</translation>
+        <translation type="unfinished">スパイクフィルターを追加する</translation>
     </message>
     <message>
         <source>Velocity</source>
-        <translation type="unfinished">Velocity</translation>
+        <translation type="unfinished">速度</translation>
     </message>
     <message>
         <source>Hold-off</source>
-        <translation type="unfinished">Hold-off</translation>
+        <translation type="unfinished">ホールドオフ</translation>
     </message>
     <message>
         <source> milliSec</source>
-        <translation type="unfinished"> milliSec</translation>
+        <translation type="unfinished"> ミリ秒</translation>
     </message>
     <message>
         <source>Select signals:</source>
-        <translation type="unfinished">Select signals:</translation>
+        <translation type="unfinished">信号を選択:</translation>
     </message>
     <message>
         <source>&amp;Close</source>
@@ -1279,11 +1175,11 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <name>UI_Userdefined_timepage_Dialog</name>
     <message>
         <source>Set timescale</source>
-        <translation type="unfinished">Set timescale</translation>
+        <translation type="unfinished">タイムスケールを設定する</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation type="unfinished">キャンセル</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -1298,7 +1194,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Signals</source>
-        <translation type="unfinished">Signals</translation>
+        <translation type="unfinished">信号</translation>
     </message>
 </context>
 </TS>
