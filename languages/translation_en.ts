@@ -678,6 +678,22 @@
         <source>Filter Interval Time</source>
         <translation type="unfinished">Filter Interval Time</translation>
     </message>
+    <message>
+        <source>Annotations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Relative</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation type="unfinished">Filter</translation>
+    </message>
+    <message>
+        <source>Inv.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_AverageCurveWindow</name>
@@ -688,6 +704,14 @@
     <message>
         <source>Invert</source>
         <translation type="unfinished">Invert</translation>
+    </message>
+    <message>
+        <source>Span</source>
+        <translation type="unfinished">Span</translation>
+    </message>
+    <message>
+        <source>Center</source>
+        <translation type="unfinished">Center</translation>
     </message>
 </context>
 <context>
@@ -1119,6 +1143,229 @@
     </message>
 </context>
 <context>
+    <name>UI_OptionsDialog</name>
+    <message>
+        <source>relative</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>real (relative)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>date real (relative)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subject info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filename with full path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Background color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Small ruler color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Big ruler color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mouse rectangle color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Signals color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Baseline color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Crosshair color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2th Crosshair color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Floating ruler color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annotation marker</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show duration at marker</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annotation duration background</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show only at screen bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annotations: filter list only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annotation filter affects the annotationlist only, not the annotation markers in the signal window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Print in grayscale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clip signals to pane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Colorschema</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Measure the length of the black</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>rectangles and enter the values.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Apply</source>
+        <translation type="unfinished">Apply</translation>
+    </message>
+    <message>
+        <source>Calibration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frequency regions of the colorbars:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frequency</source>
+        <translation type="unfinished">Frequency</translation>
+    </message>
+    <message>
+        <source>Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>peak</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>average</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>of the power in the colorbar region.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FFT blocksize:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>samples</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Colorbar sensitivity:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Power Spectrum</source>
+        <translation type="unfinished">Power Spectrum</translation>
+    </message>
+    <message>
+        <source>Reload last used montage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do not read annotations, Biosemi Status signal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>or Nihon Kohden triggers when filesize</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>is more than:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read Biosemi Status signal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read Nihon Kohden Trigger/Marker signal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>livestream update interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Powerline Frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UI_PLIF_ECG_filter_dialog</name>
     <message>
         <source>Add a powerline interference filter</source>
@@ -1254,6 +1501,10 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <message>
         <source>Blocksize:</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blocksize</source>
+        <translation type="unfinished">Blocksize</translation>
     </message>
 </context>
 <context>

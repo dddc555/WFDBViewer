@@ -3619,14 +3619,11 @@ void UI_Mainwindow::loadLanguage()
     QString fileName = "translation_en.qm";
     qApp->removeTranslator(&m_translator);
     if(mainwindow_language == 1)fileName = "translation_jp.qm";
-    qDebug()<<"fileName = " << fileName;
     if(m_translator.load(path + fileName)) //Here Path and Filename has to be entered because the system didn't find the QM Files else
     {
-        qDebug()<<"Successfull";
         qApp->installTranslator(&m_translator);
         updateText();
     } else {
-        qDebug()<<"Error";
     }
 }
 

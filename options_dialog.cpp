@@ -63,14 +63,14 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
     optionsdialog->setMinimumSize(440, 820);
     optionsdialog->setMaximumSize(440, 820);
   }
-  optionsdialog->setWindowTitle("Settings");
+  optionsdialog->setWindowTitle(tr("Settings"));
   optionsdialog->setModal(true);
   optionsdialog->setAttribute(Qt::WA_DeleteOnClose, true);
 
   tabholder = new QTabWidget;
 
   CloseButton = new QPushButton;
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
 /////////////////////////////////////// tab 1  Colors ///////////////////////////////////////////////////////////////////////
 
@@ -78,7 +78,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label1 = new QLabel(tab1);
   label1->setGeometry(20, 15, 200, 25);
-  label1->setText("Background color");
+  label1->setText(tr("Background color"));
 
   BgColorButton = new SpecialButton(tab1);
   BgColorButton->setGeometry(240, 20, 60, 15);
@@ -86,7 +86,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label2 = new QLabel(tab1);
   label2->setGeometry(20, 45, 200, 25);
-  label2->setText("Small ruler color");
+  label2->setText(tr("Small ruler color"));
 
   SrColorButton = new SpecialButton(tab1);
   SrColorButton->setGeometry(240, 50, 60, 15);
@@ -94,7 +94,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label3 = new QLabel(tab1);
   label3->setGeometry(20, 75, 200, 25);
-  label3->setText("Big ruler color");
+  label3->setText(tr("Big ruler color"));
 
   BrColorButton = new SpecialButton(tab1);
   BrColorButton->setGeometry(240, 80, 60, 15);
@@ -102,7 +102,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4 = new QLabel(tab1);
   label4->setGeometry(20, 105, 200, 25);
-  label4->setText("Mouse rectangle color");
+  label4->setText(tr("Mouse rectangle color"));
 
   MrColorButton = new SpecialButton(tab1);
   MrColorButton->setGeometry(240, 110, 60, 15);
@@ -110,7 +110,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label5 = new QLabel(tab1);
   label5->setGeometry(20, 135, 200, 25);
-  label5->setText("Text color");
+  label5->setText(tr("Text color"));
 
   TxtColorButton = new SpecialButton(tab1);
   TxtColorButton->setGeometry(240, 140, 60, 15);
@@ -118,7 +118,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label6 = new QLabel(tab1);
   label6->setGeometry(20, 165, 200, 25);
-  label6->setText("Signals color");
+  label6->setText(tr("Signals color"));
 
   SigColorButton = new SpecialButton(tab1);
   SigColorButton->setGeometry(240, 170, 60, 15);
@@ -126,7 +126,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label7 = new QLabel(tab1);
   label7->setGeometry(20, 195, 200, 25);
-  label7->setText("Baseline color");
+  label7->setText(tr("Baseline color"));
 
   checkbox3 = new QCheckBox(tab1);
   checkbox3->setGeometry(200, 198, 20, 20);
@@ -146,7 +146,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label8 = new QLabel(tab1);
   label8->setGeometry(20, 225, 200, 25);
-  label8->setText("Crosshair color");
+  label8->setText(tr("Crosshair color"));
 
   Crh1ColorButton = new SpecialButton(tab1);
   Crh1ColorButton->setGeometry(240, 230, 60, 15);
@@ -154,7 +154,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label9 = new QLabel(tab1);
   label9->setGeometry(20, 255, 200, 25);
-  label9->setText("2th Crosshair color");
+  label9->setText(tr("2th Crosshair color"));
 
   Crh2ColorButton = new SpecialButton(tab1);
   Crh2ColorButton->setGeometry(240, 260, 60, 15);
@@ -162,7 +162,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label10 = new QLabel(tab1);
   label10->setGeometry(20, 285, 200, 25);
-  label10->setText("Floating ruler color");
+  label10->setText(tr("Floating ruler color"));
 
   FrColorButton = new SpecialButton(tab1);
   FrColorButton->setGeometry(240, 290, 60, 15);
@@ -170,7 +170,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label12 = new QLabel(tab1);
   label12->setGeometry(20, 315, 200, 25);
-  label12->setText("Annotation marker");
+  label12->setText(tr("Annotation marker"));
 
   checkbox2 = new QCheckBox(tab1);
   checkbox2->setGeometry(200, 318, 20, 20);
@@ -190,7 +190,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label12_2 = new QLabel(tab1);
   label12_2->setGeometry(20, 345, 200, 25);
-  label12_2->setText("Show duration at marker");
+  label12_2->setText(tr("Show duration at marker"));
 
   checkbox2_1 = new QCheckBox(tab1);
   checkbox2_1->setGeometry(200, 348, 20, 20);
@@ -206,7 +206,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label12_1 = new QLabel(tab1);
   label12_1->setGeometry(20, 375, 200, 25);
-  label12_1->setText("Annotation duration background");
+  label12_1->setText(tr("Annotation duration background"));
 
   AnnotDurationButton = new SpecialButton(tab1);
   AnnotDurationButton->setGeometry(240, 380, 60, 15);
@@ -214,7 +214,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label12_3 = new QLabel(tab1);
   label12_3->setGeometry(20, 405, 200, 25);
-  label12_3->setText("Show only at screen bottom");
+  label12_3->setText(tr("Show only at screen bottom"));
 
   checkbox2_2 = new QCheckBox(tab1);
   checkbox2_2->setGeometry(200, 408, 20, 20);
@@ -230,12 +230,12 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label14 = new QLabel(tab1);
   label14->setGeometry(20, 435, 200, 25);
-  label14->setText("Annotations: filter list only");
+  label14->setText(tr("Annotations: filter list only"));
 
   checkbox5 = new QCheckBox(tab1);
   checkbox5->setGeometry(200, 438, 20, 20);
   checkbox5->setTristate(false);
-  checkbox5->setToolTip("Annotation filter affects the annotationlist only, not the annotation markers in the signal window");
+  checkbox5->setToolTip(tr("Annotation filter affects the annotationlist only, not the annotation markers in the signal window"));
   if(mainwindow->annot_filter->hide_in_list_only)
   {
     checkbox5->setCheckState(Qt::Checked);
@@ -247,7 +247,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label11 = new QLabel(tab1);
   label11->setGeometry(20, 465, 200, 25);
-  label11->setText("Print in grayscale");
+  label11->setText(tr("Print in grayscale"));
 
   checkbox1 = new QCheckBox(tab1);
   checkbox1->setGeometry(200, 468, 20, 20);
@@ -263,7 +263,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label13 = new QLabel(tab1);
   label13->setGeometry(20, 495, 200, 25);
-  label13->setText("Clip signals to pane");
+  label13->setText(tr("Clip signals to pane"));
 
   checkbox4 = new QCheckBox(tab1);
   checkbox4->setGeometry(200, 498, 20, 20);
@@ -277,7 +277,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
     checkbox4->setCheckState(Qt::Unchecked);
   }
 
-  groupbox1 = new QGroupBox("Colorschema", tab1);
+  groupbox1 = new QGroupBox(tr("Colorschema"), tab1);
   groupbox1->setGeometry(120, 540, 180, 195);
 
   colorSchema_Dark_Button = new QPushButton(tab1);
@@ -294,11 +294,11 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   saveColorSchemaButton = new QPushButton(tab1);
   saveColorSchemaButton->setGeometry(150, 660, 120, 20);
-  saveColorSchemaButton->setText("Save");
+  saveColorSchemaButton->setText(tr("Save"));
 
   loadColorSchemaButton = new QPushButton(tab1);
   loadColorSchemaButton->setGeometry(150, 690, 120, 20);
-  loadColorSchemaButton->setText("Load");
+  loadColorSchemaButton->setText(tr("Load"));
 
   QObject::connect(BgColorButton,           SIGNAL(clicked(SpecialButton *)), this, SLOT(BgColorButtonClicked(SpecialButton *)));
   QObject::connect(SrColorButton,           SIGNAL(clicked(SpecialButton *)), this, SLOT(SrColorButtonClicked(SpecialButton *)));
@@ -353,7 +353,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label2_2 = new QLabel(tab2);
   label2_2->setGeometry(85, 50, 220, 50);
-  label2_2->setText("Measure the length of the black\nrectangles and enter the values.");
+  label2_2->setText(tr("Measure the length of the black") + "\n" + tr("rectangles and enter the values."));
 
   spinbox2_1 = new QSpinBox(tab2);
   spinbox2_1->setGeometry(85, 240, 100, 25);
@@ -371,7 +371,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   ApplyButton = new QPushButton(tab2);
   ApplyButton->setGeometry(85, 600, 100, 25);
-  ApplyButton->setText("Apply");
+  ApplyButton->setText(tr("Apply"));
 
   if(checkbox2_1->checkState() == Qt::Unchecked)
   {
@@ -383,7 +383,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
   QObject::connect(ApplyButton, SIGNAL(clicked()),         this, SLOT(ApplyButtonClicked()));
   QObject::connect(checkbox2_1, SIGNAL(stateChanged(int)), this, SLOT(calibrate_checkbox_stateChanged(int)));
 
-  tabholder->addTab(tab2, "Calibration");
+  tabholder->addTab(tab2, tr("Calibration"));
 
 /////////////////////////////////////// tab 3  Powerspectrum ///////////////////////////////////////////////////////////////////////
 
@@ -391,7 +391,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label1_3 = new QLabel(tab3);
   label1_3->setGeometry(20, 20, 330, 25);
-  label1_3->setText("Frequency regions of the colorbars:");
+  label1_3->setText(tr("Frequency regions of the colorbars:"));
 
   colorBarTable = new QTableWidget(tab3);
   colorBarTable->setGeometry(20, 50, 370, 350);
@@ -437,9 +437,9 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   QStringList horizontallabels;
   horizontallabels += "";
-  horizontallabels += "Frequency";
-  horizontallabels += "Color";
-  horizontallabels += "Label";
+  horizontallabels += tr("Frequency");
+  horizontallabels += tr("Color");
+  horizontallabels += tr("Label");
   colorBarTable->setHorizontalHeaderLabels(horizontallabels);
 
   label2_3 = new QLabel(tab3);
@@ -448,7 +448,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   radiobutton1 = new QRadioButton(tab3);
   radiobutton1->setGeometry(20, 435, 200, 25);
-  radiobutton1->setText("sum");
+  radiobutton1->setText(tr("sum"));
   if(mainwindow->spectrum_colorbar->method == 0)
   {
     radiobutton1->setChecked(true);  // sum
@@ -456,7 +456,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   radiobutton2 = new QRadioButton(tab3);
   radiobutton2->setGeometry(20, 460, 200, 25);
-  radiobutton2->setText("peak");
+  radiobutton2->setText(tr("peak"));
   if(mainwindow->spectrum_colorbar->method == 1)
   {
     radiobutton2->setChecked(true);  // peak
@@ -464,7 +464,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   radiobutton3 = new QRadioButton(tab3);
   radiobutton3->setGeometry(20, 485, 200, 25);
-  radiobutton3->setText("average");
+  radiobutton3->setText(tr("average"));
   if(mainwindow->spectrum_colorbar->method == 2)
   {
     radiobutton3->setChecked(true);  // average
@@ -472,15 +472,15 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label3_3 = new QLabel(tab3);
   label3_3->setGeometry(20, 515, 310, 25);
-  label3_3->setText("of the power in the colorbar region.");
+  label3_3->setText(tr("of the power in the colorbar region."));
 
   label3_4 = new QLabel(tab3);
   label3_4->setGeometry(20, 550, 120, 25);
-  label3_4->setText("FFT blocksize:");
+  label3_4->setText(tr("FFT blocksize:"));
 
   spinbox3_1 = new QSpinBox(tab3);
   spinbox3_1->setGeometry(140, 550, 140, 25);
-  spinbox3_1->setSuffix(" samples");
+  spinbox3_1->setSuffix(" " + tr("samples"));
   spinbox3_1->setMinimum(10);
   spinbox3_1->setMaximum(1000);
   spinbox3_1->setSingleStep(2);
@@ -488,7 +488,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label3_5 = new QLabel(tab3);
   label3_5->setGeometry(20, 590, 120, 25);
-  label3_5->setText("Colorbar sensitivity:");
+  label3_5->setText(tr("Colorbar sensitivity:"));
 
   dspinbox3_2 = new QDoubleSpinBox(tab3);
   dspinbox3_2->setGeometry(140, 590, 140, 25);
@@ -496,7 +496,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
   dspinbox3_2->setMaximum(100000.0);
   dspinbox3_2->setValue(mainwindow->spectrum_colorbar->max_colorbar_value);
 
-  checkbox3_1 = new QCheckBox("Auto", tab3);
+  checkbox3_1 = new QCheckBox(tr("Auto"), tab3);
   checkbox3_1->setGeometry(300, 592, 100, 20);
   checkbox3_1->setTristate(false);
   if(mainwindow->spectrum_colorbar->auto_adjust)
@@ -512,11 +512,11 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   DefaultButton2 = new QPushButton(tab3);
   DefaultButton2->setGeometry(245, 650, 100, 25);
-  DefaultButton2->setText("Restore default");
+  DefaultButton2->setText(tr("Restore default"));
 
   ApplyButton2 = new QPushButton(tab3);
   ApplyButton2->setGeometry(20, 650, 100, 25);
-  ApplyButton2->setText("Apply");
+  ApplyButton2->setText(tr("Apply"));
   ApplyButton2->setEnabled(false);
 
   QObject::connect(radiobutton1,   SIGNAL(toggled(bool)),        this, SLOT(radioButtonToggled(bool)));
@@ -529,7 +529,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
   QObject::connect(checkbox3_1,    SIGNAL(stateChanged(int)),    this, SLOT(checkbox3_1Clicked(int)));
 
 
-  tabholder->addTab(tab3, "Power Spectrum");
+  tabholder->addTab(tab3, tr("Power Spectrum"));
 
 /////////////////////////////////////// tab 4  Other ///////////////////////////////////////////////////////////////////////
 
@@ -537,7 +537,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_1 = new QLabel(tab4);
   label4_1->setGeometry(20, 20, 280, 25);
-  label4_1->setText("Reload last used montage");
+  label4_1->setText(tr("Reload last used montage"));
 
   checkbox4_1 = new QCheckBox(tab4);
   checkbox4_1->setGeometry(325, 23, 20, 20);
@@ -555,9 +555,9 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_7 = new QLabel(tab4);
   label4_7->setGeometry(20, 60, 280, 60);
-  label4_7->setText("Do not read annotations, Biosemi Status signal\n"
-                    "or Nihon Kohden triggers when filesize\n"
-                    "is more than:");
+  label4_7->setText(tr("Do not read annotations, Biosemi Status signal")+"\n"+
+                    tr("or Nihon Kohden triggers when filesize")+"\n"+
+                    tr("is more than:"));
 
   spinbox4_3 = new QSpinBox(tab4);
   spinbox4_3->setGeometry(200, 100, 140, 25);
@@ -571,7 +571,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_2 = new QLabel(tab4);
   label4_2->setGeometry(20, 135, 280, 25);
-  label4_2->setText("Read Biosemi Status signal");
+  label4_2->setText(tr("Read Biosemi Status signal"));
 
   checkbox4_2 = new QCheckBox(tab4);
   checkbox4_2->setGeometry(325, 138, 20, 20);
@@ -589,7 +589,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_6 = new QLabel(tab4);
   label4_6->setGeometry(20, 175, 280, 25);
-  label4_6->setText("Read Nihon Kohden Trigger/Marker signal");
+  label4_6->setText(tr("Read Nihon Kohden Trigger/Marker signal"));
 
   checkbox4_3 = new QCheckBox(tab4);
   checkbox4_3->setGeometry(325, 178, 20, 20);
@@ -607,7 +607,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_3 = new QLabel(tab4);
   label4_3->setGeometry(20, 215, 200, 25);
-  label4_3->setText("livestream update interval");
+  label4_3->setText(tr("livestream update interval"));
 
   spinbox4_1 = new QSpinBox(tab4);
   spinbox4_1->setGeometry(200, 215, 140, 25);
@@ -621,7 +621,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_4 = new QLabel(tab4);
   label4_4->setGeometry(20, 255, 200, 25);
-  label4_4->setText("Powerline Frequency");
+  label4_4->setText(tr("Powerline Frequency"));
 
   combobox4_1 = new QComboBox(tab4);
   combobox4_1->setGeometry(200, 255, 140, 25);
@@ -695,9 +695,9 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   combobox4_2 = new QComboBox(tab4);
   combobox4_2->setGeometry(200, 415, 140, 25);
-  combobox4_2->addItem("relative");
-  combobox4_2->addItem("real (relative)");
-  combobox4_2->addItem("date real (relative)");
+  combobox4_2->addItem(tr("relative"));
+  combobox4_2->addItem(tr("real (relative)"));
+  combobox4_2->addItem(tr("date real (relative)"));
   combobox4_2->setCurrentIndex(mainwindow->viewtime_indicator_type);
 
   QObject::connect(combobox4_2, SIGNAL(currentIndexChanged(int)), this, SLOT(combobox4_2IndexChanged(int)));
@@ -707,9 +707,9 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
   label4_10->setText("Window title content");
   combobox4_3 = new QComboBox(tab4);
   combobox4_3->setGeometry(200, 455, 180, 25);
-  combobox4_3->addItem("Subject info");
-  combobox4_3->addItem("Filename");
-  combobox4_3->addItem("Filename with full path");
+  combobox4_3->addItem(tr("Subject info"));
+  combobox4_3->addItem(tr("Filename"));
+  combobox4_3->addItem(tr("Filename with full path"));
   combobox4_3->setCurrentIndex(mainwindow->mainwindow_title_type);
 
   QObject::connect(combobox4_3, SIGNAL(currentIndexChanged(int)), this, SLOT(combobox4_3IndexChanged(int)));

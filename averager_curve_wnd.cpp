@@ -172,7 +172,7 @@ UI_AverageCurveWindow::UI_AverageCurveWindow(struct signalcompblock *signal_comp
   spanSlider->setMinimumSize(500, 15);
 
   spanLabel = new QLabel;
-  spanLabel->setText("Span");
+  spanLabel->setText(tr("Span"));
   spanLabel->setMinimumSize(110, 15);
   spanLabel->setAlignment(Qt::AlignHCenter);
 
@@ -576,9 +576,9 @@ void UI_AverageCurveWindow::sliderMoved(int)
 
   curve1->setH_RulerValues(start_sec, max_sec);
 
-  centerLabel->setText(QString::number(start_sec + ((max_sec - start_sec) / 2.0), 'f', precision).append(" sec").prepend("Center "));
+  centerLabel->setText(QString::number(start_sec + ((max_sec - start_sec) / 2.0), 'f', precision).append(" sec").prepend(tr("Center") + " "));
 
-  spanLabel->setText(QString::number(max_sec - start_sec, 'f', precision).append(" sec").prepend("Span "));
+  spanLabel->setText(QString::number(max_sec - start_sec, 'f', precision).append(" sec").prepend(tr("Span") + " "));
 
   if(avg_trigger_position_ratio > 0)
   {

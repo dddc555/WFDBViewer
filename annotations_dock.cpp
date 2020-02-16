@@ -45,7 +45,7 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 
   file_num = file_number;
 
-  docklist = new QDockWidget("Annotations", w_parent);
+  docklist = new QDockWidget(tr("Annotations"), w_parent);
   docklist->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 //  docklist->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable);
   docklist->setFeatures(QDockWidget::DockWidgetMovable);
@@ -67,18 +67,19 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 
   dialog1 = new QDialog;
 
-  checkbox1 = new QCheckBox("Relative ");
+  checkbox1 = new QCheckBox(tr("Relative") + " ");
   checkbox1->setGeometry(2, 2, 10, 10);
   checkbox1->setTristate(false);
   checkbox1->setCheckState(Qt::Checked);
 
   label1 = new QLabel;
-  label1->setText(" Filter:");
+  label1->setText(" " + tr("Filter") + ":");
+  qDebug()<<tr("Filter");
 
   lineedit1 = new QLineEdit;
   lineedit1->setMaxLength(16);
 
-  checkbox2 = new QCheckBox("Inv.");
+  checkbox2 = new QCheckBox(tr("Inv."));
   checkbox2->setGeometry(2, 2, 10, 10);
   checkbox2->setTristate(false);
   checkbox2->setCheckState(Qt::Unchecked);

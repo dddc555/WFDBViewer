@@ -1281,5 +1281,11 @@ void UI_Mainwindow::updateText(){
     if(spectrumdock[i] != NULL && spectrumdock[i]->dock->isHidden())  break;
   }
 
-  if(spectrumdock[i] != NULL) spectrumdock[i]->updateText();
+  if(spectrumdock[i] != NULL) {
+      spectrumdock[i]->updateText();
+      qDebug()<<"update text";
+  }
+  else{
+    qDebug()<<"dock is null";
+  }
 }

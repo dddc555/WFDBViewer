@@ -227,7 +227,7 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
   windowBox->setToolTip(tr("Window"));
 
   dftsz_label = new QLabel;
-  dftsz_label->setText("Blocksize:");
+  dftsz_label->setText(tr("Blocksize:"));
   dftsz_label->setMinimumSize(100, 25);
 
   dftsz_spinbox = new QSpinBox;
@@ -1534,7 +1534,8 @@ void UI_SpectrumDockWindow::updateText(){
     windowBox->setItemText(6, tr("Hann"));
     windowBox->setItemText(7, tr("HFT223D"));
     windowBox->setToolTip(tr("Window"));
-    dftsz_label->setText(tr("Blocksize:"));
+    dftsz_label->setText(tr("Blocksize") + ":");
+    qDebug()<<tr("Blocksize:");
     spanLabel->setText(tr("Span"));
     centerLabel->setText(tr("Center"));
 }

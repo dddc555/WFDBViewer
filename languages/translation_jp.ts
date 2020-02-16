@@ -352,6 +352,10 @@
         <translation type="vanished">長方形</translation>
     </message>
     <message>
+        <source>Blocksize</source>
+        <translation type="vanished">ブロックサイズ</translation>
+    </message>
+    <message>
         <source>Hamming</source>
         <translation type="vanished">ハミング</translation>
     </message>
@@ -378,10 +382,6 @@
     <message>
         <source>HFT223D</source>
         <translation type="vanished">HFT223D</translation>
-    </message>
-    <message>
-        <source>Blocksize</source>
-        <translation type="vanished">ブロックサイズ</translation>
     </message>
     <message>
         <source>Span</source>
@@ -454,6 +454,190 @@
     <message>
         <source>Filter Interval Time</source>
         <translation type="vanished">フィルター間隔時間</translation>
+    </message>
+    <message>
+        <source>Annotations</source>
+        <translation type="vanished">注釈</translation>
+    </message>
+    <message>
+        <source>Relative</source>
+        <translation type="vanished">相対的</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="vanished">設定</translation>
+    </message>
+    <message>
+        <source>Background color</source>
+        <translation type="vanished">背景色</translation>
+    </message>
+    <message>
+        <source>Small ruler color</source>
+        <translation type="vanished">モール定規色</translation>
+    </message>
+    <message>
+        <source>Big ruler color</source>
+        <translation type="vanished">大きな定規の色</translation>
+    </message>
+    <message>
+        <source>Mouse rectangle color</source>
+        <translation type="vanished">マウスの長方形の色</translation>
+    </message>
+    <message>
+        <source>Text color</source>
+        <translation type="vanished">テキストの色</translation>
+    </message>
+    <message>
+        <source>Signals color</source>
+        <translation type="vanished">信号の色</translation>
+    </message>
+    <message>
+        <source>Baseline color</source>
+        <translation type="vanished">ベースライン色</translation>
+    </message>
+    <message>
+        <source>Crosshair color</source>
+        <translation type="vanished">十字線の色</translation>
+    </message>
+    <message>
+        <source>2th Crosshair color</source>
+        <translation type="vanished">2番目の十字線の色</translation>
+    </message>
+    <message>
+        <source>Floating ruler color</source>
+        <translation type="vanished">フローティングルーラーの色</translation>
+    </message>
+    <message>
+        <source>Annotation marker</source>
+        <translation type="vanished">注釈マーカー</translation>
+    </message>
+    <message>
+        <source>Show duration at marker</source>
+        <translation type="vanished">マーカーで長さを表示</translation>
+    </message>
+    <message>
+        <source>Annotation duration background</source>
+        <translation type="vanished">注釈期間の背景</translation>
+    </message>
+    <message>
+        <source>Show only at screen bottom</source>
+        <translation type="vanished">画面下部にのみ表示</translation>
+    </message>
+    <message>
+        <source>Annotations: filter list only</source>
+        <translation type="vanished">注釈：フィルターリストのみ</translation>
+    </message>
+    <message>
+        <source>Annotation filter affects the annotationlist only, not the annotation markers in the signal window</source>
+        <translation type="vanished">注釈フィルターは注釈リストにのみ影響し、信号ウィンドウの注釈マーカーには影響しません</translation>
+    </message>
+    <message>
+        <source>Print in grayscale</source>
+        <translation type="vanished">グレースケールで印刷</translation>
+    </message>
+    <message>
+        <source>Clip signals to pane</source>
+        <translation type="vanished">信号をペインにクリップ</translation>
+    </message>
+    <message>
+        <source>Colorschema</source>
+        <translation type="vanished">カラースキーム</translation>
+    </message>
+    <message>
+        <source>Load</source>
+        <translation type="vanished">負荷</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="vanished">セーブ</translation>
+    </message>
+    <message>
+        <source>Measure the length of the black</source>
+        <translation type="vanished">黒の長さを測定する</translation>
+    </message>
+    <message>
+        <source>rectangles and enter the values.</source>
+        <translation type="vanished">長方形と値を入力します。</translation>
+    </message>
+    <message>
+        <source>Calibration</source>
+        <translation type="vanished">較正</translation>
+    </message>
+    <message>
+        <source>Frequency regions of the colorbars:</source>
+        <translation type="vanished">カラーバーの周波数領域：</translation>
+    </message>
+    <message>
+        <source>of the power in the colorbar region.</source>
+        <translation type="vanished">カラーバー領域のパワーの。</translation>
+    </message>
+    <message>
+        <source>FFT blocksize:</source>
+        <translation type="vanished">FFTブロックサイズ：</translation>
+    </message>
+    <message>
+        <source>samples</source>
+        <translation type="vanished">サンプル</translation>
+    </message>
+    <message>
+        <source>Colorbar sensitivity:</source>
+        <translation type="vanished">カラーバーの感度：</translation>
+    </message>
+    <message>
+        <source>Auto</source>
+        <translation type="vanished">オート</translation>
+    </message>
+    <message>
+        <source>Restore default</source>
+        <translation type="vanished">デフォルトを復元</translation>
+    </message>
+    <message>
+        <source>Reload last used montage</source>
+        <translation type="vanished">最後に使用したモンタージュを再読み込み</translation>
+    </message>
+    <message>
+        <source>Do not read annotations, Biosemi Status signal</source>
+        <translation type="vanished">注釈、Biosemiステータス信号を読み取らない</translation>
+    </message>
+    <message>
+        <source>or Nihon Kohden triggers when filesize</source>
+        <translation type="vanished">またはファイルサイズのときに日本光電がトリガーします</translation>
+    </message>
+    <message>
+        <source>is more than:</source>
+        <translation type="vanished">以上です：</translation>
+    </message>
+    <message>
+        <source>Read Biosemi Status signal</source>
+        <translation type="vanished">Biosemi Statusシグナルの読み取り</translation>
+    </message>
+    <message>
+        <source>Read Nihon Kohden Trigger/Marker signal</source>
+        <translation type="vanished">日本光電電トリガー/マーカー信号を読む</translation>
+    </message>
+    <message>
+        <source>livestream update interval</source>
+        <translation type="vanished">ライブストリームの更新間隔</translation>
+    </message>
+    <message>
+        <source>Powerline Frequency</source>
+        <translation type="vanished">電力線周波数</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation type="vanished">ラベル</translation>
+    </message>
+    <message>
+        <source>Height of colorbars are relative to the</source>
+        <translation type="vanished">カラーバーの高さは</translation>
+    </message>
+    <message>
+        <source>peak</source>
+        <translation type="vanished">ピーク</translation>
+    </message>
+    <message>
+        <source>average</source>
+        <translation type="vanished">平均</translation>
     </message>
 </context>
 <context>
@@ -536,7 +720,7 @@
     </message>
     <message>
         <source>Unhide all</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">すべてを再表示</translation>
     </message>
     <message>
         <source>Average</source>
@@ -562,6 +746,22 @@
         <source>Filter Interval Time</source>
         <translation type="unfinished">フィルター間隔時間</translation>
     </message>
+    <message>
+        <source>Annotations</source>
+        <translation type="unfinished">注釈</translation>
+    </message>
+    <message>
+        <source>Relative</source>
+        <translation type="unfinished">相対的</translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation type="unfinished">フィルタ</translation>
+    </message>
+    <message>
+        <source>Inv.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_AverageCurveWindow</name>
@@ -572,6 +772,14 @@
     <message>
         <source>Invert</source>
         <translation type="unfinished">反転</translation>
+    </message>
+    <message>
+        <source>Span</source>
+        <translation type="unfinished">スパン</translation>
+    </message>
+    <message>
+        <source>Center</source>
+        <translation type="unfinished">センター</translation>
     </message>
 </context>
 <context>
@@ -1003,6 +1211,229 @@
     </message>
 </context>
 <context>
+    <name>UI_OptionsDialog</name>
+    <message>
+        <source>relative</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>real (relative)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>date real (relative)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subject info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filename with full path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">設定</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Background color</source>
+        <translation type="unfinished">背景色</translation>
+    </message>
+    <message>
+        <source>Small ruler color</source>
+        <translation type="unfinished">モール定規色</translation>
+    </message>
+    <message>
+        <source>Big ruler color</source>
+        <translation type="unfinished">大きな定規の色</translation>
+    </message>
+    <message>
+        <source>Mouse rectangle color</source>
+        <translation type="unfinished">マウスの長方形の色</translation>
+    </message>
+    <message>
+        <source>Text color</source>
+        <translation type="unfinished">テキストの色</translation>
+    </message>
+    <message>
+        <source>Signals color</source>
+        <translation type="unfinished">信号の色</translation>
+    </message>
+    <message>
+        <source>Baseline color</source>
+        <translation type="unfinished">ベースライン色</translation>
+    </message>
+    <message>
+        <source>Crosshair color</source>
+        <translation type="unfinished">十字線の色</translation>
+    </message>
+    <message>
+        <source>2th Crosshair color</source>
+        <translation type="unfinished">2番目の十字線の色</translation>
+    </message>
+    <message>
+        <source>Floating ruler color</source>
+        <translation type="unfinished">フローティングルーラーの色</translation>
+    </message>
+    <message>
+        <source>Annotation marker</source>
+        <translation type="unfinished">注釈マーカー</translation>
+    </message>
+    <message>
+        <source>Show duration at marker</source>
+        <translation type="unfinished">マーカーで長さを表示</translation>
+    </message>
+    <message>
+        <source>Annotation duration background</source>
+        <translation type="unfinished">注釈期間の背景</translation>
+    </message>
+    <message>
+        <source>Show only at screen bottom</source>
+        <translation type="unfinished">画面下部にのみ表示</translation>
+    </message>
+    <message>
+        <source>Annotations: filter list only</source>
+        <translation type="unfinished">注釈：フィルターリストのみ</translation>
+    </message>
+    <message>
+        <source>Annotation filter affects the annotationlist only, not the annotation markers in the signal window</source>
+        <translation type="unfinished">注釈フィルターは注釈リストにのみ影響し、信号ウィンドウの注釈マーカーには影響しません</translation>
+    </message>
+    <message>
+        <source>Print in grayscale</source>
+        <translation type="unfinished">グレースケールで印刷</translation>
+    </message>
+    <message>
+        <source>Clip signals to pane</source>
+        <translation type="unfinished">信号をペインにクリップ</translation>
+    </message>
+    <message>
+        <source>Colorschema</source>
+        <translation type="unfinished">カラースキーム</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished">セーブ</translation>
+    </message>
+    <message>
+        <source>Load</source>
+        <translation type="unfinished">負荷</translation>
+    </message>
+    <message>
+        <source>Measure the length of the black</source>
+        <translation type="unfinished">黒の長さを測定する</translation>
+    </message>
+    <message>
+        <source>rectangles and enter the values.</source>
+        <translation type="unfinished">長方形と値を入力します。</translation>
+    </message>
+    <message>
+        <source>Apply</source>
+        <translation type="unfinished">適用する</translation>
+    </message>
+    <message>
+        <source>Calibration</source>
+        <translation type="unfinished">較正</translation>
+    </message>
+    <message>
+        <source>Frequency regions of the colorbars:</source>
+        <translation type="unfinished">カラーバーの周波数領域：</translation>
+    </message>
+    <message>
+        <source>Frequency</source>
+        <translation type="unfinished">周波数</translation>
+    </message>
+    <message>
+        <source>Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation type="unfinished">ラベル</translation>
+    </message>
+    <message>
+        <source>sum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>peak</source>
+        <translation type="unfinished">ピーク</translation>
+    </message>
+    <message>
+        <source>average</source>
+        <translation type="unfinished">平均</translation>
+    </message>
+    <message>
+        <source>of the power in the colorbar region.</source>
+        <translation type="unfinished">カラーバー領域のパワーの。</translation>
+    </message>
+    <message>
+        <source>FFT blocksize:</source>
+        <translation type="unfinished">FFTブロックサイズ：</translation>
+    </message>
+    <message>
+        <source>samples</source>
+        <translation type="unfinished">サンプル</translation>
+    </message>
+    <message>
+        <source>Colorbar sensitivity:</source>
+        <translation type="unfinished">カラーバーの感度：</translation>
+    </message>
+    <message>
+        <source>Auto</source>
+        <translation type="unfinished">オート</translation>
+    </message>
+    <message>
+        <source>Restore default</source>
+        <translation type="unfinished">デフォルトを復元</translation>
+    </message>
+    <message>
+        <source>Power Spectrum</source>
+        <translation type="unfinished">パワースペクトル</translation>
+    </message>
+    <message>
+        <source>Reload last used montage</source>
+        <translation type="unfinished">最後に使用したモンタージュを再読み込み</translation>
+    </message>
+    <message>
+        <source>Do not read annotations, Biosemi Status signal</source>
+        <translation type="unfinished">注釈、Biosemiステータス信号を読み取らない</translation>
+    </message>
+    <message>
+        <source>or Nihon Kohden triggers when filesize</source>
+        <translation type="unfinished">またはファイルサイズのときに日本光電がトリガーします</translation>
+    </message>
+    <message>
+        <source>is more than:</source>
+        <translation type="unfinished">以上です：</translation>
+    </message>
+    <message>
+        <source>Read Biosemi Status signal</source>
+        <translation type="unfinished">Biosemi Statusシグナルの読み取り</translation>
+    </message>
+    <message>
+        <source>Read Nihon Kohden Trigger/Marker signal</source>
+        <translation type="unfinished">日本光電電トリガー/マーカー信号を読む</translation>
+    </message>
+    <message>
+        <source>livestream update interval</source>
+        <translation type="unfinished">ライブストリームの更新間隔</translation>
+    </message>
+    <message>
+        <source>Powerline Frequency</source>
+        <translation type="unfinished">電力線周波数</translation>
+    </message>
+</context>
+<context>
     <name>UI_PLIF_ECG_filter_dialog</name>
     <message>
         <source>Add a powerline interference filter</source>
@@ -1138,6 +1569,10 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <message>
         <source>Blocksize:</source>
         <translation type="unfinished">ブロックサイズ:</translation>
+    </message>
+    <message>
+        <source>Blocksize</source>
+        <translation type="unfinished">ブロックサイズ</translation>
     </message>
 </context>
 <context>
