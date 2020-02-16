@@ -55,6 +55,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <QTemporaryFile>
+#include <qdebug.h>
 
 #include "global.h"
 #include "utils.h"

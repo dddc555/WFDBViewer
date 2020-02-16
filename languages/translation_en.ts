@@ -597,6 +597,34 @@
         <source>ctls</source>
         <translation type="unfinished">ctls</translation>
     </message>
+    <message>
+        <source>Frequency</source>
+        <translation type="unfinished">Frequency</translation>
+    </message>
+    <message>
+        <source>FFT resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Print</source>
+        <translation type="unfinished">Print</translation>
+    </message>
+    <message>
+        <source>to printer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>to PDF</source>
+        <translation type="unfinished">to PDF</translation>
+    </message>
+    <message>
+        <source>to Image</source>
+        <translation type="unfinished">to Image</translation>
+    </message>
+    <message>
+        <source>to ASCII</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_ASCII2EDFapp</name>
@@ -610,6 +638,37 @@
     <message>
         <source>Close</source>
         <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>UI_AnnotationEditwindow</name>
+    <message>
+        <source>Annotation editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Onset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modify</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1141,6 +1200,10 @@
         <source>Japanese</source>
         <translation type="unfinished">Japanese</translation>
     </message>
+    <message>
+        <source>Frequency</source>
+        <translation type="unfinished">Frequency</translation>
+    </message>
 </context>
 <context>
     <name>UI_OptionsDialog</name>
@@ -1362,6 +1425,58 @@
     </message>
     <message>
         <source>Powerline Frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Colors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manually override automatic DPI settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Height of colorbars are relative to the</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mousewheel stepsize</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(0 is no scroll)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timescale</source>
+        <translation type="unfinished">Timescale</translation>
+    </message>
+    <message>
+        <source>Use Multi-Threading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check for updates during startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Viewtime / fileposition indicator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Window title content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default amplitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use linear interpolation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Other</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

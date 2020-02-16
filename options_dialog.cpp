@@ -325,13 +325,13 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
   QObject::connect(colorSchema_NK_Button,   SIGNAL(clicked()),                this, SLOT(loadColorSchema_NK()));
   QObject::connect(colorSchema_Dark_Button, SIGNAL(clicked()),                this, SLOT(loadColorSchema_Dark()));
 
-  tabholder->addTab(tab1, "Colors");
+  tabholder->addTab(tab1, tr("Colors"));
 
 /////////////////////////////////////// tab 2   Calibration ///////////////////////////////////////////////////////////////////////
 
   tab2 = new QWidget;
 
-  checkbox2_1 = new QCheckBox("Manually override automatic DPI settings", tab2);
+  checkbox2_1 = new QCheckBox(tr("Manually override automatic DPI settings"), tab2);
   checkbox2_1->setGeometry(85, 560, 300, 20);
   checkbox2_1->setTristate(false);
   if(mainwindow->auto_dpi)
@@ -444,7 +444,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label2_3 = new QLabel(tab3);
   label2_3->setGeometry(20, 410, 310, 25);
-  label2_3->setText("Height of colorbars are relative to the");
+  label2_3->setText(tr("Height of colorbars are relative to the"));
 
   radiobutton1 = new QRadioButton(tab3);
   radiobutton1->setGeometry(20, 435, 200, 25);
@@ -640,12 +640,12 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_4 = new QLabel(tab4);
   label4_4->setGeometry(20, 295, 200, 40);
-  label4_4->setText("Mousewheel stepsize\n"
-                    "(0 is no scroll)");
+  label4_4->setText(tr("Mousewheel stepsize")+"\n"+
+                    tr("(0 is no scroll)"));
 
   spinbox4_2 = new QSpinBox(tab4);
   spinbox4_2->setGeometry(200, 295, 140, 25);
-  spinbox4_2->setPrefix("Timescale / ");
+  spinbox4_2->setPrefix(tr("Timescale")+" / ");
   spinbox4_2->setMinimum(0);
   spinbox4_2->setMaximum(100);
   spinbox4_2->setSingleStep(1);
@@ -655,7 +655,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_5 = new QLabel(tab4);
   label4_5->setGeometry(20, 335, 280, 25);
-  label4_5->setText("Use Multi-Threading");
+  label4_5->setText(tr("Use Multi-Threading"));
 
   checkbox4_4 = new QCheckBox(tab4);
   checkbox4_4->setGeometry(325, 338, 20, 20);
@@ -673,7 +673,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_8 = new QLabel(tab4);
   label4_8->setGeometry(20, 375, 310, 25);
-  label4_8->setText("Check for updates during startup");
+  label4_8->setText(tr("Check for updates during startup"));
 
   checkbox4_5 = new QCheckBox(tab4);
   checkbox4_5->setGeometry(325, 378, 20, 20);
@@ -691,7 +691,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_9 = new QLabel(tab4);
   label4_9->setGeometry(20, 415, 310, 25);
-  label4_9->setText("Viewtime / fileposition indicator");
+  label4_9->setText(tr("Viewtime / fileposition indicator"));
 
   combobox4_2 = new QComboBox(tab4);
   combobox4_2->setGeometry(200, 415, 140, 25);
@@ -704,7 +704,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_10 = new QLabel(tab4);
   label4_10->setGeometry(20, 455, 310, 25);
-  label4_10->setText("Window title content");
+  label4_10->setText(tr("Window title content"));
   combobox4_3 = new QComboBox(tab4);
   combobox4_3->setGeometry(200, 455, 180, 25);
   combobox4_3->addItem(tr("Subject info"));
@@ -716,7 +716,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_11 = new QLabel(tab4);
   label4_11->setGeometry(20, 495, 310, 25);
-  label4_11->setText("Default amplitude");
+  label4_11->setText(tr("Default amplitude"));
 
   dspinbox4_4 = new QDoubleSpinBox(tab4);
   dspinbox4_4->setGeometry(200, 495, 140, 25);
@@ -729,7 +729,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   label4_12 = new QLabel(tab4);
   label4_12->setGeometry(20, 535, 310, 25);
-  label4_12->setText("Use linear interpolation");
+  label4_12->setText(tr("Use linear interpolation"));
 
   checkbox4_6 = new QCheckBox(tab4);
   checkbox4_6->setGeometry(325, 538, 20, 20);
@@ -746,7 +746,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   QObject::connect(checkbox4_6, SIGNAL(stateChanged(int)), this, SLOT(checkbox4_6Clicked(int)));
 
-  tabholder->addTab(tab4, "Other");
+  tabholder->addTab(tab4, tr("Other"));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -818,7 +818,7 @@ void UI_OptionsDialog::combobox4_3IndexChanged(int index)
 {
   mainwindow->mainwindow_title_type = index;
 
-  mainwindow->setMainwindowTitle(mainwindow->edfheaderlist[mainwindow->sel_viewtime]);
+  mainwindow->setMainwindowTitle();
 }
 
 void UI_OptionsDialog::spinBox4_1ValueChanged(int interval)

@@ -46,7 +46,7 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   file_num = file_number;
 
   docklist = new QDockWidget(tr("Annotations"), w_parent);
-  docklist->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+  docklist->setAllowedAreas( Qt::RightDockWidgetArea);
 //  docklist->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable);
   docklist->setFeatures(QDockWidget::DockWidgetMovable);
 
@@ -880,7 +880,7 @@ void UI_Annotationswindow::updateList(void)
 
   sz = edfplus_annotation_size(annot_list);
 
-  QMessageBox messagewindow(QMessageBox::NoIcon, "Busy", "Sorting annotations...");
+  QMessageBox messagewindow(QMessageBox::NoIcon, tr("Busy"), tr("Sorting annotations") + "...");
   messagewindow.setStandardButtons(QMessageBox::NoButton);
   if(sz > 2000)
   {
@@ -889,7 +889,7 @@ void UI_Annotationswindow::updateList(void)
 
   edfplus_annotation_sort(annot_list, &process_events);
 
-  messagewindow.setText("Populating list...");
+  messagewindow.setText(tr("Populating list..."));
 
   for(j=0; j<sz; j++)
   {

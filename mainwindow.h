@@ -29,7 +29,7 @@
 #ifndef UI_VIEW_MAINFORM_H
 #define UI_VIEW_MAINFORM_H
 
-
+#define PLAY_CONTROL_WIDTH 600
 
 #include <QtGlobal>
 #include <QApplication>
@@ -314,7 +314,7 @@ public:
 
   void setup_viewbuf();
 
-  void setMainwindowTitle(struct edfhdrblock *);
+  void setMainwindowTitle();
 
   int file_is_opened(const char *);
 
@@ -346,9 +346,9 @@ public:
 
   QLabel       *nav_toolbar_label;
 
-
-private:
   QWidget *navtoolbarGroupWidget;
+private:
+
   QMenuBar     *menubar;
 
   QMenu        *filemenu,

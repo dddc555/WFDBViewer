@@ -674,6 +674,10 @@ void UI_MIT2EDFwindow::SelectFileButton()
   }
 
   fclose(header_inputfile);
+  QTemporaryFile tempEdfFile;
+
+
+
 
   strcpy(data_filename, header_filename);
 
@@ -686,7 +690,11 @@ void UI_MIT2EDFwindow::SelectFileButton()
   strcat(data_filename, ".dat");
 
   strcat(edf_filename, ".edf");
-
+  if(tempEdfFile.open()){
+      strcpy(edf_filename, tempEdfFile.fileName().toLocal8Bit().data());
+      strcat(edf_filename, ".edf");
+      qDebug()<<edf_filename;
+  }
   strcat(annot_filename, ".atr");
 
   data_inputfile = fopeno(data_filename, "rb");

@@ -30,7 +30,7 @@
 #include "third_party/rdsamp.h"
 #include "mit2csv.h"
 
-#define PLAY_CONTROL_WIDTH 600
+
 
 static char annotdescrlist[42][48]=
   {"not-QRS","normal beat",
@@ -310,6 +310,7 @@ long long UI_Mainwindow::check_edf_file_datarecords(struct edfhdrblock *hdr)
 
 void UI_Mainwindow::save_file()
 {
+
     export_wfdb_button_clicked();
 //  int len;
 
@@ -535,7 +536,7 @@ void UI_Mainwindow::set_timesync_reference(QAction *action)
 
   sel_viewtime = i;
 
-  setMainwindowTitle(edfheaderlist[sel_viewtime]);
+  setMainwindowTitle();
 
   setup_viewbuf();
 }
@@ -1497,6 +1498,7 @@ void UI_Mainwindow::_open_wfdb(char *wfdb_path){
               if(spectrumdock[i]->dock->isHidden())  break;
             }
             spectrumdock[i]->init(0);
+            qDebug()<<"maincurve->width()"<<maincurve->width();
             navtoolbarGroupWidget->setGeometry((maincurve->width() - PLAY_CONTROL_WIDTH) / 2, 0, PLAY_CONTROL_WIDTH, 60);
         }
     }
@@ -1578,7 +1580,10 @@ void UI_Mainwindow::open(char *filePath, bool openDirect, bool storeRecent) {
          &&(strcmp(path + (len - 4), ".rec"))
          &&(strcmp(path + (len - 4), ".REC"))
          &&(strcmp(path + (len - 4), ".bdf"))
-         &&(strcmp(path + (len - 4), ".BDF")))
+         &&(strcmp(path + (len - 4), ".BDF"))
+         &&(strcmp(path + (len - 4), ".tmp"))
+         &&(strcmp(path + (len - 4), ".TMP"))
+         )
       {
         snprintf(str, 2048, "File has an unknown extension:  \"%s\"", path + (len - 4));
 
@@ -1724,7 +1729,10 @@ void UI_Mainwindow::open(char *filePath, bool openDirect, bool storeRecent) {
       {
         edfheaderlist[0]->viewtime = 0;
 
-        setMainwindowTitle(edfhdr);
+        setMainwindowTitle();
+        char fileName[MAX_PATH_LENGTH];
+        get_filename_from_path(fileName, selectedWFDBHeaderFilePath, MAX_PATH_LENGTH);
+        setWindowTitle(fileName);
       }
       else
       {
@@ -1837,7 +1845,7 @@ void UI_Mainwindow::remove_recent_file_mtg_path(const char *mtg_path)
 }
 
 
-void UI_Mainwindow::setMainwindowTitle(struct edfhdrblock *edfhdr)
+void UI_Mainwindow::setMainwindowTitle()
 {
   int i, len;
 
@@ -1846,58 +1854,35 @@ void UI_Mainwindow::setMainwindowTitle(struct edfhdrblock *edfhdr)
   struct date_time_struct date_time;
 
 
-  if(edfhdr==NULL)
+  if(selectedWFDBHeaderFilePath==NULL)
   {
     setWindowTitle(PROGRAM_NAME);
 
     return;
+  }
+  if(strlen(selectedWFDBHeaderFilePath) == 0){
+      setWindowTitle(PROGRAM_NAME);
+
+      return;
   }
 
   str[0] = 0;
 
   if(mainwindow_title_type == 0)
   {
-    if(edfhdr->edfplus || edfhdr->bdfplus)
-    {
-      snprintf(str, 256, PROGRAM_NAME "  subject %s  birthdate %s  startdate %s",
-                    edfhdr->plus_patient_name,
-                    edfhdr->plus_birthdate,
-                    edfhdr->plus_startdate);
-    }
-    else
-    {
-      utc_to_date_time(edfhdr->utc_starttime, &date_time);
 
-      date_time.month_str[0] += 32;
-      date_time.month_str[1] += 32;
-      date_time.month_str[2] += 32;
-
-      snprintf(str, 256, PROGRAM_NAME "  %s  startdate %i %s %i",
-                    edfhdr->patient,
-                    date_time.day,
-                    date_time.month_str,
-                    date_time.year);
-      len = strlen(str);
-      for(i=0; i<len; i++)
-      {
-        if(str[i]=='_')
-        {
-          str[i] = ' ';
-        }
-      }
-    }
   }
 
   if(mainwindow_title_type == 1)
   {
-    get_filename_from_path(str, edfhdr->filename, MAX_PATH_LENGTH);
+    get_filename_from_path(str, selectedWFDBHeaderFilePath, MAX_PATH_LENGTH);
 
     strcat(str, " - " PROGRAM_NAME);
   }
 
   if(mainwindow_title_type == 2)
   {
-    strcpy(str, edfhdr->filename);
+    strcpy(str, selectedWFDBHeaderFilePath);
 
     strcat(str, " - " PROGRAM_NAME);
   }
@@ -2405,7 +2390,7 @@ void UI_Mainwindow::close_file_action_func(QAction *action)
 
     sel_viewtime_act[sel_viewtime]->setChecked(true);
 
-    setMainwindowTitle(edfheaderlist[sel_viewtime]);
+    setMainwindowTitle();
   }
 
   delete sel_viewtime_act[file_n];
@@ -4004,7 +3989,6 @@ struct signalcompblock * UI_Mainwindow::create_signalcomp_copy(struct signalcomp
 
 void UI_Mainwindow::resizeEvent(QResizeEvent* event){
    QMainWindow::resizeEvent(event);
-   navtoolbarGroupWidget->setGeometry((maincurve->width() - PLAY_CONTROL_WIDTH) / 2, 0, PLAY_CONTROL_WIDTH, 60);
 }
 
 void UI_Mainwindow::export_wfdb_button_clicked()
@@ -4018,16 +4002,48 @@ void UI_Mainwindow::export_wfdb_button_clicked()
     }
 
     strcpy(f_path, recent_savedir);
+    char directory_path[MAX_PATH_LENGTH];
+    strcpy(directory_path, QFileDialog::getExistingDirectory(0, "Save file", QString::fromLocal8Bit(f_path)).toLocal8Bit().data());
 
-//    strcpy(f_path, QFileDialog::getSaveFileName(0, "Save file", QString::fromLocal8Bit(f_path), "Annotation CSV files (*.csv *.CSV)").toLocal8Bit().data());
-    strcpy(f_path, "f://07.qrs");
-    if(strlen(f_path) == 0)
+    if(strlen(directory_path) == 0)
     {
       return;
     }
 
+    qDebug()<<selectedWFDBHeaderFilePath;
+
+    char data_file_path[MAX_PATH_LENGTH], file_name[MAX_PATH_LENGTH],
+            targetHeader_path[MAX_PATH_LENGTH], targetData_path[MAX_PATH_LENGTH], targetAnnotation_path[MAX_PATH_LENGTH];
+
+
+    strcpy(data_file_path, selectedWFDBHeaderFilePath);
+
+    remove_extension_from_filename(data_file_path);
+    strcat(data_file_path, ".dat");
+
+    get_filename_from_path(file_name, selectedWFDBHeaderFilePath, MAX_PATH_LENGTH);
+
+    strcpy(targetHeader_path, directory_path);
+    strcpy(targetData_path, directory_path);
+    strcpy(targetAnnotation_path, directory_path);
+
+    remove_extension_from_filename(file_name);
+    strcat(targetHeader_path, file_name);
+    strcat(targetHeader_path, ".hea");
+
+    strcat(targetData_path, file_name);
+    strcat(targetData_path, ".dat");
+
+    strcat(targetAnnotation_path, file_name);
+    strcat(targetAnnotation_path, ".atr");
+    qDebug()<<"path " << targetData_path;
+
+    QFile::copy(selectedWFDBHeaderFilePath, targetHeader_path);
+    QFile::copy(data_file_path, targetData_path);
+
+
     get_directory_from_path( recent_savedir, f_path, MAX_PATH_LENGTH);
-    FILE *outputfile = fopeno(f_path, "wb");
+    FILE *outputfile = fopeno(targetAnnotation_path, "wb");
 
     if(outputfile == NULL)
     {

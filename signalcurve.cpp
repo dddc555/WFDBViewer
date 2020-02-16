@@ -171,7 +171,7 @@ void SignalCurve::mousePressEvent(QMouseEvent *press_event)
   {
     if(printEnabled == true)
     {
-      if((m_y<21)&&(m_y>3)&&(m_x>((w - (bordersize * 2)) - 43))&&(m_x<((w - (bordersize * 2)) - 3)))
+      if((m_y<21)&&(m_y>3)&&(m_x>((w - (bordersize * 2)) - 53))&&(m_x<((w - (bordersize * 2)) - 3)))
       {
         exec_sidemenu();
 
@@ -181,7 +181,7 @@ void SignalCurve::mousePressEvent(QMouseEvent *press_event)
 
     if(dashBoardEnabled == true)
     {
-      if((m_y<61)&&(m_y>43)&&(m_x>((w - (bordersize * 2)) - 43))&&(m_x<((w - (bordersize * 2)) - 3)))
+      if((m_y<61)&&(m_y>43)&&(m_x>((w - (bordersize * 2)) - 53))&&(m_x<((w - (bordersize * 2)) - 3)))
       {
         emit dashBoardClicked();
 
@@ -192,7 +192,7 @@ void SignalCurve::mousePressEvent(QMouseEvent *press_event)
     if(cursorEnabled == true)
     {
 
-      if((m_y<41)&&(m_y>23)&&(m_x>((w - (bordersize * 2)) - 43))&&(m_x<((w - (bordersize * 2)) - 3)))
+      if((m_y<41)&&(m_y>23)&&(m_x>((w - (bordersize * 2)) - 53))&&(m_x<((w - (bordersize * 2)) - 3)))
       {
           qDebug()<<"crosshair_1_active " << crosshair_1_active;
         if(crosshair_1_active)
@@ -482,7 +482,6 @@ void SignalCurve::resizeEvent(QResizeEvent *resize_event)
   {
     crosshair_1_x_position *= ((double)(width() - (bordersize * 2)) / (double)(old_w - (bordersize * 2)));
   }
-
   QWidget::resizeEvent(resize_event);
 }
 
@@ -501,13 +500,13 @@ void SignalCurve::exec_sidemenu()
     sidemenu->setMinimumSize(120, 160);
     sidemenu->setMaximumSize(120, 160);
   }
-  sidemenu->setWindowTitle("Print");
+  sidemenu->setWindowTitle(tr("Print"));
   sidemenu->setModal(true);
   sidemenu->setAttribute(Qt::WA_DeleteOnClose, true);
 
   sidemenuButton1 = new QPushButton(sidemenu);
   sidemenuButton1->setGeometry(10, 10, 100, 20);
-  sidemenuButton1->setText("to printer");
+  sidemenuButton1->setText(tr("to printer"));
 
 #if QT_VERSION < 0x050000
   sidemenuButton2 = new QPushButton(sidemenu);
@@ -517,15 +516,15 @@ void SignalCurve::exec_sidemenu()
 
   sidemenuButton3 = new QPushButton(sidemenu);
   sidemenuButton3->setGeometry(10, 70, 100, 20);
-  sidemenuButton3->setText("to PDF");
+  sidemenuButton3->setText(tr("to PDF"));
 
   sidemenuButton4 = new QPushButton(sidemenu);
   sidemenuButton4->setGeometry(10, 100, 100, 20);
-  sidemenuButton4->setText("to Image");
+  sidemenuButton4->setText(tr("to Image"));
 
   sidemenuButton5 = new QPushButton(sidemenu);
   sidemenuButton5->setGeometry(10, 130, 100, 20);
-  sidemenuButton5->setText("to ASCII");
+  sidemenuButton5->setText(tr("to ASCII"));
 
   if(extra_button)
   {
@@ -1649,12 +1648,16 @@ void SignalCurve::drawWidget(QPainter *painter, int curve_w, int curve_h)
 
   if(upperlabel1[0] != 0)
   {
-    painter->drawText(curve_w / 2 - 200, 20, 400, 16, Qt::AlignCenter | Qt::TextSingleLine, upperlabel1);
+      QString upperLabelString(upperlabel1);
+      upperLabelString.replace("FFT resolution", tr("FFT resolution"));
+    painter->drawText(curve_w / 2 - 200, 20, 400, 16, Qt::AlignCenter | Qt::TextSingleLine, upperLabelString);
   }
 
   if(lowerlabel[0] != 0)
   {
-    painter->drawText(curve_w / 2 - 80, curve_h - 20, 160, 16, Qt::AlignCenter | Qt::TextSingleLine, lowerlabel);
+    QString lowerLabelString(lowerlabel);
+    lowerLabelString.replace("Frequency", tr("Frequency"));
+    painter->drawText(curve_w / 2 - 80, curve_h - 20, 160, 16, Qt::AlignCenter | Qt::TextSingleLine, lowerLabelString);
   }
 
 /////////////////////////////////// translate coordinates, draw and fill a rectangle ///////////////////////////////////////////
@@ -2215,18 +2218,18 @@ void SignalCurve::drawWidget(QPainter *painter, int curve_w, int curve_h)
   painter->setFont(*sigcurve_font);
   if(printEnabled == true)
   {
-    painter->fillRect(curve_w - 43, 3, 40, 18, Qt::gray);
-    painter->drawText(curve_w - 38, 16, tr("print"));
+    painter->fillRect(curve_w - 53, 3, 50, 18, Qt::gray);
+    painter->drawText(curve_w - 48, 16, tr("print"));
   }
   if(cursorEnabled == true)
   {
-    painter->fillRect(curve_w - 43, 23, 40, 18, Qt::gray);
-    painter->drawText(curve_w - 38, 36, tr("cursor"));
+    painter->fillRect(curve_w - 53, 23, 50, 18, Qt::gray);
+    painter->drawText(curve_w - 48, 36, tr("cursor"));
   }
   if(dashBoardEnabled == true)
   {
-    painter->fillRect(curve_w - 43, 43, 40, 18, Qt::gray);
-    painter->drawText(curve_w - 38, 56, tr("ctls"));
+    painter->fillRect(curve_w - 53, 43, 50, 18, Qt::gray);
+    painter->drawText(curve_w - 48, 56, tr("ctls"));
   }
 }
 
@@ -2644,7 +2647,4 @@ int SignalCurve::get_directory_from_path(char *dest, const char *src, int ssize)
 
   return strlen(dest);
 }
-
-
-
 

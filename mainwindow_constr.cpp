@@ -1283,9 +1283,16 @@ void UI_Mainwindow::updateText(){
 
   if(spectrumdock[i] != NULL) {
       spectrumdock[i]->updateText();
-      qDebug()<<"update text";
+      qDebug()<<"update text"<< i;
   }
   else{
     qDebug()<<"dock is null";
+  }
+  qDebug()<<"on main:"<<tr("Frequency");
+  if(spectrumdock[i] != NULL){
+      spectrumdock[0]->updateText();
+  }
+  if(annotationEditDock != NULL){
+      annotationEditDock->updateText();
   }
 }

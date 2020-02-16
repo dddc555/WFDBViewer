@@ -4451,6 +4451,10 @@ void ViewCurve::resizeEvent(QResizeEvent *rs_event)
   drawCurve_stage_1();
 
   QWidget::resizeEvent(rs_event);
+  if(mainwindow != NULL) {
+      mainwindow->navtoolbarGroupWidget->setGeometry((width() - PLAY_CONTROL_WIDTH) / 2, 0, PLAY_CONTROL_WIDTH, 60);
+  }
+
 }
 
 

@@ -639,6 +639,123 @@
         <source>average</source>
         <translation type="vanished">平均</translation>
     </message>
+    <message>
+        <source>Annotation editor</source>
+        <translation type="vanished">注釈エディター</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="vanished">説明</translation>
+    </message>
+    <message>
+        <source>Onset</source>
+        <translation type="vanished">発症</translation>
+    </message>
+    <message>
+        <source>Duration</source>
+        <translation type="vanished">期間</translation>
+    </message>
+    <message>
+        <source>Modify</source>
+        <translation type="vanished">変更する</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="vanished">削除する</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation type="vanished">作成する</translation>
+    </message>
+    <message>
+        <source>Manually override automatic DPI settings</source>
+        <translation type="vanished">自動DPI設定を手動でオーバーライドする</translation>
+    </message>
+    <message>
+        <source>Mousewheel stepsize</source>
+        <translation type="vanished">マウスホイールのステップサイズ</translation>
+    </message>
+    <message>
+        <source>(0 is no scroll)</source>
+        <translation type="vanished">(0はスクロールなし)</translation>
+    </message>
+    <message>
+        <source>Use Multi-Threading</source>
+        <translation type="vanished">マルチスレッドを使用する</translation>
+    </message>
+    <message>
+        <source>Check for updates during startup</source>
+        <translation type="vanished">起動時に更新を確認する</translation>
+    </message>
+    <message>
+        <source>Viewtime / fileposition indicator</source>
+        <translation type="vanished">視聴時間/ファイル位置インジケータ</translation>
+    </message>
+    <message>
+        <source>relative</source>
+        <translation type="vanished">相対的</translation>
+    </message>
+    <message>
+        <source>real (relative)</source>
+        <translation type="vanished">実数（相対）</translation>
+    </message>
+    <message>
+        <source>date real (relative)</source>
+        <translation type="vanished">日付の実数（相対）</translation>
+    </message>
+    <message>
+        <source>Window title content</source>
+        <translation type="vanished">ウィンドウタイトルコンテンツ</translation>
+    </message>
+    <message>
+        <source>Subject info</source>
+        <translation type="vanished">件名情報</translation>
+    </message>
+    <message>
+        <source>Filename</source>
+        <translation type="vanished">ファイル名</translation>
+    </message>
+    <message>
+        <source>Filename with full path</source>
+        <translation type="vanished">フルパスのファイル名</translation>
+    </message>
+    <message>
+        <source>Default amplitude</source>
+        <translation type="vanished">デフォルトの振幅</translation>
+    </message>
+    <message>
+        <source>Use linear interpolation</source>
+        <translation type="vanished">線形補間を使用する</translation>
+    </message>
+    <message>
+        <source>Other</source>
+        <translation type="vanished">その他</translation>
+    </message>
+    <message>
+        <source>sum</source>
+        <translation type="vanished">和</translation>
+    </message>
+    <message>
+        <source>Colors</source>
+        <translation type="vanished">色</translation>
+    </message>
+    <message>
+        <source>FFT resolution</source>
+        <translation type="vanished">FFT解像度</translation>
+    </message>
+    <message>
+        <source>Busy</source>
+        <translation type="vanished">忙しい</translation>
+    </message>
+    <message>
+        <source>Sorting annotations</source>
+        <translation type="vanished">注釈の並べ替え</translation>
+    </message>
+    <message>
+        <source>Populating list...</source>
+        <translation type="vanished">リストを入力しています...</translation>
+    </message>
+	
 </context>
 <context>
     <name>AdjustFilterSettings</name>
@@ -655,7 +772,7 @@
     <name>SignalCurve</name>
     <message>
         <source>print</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">印刷する</translation>
     </message>
     <message>
         <source>cursor</source>
@@ -664,6 +781,34 @@
     <message>
         <source>ctls</source>
         <translation type="unfinished">ctls</translation>
+    </message>
+    <message>
+        <source>Frequency</source>
+        <translation type="unfinished">周波数</translation>
+    </message>
+    <message>
+        <source>FFT resolution</source>
+        <translation type="unfinished">FFT解像度</translation>
+    </message>
+    <message>
+        <source>Print</source>
+        <translation type="unfinished">印刷する</translation>
+    </message>
+    <message>
+        <source>to printer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>to PDF</source>
+        <translation type="unfinished">PDFへ</translation>
+    </message>
+    <message>
+        <source>to Image</source>
+        <translation type="unfinished">画像へ</translation>
+    </message>
+    <message>
+        <source>to ASCII</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -678,6 +823,37 @@
     <message>
         <source>Close</source>
         <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>UI_AnnotationEditwindow</name>
+    <message>
+        <source>Annotation editor</source>
+        <translation type="unfinished">注釈エディター</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished">説明</translation>
+    </message>
+    <message>
+        <source>Onset</source>
+        <translation type="unfinished">発症</translation>
+    </message>
+    <message>
+        <source>Duration</source>
+        <translation type="unfinished">期間</translation>
+    </message>
+    <message>
+        <source>Modify</source>
+        <translation type="unfinished">変更する</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">削除する</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation type="unfinished">作成する</translation>
     </message>
 </context>
 <context>
@@ -932,6 +1108,10 @@
     <message>
         <source>Print</source>
         <translation type="unfinished">印刷する</translation>
+    </message>
+    <message>
+        <source>print</source>
+        <translation type="obsolete">印刷する</translation>
     </message>
     <message>
         <source>to Printer</source>
@@ -1209,32 +1389,36 @@
         <source>Japanese</source>
         <translation type="unfinished">日本語</translation>
     </message>
+    <message>
+        <source>Frequency</source>
+        <translation type="unfinished">周波数</translation>
+    </message>
 </context>
 <context>
     <name>UI_OptionsDialog</name>
     <message>
         <source>relative</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">相対的</translation>
     </message>
     <message>
         <source>real (relative)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">実数（相対）</translation>
     </message>
     <message>
         <source>date real (relative)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">日付の実数（相対）</translation>
     </message>
     <message>
         <source>Subject info</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">件名情報</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ファイル名</translation>
     </message>
     <message>
         <source>Filename with full path</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">フルパスのファイル名</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -1362,7 +1546,7 @@
     </message>
     <message>
         <source>sum</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">和</translation>
     </message>
     <message>
         <source>peak</source>
@@ -1431,6 +1615,58 @@
     <message>
         <source>Powerline Frequency</source>
         <translation type="unfinished">電力線周波数</translation>
+    </message>
+    <message>
+        <source>Colors</source>
+        <translation type="unfinished">色</translation>
+    </message>
+    <message>
+        <source>Manually override automatic DPI settings</source>
+        <translation type="unfinished">自動DPI設定を手動でオーバーライドする</translation>
+    </message>
+    <message>
+        <source>Height of colorbars are relative to the</source>
+        <translation type="unfinished">カラーバーの高さは</translation>
+    </message>
+    <message>
+        <source>Mousewheel stepsize</source>
+        <translation type="unfinished">マウスホイールのステップサイズ</translation>
+    </message>
+    <message>
+        <source>(0 is no scroll)</source>
+        <translation type="unfinished">(0はスクロールなし)</translation>
+    </message>
+    <message>
+        <source>Timescale</source>
+        <translation type="unfinished">タイムスケール</translation>
+    </message>
+    <message>
+        <source>Use Multi-Threading</source>
+        <translation type="unfinished">マルチスレッドを使用する</translation>
+    </message>
+    <message>
+        <source>Check for updates during startup</source>
+        <translation type="unfinished">起動時に更新を確認する</translation>
+    </message>
+    <message>
+        <source>Viewtime / fileposition indicator</source>
+        <translation type="unfinished">視聴時間/ファイル位置インジケータ</translation>
+    </message>
+    <message>
+        <source>Window title content</source>
+        <translation type="unfinished">ウィンドウタイトルコンテンツ</translation>
+    </message>
+    <message>
+        <source>Default amplitude</source>
+        <translation type="unfinished">デフォルトの振幅</translation>
+    </message>
+    <message>
+        <source>Use linear interpolation</source>
+        <translation type="unfinished">線形補間を使用する</translation>
+    </message>
+    <message>
+        <source>Other</source>
+        <translation type="unfinished">その他</translation>
     </message>
 </context>
 <context>

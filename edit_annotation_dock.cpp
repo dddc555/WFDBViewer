@@ -37,7 +37,7 @@ UI_AnnotationEditwindow::UI_AnnotationEditwindow(QWidget *w_parent)
 
   file_num = 0;
 
-  dockedit = new QDockWidget("Annotation editor", w_parent);
+  dockedit = new QDockWidget(tr("Annotation editor"), w_parent);
   dockedit->setAllowedAreas(Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);
   dockedit->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable);
 
@@ -48,14 +48,14 @@ UI_AnnotationEditwindow::UI_AnnotationEditwindow(QWidget *w_parent)
 
   descriptionLabel = new QLabel(annot_edit_dialog);
   descriptionLabel->setGeometry(10, 10, 78, 25);
-  descriptionLabel->setText("Description");
+  descriptionLabel->setText(tr("Description"));
 
   annot_descript_lineEdit = new QLineEdit(annot_edit_dialog);
   annot_descript_lineEdit->setGeometry(90, 10, 150, 25);
 
   onsetLabel = new QLabel(annot_edit_dialog);
   onsetLabel->setGeometry(250, 10, 48, 25);
-  onsetLabel->setText("Onset");
+  onsetLabel->setText(tr("Onset"));
 
   posNegTimebox = new QComboBox(annot_edit_dialog);
   posNegTimebox->setGeometry(300, 10, 35, 25);
@@ -76,7 +76,7 @@ UI_AnnotationEditwindow::UI_AnnotationEditwindow(QWidget *w_parent)
 
   durationLabel = new QLabel(annot_edit_dialog);
   durationLabel->setGeometry(490, 10, 58, 25);
-  durationLabel->setText("Duration");
+  durationLabel->setText(tr("Duration"));
 
   duration_spinbox = new QDoubleSpinBox(annot_edit_dialog);
   duration_spinbox->setGeometry(550, 10, 120, 25);
@@ -88,18 +88,18 @@ UI_AnnotationEditwindow::UI_AnnotationEditwindow(QWidget *w_parent)
 
   modifybutton = new QPushButton(annot_edit_dialog);
   modifybutton->setGeometry(720, 10, 100, 25);
-  modifybutton->setText("Modify");
+  modifybutton->setText(tr("Modify"));
   modifybutton->setEnabled(false);
 
   deletebutton = new QPushButton(annot_edit_dialog);
   deletebutton->setGeometry(840, 10, 100, 25);
-  deletebutton->setText("Delete");
+  deletebutton->setText(tr("Delete"));
   deletebutton->setShortcut(QKeySequence::Delete);
   deletebutton->setEnabled(false);
 
   createbutton = new QPushButton(annot_edit_dialog);
   createbutton->setGeometry(960, 10, 100, 25);
-  createbutton->setText("Create");
+  createbutton->setText(tr("Create"));
 
   QObject::connect(modifybutton, SIGNAL(clicked()),               this, SLOT(modifyButtonClicked()));
   QObject::connect(deletebutton, SIGNAL(clicked()),               this, SLOT(deleteButtonClicked()));
@@ -446,4 +446,20 @@ void UI_AnnotationEditwindow::set_selected_annotation(struct annotationblock *an
   modifybutton->setEnabled(false);
 
   deletebutton->setEnabled(false);
+}
+
+void UI_AnnotationEditwindow::updateText(){
+    {
+      QLabel *label = new QLabel(tr("Annotation editor"));
+      dockedit->setTitleBarWidget(label);
+      label->setGeometry(5, 9, label->width(), label->height());
+
+      descriptionLabel->setText(tr("Description"));
+      onsetLabel->setText(tr("Onset"));
+      durationLabel->setText(tr("Duration"));
+
+      modifybutton->setText(tr("Modify"));
+      deletebutton->setText(tr("Delete"));
+      createbutton->setText(tr("Create"));
+    }
 }

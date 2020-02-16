@@ -2213,7 +2213,7 @@ void UI_LoadMontagewindow::LoadButtonClicked()
 
   if(LoadMontageDialog!=NULL) LoadMontageDialog->close();
 
-  mainwindow->setMainwindowTitle(mainwindow->edfheaderlist[mainwindow->sel_viewtime]);
+  mainwindow->setMainwindowTitle();
 
   if(mainwindow->files_open == 1)
   {

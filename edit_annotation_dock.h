@@ -88,6 +88,8 @@ public:
 
   void set_selected_annotation(struct annotationblock *);
 
+  void updateText();
+
 private:
 
   int file_num,
