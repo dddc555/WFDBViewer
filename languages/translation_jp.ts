@@ -9,15 +9,15 @@
     </message>
     <message>
         <source>Open WFDB</source>
-        <translation type="vanished">開いた WFDB</translation>
+        <translation type="vanished">WFDBを開く</translation>
     </message>
     <message>
         <source>Save as</source>
-        <translation type="vanished">として保存</translation>
+        <translation type="vanished">新規保存</translation>
     </message>
     <message>
         <source>to Image</source>
-        <translation type="vanished">画像へ</translation>
+        <translation type="vanished">画像</translation>
     </message>
     <message>
         <source>Recent files</source>
@@ -29,27 +29,27 @@
     </message>
     <message>
         <source>Print</source>
-        <translation type="vanished">印刷する</translation>
+        <translation type="vanished">出力</translation>
     </message>
     <message>
         <source>to Printer</source>
-        <translation type="vanished">プリンターへ</translation>
+        <translation type="vanished">プリンター</translation>
     </message>
     <message>
         <source>to PDF</source>
-        <translation type="vanished">PDFへ</translation>
+        <translation type="vanished">PDF</translation>
     </message>
     <message>
         <source>to EDF</source>
-        <translation type="vanished">EDFへ</translation>
+        <translation type="vanished">EDF</translation>
     </message>
     <message>
         <source>to BDF</source>
-        <translation type="vanished">BDFへ</translation>
+        <translation type="vanished">BDF</translation>
     </message>
     <message>
         <source>to CSV</source>
-        <translation type="vanished">CSVへ</translation>
+        <translation type="vanished">CSV</translation>
     </message>
     <message>
         <source>Signals</source>
@@ -65,11 +65,11 @@
     </message>
     <message>
         <source>Organize</source>
-        <translation type="vanished">Organize</translation>
+        <translation type="vanished">整理</translation>
     </message>
     <message>
         <source>Remove all</source>
-        <translation type="vanished">整理する</translation>
+        <translation type="vanished">削除</translation>
     </message>
     <message>
         <source>Timescale</source>
@@ -77,15 +77,15 @@
     </message>
     <message>
         <source>Timescale / 2</source>
-        <translation type="vanished">タイムスケール/ 2</translation>
+        <translation type="vanished">タイムスケール / 2</translation>
     </message>
     <message>
         <source>Timescale x 2</source>
-        <translation type="vanished">タイムスケールx 2</translation>
+        <translation type="vanished">タイムスケール x 2</translation>
     </message>
     <message>
         <source>user defined</source>
-        <translation type="vanished">ユーザー定義の</translation>
+        <translation type="vanished">ユーザー定義</translation>
     </message>
     <message>
         <source>whole recording</source>
@@ -97,7 +97,7 @@
     </message>
     <message>
         <source>Fit to pane</source>
-        <translation type="vanished">ペインに合わせる</translation>
+        <translation type="vanished">画面に合わせる</translation>
     </message>
     <message>
         <source>Adjust offset</source>
@@ -117,27 +117,27 @@
     </message>
     <message>
         <source>New</source>
-        <translation type="vanished">新着</translation>
+        <translation type="vanished">新規</translation>
     </message>
     <message>
         <source>Adjust</source>
-        <translation type="vanished">調整する</translation>
+        <translation type="vanished">調整</translation>
     </message>
     <message>
         <source>Powerline interference removal for ECG</source>
-        <translation type="vanished">ECGの電力線干渉除去</translation>
+        <translation type="vanished">ECGの電源ノイズ除去</translation>
     </message>
     <message>
         <source>Remove all Powerline interference filters</source>
-        <translation type="vanished">すべての電力線干渉フィルターを取り外します</translation>
+        <translation type="vanished">すべての電源ノイズフィルターを削除</translation>
     </message>
     <message>
         <source>Customizable FIR filter</source>
-        <translation type="vanished">カスタマイズ可能なFIRフィルター</translation>
+        <translation type="vanished">カスタムFIRフィルター</translation>
     </message>
     <message>
         <source>Remove all FIR filters</source>
-        <translation type="vanished">すべてのFIRフィルターを削除する</translation>
+        <translation type="vanished">すべてのFIRフィルターを削除</translation>
     </message>
     <message>
         <source>Spike</source>
@@ -145,19 +145,19 @@
     </message>
     <message>
         <source>Remove all spike filters</source>
-        <translation type="vanished">すべてのスパイクフィルターを削除する</translation>
+        <translation type="vanished">すべてのスパイクフィルターを削除</translation>
     </message>
     <message>
         <source>Tools</source>
-        <translation type="vanished">道具</translation>
+        <translation type="vanished">ツール</translation>
     </message>
     <message>
         <source>Convert MIT (PhysioBank) to EDF+</source>
-        <translation type="vanished">MIT（PhysioBank）をEDF +に変換する</translation>
+        <translation type="vanished">WFDBをEDF+に変換する</translation>
     </message>
     <message>
         <source>Convert MIT (PhysioBank) to CSV</source>
-        <translation type="vanished">MIT（PhysioBank）をCSVに変換する</translation>
+        <translation type="vanished">WFDBをCSVに変換する</translation>
     </message>
     <message>
         <source>Language</source>
@@ -173,15 +173,15 @@
     </message>
     <message>
         <source>Organize signals</source>
-        <translation type="vanished">信号を整理する</translation>
+        <translation type="vanished">信号を整理</translation>
     </message>
     <message>
         <source>Up</source>
-        <translation type="vanished">アップ</translation>
+        <translation type="vanished">上へ</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="vanished">ダウン</translation>
+        <translation type="vanished">下へ</translation>
     </message>
     <message>
         <source>Invert</source>
@@ -189,19 +189,19 @@
     </message>
     <message>
         <source>Remove</source>
-        <translation type="vanished">削除する</translation>
+        <translation type="vanished">削除</translation>
     </message>
     <message>
         <source>Set timescale</source>
-        <translation type="vanished">タイムスケールを設定する</translation>
+        <translation type="vanished">タイムスケールを設定</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="vanished">キャンセル</translation>
+        <translation type="vanished">OK</translation>
     </message>
     <message>
         <source>Add a filter</source>
-        <translation type="vanished">フィルターを追加する</translation>
+        <translation type="vanished">フィルターを追加</translation>
     </message>
     <message>
         <source>Type</source>
@@ -217,7 +217,7 @@
     </message>
     <message>
         <source>Order</source>
-        <translation type="vanished">注文</translation>
+        <translation type="vanished">順序</translation>
     </message>
     <message>
         <source>Model</source>
@@ -225,7 +225,7 @@
     </message>
     <message>
         <source>Slope roll-off:</source>
-        <translation type="vanished">傾斜ロールオフ：</translation>
+        <translation type="vanished">スロープロールオフ：</translation>
     </message>
     <message>
         <source>6 dB / octave</source>
@@ -237,11 +237,11 @@
     </message>
     <message>
         <source>Lowpass</source>
-        <translation type="vanished">Lowpass</translation>
+        <translation type="vanished">ローパス</translation>
     </message>
     <message>
         <source>Notch</source>
-        <translation type="vanished">ローパス</translation>
+        <translation type="vanished">ノッチ</translation>
     </message>
     <message>
         <source>Bandpass</source>
@@ -273,11 +273,11 @@
     </message>
     <message>
         <source>Apply</source>
-        <translation type="vanished">適用する</translation>
+        <translation type="vanished">適用</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="vanished">出口</translation>
+        <translation type="vanished">終了</translation>
     </message>
     <message>
         <source>passband ripple</source>
@@ -289,7 +289,7 @@
     </message>
     <message>
         <source>Add a spike filter</source>
-        <translation type="vanished">スパイクフィルターを追加する</translation>
+        <translation type="vanished">スパイクフィルターを追加</translation>
     </message>
     <message>
         <source>Velocity</source>
@@ -305,7 +305,7 @@
     </message>
     <message>
         <source>Add a Custom FIR filter</source>
-        <translation type="vanished">カスタムFIRフィルターを追加する</translation>
+        <translation type="vanished">カスタムFIRフィルターを追加</translation>
     </message>
     <message>
         <source>Filter taps: 0</source>
@@ -317,19 +317,19 @@
     </message>
     <message>
         <source>Add a powerline interference filter</source>
-        <translation type="vanished">電力線干渉フィルターを追加する</translation>
+        <translation type="vanished">電源ノイズフィルターを追加</translation>
     </message>
     <message>
         <source>Powerline frequency</source>
-        <translation type="vanished">電力線周波数</translation>
+        <translation type="vanished">電源周波数</translation>
     </message>
     <message>
         <source>&quot;Only signals with a physical dimension V, mV or uV and\n&quot;
                    &quot;a samplerate of &gt;= 500Hz and\n&quot;
                    &quot;an integer ratio to 50 or 60 Hz will be listed here.&quot;</source>
-        <translation type="vanished">&quot;Only signals with a physical dimension V, mV or uV and\n&quot;
-                   &quot;a samplerate of &gt;= 500Hz and\n&quot;
-                   &quot;an integer ratio to 50 or 60 Hz will be listed here.&quot;</translation>
+        <translation type="vanished">&quot;物理単位が V, mV or uV かつ、\n&quot;
+                   &quot;サンプリング周波数が of &gt;= 500Hz かつ、\n&quot;
+                   &quot;50 or 60 Hz の整数倍数である信号が表示されます。&quot;</translation>
     </message>
     <message>
         <source>Log</source>
@@ -377,7 +377,7 @@
     </message>
     <message>
         <source>Hann</source>
-        <translation type="vanished">ハン</translation>
+        <translation type="vanished">Hann</translation>
     </message>
     <message>
         <source>HFT223D</source>
@@ -393,7 +393,7 @@
     </message>
     <message>
         <source>ctls</source>
-        <translation type="vanished">ctls</translation>
+        <translation type="vanished">コントロール</translation>
     </message>
     <message>
         <source>cursor</source>
@@ -405,15 +405,15 @@
     </message>
     <message>
         <source>Export</source>
-        <translation type="vanished">書き出す</translation>
+        <translation type="vanished">エクスポート</translation>
     </message>
     <message>
         <source>WFDB Export</source>
-        <translation type="vanished">WFDB 書き出す</translation>
+        <translation type="vanished">WFDBをエクスポート</translation>
     </message>
     <message>
         <source>Set timescale from here to next annotation</source>
-        <translation type="vanished">ここから次の注釈までのタイムスケールを設定します</translation>
+        <translation type="vanished">ここから次のアノテーションまでをタイムスケールとして設定</translation>
     </message>
     <message>
         <source>Hide</source>
@@ -437,7 +437,7 @@
     </message>
     <message>
         <source>Hide all Nihon Kohden triggers</source>
-        <translation type="vanished">日本光電のトリガーをすべて非表示にする</translation>
+        <translation type="vanished">すべての日本光電トリガーを非表示</translation>
     </message>
     <message>
         <source>Hide all Biosemi triggers</source>
@@ -457,7 +457,7 @@
     </message>
     <message>
         <source>Annotations</source>
-        <translation type="vanished">注釈</translation>
+        <translation type="vanished">アノテーション</translation>
     </message>
     <message>
         <source>Relative</source>
@@ -473,15 +473,15 @@
     </message>
     <message>
         <source>Small ruler color</source>
-        <translation type="vanished">モール定規色</translation>
+        <translation type="vanished">小ルーラーの色</translation>
     </message>
     <message>
         <source>Big ruler color</source>
-        <translation type="vanished">大きな定規の色</translation>
+        <translation type="vanished">大ルーラーの色</translation>
     </message>
     <message>
         <source>Mouse rectangle color</source>
-        <translation type="vanished">マウスの長方形の色</translation>
+        <translation type="vanished">マウスボックスの色</translation>
     </message>
     <message>
         <source>Text color</source>
@@ -509,7 +509,7 @@
     </message>
     <message>
         <source>Annotation marker</source>
-        <translation type="vanished">注釈マーカー</translation>
+        <translation type="vanished">アノテーションマーカー</translation>
     </message>
     <message>
         <source>Show duration at marker</source>
@@ -517,7 +517,7 @@
     </message>
     <message>
         <source>Annotation duration background</source>
-        <translation type="vanished">注釈期間の背景</translation>
+        <translation type="vanished">アノテーション期間の背景</translation>
     </message>
     <message>
         <source>Show only at screen bottom</source>
@@ -525,39 +525,39 @@
     </message>
     <message>
         <source>Annotations: filter list only</source>
-        <translation type="vanished">注釈：フィルターリストのみ</translation>
+        <translation type="vanished">アノテーション：フィルターリストのみ</translation>
     </message>
     <message>
         <source>Annotation filter affects the annotationlist only, not the annotation markers in the signal window</source>
-        <translation type="vanished">注釈フィルターは注釈リストにのみ影響し、信号ウィンドウの注釈マーカーには影響しません</translation>
+        <translation type="vanished">アノテーションフィルターはアノテーションリストにのみ影響し、信号ウィンドウのアノテーションマーカーには影響しません</translation>
     </message>
     <message>
         <source>Print in grayscale</source>
-        <translation type="vanished">グレースケールで印刷</translation>
+        <translation type="vanished">グレースケールで出力</translation>
     </message>
     <message>
         <source>Clip signals to pane</source>
-        <translation type="vanished">信号をペインにクリップ</translation>
+        <translation type="vanished">信号を画面にクリップ</translation>
     </message>
     <message>
         <source>Colorschema</source>
-        <translation type="vanished">カラースキーム</translation>
+        <translation type="vanished">色スキーム</translation>
     </message>
     <message>
         <source>Load</source>
-        <translation type="vanished">負荷</translation>
+        <translation type="vanished">開く</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation type="vanished">セーブ</translation>
+        <translation type="vanished">保存</translation>
     </message>
     <message>
         <source>Measure the length of the black</source>
-        <translation type="vanished">黒の長さを測定する</translation>
+        <translation type="vanished">黒い長方形の長さを</translation>
     </message>
     <message>
         <source>rectangles and enter the values.</source>
-        <translation type="vanished">長方形と値を入力します。</translation>
+        <translation type="vanished">測定し値を入力</translation>
     </message>
     <message>
         <source>Calibration</source>
@@ -569,7 +569,7 @@
     </message>
     <message>
         <source>of the power in the colorbar region.</source>
-        <translation type="vanished">カラーバー領域のパワーの。</translation>
+        <translation type="vanished">カラーバー領域のパワー。</translation>
     </message>
     <message>
         <source>FFT blocksize:</source>
@@ -585,7 +585,7 @@
     </message>
     <message>
         <source>Auto</source>
-        <translation type="vanished">オート</translation>
+        <translation type="vanished">自動</translation>
     </message>
     <message>
         <source>Restore default</source>
@@ -597,23 +597,23 @@
     </message>
     <message>
         <source>Do not read annotations, Biosemi Status signal</source>
-        <translation type="vanished">注釈、Biosemiステータス信号を読み取らない</translation>
+        <translation type="vanished">ファイルサイズが以下以上の場合、アノテーション、Biosemiステータス信号</translation>
     </message>
     <message>
         <source>or Nihon Kohden triggers when filesize</source>
-        <translation type="vanished">またはファイルサイズのときに日本光電がトリガーします</translation>
+        <translation type="vanished">アノテーション、Biosemiステータス信号、日本光電がトリガー</translation>
     </message>
     <message>
         <source>is more than:</source>
-        <translation type="vanished">以上です：</translation>
+        <translation type="vanished">を読み取らない：</translation>
     </message>
     <message>
         <source>Read Biosemi Status signal</source>
-        <translation type="vanished">Biosemi Statusシグナルの読み取り</translation>
+        <translation type="vanished">Biosemi Statusシグナルを読み取り</translation>
     </message>
     <message>
         <source>Read Nihon Kohden Trigger/Marker signal</source>
-        <translation type="vanished">日本光電電トリガー/マーカー信号を読む</translation>
+        <translation type="vanished">日本光電電トリガー/マーカー信号を読み取り</translation>
     </message>
     <message>
         <source>livestream update interval</source>
@@ -621,7 +621,7 @@
     </message>
     <message>
         <source>Powerline Frequency</source>
-        <translation type="vanished">電力線周波数</translation>
+        <translation type="vanished">電源周波数</translation>
     </message>
     <message>
         <source>Label</source>
@@ -629,7 +629,7 @@
     </message>
     <message>
         <source>Height of colorbars are relative to the</source>
-        <translation type="vanished">カラーバーの高さは</translation>
+        <translation type="vanished">カラーバーの高さは次に相対します：</translation>
     </message>
     <message>
         <source>peak</source>
@@ -641,7 +641,7 @@
     </message>
     <message>
         <source>Annotation editor</source>
-        <translation type="vanished">注釈エディター</translation>
+        <translation type="vanished">アノテーションエディター</translation>
     </message>
     <message>
         <source>Description</source>
@@ -649,7 +649,7 @@
     </message>
     <message>
         <source>Onset</source>
-        <translation type="vanished">発症</translation>
+        <translation type="vanished">開始</translation>
     </message>
     <message>
         <source>Duration</source>
@@ -657,19 +657,19 @@
     </message>
     <message>
         <source>Modify</source>
-        <translation type="vanished">変更する</translation>
+        <translation type="vanished">変更</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">削除する</translation>
+        <translation type="vanished">削除</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation type="vanished">作成する</translation>
+        <translation type="vanished">作成</translation>
     </message>
     <message>
         <source>Manually override automatic DPI settings</source>
-        <translation type="vanished">自動DPI設定を手動でオーバーライドする</translation>
+        <translation type="vanished">自動DPI設定を手動でオーバーライド</translation>
     </message>
     <message>
         <source>Mousewheel stepsize</source>
@@ -681,11 +681,11 @@
     </message>
     <message>
         <source>Use Multi-Threading</source>
-        <translation type="vanished">マルチスレッドを使用する</translation>
+        <translation type="vanished">マルチスレッドを使用</translation>
     </message>
     <message>
         <source>Check for updates during startup</source>
-        <translation type="vanished">起動時に更新を確認する</translation>
+        <translation type="vanished">起動時に更新を確認</translation>
     </message>
     <message>
         <source>Viewtime / fileposition indicator</source>
@@ -717,7 +717,7 @@
     </message>
     <message>
         <source>Filename with full path</source>
-        <translation type="vanished">フルパスのファイル名</translation>
+        <translation type="vanished">ファイル名と場所</translation>
     </message>
     <message>
         <source>Default amplitude</source>
@@ -733,7 +733,7 @@
     </message>
     <message>
         <source>sum</source>
-        <translation type="vanished">和</translation>
+        <translation type="vanished">合計</translation>
     </message>
     <message>
         <source>Colors</source>
@@ -745,15 +745,15 @@
     </message>
     <message>
         <source>Busy</source>
-        <translation type="vanished">忙しい</translation>
+        <translation type="vanished">ビジー</translation>
     </message>
     <message>
         <source>Sorting annotations</source>
-        <translation type="vanished">注釈の並べ替え</translation>
+        <translation type="vanished">アノテーションの並べ替え</translation>
     </message>
     <message>
         <source>Populating list...</source>
-        <translation type="vanished">リストを入力しています...</translation>
+        <translation type="vanished">リストを準備しています...</translation>
     </message>
 	
 </context>
@@ -761,7 +761,7 @@
     <name>AdjustFilterSettings</name>
     <message>
         <source>Remove</source>
-        <translation type="unfinished">削除する</translation>
+        <translation type="unfinished">削除</translation>
     </message>
     <message>
         <source>Close</source>
@@ -772,7 +772,7 @@
     <name>SignalCurve</name>
     <message>
         <source>print</source>
-        <translation type="unfinished">印刷する</translation>
+        <translation type="unfinished">エクスポート</translation>
     </message>
     <message>
         <source>cursor</source>
@@ -780,7 +780,7 @@
     </message>
     <message>
         <source>ctls</source>
-        <translation type="unfinished">ctls</translation>
+        <translation type="unfinished">コントロール</translation>
     </message>
     <message>
         <source>Frequency</source>
@@ -792,23 +792,23 @@
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished">印刷する</translation>
+        <translation type="unfinished">エクスポート</translation>
     </message>
     <message>
         <source>to printer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">プリンター</translation>
     </message>
     <message>
         <source>to PDF</source>
-        <translation type="unfinished">PDFへ</translation>
+        <translation type="unfinished">PDF</translation>
     </message>
     <message>
         <source>to Image</source>
-        <translation type="unfinished">画像へ</translation>
+        <translation type="unfinished">画像</translation>
     </message>
     <message>
         <source>to ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">テキスト</translation>
     </message>
 </context>
 <context>
@@ -829,7 +829,7 @@
     <name>UI_AnnotationEditwindow</name>
     <message>
         <source>Annotation editor</source>
-        <translation type="unfinished">注釈エディター</translation>
+        <translation type="unfinished">アノテーションエディター</translation>
     </message>
     <message>
         <source>Description</source>
@@ -837,7 +837,7 @@
     </message>
     <message>
         <source>Onset</source>
-        <translation type="unfinished">発症</translation>
+        <translation type="unfinished">開始</translation>
     </message>
     <message>
         <source>Duration</source>
@@ -845,22 +845,22 @@
     </message>
     <message>
         <source>Modify</source>
-        <translation type="unfinished">変更する</translation>
+        <translation type="unfinished">変更</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished">削除する</translation>
+        <translation type="unfinished">削除</translation>
     </message>
     <message>
         <source>Create</source>
-        <translation type="unfinished">作成する</translation>
+        <translation type="unfinished">作成</translation>
     </message>
 </context>
 <context>
     <name>UI_Annotationswindow</name>
     <message>
         <source>hrv</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HRV</translation>
     </message>
     <message>
         <source>Edit</source>
@@ -868,15 +868,15 @@
     </message>
     <message>
         <source>Export</source>
-        <translation type="unfinished">書き出す</translation>
+        <translation type="unfinished">エクスポート</translation>
     </message>
     <message>
         <source>WFDB Export</source>
-        <translation type="unfinished">WFDB 書き出す</translation>
+        <translation type="unfinished">WFDBをエクスポート</translation>
     </message>
     <message>
         <source>Set timescale from here to next annotation</source>
-        <translation type="unfinished">ここから次の注釈までのタイムスケールを設定します</translation>
+        <translation type="unfinished">ここから次のアノテーションまでをタイムスケールとして設定します</translation>
     </message>
     <message>
         <source>Hide</source>
@@ -904,7 +904,7 @@
     </message>
     <message>
         <source>Hide all Nihon Kohden triggers</source>
-        <translation type="unfinished">日本光電のトリガーをすべて非表示にする</translation>
+        <translation type="unfinished">すべての日本光電のトリガーを非表示</translation>
     </message>
     <message>
         <source>Hide all Biosemi triggers</source>
@@ -924,7 +924,7 @@
     </message>
     <message>
         <source>Annotations</source>
-        <translation type="unfinished">注釈</translation>
+        <translation type="unfinished">アノテーション</translation>
     </message>
     <message>
         <source>Relative</source>
@@ -962,7 +962,7 @@
     <name>UI_EDFhdrwindow</name>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">一般</translation>
     </message>
     <message>
         <source>Signals</source>
@@ -997,14 +997,14 @@
     </message>
     <message>
         <source>Apply</source>
-        <translation type="unfinished">適用する</translation>
+        <translation type="unfinished">適用</translation>
     </message>
 </context>
 <context>
     <name>UI_FilterDialog</name>
     <message>
         <source>Add a filter</source>
-        <translation type="unfinished">フィルターを追加する</translation>
+        <translation type="unfinished">フィルターを追加</translation>
     </message>
     <message>
         <source>Type</source>
@@ -1040,11 +1040,11 @@
     </message>
     <message>
         <source>Lowpass</source>
-        <translation type="unfinished">Lowpass</translation>
+        <translation type="unfinished">ローパス</translation>
     </message>
     <message>
         <source>Notch</source>
-        <translation type="unfinished">ローパス</translation>
+        <translation type="unfinished">ノッチ</translation>
     </message>
     <message>
         <source>Bandpass</source>
@@ -1076,11 +1076,11 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">キャンセル</translation>
     </message>
     <message>
         <source>Apply</source>
-        <translation type="unfinished">適用する</translation>
+        <translation type="unfinished">適用</translation>
     </message>
     <message>
         <source>passband ripple</source>
@@ -1103,35 +1103,35 @@
     </message>
     <message>
         <source>to Image</source>
-        <translation type="unfinished">画像へ</translation>
+        <translation type="unfinished">画像</translation>
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished">印刷する</translation>
+        <translation type="unfinished">エクスポート</translation>
     </message>
     <message>
         <source>print</source>
-        <translation type="obsolete">印刷する</translation>
+        <translation type="obsolete">エクスポート</translation>
     </message>
     <message>
         <source>to Printer</source>
-        <translation type="unfinished">プリンターへ</translation>
+        <translation type="unfinished">プリンタ</translation>
     </message>
     <message>
         <source>to EDF</source>
-        <translation type="unfinished">EDFへ</translation>
+        <translation type="unfinished">EDF</translation>
     </message>
     <message>
         <source>to BDF</source>
-        <translation type="unfinished">BDFへ</translation>
+        <translation type="unfinished">BDF</translation>
     </message>
     <message>
         <source>to CSV</source>
-        <translation type="unfinished">CSVへ</translation>
+        <translation type="unfinished">CSV</translation>
     </message>
     <message>
         <source>Save as</source>
-        <translation type="unfinished">として保存</translation>
+        <translation type="unfinished">新規保存</translation>
     </message>
     <message>
         <source>File</source>
@@ -1139,11 +1139,11 @@
     </message>
     <message>
         <source>Open WFDB</source>
-        <translation type="unfinished">開いた WFDB</translation>
+        <translation type="unfinished">WFDBを開く</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished">出口</translation>
+        <translation type="unfinished">終了</translation>
     </message>
     <message>
         <source>Signals</source>
@@ -1159,11 +1159,11 @@
     </message>
     <message>
         <source>Organize</source>
-        <translation type="unfinished">Organize</translation>
+        <translation type="unfinished">整理</translation>
     </message>
     <message>
         <source>Remove all</source>
-        <translation type="unfinished">整理する</translation>
+        <translation type="unfinished">すべて削除</translation>
     </message>
     <message>
         <source>Timescale</source>
@@ -1295,7 +1295,7 @@
     </message>
     <message>
         <source>user defined</source>
-        <translation type="unfinished">ユーザー定義の</translation>
+        <translation type="unfinished">ユーザー定義</translation>
     </message>
     <message>
         <source>whole recording</source>
@@ -1307,7 +1307,7 @@
     </message>
     <message>
         <source>Fit to pane</source>
-        <translation type="unfinished">ペインに合わせる</translation>
+        <translation type="unfinished">画面に合わせる</translation>
     </message>
     <message>
         <source>Adjust offset</source>
@@ -1315,7 +1315,7 @@
     </message>
     <message>
         <source>Offset -&gt; 0</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">オフセット -&gt; 0</translation>
     </message>
     <message>
         <source>Amplitude x 2</source>
@@ -1335,23 +1335,23 @@
     </message>
     <message>
         <source>Adjust</source>
-        <translation type="unfinished">調整する</translation>
+        <translation type="unfinished">調整</translation>
     </message>
     <message>
         <source>Powerline interference removal for ECG</source>
-        <translation type="unfinished">ECGの電力線干渉除去</translation>
+        <translation type="unfinished">ECGの電源ノイズ除去</translation>
     </message>
     <message>
         <source>Remove all Powerline interference filters</source>
-        <translation type="unfinished">すべての電力線干渉フィルターを取り外します</translation>
+        <translation type="unfinished">すべての電源ノイズフィルターを削除</translation>
     </message>
     <message>
         <source>Customizable FIR filter</source>
-        <translation type="unfinished">カスタマイズ可能なFIRフィルター</translation>
+        <translation type="unfinished">カスタムFIRフィルター</translation>
     </message>
     <message>
         <source>Remove all FIR filters</source>
-        <translation type="unfinished">すべてのFIRフィルターを削除する</translation>
+        <translation type="unfinished">すべてのFIRフィルターを削除</translation>
     </message>
     <message>
         <source>Spike</source>
@@ -1359,19 +1359,19 @@
     </message>
     <message>
         <source>Remove all spike filters</source>
-        <translation type="unfinished">すべてのスパイクフィルターを削除する</translation>
+        <translation type="unfinished">すべてのスパイクフィルターを削除</translation>
     </message>
     <message>
         <source>Tools</source>
-        <translation type="unfinished">道具</translation>
+        <translation type="unfinished">ツール</translation>
     </message>
     <message>
         <source>Convert MIT (PhysioBank) to EDF+</source>
-        <translation type="unfinished">MIT（PhysioBank）をEDF +に変換する</translation>
+        <translation type="unfinished">WFDBをEDF+に変換する</translation>
     </message>
     <message>
         <source>Convert MIT (PhysioBank) to CSV</source>
-        <translation type="unfinished">MIT（PhysioBank）をCSVに変換する</translation>
+        <translation type="unfinished">WFDBをCSVに変換する</translation>
     </message>
     <message>
         <source>Options</source>
@@ -1418,7 +1418,7 @@
     </message>
     <message>
         <source>Filename with full path</source>
-        <translation type="unfinished">フルパスのファイル名</translation>
+        <translation type="unfinished">ファイル名と場所</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -1434,15 +1434,15 @@
     </message>
     <message>
         <source>Small ruler color</source>
-        <translation type="unfinished">モール定規色</translation>
+        <translation type="unfinished">小ルーラーの色</translation>
     </message>
     <message>
         <source>Big ruler color</source>
-        <translation type="unfinished">大きな定規の色</translation>
+        <translation type="unfinished">大ルーラーの色</translation>
     </message>
     <message>
         <source>Mouse rectangle color</source>
-        <translation type="unfinished">マウスの長方形の色</translation>
+        <translation type="unfinished">マウスボックスの色</translation>
     </message>
     <message>
         <source>Text color</source>
@@ -1470,7 +1470,7 @@
     </message>
     <message>
         <source>Annotation marker</source>
-        <translation type="unfinished">注釈マーカー</translation>
+        <translation type="unfinished">アノテーションマーカー</translation>
     </message>
     <message>
         <source>Show duration at marker</source>
@@ -1478,7 +1478,7 @@
     </message>
     <message>
         <source>Annotation duration background</source>
-        <translation type="unfinished">注釈期間の背景</translation>
+        <translation type="unfinished">アノテーション期間の背景</translation>
     </message>
     <message>
         <source>Show only at screen bottom</source>
@@ -1486,11 +1486,11 @@
     </message>
     <message>
         <source>Annotations: filter list only</source>
-        <translation type="unfinished">注釈：フィルターリストのみ</translation>
+        <translation type="unfinished">アノテーション：フィルターリストのみ</translation>
     </message>
     <message>
         <source>Annotation filter affects the annotationlist only, not the annotation markers in the signal window</source>
-        <translation type="unfinished">注釈フィルターは注釈リストにのみ影響し、信号ウィンドウの注釈マーカーには影響しません</translation>
+        <translation type="unfinished">アノテーションフィルターはアノテーションリストにのみ影響し、信号ウィンドウのアノテーションマーカーには影響しません</translation>
     </message>
     <message>
         <source>Print in grayscale</source>
@@ -1498,7 +1498,7 @@
     </message>
     <message>
         <source>Clip signals to pane</source>
-        <translation type="unfinished">信号をペインにクリップ</translation>
+        <translation type="unfinished">信号を画面にクリップ</translation>
     </message>
     <message>
         <source>Colorschema</source>
@@ -1506,23 +1506,23 @@
     </message>
     <message>
         <source>Save</source>
-        <translation type="unfinished">セーブ</translation>
+        <translation type="unfinished">保存</translation>
     </message>
     <message>
         <source>Load</source>
-        <translation type="unfinished">負荷</translation>
+        <translation type="unfinished">開く</translation>
     </message>
     <message>
         <source>Measure the length of the black</source>
-        <translation type="unfinished">黒の長さを測定する</translation>
+        <translation type="unfinished">黒い長方形の長さを</translation>
     </message>
     <message>
         <source>rectangles and enter the values.</source>
-        <translation type="unfinished">長方形と値を入力します。</translation>
+        <translation type="unfinished">測定し値を入力</translation>
     </message>
     <message>
         <source>Apply</source>
-        <translation type="unfinished">適用する</translation>
+        <translation type="unfinished">適用</translation>
     </message>
     <message>
         <source>Calibration</source>
@@ -1538,7 +1538,7 @@
     </message>
     <message>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">色</translation>
     </message>
     <message>
         <source>Label</source>
@@ -1546,7 +1546,7 @@
     </message>
     <message>
         <source>sum</source>
-        <translation type="unfinished">和</translation>
+        <translation type="unfinished">合計</translation>
     </message>
     <message>
         <source>peak</source>
@@ -1558,7 +1558,7 @@
     </message>
     <message>
         <source>of the power in the colorbar region.</source>
-        <translation type="unfinished">カラーバー領域のパワーの。</translation>
+        <translation type="unfinished">カラーバー領域のパワー。</translation>
     </message>
     <message>
         <source>FFT blocksize:</source>
@@ -1588,17 +1588,17 @@
         <source>Reload last used montage</source>
         <translation type="unfinished">最後に使用したモンタージュを再読み込み</translation>
     </message>
-    <message>
+	<message>
         <source>Do not read annotations, Biosemi Status signal</source>
-        <translation type="unfinished">注釈、Biosemiステータス信号を読み取らない</translation>
+        <translation type="vanished">ファイルサイズが以下以上の場合、アノテーション、Biosemiステータス信号</translation>
     </message>
     <message>
         <source>or Nihon Kohden triggers when filesize</source>
-        <translation type="unfinished">またはファイルサイズのときに日本光電がトリガーします</translation>
+        <translation type="vanished">アノテーション、Biosemiステータス信号、日本光電がトリガー</translation>
     </message>
     <message>
         <source>is more than:</source>
-        <translation type="unfinished">以上です：</translation>
+        <translation type="vanished">を読み取らない：</translation>
     </message>
     <message>
         <source>Read Biosemi Status signal</source>
@@ -1606,7 +1606,7 @@
     </message>
     <message>
         <source>Read Nihon Kohden Trigger/Marker signal</source>
-        <translation type="unfinished">日本光電電トリガー/マーカー信号を読む</translation>
+        <translation type="unfinished">日本光電電トリガー/マーカー信号の読み取り</translation>
     </message>
     <message>
         <source>livestream update interval</source>
@@ -1614,7 +1614,7 @@
     </message>
     <message>
         <source>Powerline Frequency</source>
-        <translation type="unfinished">電力線周波数</translation>
+        <translation type="unfinished">電源周波数</translation>
     </message>
     <message>
         <source>Colors</source>
@@ -1622,11 +1622,11 @@
     </message>
     <message>
         <source>Manually override automatic DPI settings</source>
-        <translation type="unfinished">自動DPI設定を手動でオーバーライドする</translation>
+        <translation type="unfinished">自動DPI設定を手動でオーバーライド</translation>
     </message>
     <message>
         <source>Height of colorbars are relative to the</source>
-        <translation type="unfinished">カラーバーの高さは</translation>
+        <translation type="unfinished">カラーバーの高さは次に相対します：</translation>
     </message>
     <message>
         <source>Mousewheel stepsize</source>
@@ -1673,21 +1673,23 @@
     <name>UI_PLIF_ECG_filter_dialog</name>
     <message>
         <source>Add a powerline interference filter</source>
-        <translation type="unfinished">電力線干渉フィルターを追加する</translation>
+        <translation type="unfinished">電源ノイズフィルターを追加</translation>
     </message>
     <message>
         <source>Powerline frequency</source>
-        <translation type="unfinished">電力線周波数</translation>
+        <translation type="unfinished">電源周波数</translation>
     </message>
     <message>
         <source>Select signals:</source>
         <translation type="unfinished">信号を選択:</translation>
     </message>
     <message>
-        <source>Only signals with a physical dimension V, mV or uV and
-a samplerate of &gt;= 500Hz and
-an integer ratio to 50 or 60 Hz will be listed here.</source>
-        <translation type="unfinished"></translation>
+        <source>&quot;Only signals with a physical dimension V, mV or uV and\n&quot;
+                   &quot;a samplerate of &gt;= 500Hz and\n&quot;
+                   &quot;an integer ratio to 50 or 60 Hz will be listed here.&quot;</source>
+        <translation type="vanished">&quot;物理単位が V, mV or uV かつ、\n&quot;
+                   &quot;サンプリング周波数が of &gt;= 500Hz かつ、\n&quot;
+                   &quot;50 or 60 Hz の整数倍数である信号が表示されます。&quot;</translation>
     </message>
     <message>
         <source>Close</source>
@@ -1695,18 +1697,18 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Apply</source>
-        <translation type="unfinished">適用する</translation>
+        <translation type="unfinished">適用</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ヘルプ</translation>
     </message>
 </context>
 <context>
     <name>UI_SignalChooser</name>
     <message>
         <source>Organize signals</source>
-        <translation type="unfinished">信号を整理する</translation>
+        <translation type="unfinished">信号を整理</translation>
     </message>
     <message>
         <source>Signals</source>
@@ -1714,11 +1716,11 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Up</source>
-        <translation type="unfinished">アップ</translation>
+        <translation type="unfinished">上へ</translation>
     </message>
     <message>
         <source>Down</source>
-        <translation type="unfinished">ダウン</translation>
+        <translation type="unfinished">下へ</translation>
     </message>
     <message>
         <source>Invert</source>
@@ -1726,7 +1728,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="unfinished">削除する</translation>
+        <translation type="unfinished">削除</translation>
     </message>
 </context>
 <context>
@@ -1776,7 +1778,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Hann</source>
-        <translation type="unfinished">ハン</translation>
+        <translation type="unfinished">Hann</translation>
     </message>
     <message>
         <source>HFT223D</source>
@@ -1784,7 +1786,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">画面</translation>
     </message>
     <message>
         <source>Span</source>
@@ -1835,11 +1837,11 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;閉じる</translation>
     </message>
     <message>
         <source>&amp;Apply</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;適応</translation>
     </message>
 </context>
 <context>
@@ -1850,18 +1852,18 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished">キャンセル</translation>
+        <translation type="unfinished">OK</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">キャンセル</translation>
     </message>
 </context>
 <context>
     <name>UI_headerEditorWindow</name>
     <message>
         <source>Header</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ヘッダー</translation>
     </message>
     <message>
         <source>Signals</source>
