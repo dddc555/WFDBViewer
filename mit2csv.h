@@ -76,7 +76,7 @@ public:
   bool isConverted = false;
   void showOpen();
 private:
-char* wfdb_path;
+char *wfdb_path;
 
 QPushButton  *pushButton1,
              *pushButton2;

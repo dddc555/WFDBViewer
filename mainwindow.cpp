@@ -3360,7 +3360,8 @@ void UI_Mainwindow::export_to_ascii()
 
 void UI_Mainwindow::_export2_to_ascii(char *_path)
 {
-  UI_MIT2CSVwindow mit2csv(recent_opendir, recent_savedir, _path);
+    qDebug()<<"_path"<<_path;
+  UI_MIT2CSVwindow mit2csv(recent_opendir, recent_savedir, true, _path);
 }
 
 void UI_Mainwindow::export2_to_ascii()
@@ -3558,6 +3559,7 @@ void UI_Mainwindow::print_to_bdf()
 
 void UI_Mainwindow::print_to_csv()
 {
+    qDebug()<<"selectedWFDBHeaderFilePath"<<selectedWFDBHeaderFilePath;
     _export2_to_ascii(selectedWFDBHeaderFilePath);
 }
 

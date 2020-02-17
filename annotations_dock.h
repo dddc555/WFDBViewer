@@ -87,6 +87,8 @@ public:
   QListWidget  *list;
 
   void updateList(void);
+
+  void updateText();
 signals:
   void on_edit_button_clicked();
 

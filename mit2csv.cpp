@@ -31,9 +31,11 @@
 
 
 
-UI_MIT2CSVwindow::UI_MIT2CSVwindow(char *recent_dir, char *save_dir, bool onlyShowFileOpenDialog, char *wfdb_path)
+UI_MIT2CSVwindow::UI_MIT2CSVwindow(char *recent_dir, char *save_dir, bool onlyShowFileOpenDialog, char *w_path)
 {
-  this->wfdb_path = wfdb_path;
+  qDebug()<<"0";
+  this->wfdb_path = w_path;
+  qDebug()<<"1"<<this->wfdb_path<<"w"<<w_path;
   char txt_string[2048];
 
   recent_opendir = recent_dir;
@@ -100,12 +102,12 @@ void UI_MIT2CSVwindow::SelectFileButton()
     if(!strcmp(header_filename, ""))
     {
         pushButton1->setEnabled(true);
+        qDebug()<<"header_filename is empty";
         return;
     }
-
     get_directory_from_path(recent_opendir, header_filename, MAX_PATH_LENGTH);
-
     header_inputfile = fopeno(header_filename, "rb");
+
     if(header_inputfile==NULL)
     {
         snprintf(txt_string, 2048, "Can not open file %s for reading.\n", header_filename);
@@ -126,7 +128,7 @@ void UI_MIT2CSVwindow::SelectFileButton()
 
 
     /////////////////// Start conversion //////////////////////////////////////////
-    qDebug()<<record_path<<csv_path;
+    qDebug()<<"converting"<<record_path<<csv_path;
     convertWFDB2CSV(2, record_path, csv_path);
     textEdit1->append("Ready.\n");
 

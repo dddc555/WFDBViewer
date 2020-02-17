@@ -1223,3 +1223,30 @@ void UI_Annotationswindow::export_wfdb_button_clicked(bool)
 {
 
 }
+
+void UI_Annotationswindow::updateText(){
+    QLabel *label = new QLabel(tr("Annotations"));
+    docklist->setTitleBarWidget(label);
+
+    checkbox1->setText(tr("Relative") + " ");
+    label1->setText(" " + tr("Filter") + ":");
+
+    checkbox2->setText(tr("Inv."));
+
+    edit_button->setText(tr("Edit"));
+    export_button->setText(tr("Export"));
+    export_wfdb_button->setText(tr("WFDB Export"));
+    show_between_act->setText(tr("Set timescale from here to next annotation"));
+    hide_annot_act->setText(tr("Hide"));
+    unhide_annot_act->setText(tr("Unhide"));
+    hide_same_annots_act->setText(tr("Hide similar"));
+    unhide_same_annots_act->setText(tr("Unhide similar"));
+    unhide_all_annots_act->setText(tr("Unhide all"));
+    average_annot_act->setText(tr("Average"));
+    hide_all_NK_triggers_act->setText(tr("Hide all Nihon Kohden triggers"));
+    hide_all_BS_triggers_act->setText(tr("Hide all Biosemi triggers"));
+    unhide_all_NK_triggers_act->setText(tr("Unhide all Nihon Kohden triggers"));
+    unhide_all_BS_triggers_act->setText(tr("Unhide all Biosemi triggers"));
+    filt_ival_time_act->setText(tr("Filter Interval Time"));
+    hrv_button->setText(tr("HRV"));
+}

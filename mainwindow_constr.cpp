@@ -1275,23 +1275,14 @@ void UI_Mainwindow::updateText(){
   language_jp_act->setText(tr("Japanese"));
   languagemenu->setTitle(tr("Language"));
 
-  int i = 0;
-  for(i=0; i<MAXSPECTRUMDOCKS; i++)
-  {
-    if(spectrumdock[i] != NULL && spectrumdock[i]->dock->isHidden())  break;
-  }
-
-  if(spectrumdock[i] != NULL) {
-      spectrumdock[i]->updateText();
-      qDebug()<<"update text"<< i;
-  }
-  else{
-    qDebug()<<"dock is null";
-  }
-  qDebug()<<"on main:"<<tr("Frequency");
-  if(spectrumdock[i] != NULL){
+  if(spectrumdock[0] != NULL){
       spectrumdock[0]->updateText();
   }
+
+  if(annotations_dock[0]  != NULL){
+      annotations_dock[0]->updateText();
+  }
+
   if(annotationEditDock != NULL){
       annotationEditDock->updateText();
   }
