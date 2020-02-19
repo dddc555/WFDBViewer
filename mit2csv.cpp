@@ -45,17 +45,17 @@ UI_MIT2CSVwindow::UI_MIT2CSVwindow(char *recent_dir, char *save_dir, bool onlySh
 
   myobjectDialog->setMinimumSize(600, 480);
   myobjectDialog->setMaximumSize(600, 480);
-  myobjectDialog->setWindowTitle("MIT to CSV converter");
+  myobjectDialog->setWindowTitle(tr("MIT to CSV converter"));
   myobjectDialog->setModal(true);
   myobjectDialog->setAttribute(Qt::WA_DeleteOnClose, true);
 
   pushButton1 = new QPushButton(myobjectDialog);
   pushButton1->setGeometry(20, 430, 100, 25);
-  pushButton1->setText("Select File");
+  pushButton1->setText(tr("Select File"));
 
   pushButton2 = new QPushButton(myobjectDialog);
   pushButton2->setGeometry(480, 430, 100, 25);
-  pushButton2->setText("Close");
+  pushButton2->setText(tr("Close"));
 
   textEdit1 = new QTextEdit(myobjectDialog);
   textEdit1->setGeometry(20, 20, 560, 380);
@@ -99,6 +99,7 @@ void UI_MIT2CSVwindow::SelectFileButton()
         strcpy(header_filename,  this->wfdb_path);
     }
 
+
     if(!strcmp(header_filename, ""))
     {
         pushButton1->setEnabled(true);
@@ -129,6 +130,7 @@ void UI_MIT2CSVwindow::SelectFileButton()
 
     /////////////////// Start conversion //////////////////////////////////////////
     qDebug()<<"converting"<<record_path<<csv_path;
+
     convertWFDB2CSV(2, record_path, csv_path);
     textEdit1->append("Ready.\n");
 

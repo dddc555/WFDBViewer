@@ -755,7 +755,6 @@
         <source>Populating list...</source>
         <translation type="vanished">リストを準備しています...</translation>
     </message>
-	
 </context>
 <context>
     <name>AdjustFilterSettings</name>
@@ -938,6 +937,22 @@
         <source>Inv.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Busy</source>
+        <translation type="unfinished">ビジー</translation>
+    </message>
+    <message>
+        <source>Sorting annotations</source>
+        <translation type="unfinished">アノテーションの並べ替え</translation>
+    </message>
+    <message>
+        <source>Populating list...</source>
+        <translation type="unfinished">リストを準備しています...</translation>
+    </message>
+    <message>
+        <source>HRV</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_AverageCurveWindow</name>
@@ -1107,7 +1122,7 @@
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished">エクスポート</translation>
+        <translation type="obsolete">エクスポート</translation>
     </message>
     <message>
         <source>print</source>
@@ -1391,7 +1406,11 @@
     </message>
     <message>
         <source>Frequency</source>
-        <translation type="unfinished">周波数</translation>
+        <translation type="obsolete">周波数</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished">エクスポート</translation>
     </message>
 </context>
 <context>
@@ -1588,17 +1607,17 @@
         <source>Reload last used montage</source>
         <translation type="unfinished">最後に使用したモンタージュを再読み込み</translation>
     </message>
-	<message>
+    <message>
         <source>Do not read annotations, Biosemi Status signal</source>
-        <translation type="vanished">ファイルサイズが以下以上の場合、アノテーション、Biosemiステータス信号</translation>
+        <translation>ファイルサイズが以下以上の場合、アノテーション、Biosemiステータス信号</translation>
     </message>
     <message>
         <source>or Nihon Kohden triggers when filesize</source>
-        <translation type="vanished">アノテーション、Biosemiステータス信号、日本光電がトリガー</translation>
+        <translation>アノテーション、Biosemiステータス信号、日本光電がトリガー</translation>
     </message>
     <message>
         <source>is more than:</source>
-        <translation type="vanished">を読み取らない：</translation>
+        <translation>を読み取らない：</translation>
     </message>
     <message>
         <source>Read Biosemi Status signal</source>
@@ -1702,6 +1721,12 @@
     <message>
         <source>Help</source>
         <translation type="unfinished">ヘルプ</translation>
+    </message>
+    <message>
+        <source>Only signals with a physical dimension V, mV or uV and
+a samplerate of &gt;= 500Hz and
+an integer ratio to 50 or 60 Hz will be listed here.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

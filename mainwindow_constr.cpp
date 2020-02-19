@@ -295,7 +295,7 @@ UI_Mainwindow::UI_Mainwindow()
   print_img_menu->addAction("1600 x 1200", this, SLOT(print_to_img_1600x1200()));
 
   printmenu = new QMenu(this);
-  printmenu->setTitle(tr("Print"));
+  printmenu->setTitle(tr("Export"));
   to_Printer_act = new QAction(tr("to Printer"));
 
   printmenu->addAction(to_Printer_act);
@@ -1226,7 +1226,7 @@ void UI_Mainwindow::updateText(){
   recent_filesmenu->setTitle(tr("Recent files"));
   close_filemenu->setTitle(tr("Close"));
   print_img_menu->setTitle(tr("to Image"));
-  printmenu->setTitle(tr("Print"));
+  printmenu->setTitle(tr("Export"));
   to_Printer_act->setText(tr("to Printer"));
 
   to_EDF_act->setText(tr("to EDF"));

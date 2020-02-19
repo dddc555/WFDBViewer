@@ -65,6 +65,7 @@
 #include "third_party/wfdb_mit2edf.h"
 #include "third_party/rdsamp.h"
 #include <qdebug.h>
+#include <qmessagebox.h>
 
 class UI_MIT2CSVwindow : public QObject
 {

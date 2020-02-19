@@ -2116,34 +2116,35 @@ FINT isigopen(char *record, WFDB_Siginfo *siarray, int nsig)
 
     /* Read the header and determine how many signals are available. */
     if ((navail = readheader(record)) <= 0) {
-	if (navail == 0 && segments) {	/* this is a multi-segment record */
-	    in_msrec = 1;
-	    first_segment = 1;
-	    /* Open the first segment to get signal information. */
-	    if (segp && (navail = readheader(segp->recname)) >= 0) {
-		if (msbtime == 0L) msbtime = btime;
-		if (msbdate == (WFDB_Date)0) msbdate = bdate;
-	    }
-	    if (nsig <= 0)
-		in_msrec = 0;
-	}
-	if (navail == 0 && nsig)
-	    wfdb_error("isigopen: record %s has no signals\n", record);
-	if (navail <= 0)
-	    return (navail);
+        if (navail == 0 && segments) {	/* this is a multi-segment record */
+            in_msrec = 1;
+            first_segment = 1;
+            /* Open the first segment to get signal information. */
+            if (segp && (navail = readheader(segp->recname)) >= 0) {
+            if (msbtime == 0L) msbtime = btime;
+            if (msbdate == (WFDB_Date)0) msbdate = bdate;
+            }
+            if (nsig <= 0)
+            in_msrec = 0;
+        }
+        if (navail == 0 && nsig)
+            wfdb_error("isigopen: record %s has no signals\n", record);
+        if (navail <= 0)
+            return (navail);
     }
+    wfdb_error("isigopen: navail = %d, %d\n", navail, nsig);
 
     /* If nsig <= 0, isigopen fills in up to (-nsig) members of siarray based
        on the contents of the header, but no signals are actually opened.  The
        value returned is the number of signals named in the header. */
     if (nsig <= 0) {
-	nsig = -nsig;
-	if (navail < nsig) nsig = navail;
-	if (siarray != NULL)
-	    for (s = 0; s < nsig; s++)
-		siarray[s] = hsd[s]->info;
-	in_msrec = 0;	/* necessary to avoid errors when reopening */
-	return (navail);
+        nsig = -nsig;
+        if (navail < nsig) nsig = navail;
+        if (siarray != NULL)
+            for (s = 0; s < nsig; s++)
+                siarray[s] = hsd[s]->info;
+        in_msrec = 0;	/* necessary to avoid errors when reopening */
+        return (navail);
     }
 
     /* Determine how many new signals we should attempt to open.  The caller's
@@ -2168,74 +2169,77 @@ FINT isigopen(char *record, WFDB_Siginfo *siarray, int nsig)
        this loop, si counts through the entries that have been read from hsd,
        and s counts the entries that have been added to isd. */
     for (g = si = s = 0; si < navail && s < nsig; si = sj) {
+        wfdb_error("isigopen: g = %d\n", g);
         hs = hsd[si];
-	is = isd[nisig+s];
-	ig = igd[nigroup+g];
+        is = isd[nisig+s];
+        ig = igd[nigroup+g];
 
-	/* Find out how many signals are in this group. */
-        for (sj = si + 1; sj < navail; sj++)
-	  if (hsd[sj]->info.group != hs->info.group) break;
+        /* Find out how many signals are in this group. */
+            for (sj = si + 1; sj < navail; sj++)
+          if (hsd[sj]->info.group != hs->info.group) break;
 
-	/* Skip this group if there are too few slots in the caller's array. */
-	if (sj - si > nsig - s) continue;
+        /* Skip this group if there are too few slots in the caller's array. */
+        if (sj - si > nsig - s) continue;
 
-	/* Set the buffer size and the seek capability flag. */
-	if (hs->info.bsize < 0) {
-	    ig->bsize = hs->info.bsize = -hs->info.bsize;
-	    ig->seek = 0;
-	}
-	else {
-	    if ((ig->bsize = hs->info.bsize) == 0) ig->bsize = ibsize;
-	    ig->seek = 1;
-	}
-	SALLOC(ig->buf, 1, ig->bsize);
+        /* Set the buffer size and the seek capability flag. */
+        if (hs->info.bsize < 0) {
+            ig->bsize = hs->info.bsize = -hs->info.bsize;
+            ig->seek = 0;
+        }
+        else {
+            if ((ig->bsize = hs->info.bsize) == 0) ig->bsize = ibsize;
+            ig->seek = 1;
+        }
+        SALLOC(ig->buf, 1, ig->bsize);
 
-	/* Check that the signal file is readable. */
-	if (hs->info.fmt == 0)
-	    ig->fp = NULL;	/* Don't open a file for a null signal. */
-	else { 
-	    ig->fp = wfdb_open(hs->info.fname, (char *)NULL, WFDB_READ);
-	    /* Skip this group if the signal file can't be opened. */
-	    if (ig->fp == NULL) {
-	        SFREE(ig->buf);
-		continue;
-	    }
-	}
+        /* Check that the signal file is readable. */
+        if (hs->info.fmt == 0)
+            ig->fp = NULL;	/* Don't open a file for a null signal. */
+        else {
+            ig->fp = wfdb_open(hs->info.fname, (char *)NULL, WFDB_READ);
+            /* Skip this group if the signal file can't be opened. */
+            if (ig->fp == NULL) {
+                SFREE(ig->buf);
+            continue;
+            }
+        }
 
-	/* All tests passed -- fill in remaining data for this group. */
-	ig->be = ig->bp = ig->buf + ig->bsize;
-	ig->start = hs->start;
-	ig->stat = 1;
-	while (si < sj && s < nsig) {
-	    copysi(&is->info, &hs->info);
-	    is->info.group = nigroup + g;
-	    is->skew = hs->skew;
-	    ++s;
-	    if (++si < sj) {
-		hs = hsd[si];
-		is = isd[nisig + s];
-	    }
-	}
-	g++;
+        /* All tests passed -- fill in remaining data for this group. */
+        ig->be = ig->bp = ig->buf + ig->bsize;
+        ig->start = hs->start;
+        ig->stat = 1;
+        while (si < sj && s < nsig) {
+            copysi(&is->info, &hs->info);
+            is->info.group = nigroup + g;
+            is->skew = hs->skew;
+            ++s;
+            wfdb_error("isigopen: s = %d\n", s);
+            if (++si < sj) {
+                hs = hsd[si];
+                is = isd[nisig + s];
+            }
+        }
+        g++;
     }
+    wfdb_error(" s= %d, nsign = %d\n", s, nsig);
 
     /* Produce a warning message if none of the requested signals could be
        opened. */
-    if (s == 0 && nsig)
-	wfdb_error("isigopen: none of the signals for record %s is readable\n",
-		 record);
+    if (s == 0 && nsig){
+        wfdb_error("isigopen: none of the signals for record %s is readable\n", record);
+    }
 
     /* Check that the total number of samples per frame is less than
        or equal to INT_MAX. */
     spflimit = INT_MAX - framelen;
     for (si = 0; si < s; si++) {
-	spflimit -= isd[nisig + si]->info.spf;
-	if (spflimit < 0) {
-	    wfdb_error("isigopen: total frame size too large in record %s\n",
-		       record);
-	    isigclose();
-	    return (-3);
-	}
+        spflimit -= isd[nisig + si]->info.spf;
+        if (spflimit < 0) {
+            wfdb_error("isigopen: total frame size too large in record %s\n",
+                   record);
+            isigclose();
+            return (-3);
+        }
     }
 
     /* Copy the WFDB_Siginfo structures to the caller's array.  Use these
@@ -2283,6 +2287,7 @@ FINT isigopen(char *record, WFDB_Siginfo *siarray, int nsig)
 	dsblen = tspf * (skewmax + 1);
 	SALLOC(dsbuf, dsblen, sizeof(WFDB_Sample));
     }
+    wfdb_error(" s= %d, nsign = %d\n", s, nsig);
     return (s);
 }
 
@@ -2324,59 +2329,59 @@ FINT osigopen(char *record, WFDB_Siginfo *siarray, unsigned int nsig)
 
     /* Open the signal files.  One signal is handled per iteration. */
     for (s = 0, os = osd[nosig]; s < nsig; s++, nosig++, siarray++) {
-	op = os;
-	os = osd[nosig];
+        op = os;
+        os = osd[nosig];
 
-	/* Copy signal information from readheader's workspace. */
-	copysi(&os->info, &hsd[s]->info);
-	copysi(siarray, &hsd[s]->info);
-	if (os->info.spf < 1) os->info.spf = siarray->spf = 1;
-	os->info.cksum = siarray->cksum = 0;
-	os->info.nsamp = siarray->nsamp = (WFDB_Time)0L;
-	os->info.group += ga; siarray->group += ga;
+        /* Copy signal information from readheader's workspace. */
+        copysi(&os->info, &hsd[s]->info);
+        copysi(siarray, &hsd[s]->info);
+        if (os->info.spf < 1) os->info.spf = siarray->spf = 1;
+        os->info.cksum = siarray->cksum = 0;
+        os->info.nsamp = siarray->nsamp = (WFDB_Time)0L;
+        os->info.group += ga; siarray->group += ga;
 
-	if (s == 0 || os->info.group != op->info.group) {
-	    /* This is the first signal in a new group; allocate buffer. */
-	    size_t obuflen;
+        if (s == 0 || os->info.group != op->info.group) {
+            /* This is the first signal in a new group; allocate buffer. */
+            size_t obuflen;
 
-	    og = ogd[os->info.group];
-	    og->bsize = os->info.bsize;
-	    obuflen = og->bsize ? og->bsize : obsize;
-	    SALLOC(og->buf, 1, obuflen);
-	    og->bp = og->buf;
-	    og->be = og->buf + obuflen;
-	    if (os->info.fmt == 0) {
-		/* If the signal file name was NULL or "~", don't create a
-		   signal file. */
-		if (os->info.fname == NULL || strcmp("~", os->info.fname) == 0)
-		    og->fp = NULL;
-		/* Otherwise, assume that the user wants to write a signal
-		   file in the default format (16). */
-		else
-		    os->info.fmt = 16;
-	    }
-	    if (os->info.fmt != 0) {
-		/* An error in opening an output file is fatal. */
-		og->fp = wfdb_open(os->info.fname,(char *)NULL, WFDB_WRITE);
-		if (og->fp == NULL) {
-		    wfdb_error("osigopen: can't open %s\n", os->info.fname);
-		    SFREE(og->buf);
-		    osigclose();
-		    return (-3);
-		}
-	    }
-	    nogroup++;
-	}
-	else {
-	    /* This signal belongs to the same group as the previous signal. */
-	    if (os->info.fmt != op->info.fmt ||
-		os->info.bsize != op->info.bsize) {
-		wfdb_error(
-		    "osigopen: error in specification of signal %d or %d\n",
-		     s-1, s);
-		return (-2);
-	    }
-	}
+            og = ogd[os->info.group];
+            og->bsize = os->info.bsize;
+            obuflen = og->bsize ? og->bsize : obsize;
+            SALLOC(og->buf, 1, obuflen);
+            og->bp = og->buf;
+            og->be = og->buf + obuflen;
+            if (os->info.fmt == 0) {
+            /* If the signal file name was NULL or "~", don't create a
+               signal file. */
+            if (os->info.fname == NULL || strcmp("~", os->info.fname) == 0)
+                og->fp = NULL;
+            /* Otherwise, assume that the user wants to write a signal
+               file in the default format (16). */
+            else
+                os->info.fmt = 16;
+            }
+            if (os->info.fmt != 0) {
+            /* An error in opening an output file is fatal. */
+            og->fp = wfdb_open(os->info.fname,(char *)NULL, WFDB_WRITE);
+            if (og->fp == NULL) {
+                wfdb_error("osigopen: can't open %s\n", os->info.fname);
+                SFREE(og->buf);
+                osigclose();
+                return (-3);
+            }
+            }
+            nogroup++;
+        }
+        else {
+            /* This signal belongs to the same group as the previous signal. */
+            if (os->info.fmt != op->info.fmt ||
+            os->info.bsize != op->info.bsize) {
+            wfdb_error(
+                "osigopen: error in specification of signal %d or %d\n",
+                 s-1, s);
+            return (-2);
+            }
+        }
     }
     return (s);
 }

@@ -140,14 +140,22 @@ int convertWFDB2CSV(int argc, char *record, char *output)
 //    help();
     exit(1);
     }
-    if ((nsig = isigopen(record, NULL, 0)) <= 0) exit(2);
+    if ((nsig = isigopen(record, NULL, 0)) <= 0) {
+        wfdb_error("Exit %d\n",  nsig);
+        exit(2);
+    }
+    wfdb_error("nsig = %d\n",  nsig);
     if ((v = (WFDB_Sample*)malloc(nsig * sizeof(WFDB_Sample))) == NULL ||
     (si = (WFDB_Siginfo*)malloc(nsig * sizeof(WFDB_Siginfo))) == NULL) {
-    (void)fprintf(stderr, "%s: insufficient memory\n", pname);
-    exit(2);
+        (void)fprintf(stderr, "%s: insufficient memory\n", pname);
+        exit(2);
     }
-    if ((nsig = isigopen(record, si, nsig)) <= 0)
-    exit(2);
+    if ((nsig = isigopen(record, si, nsig)) <= 0){
+        wfdb_error("Exit2 %d\n",  nsig);
+//        exit(2);
+        return -1;
+    }
+
     for (i = 0; i < nsig; i++)
     if (si[i].gain == 0.0) si[i].gain = WFDB_DEFGAIN;
     if (highres)

@@ -1363,7 +1363,10 @@ void UI_Mainwindow::annotation_editor()
   stop_playback();
 
   if(!files_open)  return;
-
+  if(!annotationEditDock->dockedit->isHidden()){
+    annotationEditDock->dockedit->hide();
+    return;
+  }
   if(files_open==1)
   {
     if(edfheaderlist[0]->annots_not_read)

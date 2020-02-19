@@ -753,6 +753,22 @@
         <source>Inv.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Busy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sorting annotations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Populating list...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HRV</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_AverageCurveWindow</name>
@@ -926,7 +942,7 @@
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished">Print</translation>
+        <translation type="obsolete">Print</translation>
     </message>
     <message>
         <source>to Printer</source>
@@ -1202,7 +1218,11 @@
     </message>
     <message>
         <source>Frequency</source>
-        <translation type="unfinished">Frequency</translation>
+        <translation type="obsolete">Frequency</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished">Export</translation>
     </message>
 </context>
 <context>
