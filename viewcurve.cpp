@@ -815,6 +815,7 @@ void ViewCurve::zoomPlus(){
     m_x = w * 3 / 4;
     mouse_press_coordinate_y = h / 4;
     m_y = h * 3/ 4;
+
     if((m_x>(mouse_press_coordinate_x + 50))&&(m_y > mouse_press_coordinate_y + 50))
     {
       for(i=0; i<mainwindow->files_open; i++)

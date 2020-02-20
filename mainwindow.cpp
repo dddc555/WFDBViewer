@@ -3565,7 +3565,15 @@ void UI_Mainwindow::print_to_bdf()
 void UI_Mainwindow::print_to_csv()
 {
     qDebug()<<"selectedWFDBHeaderFilePath"<<selectedWFDBHeaderFilePath;
-    _export2_to_ascii(selectedWFDBHeaderFilePath);
+    if(!files_open)return;
+    char csv_path[MAX_PATH_LENGTH];
+    strcpy(csv_path, QFileDialog::getSaveFileName(0, tr("Convert to CSV"), QString::fromLocal8Bit(path), "CSV files (*.csv *.CSV)").toLocal8Bit().data());
+    if(!strcmp(csv_path, ""))
+    {
+      return;
+    }
+
+    convertWFDB2CSV(2, selectedWFDBHeaderFilePath, csv_path);
 }
 
 void UI_Mainwindow::set_dc_offset_to_zero()
