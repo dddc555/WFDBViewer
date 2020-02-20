@@ -227,8 +227,9 @@ void UI_Annotationswindow::show_stats(bool)
     messagewindow.exec();
     return;
   }
-
-  annot = edfplus_annotation_get_item_visible_only(annot_list, list->currentRow());
+  int selected = list->currentRow();
+  if (selected < 0) selected = 0;
+  annot = edfplus_annotation_get_item_visible_only(annot_list, selected);
   if(annot == NULL)
   {
     sprintf(str, "Nullpointer returned: file: %s line %i", __FILE__, __LINE__);

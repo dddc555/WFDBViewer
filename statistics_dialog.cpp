@@ -274,13 +274,14 @@ UI_StatisticWindow::UI_StatisticWindow(struct signalcompblock *signalcomp,
 
       int p_i=0, p_j=0;
 
-      for(i=0, beat_cnt=0; beat_cnt<BEAT_IVAL_LIST_SZ; i++)
+      qDebug()<<"edfsignals"<<mainwindow->edfheaderlist[0]->edfsignals;
+      for(i=0, beat_cnt=0; beat_cnt<BEAT_IVAL_LIST_SZ; i+=1)
       {
         tmp_annot = edfplus_annotation_get_item_visible_only_cached(annot_list, i, &p_i, &p_j);
 
         if(tmp_annot == NULL)  break;
 
-        if(!strcmp(tmp_annot->annotation, annot->annotation))
+        if(!strcmp(tmp_annot->annotation, annot->annotation) && tmp_annot->onset - l_tmp > 0)
         {
           if(beat_cnt)
           {
@@ -316,6 +317,9 @@ UI_StatisticWindow::UI_StatisticWindow(struct signalcompblock *signalcomp,
     }
     else
     {
+      for(int i = 0;i<beat_cnt;i++){
+          if(beat_interval_list[i] == 0) beat_interval_list[i] = 0.0001;
+      }
       err = ecg_get_hr_statistics(beat_interval_list, beat_cnt, &hr_stat);
       if(err)
       {
