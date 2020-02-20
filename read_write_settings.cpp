@@ -28,7 +28,7 @@
 
 #include "mainwindow.h"
 
-#define SETTING_FILE_NAME "\\settings_v1.xml"
+#define SETTING_FILE_NAME "settings_v1.xml"
 
 void UI_Mainwindow::get_rgbcolor_settings(struct xml_handle *xml_hdl, const char *id, int cnt, QColor *rgb_color)
 {
@@ -116,12 +116,14 @@ void UI_Mainwindow::read_color_settings()
   strcpy(cfg_path, specialFolder(CSIDL_APPDATA).toLocal8Bit().data());
   strcat(cfg_path, "\\");
   strcat(cfg_path, PROGRAM_NAME);
-  strcat(cfg_path, "\\settings.xml");
+  strcat(cfg_path, "\\");
+  strcat(cfg_path, SETTING_FILE_NAME);
 #else
   strcpy(cfg_path, getenv("HOME"));
   strcat(cfg_path, "/.");
   strcat(cfg_path, PROGRAM_NAME);
-  strcat(cfg_path, "/settings.xml");
+  strcat(cfg_path, "/");
+  strcat(cfg_path, SETTING_FILE_NAME);
 #endif
 
   xml_hdl = xml_get_handle(cfg_path);
@@ -306,12 +308,14 @@ void UI_Mainwindow::read_recent_file_settings()
   strcpy(cfg_path, specialFolder(CSIDL_APPDATA).toLocal8Bit().data());
   strcat(cfg_path, "\\");
   strcat(cfg_path, PROGRAM_NAME);
-  strcat(cfg_path, "\\settings.xml");
+  strcat(cfg_path, "\\");
+  strcat(cfg_path, SETTING_FILE_NAME);
 #else
   strcpy(cfg_path, getenv("HOME"));
   strcat(cfg_path, "/.");
   strcat(cfg_path, PROGRAM_NAME);
-  strcat(cfg_path, "/settings.xml");
+  strcat(cfg_path, "/");
+  strcat(cfg_path, SETTING_FILE_NAME);
 #endif
 
   xml_hdl = xml_get_handle(cfg_path);
@@ -503,12 +507,14 @@ void UI_Mainwindow::read_general_settings()
   strcpy(cfg_path, specialFolder(CSIDL_APPDATA).toLocal8Bit().data());
   strcat(cfg_path, "\\");
   strcat(cfg_path, PROGRAM_NAME);
+  strcat(cfg_path, "\\");
   strcat(cfg_path, SETTING_FILE_NAME);
 #else
   strcpy(cfg_path, getenv("HOME"));
   strcat(cfg_path, "/.");
   strcat(cfg_path, PROGRAM_NAME);
-  strcat(cfg_path, "/settings.xml");
+  strcat(cfg_path, "/");
+  strcat(cfg_path, SETTING_FILE_NAME);
 #endif
 
   xml_hdl = xml_get_handle(cfg_path);
@@ -1859,14 +1865,15 @@ void UI_Mainwindow::write_settings()
   strcpy(cfg_path, specialFolder(CSIDL_APPDATA).toLocal8Bit().data());
   strcat(cfg_path, "\\");
   strcat(cfg_path, PROGRAM_NAME);
-  mkdir(cfg_path);
+  strcat(cfg_path, "\\");
   strcat(cfg_path, SETTING_FILE_NAME);
 #else
   strcpy(cfg_path, getenv("HOME"));
   strcat(cfg_path, "/.");
   strcat(cfg_path, PROGRAM_NAME);
   mkdir(cfg_path,  S_IRWXU);
-  strcat(cfg_path, "/settings.xml");
+  strcat(cfg_path, "/");
+  strcat(cfg_path, SETTING_FILE_NAME);
 #endif
 
   cfgfile = fopeno(cfg_path, "wb");
