@@ -274,7 +274,6 @@ UI_StatisticWindow::UI_StatisticWindow(struct signalcompblock *signalcomp,
 
       int p_i=0, p_j=0;
 
-      qDebug()<<"edfsignals"<<mainwindow->edfheaderlist[0]->edfsignals;
       for(i=0, beat_cnt=0; beat_cnt<BEAT_IVAL_LIST_SZ; i+=1)
       {
         tmp_annot = edfplus_annotation_get_item_visible_only_cached(annot_list, i, &p_i, &p_j);

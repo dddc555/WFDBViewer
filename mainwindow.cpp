@@ -1020,38 +1020,40 @@ void UI_Mainwindow::zoomback()
 
 void UI_Mainwindow::forward()
 {
-  int i, j;
+//  int i, j;
 
-  if(!files_open)  return;
+//  if(!files_open)  return;
 
-  if(!zoomhistory->history_size_front)
-  {
-    return;
-  }
-  zoomhistory->history_size_front--;
-  zoomhistory->history_size_tail++;
+//  if(!zoomhistory->history_size_front)
+//  {
+//    return;
+//  }
+//  zoomhistory->history_size_front--;
+//  zoomhistory->history_size_tail++;
 
-  zoomhistory->pntr++;
-  zoomhistory->pntr %= MAXZOOMHISTORY;
+//  zoomhistory->pntr++;
+//  zoomhistory->pntr %= MAXZOOMHISTORY;
 
-  for(i=0; i<files_open; i++)
-  {
-    edfheaderlist[i]->viewtime = zoomhistory->viewtime[zoomhistory->pntr][i];
-  }
-  pagetime = zoomhistory->pagetime[zoomhistory->pntr];
+//  for(i=0; i<files_open; i++)
+//  {
+//    edfheaderlist[i]->viewtime = zoomhistory->viewtime[zoomhistory->pntr][i];
+//  }
+//  pagetime = zoomhistory->pagetime[zoomhistory->pntr];
 
-  for(i=0; i<signalcomps; i++)
-  {
-    signalcomp[i]->voltpercm = zoomhistory->voltpercm[zoomhistory->pntr][i];
-    signalcomp[i]->screen_offset = zoomhistory->screen_offset[zoomhistory->pntr][i];
+//  for(i=0; i<signalcomps; i++)
+//  {
+//    signalcomp[i]->voltpercm = zoomhistory->voltpercm[zoomhistory->pntr][i];
+//    signalcomp[i]->screen_offset = zoomhistory->screen_offset[zoomhistory->pntr][i];
 
-    for(j=0; j<signalcomp[i]->num_of_signals; j++)
-    {
-      signalcomp[i]->sensitivity[j] = zoomhistory->sensitivity[zoomhistory->pntr][i][j];
-    }
-  }
+//    for(j=0; j<signalcomp[i]->num_of_signals; j++)
+//    {
+//      signalcomp[i]->sensitivity[j] = zoomhistory->sensitivity[zoomhistory->pntr][i][j];
+//    }
+//  }
 
-  setup_viewbuf();
+//  setup_viewbuf();
+  maincurve->zoomPlus();
+
 }
 
 
