@@ -1,1 +1,1 @@
-copy *.qm F:\Steven\build-wfdbviewer-Desktop_Qt_5_12_0_MinGW_64_bit-Debug\release\languages
+copy *.qm C:\Users\Admin\Desktop\build-wfdbviewer-Desktop_Qt_5_9_3_MinGW_32bit-Release\release\languages

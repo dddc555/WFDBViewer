@@ -41,6 +41,7 @@ UI_SignalChooser::UI_SignalChooser(QWidget *w_parent, int job, int *sgnl_nr)
   mainwindow = (UI_Mainwindow *)w_parent;
 
   signalchooser_dialog = new QDialog(w_parent);
+  signalchooser_dialog ->setWindowFlags(signalchooser_dialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
   if(task == 3)
   {
@@ -71,7 +72,7 @@ UI_SignalChooser::UI_SignalChooser(QWidget *w_parent, int job, int *sgnl_nr)
 
   CloseButton = new QPushButton(signalchooser_dialog);
   CloseButton->setGeometry(10, 385, 130, 25);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   if(task == 3)
   {

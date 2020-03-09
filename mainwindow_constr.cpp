@@ -759,49 +759,17 @@ UI_Mainwindow::UI_Mainwindow()
 
   toolsmenu = new QMenu(this);
   toolsmenu->setTitle(tr("Tools"));
-  /*toolsmenu->addAction("Check EDF/BDF compatibility", this, SLOT(check_edf_compatibility()));
-  toolsmenu->addSeparator();
-  toolsmenu->addAction("Header editor", this, SLOT(edit_header()));
-  toolsmenu->addAction("Reduce signals, duration or samplerate", this, SLOT(reduce_signals()));
-  toolsmenu->addAction("Remove duplicates in annotations", this, SLOT(edfplus_remove_duplicate_annotations()));
-  toolsmenu->addSeparator();
-  toolsmenu->addAction("Import annotations/events", this, SLOT(import_annotations()));
-  toolsmenu->addAction("Export annotations/events", this, SLOT(export_annotations()));
 
-  toolsmenu->addAction("Export/Import ECG RR-interval", this, SLOT(export_ecg_rr_interval_to_ascii()));
-  toolsmenu->addAction("Export Filtered Signals", this, SLOT(export_filtered_signals()));
-  toolsmenu->addSeparator();
-  toolsmenu->addAction("Convert Nihon Kohden to EDF+", this, SLOT(nk2edf_converter()));
-  toolsmenu->addAction("Convert ASCII (CSV) to EDF/BDF", this, SLOT(convert_ascii_to_edf()));
-  toolsmenu->addAction("Convert Manscan to EDF+", this, SLOT(convert_manscan_to_edf()));
-  toolsmenu->addAction("Convert SCP ECG to EDF+", this, SLOT(convert_scpecg_to_edf()));//*/
-  tools_mit_to_edf_act = new QAction(tr("Convert MIT (PhysioBank) to EDF+"));
-  toolsmenu->addAction(tools_mit_to_edf_act);
-  connect(tools_mit_to_edf_act, SIGNAL(triggered()), this, SLOT(convert_mit_to_edf()));
-
-  tools_mit_to_csv_act = new QAction(tr("Convert MIT (PhysioBank) to CSV"));
-  toolsmenu->addAction(tools_mit_to_csv_act);
-  connect(tools_mit_to_csv_act, SIGNAL(triggered()), this, SLOT(export2_to_ascii()));
-
-
-  /*toolsmenu->addAction("Convert Finometer to EDF", this, SLOT(convert_fino_to_edf()));
-  toolsmenu->addAction("Convert Nexfin to EDF", this, SLOT(convert_nexfin_to_edf()));
-  toolsmenu->addAction("Convert Emsa to EDF+", this, SLOT(convert_emsa_to_edf()));
-  toolsmenu->addAction("Convert EDF+D to EDF+C", this, SLOT(edfd_converter()));
-  toolsmenu->addAction("Convert Biosemi to BDF+", this, SLOT(biosemi2bdfplus_converter()));
-  toolsmenu->addAction("Convert BDF to EDF", this, SLOT(bdf2edf_converter()));
-  toolsmenu->addAction("Convert Unisens to EDF+", this, SLOT(unisens2edf_converter()));
-  toolsmenu->addAction("Convert BI9800TL+3 to EDF", this, SLOT(BI98002edf_converter()));
-  toolsmenu->addAction("Convert Wave to EDF", this, SLOT(convert_wave_to_edf()));
-  toolsmenu->addAction("Convert Biox CB-1305-C to EDF", this, SLOT(convert_biox_to_edf()));
-  toolsmenu->addAction("Convert FM Audio ECG to EDF", this, SLOT(convert_fm_audio_to_edf()));
-  toolsmenu->addAction("Convert Mortara ECG XML to EDF", this, SLOT(convert_mortara_to_edf()));
-  toolsmenu->addAction("Convert Binary/raw data to EDF", this, SLOT(convert_binary_to_edf()));//*/
   toolsmenu->addSeparator();
 
-  tools_option_act = new QAction(tr("Options"));
+  tools_detect_qrs_act = new QAction(tr("Detect QRS and generate annotations"));
+  toolsmenu->addAction(tools_detect_qrs_act);
+  connect(tools_detect_qrs_act, SIGNAL(triggered()), this, SLOT(detect_qrs()));
+
+  tools_option_act = new QAction(tr("Settings"));
   toolsmenu->addAction(tools_option_act);
   connect(tools_option_act, SIGNAL(triggered()), this, SLOT(show_options_dialog()));
+
   menubar->addMenu(toolsmenu);
 
   settingsmenu = new QMenu(this);
@@ -1267,8 +1235,7 @@ void UI_Mainwindow::updateText(){
   filter_remove_all_spike_act->setText(tr("Remove all spike filters"));
 
   toolsmenu->setTitle(tr("Tools"));
-  tools_mit_to_edf_act->setText(tr("Convert MIT (PhysioBank) to EDF+"));
-  tools_mit_to_csv_act->setText(tr("Convert MIT (PhysioBank) to CSV"));
+
   tools_option_act->setText(tr("Options"));
 
   language_en_act->setText(tr("English"));

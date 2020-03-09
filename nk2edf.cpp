@@ -61,7 +61,7 @@ UI_NK2EDFwindow::UI_NK2EDFwindow(char *recent_dir)
 
   pushButton2 = new QPushButton(myobjectDialog);
   pushButton2->setGeometry(480, 430, 100, 25);
-  pushButton2->setText("Close");
+  pushButton2->setText(tr("Close"));
 
   checkBox1 = new QCheckBox(myobjectDialog);
   checkBox1->setGeometry(200, 430, 120, 25);
@@ -122,7 +122,7 @@ void UI_NK2EDFwindow::SelectFileButton()
 
   total_elapsed_time = 0;
 
-  strcpy(path, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "EEG files (*.eeg *.EEG)").toLocal8Bit().data());
+  strcpy(path, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "EEG files (*.eeg *.EEG)").toLocal8Bit().data());
 
   if(!strcmp(path, ""))
   {

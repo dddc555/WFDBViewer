@@ -66,6 +66,7 @@ AdjustFilterSettings::AdjustFilterSettings(struct signalcompblock *signal_comp, 
   mainwindow = maincurve->mainwindow;
 
   filtersettings_dialog = new QDialog(w_parent);
+  filtersettings_dialog ->setWindowFlags(filtersettings_dialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
   filtersettings_dialog->setMinimumSize(460, 255);
   filtersettings_dialog->setMaximumSize(460, 255);

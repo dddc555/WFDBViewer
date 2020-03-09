@@ -616,6 +616,42 @@ void UI_Mainwindow::show_options_dialog()
   UI_OptionsDialog OptionsDialog(this);
 }
 
+void UI_Mainwindow::detect_qrs()
+{
+    HeartRateCalc mHeartRate;
+    mHeartRate.QRSDetect(0, 1);
+
+    uint16_t qrs_delay = 0;
+    uint16_t prev_delay = 0;
+    uint16_t sample_count = 0;
+
+    for(int i = 0;i< 20;i++){
+        sample_count++;
+        int ecg = 90;
+        qrs_delay = mHeartRate.QRSDetect(ecg, 0);
+        if (qrs_delay > 0) // QRS deteted at this time
+        {
+            if (((sample_count - qrs_delay + prev_delay)) != 0) {
+                mHeartRate.hrm_roll(15000 / (sample_count - qrs_delay + prev_delay) + 1);
+                FLOAT hr = mHeartRate.hrm_calc();
+                if (MIN_HRM < hr && hr < MAX_HRM) {
+                    FLOAT rri = 60 / hr;
+                    qDebug()<<"rr = " <<rri;
+//                    result.push_back((FLOAT) hr);
+//                    result.push_back((FLOAT) rri);
+//                    result.push_back((FLOAT) qrs_delay);
+                }
+
+            }
+
+            prev_delay = qrs_delay;
+            sample_count = 0;
+
+        }
+    }
+
+}
+
 
 void UI_Mainwindow::nk2edf_converter()
 {
@@ -1553,7 +1589,7 @@ void UI_Mainwindow::open(char *filePath, bool openDirect, bool storeRecent) {
         return;
       }
 
-      get_directory_from_path(recent_opendir, path, MAX_PATH_LENGTH);
+//      get_directory_from_path(recent_opendir, path, MAX_PATH_LENGTH);
     } else {
         strcpy(path, filePath);
 
@@ -1562,7 +1598,7 @@ void UI_Mainwindow::open(char *filePath, bool openDirect, bool storeRecent) {
           return;
         }
 
-        get_directory_from_path(recent_opendir, path, MAX_PATH_LENGTH);
+//        get_directory_from_path(recent_opendir, path, MAX_PATH_LENGTH);
     }
 
     if((cmdlineargument == 0) || (cmdlineargument == 1))
@@ -1611,7 +1647,7 @@ void UI_Mainwindow::open(char *filePath, bool openDirect, bool storeRecent) {
         return;
       }
 
-      strcpy(recent_opendir, path);
+//      strcpy(recent_opendir, path);
 
       if(len)
       {
@@ -1624,7 +1660,7 @@ void UI_Mainwindow::open(char *filePath, bool openDirect, bool storeRecent) {
         }
       }
 
-      recent_opendir[i] = 0;
+//      recent_opendir[i] = 0;
 
       EDFfileCheck EDFfilechecker;
 
@@ -3567,7 +3603,9 @@ void UI_Mainwindow::print_to_csv()
     qDebug()<<"selectedWFDBHeaderFilePath"<<selectedWFDBHeaderFilePath;
     if(!files_open)return;
     char csv_path[MAX_PATH_LENGTH];
-    strcpy(csv_path, QFileDialog::getSaveFileName(0, tr("Convert to CSV"), QString::fromLocal8Bit(path), "CSV files (*.csv *.CSV)").toLocal8Bit().data());
+    strcpy(csv_path, selectedWFDBHeaderFilePath);
+    remove_extension_from_filename(csv_path);
+    strcpy(csv_path, QFileDialog::getSaveFileName(0, tr("Convert to CSV"), QString::fromLocal8Bit(csv_path), "CSV files (*.csv *.CSV)").toLocal8Bit().data());
     if(!strcmp(csv_path, ""))
     {
       return;
@@ -4016,14 +4054,16 @@ void UI_Mainwindow::export_wfdb_button_clicked()
       return;
     }
 
+
     strcpy(f_path, recent_savedir);
     char directory_path[MAX_PATH_LENGTH];
-    strcpy(directory_path, QFileDialog::getExistingDirectory(0, "Save file", QString::fromLocal8Bit(f_path)).toLocal8Bit().data());
-
+    strcpy(directory_path, QFileDialog::getExistingDirectory(0, tr("Save file"), QString::fromLocal8Bit(f_path)).toLocal8Bit().data());
+    qDebug()<<"wang" <<directory_path;
     if(strlen(directory_path) == 0)
     {
       return;
     }
+    strcat(directory_path, "/");
 
     qDebug()<<selectedWFDBHeaderFilePath;
 

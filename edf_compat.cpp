@@ -63,7 +63,7 @@ UI_EDFCompatwindow::UI_EDFCompatwindow(QWidget *w_parent)
 
   CloseButton = new QPushButton(EDFCompatDialog);
   CloseButton->setGeometry(690, 140, 100, 25);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   QObject::connect(CloseButton,  SIGNAL(clicked()), EDFCompatDialog, SLOT(close()));
   QObject::connect(CheckButton,  SIGNAL(clicked()), this,            SLOT(CheckButtonClicked()));

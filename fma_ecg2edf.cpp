@@ -92,7 +92,7 @@ UI_FMaudio2EDFwindow::UI_FMaudio2EDFwindow(QWidget *w_parent, char *recent_dir, 
 
   pushButton2 = new QPushButton(myobjectDialog);
   pushButton2->setGeometry(480, 250, 100, 25);
-  pushButton2->setText("Close");
+  pushButton2->setText(tr("Close"));
 
   helpButton = new QPushButton(myobjectDialog);
   helpButton->setGeometry(240, 250, 100, 25);
@@ -169,7 +169,7 @@ void UI_FMaudio2EDFwindow::SelectFileButton()
     return;
   }
 
-  strcpy(path, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "Text files (*.wav *.WAV)").toLocal8Bit().data());
+  strcpy(path, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "Text files (*.wav *.WAV)").toLocal8Bit().data());
 
   if(!strcmp(path, ""))
   {

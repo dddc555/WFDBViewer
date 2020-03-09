@@ -94,7 +94,7 @@ UI_WAV2EDFwindow::UI_WAV2EDFwindow(char *recent_dir, char *save_dir)
 
   pushButton2 = new QPushButton(myobjectDialog);
   pushButton2->setGeometry(480, 250, 100, 25);
-  pushButton2->setText("Close");
+  pushButton2->setText(tr("Close"));
 
   QObject::connect(pushButton1, SIGNAL(clicked()), this,           SLOT(SelectFileButton()));
   QObject::connect(pushButton2, SIGNAL(clicked()), myobjectDialog, SLOT(close()));
@@ -159,7 +159,7 @@ unsigned int fmt_chunk_offset,
     return;
   }
 
-  strcpy(path, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "Text files (*.wav *.WAV)").toLocal8Bit().data());
+  strcpy(path, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "Text files (*.wav *.WAV)").toLocal8Bit().data());
 
   if(!strcmp(path, ""))
   {

@@ -72,7 +72,7 @@ UI_ShowActualMontagewindow::UI_ShowActualMontagewindow(QWidget *w_parent)
 
   CloseButton = new QPushButton;
   CloseButton->setFixedSize(100, 25);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   box = new QBoxLayout(QBoxLayout::TopToBottom, ShowMontageDialog);
   box->addWidget(tree);

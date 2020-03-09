@@ -41,6 +41,7 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   optionsdialog = new QDialog(w_parent);
 
+  optionsdialog ->setWindowFlags(optionsdialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   if(QApplication::desktop()->screenGeometry().height() < 900)
   {
     showminimized = 1;

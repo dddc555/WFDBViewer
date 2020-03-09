@@ -58,7 +58,7 @@ UI_SCPECG2EDFwindow::UI_SCPECG2EDFwindow(char *recent_dir, char *save_dir)
 
   pushButton2 = new QPushButton(myobjectDialog);
   pushButton2->setGeometry(480, 430, 100, 25);
-  pushButton2->setText("Close");
+  pushButton2->setText(tr("Close"));
 
   textEdit1 = new QTextEdit(myobjectDialog);
   textEdit1->setGeometry(20, 20, 560, 380);
@@ -119,7 +119,7 @@ void UI_SCPECG2EDFwindow::SelectFileButton()
   scp_ecg.ref_beat_subtract = 0;
   scp_ecg.avm_ratio = 1;
 
-  strcpy(input_filename, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "SCP files (*.scp *.SCP)").toLocal8Bit().data());
+  strcpy(input_filename, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "SCP files (*.scp *.SCP)").toLocal8Bit().data());
 
   if(!strcmp(input_filename, ""))
   {

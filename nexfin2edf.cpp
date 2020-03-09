@@ -76,7 +76,7 @@ UI_NEXFIN2EDFwindow::UI_NEXFIN2EDFwindow(char *recent_dir, char *save_dir)
 
   pushButton2 = new QPushButton(myobjectDialog);
   pushButton2->setGeometry(480, 230, 100, 25);
-  pushButton2->setText("Close");
+  pushButton2->setText(tr("Close"));
 
   radio100button = new QRadioButton(myobjectDialog);
   radio100button->setGeometry(160, 130, 200, 20);
@@ -190,17 +190,17 @@ void UI_NEXFIN2EDFwindow::SelectFileButton()
 
   if(file_type==100)
   {
-    strcpy(path, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "CSV files (*_100.csv *_100.CSV)").toLocal8Bit().data());
+    strcpy(path, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "CSV files (*_100.csv *_100.CSV)").toLocal8Bit().data());
   }
 
   if(file_type==103)
   {
-    strcpy(path, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "BIN files (*_103.bin *_103.BIN)").toLocal8Bit().data());
+    strcpy(path, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "BIN files (*_103.bin *_103.BIN)").toLocal8Bit().data());
   }
 
   if(file_type==32)
   {
-    strcpy(path, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "BIN files (*_032.bin *_032.BIN)").toLocal8Bit().data());
+    strcpy(path, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "BIN files (*_032.bin *_032.BIN)").toLocal8Bit().data());
   }
 
   if(!strcmp(path, ""))

@@ -178,7 +178,6 @@
 #include "third_party/fidlib/fidlib.h"
 
 #include "third_party/qrsdet.h"
-using namespace heartRate_module;
 
 class ViewCurve;
 class UI_Signalswindow;

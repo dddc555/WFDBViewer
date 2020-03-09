@@ -136,6 +136,7 @@ public:
 
 signals:
   void extra_button_clicked();
+  void extra_button2_clicked();
   void dashBoardClicked();
   void markerHasMoved();
 
@@ -149,6 +150,8 @@ private slots:
   void print_to_printer();
   void print_to_ascii();
   void send_button_event();
+  void send_button2_event();
+
 
 private:
   QDialog     *sidemenu;

@@ -66,7 +66,7 @@ UI_edit_predefined_mtg_window::UI_edit_predefined_mtg_window(QWidget *w_parent)
 
   CloseButton = new QPushButton(edit_predefined_mtg_Dialog);
   CloseButton->setGeometry(690, 230, 100, 25);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   QObject::connect(CloseButton,   SIGNAL(clicked()),                      edit_predefined_mtg_Dialog,    SLOT(close()));
   QObject::connect(mtg_path_list, SIGNAL(itemClicked(QListWidgetItem *)), this,                          SLOT(rowClicked(QListWidgetItem *)));
@@ -82,6 +82,8 @@ void UI_edit_predefined_mtg_window::rowClicked(QListWidgetItem *item)
   listItem = item;
 
   dialog = new QDialog(edit_predefined_mtg_Dialog);
+  dialog ->setWindowFlags(dialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
   dialog->setMinimumSize(140, 135);
   dialog->setMaximumSize(140, 135);
   dialog->setWindowTitle("Entry");

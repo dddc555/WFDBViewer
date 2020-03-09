@@ -184,7 +184,7 @@ UI_AverageCurveWindow::UI_AverageCurveWindow(struct signalcompblock *signal_comp
   centerSlider->setMinimumSize(500, 15);
 
   centerLabel = new QLabel;
-  centerLabel->setText("Center");
+  centerLabel->setText(tr("Center"));
   centerLabel->setMinimumSize(110, 15);
   centerLabel->setAlignment(Qt::AlignHCenter);
 

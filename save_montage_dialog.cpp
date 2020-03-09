@@ -70,7 +70,7 @@ UI_SaveMontagewindow::UI_SaveMontagewindow(QWidget *w_parent)
 
   CloseButton = new QPushButton(SaveMontageDialog);
   CloseButton->setGeometry(690, 140, 100, 25);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   QObject::connect(CloseButton,  SIGNAL(clicked()), SaveMontageDialog, SLOT(close()));
   QObject::connect(SaveButton,   SIGNAL(clicked()), this,              SLOT(SaveButtonClicked()));

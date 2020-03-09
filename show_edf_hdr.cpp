@@ -262,7 +262,7 @@ UI_EDFhdrwindow::UI_EDFhdrwindow(QWidget *w_parent)
   pushButton1 = new QPushButton(EDFhdrDialog);
   pushButton1->setMinimumSize(100, 25);
   pushButton1->setMaximumSize(100, 25);
-  pushButton1->setText("Close");
+  pushButton1->setText(tr("Close"));
 
   generalHBoxLayout1 = new QHBoxLayout;
   generalHBoxLayout1->addWidget(label1);

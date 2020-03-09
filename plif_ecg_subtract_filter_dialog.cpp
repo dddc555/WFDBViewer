@@ -49,6 +49,7 @@ UI_PLIF_ECG_filter_dialog::UI_PLIF_ECG_filter_dialog(QWidget *w_parent)
   plifecgfilterdialog->setMinimumSize(620, 365);
   plifecgfilterdialog->setMaximumSize(620, 365);
   plifecgfilterdialog->setWindowTitle(tr("Add a powerline interference filter"));
+  plifecgfilterdialog ->setWindowFlags(plifecgfilterdialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   plifecgfilterdialog->setModal(true);
   plifecgfilterdialog->setAttribute(Qt::WA_DeleteOnClose, true);
 
@@ -82,9 +83,6 @@ UI_PLIF_ECG_filter_dialog::UI_PLIF_ECG_filter_dialog(QWidget *w_parent)
   ApplyButton->setText(tr("Apply"));
   ApplyButton->setVisible(false);
 
-  helpButton = new QPushButton(plifecgfilterdialog);
-  helpButton->setGeometry(20, 320, 100, 25);
-  helpButton->setText(tr("Help"));
 
   for(i=0; i<mainwindow->signalcomps; i++)
   {
@@ -145,7 +143,7 @@ UI_PLIF_ECG_filter_dialog::UI_PLIF_ECG_filter_dialog(QWidget *w_parent)
   QObject::connect(CancelButton,           SIGNAL(clicked()),                plifecgfilterdialog, SLOT(close()));
   QObject::connect(list,                   SIGNAL(itemSelectionChanged()),   this,                SLOT(ApplyButtonClicked()));
   QObject::connect(plfBox,                 SIGNAL(currentIndexChanged(int)), this,                SLOT(ApplyButtonClicked()));
-  QObject::connect(helpButton,             SIGNAL(clicked()),                this,                SLOT(helpbuttonpressed()));
+
 
   plifecgfilterdialog->exec();
 }

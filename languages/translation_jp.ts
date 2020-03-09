@@ -40,6 +40,22 @@
         <translation type="vanished">PDF</translation>
     </message>
     <message>
+        <source>Spectrum</source>
+        <translation type="vanished">スペクトラム</translation>
+    </message>
+    <message>
+        <source>Remove signal</source>
+        <translation type="vanished">信号を削除</translation>
+    </message>
+    <message>
+        <source>Remove filter</source>
+        <translation type="vanished">フィルターを削除</translation>
+    </message>
+    <message>
+        <source>Distribution</source>
+        <translation type="vanished">分布</translation>
+    </message>
+    <message>
         <source>to EDF</source>
         <translation type="vanished">EDF</translation>
     </message>
@@ -156,8 +172,100 @@
         <translation type="vanished">WFDBをEDF+に変換する</translation>
     </message>
     <message>
+        <source>MIT to EDF+ converter</source>
+        <translation type="vanished">WFDBをEDF+に変換する</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
+        <translation type="vanished">入力ファイルを選択</translation>
+    </message>
+    <message>
         <source>Convert MIT (PhysioBank) to CSV</source>
         <translation type="vanished">WFDBをCSVに変換する</translation>
+    </message>
+    <message>
+        <source>Cross-over</source>
+        <translation type="vanished">クロスオーバー</translation>
+    </message>
+    <message>
+        <source>Threshold between low-frequency and high-frequency</source>
+        <translation type="vanished">低周波と高周波の間のしきい値</translation>
+    </message>
+    <message>
+        <source>Z-threshold</source>
+        <translation type="vanished">Zしきい値</translation>
+    </message>
+    <message>
+        <source>Z-page</source>
+        <translation type="vanished">Zページ</translation>
+    </message>
+    <message>
+        <source>Sleep/Wake</source>
+        <translation type="vanished">スリープ/ウェイク</translation>
+    </message>
+    <message>
+        <source>differentiation</source>
+        <translation type="vanished">差別化</translation>
+    </message>
+    <message>
+        <source>Hysteresis applied to the z-threshold.</source>
+        <translation type="vanished">zしきい値に適用されるヒステリシス。</translation>
+    </message>
+    <message>
+        <source>Calculate</source>
+        <translation type="vanished">計算する</translation>
+    </message>
+    <message>
+        <source>Plot the Z-ratio / Z-pages</source>
+        <translation type="vanished">Z比/ Zページをプロットする</translation>
+    </message>
+    <message>
+        <source>Jump</source>
+        <translation type="vanished">ジャンプ</translation>
+    </message>
+    <message>
+        <source>Jump to cursor-position</source>
+        <translation type="vanished">カーソル位置にジャンプ</translation>
+    </message>
+    <message>
+        <source>Annotate</source>
+        <translation type="vanished">注釈を付ける</translation>
+    </message>
+    <message>
+        <source>Create annotations from the Z-EEG</source>
+        <translation type="vanished">Z-EEGから注釈を作成します</translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation type="vanished">デフォルト</translation>
+    </message>
+    <message>
+        <source>Set parameters to default values</source>
+        <translation type="vanished">パラメータをデフォルト値に設定する</translation>
+    </message>
+    <message>
+        <source>Close this window</source>
+        <translation type="vanished">このウィンドウを閉じる</translation>
+    </message>
+    <message>
+        <source>Add Trace</source>
+        <translation type="vanished">トレースを追加</translation>
+    </message>
+    <message>
+        <source>Add this Z-ratio trace to the mainwindow</source>
+        <translation type="vanished">このZ比トレースをメインウィンドウに追加します</translation>
+    </message>
+    <message>
+        <source>Epochs</source>
+        <translation type="vanished">エポック</translation>
+    </message>
+    <message>
+        <source>Pages</source>
+        <translation type="vanished">Pages</translation>
+    </message>
+    <message>
+        <source>Print to Image</source>
+        <translation type="vanished">画像に印刷</translation>
     </message>
     <message>
         <source>Language</source>
@@ -276,6 +384,10 @@
         <translation type="vanished">適用</translation>
     </message>
     <message>
+        <source>Undo</source>
+        <translation type="vanished">元に戻す</translation>
+    </message>
+    <message>
         <source>Exit</source>
         <translation type="vanished">終了</translation>
     </message>
@@ -392,11 +504,11 @@
         <translation type="vanished">センター</translation>
     </message>
     <message>
-        <source>ctls</source>
+        <source>Show Controls</source>
         <translation type="vanished">コントロール</translation>
     </message>
     <message>
-        <source>cursor</source>
+        <source>Show Cursor</source>
         <translation type="vanished">カーソル</translation>
     </message>
     <message>
@@ -406,6 +518,38 @@
     <message>
         <source>Export</source>
         <translation type="vanished">エクスポート</translation>
+    </message>
+    <message>
+        <source>blocks of</source>
+        <translation type="vanished">ブロック　ｘ</translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation type="vanished">統計</translation>
+    </message>
+    <message>
+        <source>Save file</source>
+        <translation type="vanished">ファイルを保存</translation>
+    </message>
+    <message>
+        <source>Export to CSV</source>
+        <translation type="vanished">CSVにエクスポート</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="vanished">エラー</translation>
+    </message>
+    <message>
+        <source>Error, not enough beats.</source>
+        <translation type="vanished">エラー、ビートが足りません。</translation>
+    </message>
+    <message>
+        <source>Not enough beats.</source>
+        <translation type="vanished">ビートが足りません。</translation>
+    </message>
+    <message>
+        <source>samples</source>
+        <translation type="vanished">サンプル</translation>
     </message>
     <message>
         <source>WFDB Export</source>
@@ -500,6 +644,10 @@
         <translation type="vanished">十字線の色</translation>
     </message>
     <message>
+        <source>Crosshair</source>
+        <translation type="vanished">十字線</translation>
+    </message>
+    <message>
         <source>2th Crosshair color</source>
         <translation type="vanished">2番目の十字線の色</translation>
     </message>
@@ -574,10 +722,6 @@
     <message>
         <source>FFT blocksize:</source>
         <translation type="vanished">FFTブロックサイズ：</translation>
-    </message>
-    <message>
-        <source>samples</source>
-        <translation type="vanished">サンプル</translation>
     </message>
     <message>
         <source>Colorbar sensitivity:</source>
@@ -755,6 +899,15 @@
         <source>Populating list...</source>
         <translation type="vanished">リストを準備しています...</translation>
     </message>
+	<message>
+        <source>Include</source>
+        <translation type="vanished">含める</translation>
+    </message>
+	<message>
+        <source>Exclude</source>
+        <translation type="vanished">除外する</translation>
+    </message>
+	
 </context>
 <context>
     <name>AdjustFilterSettings</name>
@@ -771,14 +924,14 @@
     <name>SignalCurve</name>
     <message>
         <source>print</source>
-        <translation type="unfinished">エクスポート</translation>
+        <translation type="obsolete">エクスポート</translation>
     </message>
     <message>
-        <source>cursor</source>
+        <source>Show Cursor</source>
         <translation type="unfinished">カーソル</translation>
     </message>
     <message>
-        <source>ctls</source>
+        <source>Show Controls</source>
         <translation type="unfinished">コントロール</translation>
     </message>
     <message>
@@ -791,7 +944,7 @@
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished">エクスポート</translation>
+        <translation type="obsolete">エクスポート</translation>
     </message>
     <message>
         <source>to printer</source>
@@ -807,7 +960,31 @@
     </message>
     <message>
         <source>to ASCII</source>
-        <translation type="unfinished">テキスト</translation>
+        <translation type="obsolete">テキスト</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished">エクスポート</translation>
+    </message>
+    <message>
+        <source>to CSV</source>
+        <translation type="unfinished">CSV</translation>
+    </message>
+    <message>
+        <source>blocks of</source>
+        <translation type="unfinished">ブロック　ｘ</translation>
+    </message>
+    <message>
+        <source>samples</source>
+        <translation type="unfinished">サンプル</translation>
+    </message>
+    <message>
+        <source>Distribution</source>
+        <translation type="unfinished">分布</translation>
+    </message>
+    <message>
+        <source>Print to Image</source>
+        <translation type="unfinished">画像に印刷</translation>
     </message>
 </context>
 <context>
@@ -819,6 +996,21 @@
 </context>
 <context>
     <name>UI_Aboutwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>UI_AnnotFilterWindow</name>
+    <message>
+        <source>Apply</source>
+        <translation type="unfinished">適用</translation>
+    </message>
+    <message>
+        <source>Undo</source>
+        <translation type="unfinished">元に戻す</translation>
+    </message>
     <message>
         <source>Close</source>
         <translation type="unfinished">閉じる</translation>
@@ -953,6 +1145,29 @@
         <source>HRV</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Save file</source>
+        <translation type="unfinished">ファイルを保存</translation>
+    </message>
+</context>
+<context>
+    <name>UI_AsciiExportwindow</name>
+    <message>
+        <source>Export to CSV</source>
+        <translation type="unfinished">CSVにエクスポート</translation>
+    </message>
+    <message>
+        <source>Save file</source>
+        <translation type="unfinished">ファイルを保存</translation>
+    </message>
+    <message>
+        <source>Error, selected file is in use.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
 </context>
 <context>
     <name>UI_AverageCurveWindow</name>
@@ -974,6 +1189,102 @@
     </message>
 </context>
 <context>
+    <name>UI_BDF2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Convert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select all signals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deselect all signals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select input file</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">エラー</translation>
+    </message>
+</context>
+<context>
+    <name>UI_BI98002EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
+    <name>UI_BIOSEMI2BDFPLUSwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
+    <name>UI_BIOX2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
+    <name>UI_ColorMenuDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>UI_ECGExport</name>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">エラー</translation>
+    </message>
+    <message>
+        <source>Error, not enough beats.</source>
+        <translation type="unfinished">エラー、ビートが足りません。</translation>
+    </message>
+</context>
+<context>
+    <name>UI_EDFCompatwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>UI_EDFDwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
     <name>UI_EDFhdrwindow</name>
     <message>
         <source>General</source>
@@ -982,6 +1293,54 @@
     <message>
         <source>Signals</source>
         <translation type="unfinished">信号</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>UI_EMSA2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
+    <name>UI_ExportAnnotationswindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>UI_ExportFilteredSignalsWindow</name>
+    <message>
+        <source>Save file</source>
+        <translation type="unfinished">ファイルを保存</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished">エクスポート</translation>
+    </message>
+</context>
+<context>
+    <name>UI_FINO2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
 <context>
@@ -1013,6 +1372,21 @@
     <message>
         <source>Apply</source>
         <translation type="unfinished">適用</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
+    <name>UI_FMaudio2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
 <context>
@@ -1104,6 +1478,65 @@
     <message>
         <source>Samples</source>
         <translation type="unfinished">サンプル</translation>
+    </message>
+</context>
+<context>
+    <name>UI_FreqSpectrumWindow</name>
+    <message>
+        <source>Center</source>
+        <translation type="unfinished">センター</translation>
+    </message>
+</context>
+<context>
+    <name>UI_LoadMontagewindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>UI_MANSCAN2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
+    <name>UI_MIT2CSVwindow</name>
+    <message>
+        <source>MIT to CSV converter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
+    <name>UI_MIT2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>MIT to EDF+ converter</source>
+        <translation type="unfinished">WFDBをEDF+に変換する</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
 <context>
@@ -1411,6 +1844,47 @@
     <message>
         <source>Export</source>
         <translation type="unfinished">エクスポート</translation>
+    </message>
+    <message>
+        <source>Convert to CSV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save file</source>
+        <translation type="unfinished">ファイルを保存</translation>
+    </message>
+</context>
+<context>
+    <name>UI_MortaraEDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
+    <name>UI_NEXFIN2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
+    <name>UI_NK2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
 <context>
@@ -1730,6 +2204,49 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
 </context>
 <context>
+    <name>UI_RAW2EDFapp</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>UI_ReduceSignalsWindow</name>
+    <message>
+        <source>Save file</source>
+        <translation type="unfinished">ファイルを保存</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>UI_SCPECG2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
+    <name>UI_SaveMontagewindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>UI_ShowActualMontagewindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
     <name>UI_SignalChooser</name>
     <message>
         <source>Organize signals</source>
@@ -1754,6 +2271,10 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <message>
         <source>Remove</source>
         <translation type="unfinished">削除</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
     </message>
 </context>
 <context>
@@ -1870,6 +2391,28 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
 </context>
 <context>
+    <name>UI_StatisticWindow</name>
+    <message>
+        <source>Not enough beats.</source>
+        <translation type="unfinished">ビートが足りません。</translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation type="unfinished">統計</translation>
+    </message>
+</context>
+<context>
+    <name>UI_UNISENS2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
     <name>UI_Userdefined_timepage_Dialog</name>
     <message>
         <source>Set timescale</source>
@@ -1885,6 +2428,129 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
 </context>
 <context>
+    <name>UI_ViewMontagewindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>UI_WAV2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+</context>
+<context>
+    <name>UI_ZScoreWindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Cross-over</source>
+        <translation type="unfinished">クロスオーバー</translation>
+    </message>
+    <message>
+        <source>Threshold between low-frequency and high-frequency</source>
+        <translation type="unfinished">低周波と高周波の間のしきい値</translation>
+    </message>
+    <message>
+        <source>Z-threshold</source>
+        <translation type="unfinished">Zしきい値</translation>
+    </message>
+    <message>
+        <source>Z-page</source>
+        <translation type="unfinished">Zページ</translation>
+    </message>
+    <message>
+        <source>Sleep/Wake</source>
+        <translation type="unfinished">スリープ/ウェイク</translation>
+    </message>
+    <message>
+        <source>differentiation</source>
+        <translation type="unfinished">差別化</translation>
+    </message>
+    <message>
+        <source>Hysteresis applied to the z-threshold.</source>
+        <translation type="unfinished">zしきい値に適用されるヒステリシス。</translation>
+    </message>
+    <message>
+        <source>Calculate</source>
+        <translation type="unfinished">計算する</translation>
+    </message>
+    <message>
+        <source>Plot the Z-ratio / Z-pages</source>
+        <translation type="unfinished">Z比/ Zページをプロットする</translation>
+    </message>
+    <message>
+        <source>Jump to cursor-position</source>
+        <translation type="unfinished">カーソル位置にジャンプ</translation>
+    </message>
+    <message>
+        <source>Create annotations from the Z-EEG</source>
+        <translation type="unfinished">Z-EEGから注釈を作成します</translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation type="unfinished">デフォルト</translation>
+    </message>
+    <message>
+        <source>Set parameters to default values</source>
+        <translation type="unfinished">パラメータをデフォルト値に設定する</translation>
+    </message>
+    <message>
+        <source>Close this window</source>
+        <translation type="unfinished">このウィンドウを閉じる</translation>
+    </message>
+    <message>
+        <source>Add Trace</source>
+        <translation type="unfinished">トレースを追加</translation>
+    </message>
+    <message>
+        <source>Add this Z-ratio trace to the mainwindow</source>
+        <translation type="unfinished">このZ比トレースをメインウィンドウに追加します</translation>
+    </message>
+    <message>
+        <source>Epochs</source>
+        <translation type="unfinished">エポック</translation>
+    </message>
+    <message>
+        <source>Pages</source>
+        <translation type="unfinished">Pages</translation>
+    </message>
+    <message>
+        <source>Jump</source>
+        <translation type="unfinished">ジャンプ</translation>
+    </message>
+    <message>
+        <source>Annotate</source>
+        <translation type="unfinished">注釈を付ける</translation>
+    </message>
+</context>
+<context>
+    <name>UI_activeFileChooserWindow</name>
+    <message>
+        <source>OK</source>
+        <translation type="unfinished">OK</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">キャンセル</translation>
+    </message>
+</context>
+<context>
+    <name>UI_edit_predefined_mtg_window</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
     <name>UI_headerEditorWindow</name>
     <message>
         <source>Header</source>
@@ -1893,6 +2559,69 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <message>
         <source>Signals</source>
         <translation type="unfinished">信号</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>ViewCurve</name>
+    <message>
+        <source>Ruler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Crosshair</source>
+        <translation type="unfinished">十字線</translation>
+    </message>
+    <message>
+        <source>Fit to pane</source>
+        <translation type="unfinished">画面に合わせる</translation>
+    </message>
+    <message>
+        <source>Color</source>
+        <translation type="unfinished">色</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation type="unfinished">反転</translation>
+    </message>
+    <message>
+        <source>Spectrum</source>
+        <translation type="unfinished">スペクトラム</translation>
+    </message>
+    <message>
+        <source>Z-EEG</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove filter</source>
+        <translation type="unfinished">フィルターを削除</translation>
+    </message>
+    <message>
+        <source>Remove signal</source>
+        <translation type="unfinished">信号を削除</translation>
+    </message>
+    <message>
+        <source>Adjust filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation type="unfinished">統計</translation>
+    </message>
+    <message>
+        <source>Heart Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Print to Image</source>
+        <translation type="unfinished">画像に印刷</translation>
     </message>
 </context>
 </TS>

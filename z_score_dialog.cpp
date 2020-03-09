@@ -71,6 +71,8 @@ UI_ZScoreWindow::UI_ZScoreWindow(QWidget *w_parent, UI_ZScoreWindow **w_zscoredi
   zscore_dialog_is_destroyed = 0;
 
   zscore_dialog = new QDialog();
+  zscore_dialog ->setWindowFlags(zscore_dialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
   zscore_dialog->setMinimumSize(600, 550);
   zscore_dialog->setWindowTitle("Z-EEG");
   zscore_dialog->setModal(false);
@@ -82,7 +84,7 @@ UI_ZScoreWindow::UI_ZScoreWindow(QWidget *w_parent, UI_ZScoreWindow **w_zscoredi
   crossoverbinLabel = new QLabel;
   crossoverbinLabel->setMinimumSize(100, 25);
   crossoverbinLabel->setMaximumSize(100, 25);
-  crossoverbinLabel->setText("Cross-over");
+  crossoverbinLabel->setText(tr("Cross-over"));
 
   crossoverSpinbox = new QDoubleSpinBox;
   crossoverSpinbox->setMinimumSize(100, 25);
@@ -92,12 +94,12 @@ UI_ZScoreWindow::UI_ZScoreWindow(QWidget *w_parent, UI_ZScoreWindow **w_zscoredi
   crossoverSpinbox->setSingleStep(0.5);
   crossoverSpinbox->setSuffix(" Hz");
   crossoverSpinbox->setValue(mainwindow->z_score_var.crossoverfreq);
-  crossoverSpinbox->setToolTip("Threshold between low-frequency and high-frequency");
+  crossoverSpinbox->setToolTip(tr("Threshold between low-frequency and high-frequency"));
 
   thresholdLabel = new QLabel;
   thresholdLabel->setMinimumSize(100, 25);
   thresholdLabel->setMaximumSize(100, 25);
-  thresholdLabel->setText("Z-threshold");
+  thresholdLabel->setText(tr("Z-threshold"));
 
   thresholdSpinbox = new QDoubleSpinBox;
   thresholdSpinbox->setMinimumSize(100, 25);
@@ -110,7 +112,7 @@ UI_ZScoreWindow::UI_ZScoreWindow(QWidget *w_parent, UI_ZScoreWindow **w_zscoredi
   pagelenLabel = new QLabel;
   pagelenLabel->setMinimumSize(100, 25);
   pagelenLabel->setMaximumSize(100, 25);
-  pagelenLabel->setText("Z-page");
+  pagelenLabel->setText(tr("Z-page"));
 
   pagelenSpinbox = new QSpinBox;
   pagelenSpinbox->setMinimumSize(100, 25);
@@ -140,8 +142,7 @@ UI_ZScoreWindow::UI_ZScoreWindow(QWidget *w_parent, UI_ZScoreWindow **w_zscoredi
   hysteresisLabel = new QLabel;
   hysteresisLabel->setMinimumSize(100, 25);
   hysteresisLabel->setMaximumSize(100, 25);
-  hysteresisLabel->setText("Sleep/Wake\ndifferentiation");
-
+  hysteresisLabel->setText(tr("Sleep/Wake") + "\n" + tr("differentiation"));
   hysteresisSpinbox = new QDoubleSpinBox;
   hysteresisSpinbox->setMinimumSize(100, 25);
   hysteresisSpinbox->setMaximumSize(100, 25);
@@ -149,7 +150,7 @@ UI_ZScoreWindow::UI_ZScoreWindow(QWidget *w_parent, UI_ZScoreWindow **w_zscoredi
   hysteresisSpinbox->setRange(0.0, 0.25);
   hysteresisSpinbox->setSingleStep(0.01);
   hysteresisSpinbox->setValue(mainwindow->z_score_var.z_hysteresis);
-  hysteresisSpinbox->setToolTip("Hysteresis applied to the z-threshold.");
+  hysteresisSpinbox->setToolTip(tr("Hysteresis applied to the z-threshold."));
 
   curve1 = new SignalCurve;
   curve1->setSignalColor(Qt::green);
@@ -163,53 +164,53 @@ UI_ZScoreWindow::UI_ZScoreWindow(QWidget *w_parent, UI_ZScoreWindow **w_zscoredi
   StartButton = new QPushButton;
   StartButton->setMinimumSize(100, 25);
   StartButton->setMaximumSize(100, 25);
-  StartButton->setText("Calculate");
-  StartButton->setToolTip("Plot the Z-ratio / Z-pages");
+  StartButton->setText(tr("Calculate"));
+  StartButton->setToolTip(tr("Plot the Z-ratio / Z-pages"));
 
   jumpButton = new QPushButton;
   jumpButton->setMinimumSize(100, 25);
   jumpButton->setMaximumSize(100, 25);
-  jumpButton->setText("Jump");
-  jumpButton->setToolTip("Jump to cursor-position");
+  jumpButton->setText(tr("Jump"));
+  jumpButton->setToolTip(tr("Jump to cursor-position"));
 
   get_annotButton = new QPushButton;
   get_annotButton->setMinimumSize(100, 25);
   get_annotButton->setMaximumSize(100, 25);
-  get_annotButton->setText("Annotate");
-  get_annotButton->setToolTip("Create annotations from the Z-EEG");
+  get_annotButton->setText(tr("Annotate"));
+  get_annotButton->setToolTip(tr("Create annotations from the Z-EEG"));
 
   defaultButton = new QPushButton;
   defaultButton->setMinimumSize(100, 25);
   defaultButton->setMaximumSize(100, 25);
-  defaultButton->setText("Default");
-  defaultButton->setToolTip("Set parameters to default values");
+  defaultButton->setText(tr("Default"));
+  defaultButton->setToolTip(tr("Set parameters to default values"));
 
   CloseButton = new QPushButton;
   CloseButton->setMinimumSize(100, 25);
   CloseButton->setMaximumSize(100, 25);
-  CloseButton->setText("Close");
-  CloseButton->setToolTip("Close this window");
+  CloseButton->setText(tr("Close"));
+  CloseButton->setToolTip(tr("Close this window"));
 
   addTraceButton = new QPushButton;
   addTraceButton->setMinimumSize(100, 25);
   addTraceButton->setMaximumSize(100, 25);
-  addTraceButton->setText("Add Trace");
-  addTraceButton->setToolTip("Add this Z-ratio trace to the mainwindow");
+  addTraceButton->setText(tr("Add Trace"));
+  addTraceButton->setToolTip(tr("Add this Z-ratio trace to the mainwindow"));
 
   epochRadioButton = new QRadioButton;
   epochRadioButton->setMinimumSize(100, 25);
   epochRadioButton->setMaximumSize(100, 25);
-  epochRadioButton->setText("Epochs");
+  epochRadioButton->setText(tr("Epochs"));
 
   pageRadioButton = new QRadioButton;
   pageRadioButton->setMinimumSize(100, 25);
   pageRadioButton->setMaximumSize(100, 25);
-  pageRadioButton->setText("Pages");
+  pageRadioButton->setText(tr("Pages"));
 
   wakesleepRadioButton = new QRadioButton;
   wakesleepRadioButton->setMinimumSize(100, 25);
   wakesleepRadioButton->setMaximumSize(100, 25);
-  wakesleepRadioButton->setText("Sleep/Wake");
+  wakesleepRadioButton->setText(tr("Sleep/Wake"));
 
   pageRadioButton->setChecked(true);
 

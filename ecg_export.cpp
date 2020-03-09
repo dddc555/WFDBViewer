@@ -36,6 +36,7 @@ UI_ECGExport::UI_ECGExport(QWidget *w_parent)
   mainwindow = (UI_Mainwindow *)w_parent;
 
   myobjectDialog = new QDialog(w_parent);
+  myobjectDialog ->setWindowFlags(myobjectDialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
   myobjectDialog->setMinimumSize(400, 445);
   myobjectDialog->setMaximumSize(400, 445);
@@ -236,7 +237,7 @@ void UI_ECGExport::Export_RR_intervals()
 
   if(beat_cnt < 4)
   {
-    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Error, not enough beats.");
+    QMessageBox messagewindow(QMessageBox::Critical, tr("Error"), tr( "Error, not enough beats."));
     messagewindow.exec();
     return;
   }

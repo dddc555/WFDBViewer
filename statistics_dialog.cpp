@@ -75,7 +75,7 @@ UI_StatisticWindow::UI_StatisticWindow(struct signalcompblock *signalcomp,
   struct annotationblock *tmp_annot=NULL;
 
   StatDialog = new QDialog;
-  StatDialog->setWindowTitle("Statistics");
+  StatDialog->setWindowTitle(tr("Statistics"));
   StatDialog->setModal(true);
   StatDialog->setAttribute(Qt::WA_DeleteOnClose, true);
   StatDialog->setWindowFlags(Qt::Window | Qt::WindowMinMaxButtonsHint | Qt::WindowCloseButtonHint);
@@ -148,8 +148,20 @@ UI_StatisticWindow::UI_StatisticWindow(struct signalcompblock *signalcomp,
     vlayout2_1 = new QVBoxLayout;
     vlayout2_1->setSpacing(20);
     vlayout2_1->addWidget(curve1);
-    vlayout2_1->addWidget(startSlider);
-    vlayout2_1->addWidget(stopSlider);
+
+    hlayoutMin = new QHBoxLayout;
+    labelMin = new QLabel(tr("Min"));
+    hlayoutMin->addWidget(labelMin);
+    hlayoutMin->addWidget(startSlider);
+
+    hlayoutMax = new QHBoxLayout;
+    labelMax = new QLabel(tr("Max"));
+    hlayoutMax->addWidget(labelMax);
+    hlayoutMax->addWidget(stopSlider);
+
+    vlayout2_1->addLayout(hlayoutMin);
+
+    vlayout2_1->addLayout(hlayoutMax);
   }
 
   if(job_src == STAT_JOB_SRC_SIGNAL)
@@ -510,8 +522,9 @@ UI_StatisticWindow::UI_StatisticWindow(struct signalcompblock *signalcomp,
 
     mainwindow->toolbar_stats.active = 1;
   }
-
-  Label1->setText(stat_str);
+  QString str (stat_str);
+  str.replace("Not enough beats.", tr("Not enough beats."));
+  Label1->setText(str);
 
   StatDialog->exec();
 }

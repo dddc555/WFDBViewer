@@ -54,6 +54,7 @@ OBJECTS_DIR = ./objects
 MOC_DIR = ./moc
 
 HEADERS += third_party/wfdb.h
+HEADERS += third_party/qrsdet.h
 
 HEADERS += third_party/wfdblib.h
 HEADERS += third_party/rdsamp.h

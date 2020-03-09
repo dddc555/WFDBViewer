@@ -37,6 +37,7 @@ UI_JumpMenuDialog::UI_JumpMenuDialog(QWidget *w_parent)
   mainwindow = (UI_Mainwindow *)w_parent;
 
   jump_dialog = new QDialog(w_parent);
+  jump_dialog ->setWindowFlags(jump_dialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
   jump_dialog->setMinimumSize(435, 200);
   jump_dialog->setMaximumSize(435, 200);

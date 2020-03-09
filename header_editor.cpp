@@ -214,7 +214,7 @@ UI_headerEditorWindow::UI_headerEditorWindow(QWidget *w_parent)
 
   pushButton1 = new QPushButton(this);
   pushButton1->setGeometry(580, 510, 100, 25);
-  pushButton1->setText("Close");
+  pushButton1->setText(tr("Close"));
 
   pushButton2 = new QPushButton(this);
   pushButton2->setGeometry(200, 510, 100, 25);

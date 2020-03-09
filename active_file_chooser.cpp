@@ -61,11 +61,11 @@ UI_activeFileChooserWindow::UI_activeFileChooserWindow(int *file_nr, QWidget *ma
 
   okButton = new QPushButton(chooserDialog);
   okButton->setGeometry(10, 140, 100, 25);
-  okButton->setText("OK");
+  okButton->setText(tr("OK"));
 
   cancelButton = new QPushButton(chooserDialog);
   cancelButton->setGeometry(690, 140, 100, 25);
-  cancelButton->setText("Cancel");
+  cancelButton->setText(tr("Cancel"));
 
   QObject::connect(cancelButton, SIGNAL(clicked()), chooserDialog, SLOT(close()));
   QObject::connect(okButton,     SIGNAL(clicked()), this,          SLOT(okButtonClicked()));

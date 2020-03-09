@@ -45,6 +45,7 @@ UI_AveragerWindow::UI_AveragerWindow(QWidget *w_parent, int annot_nr, int file_n
   file_num = file_n;
 
   averager_dialog = new QDialog(w_parent);
+  averager_dialog ->setWindowFlags(averager_dialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
   averager_dialog->setMinimumSize(600, 400);
   averager_dialog->setMaximumSize(600, 400);

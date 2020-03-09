@@ -107,8 +107,8 @@ private:
 
   QVBoxLayout *v_layout;
 
-  QCheckBox *checkbox1,
-            *checkbox2;
+  QComboBox *comboBoxInclude,
+            *comboBoxTimeFormat;
 
   QLabel *label1;
 

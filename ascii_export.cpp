@@ -63,7 +63,7 @@ UI_AsciiExportwindow::UI_AsciiExportwindow(QWidget *w_parent)
 
   CloseButton = new QPushButton(AsciiExportDialog);
   CloseButton->setGeometry(690, 140, 100, 25);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   QObject::connect(CloseButton,  SIGNAL(clicked()), AsciiExportDialog, SLOT(close()));
   QObject::connect(ExportButton, SIGNAL(clicked()), this,              SLOT(ExportButtonClicked()));
@@ -160,7 +160,7 @@ void UI_AsciiExportwindow::ExportButtonClicked()
   remove_extension_from_filename(path);
   //strcat(path, "_data.txt");
 
-  strcpy(path, QFileDialog::getSaveFileName(0, "Export to ASCII", QString::fromLocal8Bit(path), "CSV files (*.csv *.CSV)").toLocal8Bit().data());
+  strcpy(path, QFileDialog::getSaveFileName(0, tr("Export to CSV"), QString::fromLocal8Bit(path), "CSV files (*.csv *.CSV)").toLocal8Bit().data());
 
   if(!strcmp(path, ""))
   {
@@ -172,7 +172,7 @@ void UI_AsciiExportwindow::ExportButtonClicked()
 
   if(mainwindow->file_is_opened(path))
   {
-    QMessageBox messagewindow(QMessageBox::Critical, "Save file", "Error, selected file is in use.");
+    QMessageBox messagewindow(QMessageBox::Critical, tr("Save file"), tr("Error, selected file is in use."));
     messagewindow.exec();
     AsciiExportDialog->close();
     return;

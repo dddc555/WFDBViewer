@@ -565,7 +565,6 @@ void UI_Mainwindow::read_general_settings()
   }
 
   mainwindow_language = atof(result);
-  qDebug()<<"mainwindow_language " <<mainwindow_language;
 
   if(xml_goto_nth_element_inside(xml_hdl, "pixelsizefactor", 0))
   {

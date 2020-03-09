@@ -99,6 +99,11 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
   }
 
   curve1 = new SignalCurve;
+
+  curve1->setPrintEnabled(true);
+  curve1->setCursorEnabled(true);
+  curve1->setDashBoardEnabled(true);
+
   curve1->setSignalColor(Qt::green);
   curve1->setBackgroundColor(Qt::black);
   curve1->setRasterColor(Qt::gray);
@@ -212,6 +217,10 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
   {
     colorBarButton->setCheckState(Qt::Unchecked);
   }
+  windowing_label = new QLabel;
+  windowing_label->setText(tr("Windowing:"));
+  windowing_label->setMinimumSize(100, 15);
+//  windowing_label->setAlignment(Qt::AlignHCenter);
 
   windowBox = new QComboBox;
   windowBox->setMinimumSize(70, 25);
@@ -258,6 +267,7 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
   vlayout2->addWidget(sqrtButton);
   vlayout2->addWidget(vlogButton);
   vlayout2->addWidget(colorBarButton);
+  vlayout2->addWidget(windowing_label);
   vlayout2->addWidget(windowBox);
   vlayout2->addWidget(dftsz_label);
   vlayout2->addWidget(dftsz_spinbox);
@@ -329,6 +339,8 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
   QObject::connect(vlogButton,      SIGNAL(toggled(bool)),           this, SLOT(vlogButtonClicked(bool)));
   QObject::connect(colorBarButton,  SIGNAL(toggled(bool)),           this, SLOT(colorBarButtonClicked(bool)));
   QObject::connect(curve1,          SIGNAL(extra_button_clicked()),  this, SLOT(print_to_txt()));
+  QObject::connect(curve1,          SIGNAL(extra_button2_clicked()), this, SLOT(print_to_txt()));
+
   QObject::connect(curve1,          SIGNAL(dashBoardClicked()),      this, SLOT(setdashboard()));
   QObject::connect(flywheel1,       SIGNAL(dialMoved(int)),          this, SLOT(update_flywheel(int)));
   QObject::connect(dock,            SIGNAL(visibilityChanged(bool)), this, SLOT(open_close_dock(bool)));
@@ -533,6 +545,52 @@ void UI_SpectrumDockWindow::print_to_txt()
   fclose (outputfile);
 }
 
+void UI_SpectrumDockWindow::print_to_csv()
+{
+  int i;
+
+  char str[1024],
+       path[MAX_PATH_LENGTH];
+
+  FILE *outputfile;
+
+
+  if(fft_data == NULL)  return;
+
+  path[0] = 0;
+  if(mainwindow->recent_savedir[0]!=0)
+  {
+    strcpy(path, mainwindow->recent_savedir);
+    strcat(path, "/");
+  }
+  strcat(path, "spectrum.csv");
+
+  strcpy(path, QFileDialog::getSaveFileName(0, "Export to CSV", QString::fromLocal8Bit(path), "CSV files (*.csv *.CSV)").toLocal8Bit().data());
+
+  if(!strcmp(path, ""))
+  {
+    return;
+  }
+
+  get_directory_from_path(mainwindow->recent_savedir, path, MAX_PATH_LENGTH);
+
+  outputfile = fopen(path, "wb");
+  if(outputfile == NULL)
+  {
+    snprintf(str, 1024, "Can not open file %.990s for writing.", path);
+    QMessageBox messagewindow(QMessageBox::Critical, "Error", QString::fromLocal8Bit(str));
+    messagewindow.exec();
+    return;
+  }
+
+  for(i=0; i<fft_data->sz_out; i++)
+  {
+    fprintf(outputfile, "%.16f,%.16f\n", freqstep * i, buf2[i]);
+  }
+
+  fclose (outputfile);
+}
+
 
 void UI_SpectrumDockWindow::colorBarButtonClicked(bool value)
 {
@@ -705,13 +763,18 @@ void UI_SpectrumDockWindow::sliderMoved(int)
   convert_to_metric_suffix(str + strlen(str), start_freq + ((max_freq - start_freq) / 2.0), 3);
   remove_trailing_zeros(str);
   strcat(str, "Hz");
-  centerLabel->setText(str);
+  QString strString(str);
+  strString.replace("Center", tr("Center"));
+
+  centerLabel->setText(strString);
 
   strcpy(str, "Span ");
   convert_to_metric_suffix(str + strlen(str), max_freq - start_freq, 3);
   remove_trailing_zeros(str);
+  strString = QString(str);
+  strString.replace("Span", tr("Span"));
   strcat(str, "Hz");
-  spanLabel->setText(str);
+  spanLabel->setText(strString);
 }
 
 

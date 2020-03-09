@@ -142,6 +142,7 @@ UI_FreqSpectrumWindow::UI_FreqSpectrumWindow(struct signalcompblock *signal_comp
   strcpy(physdimension, signalcomp->physdimension);
 
   SpectrumDialog = new QDialog();
+  SpectrumDialog ->setWindowFlags(SpectrumDialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   SpectrumDialog->setAttribute(Qt::WA_DeleteOnClose, true);
   SpectrumDialog->setMinimumSize(650, 530);
   SpectrumDialog->setSizeGripEnabled(true);
@@ -290,16 +291,16 @@ UI_FreqSpectrumWindow::UI_FreqSpectrumWindow(struct signalcompblock *signal_comp
 
   windowBox = new QComboBox;
   windowBox->setMinimumSize(70, 25);
-  windowBox->addItem("Rectangular");
-  windowBox->addItem("Hamming");
-  windowBox->addItem("4-term Blackman-Harris");
-  windowBox->addItem("7-term Blackman-Harris");
-  windowBox->addItem("Nuttall3b");
-  windowBox->addItem("Nuttall4c");
-  windowBox->addItem("Hann");
-  windowBox->addItem("HFT223D");
+  windowBox->addItem(tr("Rectangular"));
+  windowBox->addItem(tr("Hamming"));
+  windowBox->addItem(tr("4-term Blackman-Harris"));
+  windowBox->addItem(tr("7-term Blackman-Harris"));
+  windowBox->addItem(tr("Nuttall3b"));
+  windowBox->addItem(tr("Nuttall4c"));
+  windowBox->addItem(tr("Hann"));
+  windowBox->addItem(tr("HFT223D"));
   windowBox->setCurrentIndex(window_type);
-  windowBox->setToolTip("Window");
+  windowBox->setToolTip(tr("Window"));
 
   dftsz_spinbox = new QSpinBox;
   dftsz_spinbox->setMinimumSize(70, 25);
@@ -340,7 +341,7 @@ UI_FreqSpectrumWindow::UI_FreqSpectrumWindow(struct signalcompblock *signal_comp
   spanSlider->setMinimumSize(500, 15);
 
   spanLabel = new QLabel;
-  spanLabel->setText("Span");
+  spanLabel->setText(tr("Span"));
   spanLabel->setMinimumSize(110, 25);
   spanLabel->setAlignment(Qt::AlignHCenter);
 
@@ -352,7 +353,7 @@ UI_FreqSpectrumWindow::UI_FreqSpectrumWindow(struct signalcompblock *signal_comp
   centerSlider->setMinimumSize(500, 15);
 
   centerLabel = new QLabel;
-  centerLabel->setText("Center");
+  centerLabel->setText(tr("Center"));
   centerLabel->setMinimumSize(110, 25);
   centerLabel->setAlignment(Qt::AlignHCenter);
 

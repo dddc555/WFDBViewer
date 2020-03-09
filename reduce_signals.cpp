@@ -125,7 +125,7 @@ UI_ReduceSignalsWindow::UI_ReduceSignalsWindow(QWidget *w_parent)
 
   pushButton2 = new QPushButton(myobjectDialog);
   pushButton2->setGeometry(575, 528, 100, 25);
-  pushButton2->setText("Close");
+  pushButton2->setText(tr("Close"));
 
   pushButton3 = new QPushButton(myobjectDialog);
   pushButton3->setGeometry(200, 528, 100, 25);
@@ -832,13 +832,13 @@ void UI_ReduceSignalsWindow::StartConversion()
   {
     strcat(outputpath, "_reduced.edf");
 
-    strcpy(outputpath, QFileDialog::getSaveFileName(0, "Save file", QString::fromLocal8Bit(outputpath), "EDF files (*.edf *.EDF)").toLocal8Bit().data());
+    strcpy(outputpath, QFileDialog::getSaveFileName(0, tr("Save file"), QString::fromLocal8Bit(outputpath), "EDF files (*.edf *.EDF)").toLocal8Bit().data());
   }
   else
   {
     strcat(outputpath, "_reduced.bdf");
 
-    strcpy(outputpath, QFileDialog::getSaveFileName(0, "Save file", QString::fromLocal8Bit(outputpath), "BDF files (*.bdf *.BDF)").toLocal8Bit().data());
+    strcpy(outputpath, QFileDialog::getSaveFileName(0, tr("Save file"), QString::fromLocal8Bit(outputpath), "BDF files (*.bdf *.BDF)").toLocal8Bit().data());
   }
 
   if(!strcmp(outputpath, ""))

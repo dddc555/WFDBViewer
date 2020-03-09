@@ -84,7 +84,7 @@ UI_UNISENS2EDFwindow::UI_UNISENS2EDFwindow(char *recent_dir, char *save_dir)
 
   pushButton2 = new QPushButton(myobjectDialog);
   pushButton2->setGeometry(480, 430, 100, 25);
-  pushButton2->setText("Close");
+  pushButton2->setText(tr("Close"));
 
   textEdit1 = new QTextEdit(myobjectDialog);
   textEdit1->setGeometry(20, 20, 560, 380);
@@ -129,7 +129,7 @@ void UI_UNISENS2EDFwindow::SelectFileButton()
   struct xml_handle *xml_hdl;
 
 
-  strcpy(path, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "XML files (*.xml *.XML)").toLocal8Bit().data());
+  strcpy(path, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "XML files (*.xml *.XML)").toLocal8Bit().data());
 
   if(!strcmp(path, ""))
   {

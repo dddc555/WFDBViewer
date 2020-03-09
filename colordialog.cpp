@@ -35,6 +35,7 @@
 UI_ColorMenuDialog::UI_ColorMenuDialog(int *newColor, QWidget *w_parent)
 {
   colormenu_dialog = new QDialog(w_parent);
+  colormenu_dialog ->setWindowFlags(colormenu_dialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
   colormenu_dialog->setMinimumSize(105, 130);
   colormenu_dialog->setMaximumSize(105, 130);
@@ -48,7 +49,7 @@ UI_ColorMenuDialog::UI_ColorMenuDialog(int *newColor, QWidget *w_parent)
 
   CloseButton = new QPushButton(colormenu_dialog);
   CloseButton->setGeometry(5, 105, 95, 20);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   ColorButton1 = new SpecialButton(colormenu_dialog);
   ColorButton1->setGeometry(5, 5, 20, 20);

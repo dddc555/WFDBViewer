@@ -101,7 +101,7 @@ UI_BIOSEMI2BDFPLUSwindow::UI_BIOSEMI2BDFPLUSwindow(QWidget *w_parent)
 
   closeButton = new QPushButton(myobjectDialog);
   closeButton->setGeometry(480, 584, 100, 25);
-  closeButton->setText("Close");
+  closeButton->setText(tr("Close"));
 
   QObject::connect(selectButton,   SIGNAL(clicked()),   this,           SLOT(SelectFileButton()));
   QObject::connect(closeButton,    SIGNAL(clicked()),   myobjectDialog, SLOT(close()));
@@ -184,7 +184,7 @@ void UI_BIOSEMI2BDFPLUSwindow::SelectFileButton()
 
   str[0] = 0;
 
-  strcpy(inputpath, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "BDF files (*.bdf *.BDF)").toLocal8Bit().data());
+  strcpy(inputpath, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "BDF files (*.bdf *.BDF)").toLocal8Bit().data());
 
   if(!strcmp(inputpath, ""))
   {

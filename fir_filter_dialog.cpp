@@ -49,7 +49,7 @@ UI_FIRFilterDialog::UI_FIRFilterDialog(char *recent_dir, char *save_dir, QWidget
   recent_savedir = save_dir;
 
   firfilterdialog = new QDialog;
-
+  firfilterdialog ->setWindowFlags(firfilterdialog->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   firfilterdialog->setMinimumSize(620, 415);
   firfilterdialog->setMaximumSize(620, 415);
   firfilterdialog->setWindowTitle(tr("Add a Custom FIR filter"));
@@ -79,17 +79,17 @@ UI_FIRFilterDialog::UI_FIRFilterDialog(char *recent_dir, char *save_dir, QWidget
   CancelButton->setText(tr("Close"));
 
   fileButton = new QPushButton(firfilterdialog);
-  fileButton->setGeometry(160, 370, 100, 25);
+  fileButton->setGeometry(220, 370, 100, 25);
   fileButton->setText(tr("File"));
   fileButton->setToolTip(tr("Load values from text file"));
 
   ApplyButton = new QPushButton(firfilterdialog);
-  ApplyButton->setGeometry(300, 370, 100, 25);
+  ApplyButton->setGeometry(440, 370, 100, 25);
   ApplyButton->setText(tr("Apply"));
 
-  helpButton = new QPushButton(firfilterdialog);
-  helpButton->setGeometry(440, 370, 100, 25);
-  helpButton->setText("Help");
+//  helpButton = new QPushButton(firfilterdialog);
+//  helpButton->setGeometry(440, 370, 100, 25);
+//  helpButton->setText("Help");
 
   for(i=0; i<mainwindow->signalcomps; i++)
   {
@@ -118,7 +118,7 @@ UI_FIRFilterDialog::UI_FIRFilterDialog(char *recent_dir, char *save_dir, QWidget
   QObject::connect(ApplyButton,  SIGNAL(clicked()),     this,            SLOT(ApplyButtonClicked()));
   QObject::connect(CancelButton, SIGNAL(clicked()),     firfilterdialog, SLOT(close()));
   QObject::connect(textEdit,     SIGNAL(textChanged()), this,            SLOT(check_text()));
-  QObject::connect(helpButton,   SIGNAL(clicked()),     this,            SLOT(helpbuttonpressed()));
+//  QObject::connect(helpButton,   SIGNAL(clicked()),     this,            SLOT(helpbuttonpressed()));
   QObject::connect(fileButton,   SIGNAL(clicked()),     this,            SLOT(filebuttonpressed()));
 
   firfilterdialog->exec();
@@ -217,7 +217,7 @@ void UI_FIRFilterDialog::filebuttonpressed()
 
   FILE *inputfile;
 
-  strcpy(path, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "All files (*)").toLocal8Bit().data());
+  strcpy(path, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "All files (*)").toLocal8Bit().data());
 
   if(!strcmp(path, ""))
   {

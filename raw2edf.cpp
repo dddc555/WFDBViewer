@@ -195,7 +195,7 @@ UI_RAW2EDFapp::UI_RAW2EDFapp(QWidget *w_parent, struct raw2edf_var_struct *raw2e
 
   CloseButton = new QPushButton(raw2edfDialog);
   CloseButton->setGeometry(160, 440, 75, 25);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   helpButton = new QPushButton(raw2edfDialog);
   helpButton->setGeometry(280, 440, 75, 25);

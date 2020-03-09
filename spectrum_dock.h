@@ -143,7 +143,8 @@ private:
   QLabel *spanLabel,
          *centerLabel,
          *amplitudeLabel,
-         *dftsz_label;
+         *dftsz_label,
+         *windowing_label;
 
   QCheckBox *sqrtButton,
             *vlogButton,
@@ -202,6 +203,8 @@ void sqrtButtonClicked(bool);
 void vlogButtonClicked(bool);
 void colorBarButtonClicked(bool);
 void print_to_txt();
+void print_to_csv();
+
 void setdashboard();
 void update_flywheel(int);
 void dftsz_value_changed(int);

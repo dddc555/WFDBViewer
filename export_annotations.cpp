@@ -127,7 +127,7 @@ UI_ExportAnnotationswindow::UI_ExportAnnotationswindow(QWidget *w_parent)
 
   CloseButton = new QPushButton(ExportAnnotsDialog);
   CloseButton->setGeometry(690, 530, 100, 25);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   separatorBox->setCurrentIndex(mainwindow->export_annotations_var->separator);
 

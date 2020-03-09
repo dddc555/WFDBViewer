@@ -94,7 +94,7 @@ void UI_MIT2CSVwindow::SelectFileButton()
 
     pushButton1->setEnabled(false);
     if(this->wfdb_path == NULL){
-        strcpy(header_filename, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "MIT header files (*.hea *.HEA)").toLocal8Bit().data());
+        strcpy(header_filename, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "MIT header files (*.hea *.HEA)").toLocal8Bit().data());
     } else {
         strcpy(header_filename,  this->wfdb_path);
     }

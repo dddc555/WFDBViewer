@@ -71,7 +71,7 @@ UI_ViewMontagewindow::UI_ViewMontagewindow(QWidget *w_parent)
 
   CloseButton = new QPushButton;
   CloseButton->setFixedSize(100, 25);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   hbox = new QHBoxLayout;
   hbox->addWidget(SelectButton, 0, Qt::AlignLeft);

@@ -37,6 +37,7 @@ UI_Userdefined_timepage_Dialog::UI_Userdefined_timepage_Dialog(QWidget *w_parent
   mainwindow = (UI_Mainwindow *)w_parent;
 
   set_diplaytime_dialog = new QDialog(w_parent);
+  set_diplaytime_dialog ->setWindowFlags(set_diplaytime_dialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
   set_diplaytime_dialog->setMinimumSize(335, 200);
   set_diplaytime_dialog->setMaximumSize(335, 200);

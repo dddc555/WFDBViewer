@@ -37,6 +37,7 @@ UI_AnnotFilterWindow::UI_AnnotFilterWindow(QWidget *w_parent, struct annotationb
   mainwindow = (UI_Mainwindow *)w_parent;
 
   annot_filter_dialog = new QDialog(w_parent);
+  annot_filter_dialog ->setWindowFlags(annot_filter_dialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
   file_num = file_n;
 
@@ -126,15 +127,15 @@ UI_AnnotFilterWindow::UI_AnnotFilterWindow(QWidget *w_parent, struct annotationb
 
   ApplyButton = new QPushButton(annot_filter_dialog);
   ApplyButton->setGeometry(20, 355, 100, 25);
-  ApplyButton->setText("Apply");
+  ApplyButton->setText(tr("Apply"));
 
   UndoButton = new QPushButton(annot_filter_dialog);
   UndoButton->setGeometry(165, 355, 100, 25);
-  UndoButton->setText("Undo");
+  UndoButton->setText(tr("Undo"));
 
   CloseButton = new QPushButton(annot_filter_dialog);
   CloseButton->setGeometry(310, 355, 100, 25);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   sel_annot_ptr = annot;
   strcpy(sel_annot_str, sel_annot_ptr->annotation);

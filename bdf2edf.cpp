@@ -90,21 +90,21 @@ UI_BDF2EDFwindow::UI_BDF2EDFwindow(QWidget *w_parent)
 
   pushButton2 = new QPushButton(myobjectDialog);
   pushButton2->setGeometry(480, 476, 100, 25);
-  pushButton2->setText("Close");
+  pushButton2->setText(tr("Close"));
 
   pushButton3 = new QPushButton(myobjectDialog);
   pushButton3->setGeometry(200, 476, 100, 25);
-  pushButton3->setText("Convert");
+  pushButton3->setText(tr("Convert"));
   pushButton3->setEnabled(false);
 
   pushButton4 = new QPushButton(myobjectDialog);
   pushButton4->setGeometry(440, 66, 140, 25);
-  pushButton4->setText("Select all signals");
+  pushButton4->setText(tr("Select all signals"));
   pushButton4->setEnabled(false);
 
   pushButton5 = new QPushButton(myobjectDialog);
   pushButton5->setGeometry(440, 118, 140, 25);
-  pushButton5->setText("Deselect all signals");
+  pushButton5->setText(tr("Deselect all signals"));
   pushButton5->setEnabled(false);
 
   QObject::connect(pushButton1,    SIGNAL(clicked()),            this,           SLOT(SelectFileButton()));
@@ -241,7 +241,7 @@ void UI_BDF2EDFwindow::SelectFileButton()
     pushButton5->setEnabled(false);
   }
 
-  strcpy(inputpath, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "BDF files (*.bdf *.BDF)").toLocal8Bit().data());
+  strcpy(inputpath, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "BDF files (*.bdf *.BDF)").toLocal8Bit().data());
 
   if(!strcmp(inputpath, ""))
   {
@@ -254,7 +254,7 @@ void UI_BDF2EDFwindow::SelectFileButton()
   if(inputfile==NULL)
   {
     snprintf(txt_string, 2048, "Can not open file %s for reading.", inputpath);
-    QMessageBox messagewindow(QMessageBox::Critical, "Error", QString::fromLocal8Bit(txt_string));
+    QMessageBox messagewindow(QMessageBox::Critical, tr("Error"), QString::fromLocal8Bit(txt_string));
     messagewindow.exec();
     return;
   }

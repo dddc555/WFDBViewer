@@ -80,7 +80,9 @@ private:
 QDialog     *StatDialog;
 
 QHBoxLayout *hlayout1,
-            *hlayout1_1_1;
+            *hlayout1_1_1,
+            *hlayoutMin,*hlayoutMax;
+QLabel *labelMin,*labelMax;
 
 QVBoxLayout *vlayout1_1,
             *vlayout2_1;

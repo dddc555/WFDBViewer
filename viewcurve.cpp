@@ -1420,7 +1420,7 @@ void ViewCurve::print_to_image(int w_img, int h_img)
   remove_extension_from_filename(path);
   strcat(path, ".png");
 
-  strcpy(path, QFileDialog::getSaveFileName(0, "Print to Image", QString::fromLocal8Bit(path), "PNG (*.png *.PNG)").toLocal8Bit().data());
+  strcpy(path, QFileDialog::getSaveFileName(0, tr("Print to Image"), QString::fromLocal8Bit(path), "PNG (*.png *.PNG)").toLocal8Bit().data());
 
   if(!strcmp(path, ""))
   {
@@ -3617,6 +3617,7 @@ void ViewCurve::exec_sidemenu(int signal_nr_intern)
   signal_nr = signal_nr_intern;
 
   sidemenu = new QDialog(this);
+  sidemenu ->setWindowFlags(sidemenu ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
   sidemenu->setMinimumSize(190, 515);
   sidemenu->setMaximumSize(190, 515);
@@ -3676,55 +3677,55 @@ void ViewCurve::exec_sidemenu(int signal_nr_intern)
 
   sidemenuButton1 = new QPushButton(sidemenu);
   sidemenuButton1->setGeometry(45, 125, 100, 25);
-  sidemenuButton1->setText("Ruler");
+  sidemenuButton1->setText(tr("Ruler"));
 
   sidemenuButton2 = new QPushButton(sidemenu);
   sidemenuButton2->setGeometry(45, 155, 100, 25);
-  sidemenuButton2->setText("Crosshair");
+  sidemenuButton2->setText(tr("Crosshair"));
 
   sidemenuButton3 = new QPushButton(sidemenu);
   sidemenuButton3->setGeometry(45, 185, 100, 25);
-  sidemenuButton3->setText("Fit to pane");
+  sidemenuButton3->setText(tr("Fit to pane"));
 
   sidemenuButton4 = new QPushButton(sidemenu);
   sidemenuButton4->setGeometry(45, 215, 100, 25);
-  sidemenuButton4->setText("Color");
+  sidemenuButton4->setText(tr("Color"));
 
   sidemenuButton5 = new QPushButton(sidemenu);
   sidemenuButton5->setGeometry(45, 245, 100, 25);
-  sidemenuButton5->setText("Invert");
+  sidemenuButton5->setText(tr("Invert"));
 
   sidemenuButton6 = new QPushButton(sidemenu);
   sidemenuButton6->setGeometry(45, 275, 100, 25);
-  sidemenuButton6->setText("Spectrum");
+  sidemenuButton6->setText(tr("Spectrum"));
 
   sidemenuButton7 = new QPushButton(sidemenu);
   sidemenuButton7->setGeometry(45, 305, 100, 25);
-  sidemenuButton7->setText("Z-EEG");
+  sidemenuButton7->setText(tr("Z-EEG"));
 
   sidemenuButton8 = new QPushButton(sidemenu);
   sidemenuButton8->setGeometry(45, 335, 100, 25);
-  sidemenuButton8->setText("Remove filter");
+  sidemenuButton8->setText(tr("Remove filter"));
 
   sidemenuButton9 = new QPushButton(sidemenu);
   sidemenuButton9->setGeometry(45, 365, 100, 25);
-  sidemenuButton9->setText("Remove signal");
+  sidemenuButton9->setText(tr("Remove signal"));
 
   sidemenuButton10 = new QPushButton(sidemenu);
   sidemenuButton10->setGeometry(45, 395, 100, 25);
-  sidemenuButton10->setText("Adjust filter");
+  sidemenuButton10->setText(tr("Adjust filter"));
 
   sidemenuButton11 = new QPushButton(sidemenu);
   sidemenuButton11->setGeometry(45, 425, 100, 25);
-  sidemenuButton11->setText("Statistics");
+  sidemenuButton11->setText(tr("Statistics"));
 
   sidemenuButton12 = new QPushButton(sidemenu);
   sidemenuButton12->setGeometry(45, 455, 100, 25);
-  sidemenuButton12->setText("Heart Rate");
+  sidemenuButton12->setText(tr("Heart Rate"));
 
   sidemenuButton13 = new QPushButton(sidemenu);
   sidemenuButton13->setGeometry(45, 485, 100, 25);
-  sidemenuButton13->setText("Close");
+  sidemenuButton13->setText(tr("Close"));
 
   QObject::connect(ScaleBox,          SIGNAL(valueChanged(double)),     this,     SLOT(ScaleBoxChanged(double)));
   QObject::connect(ScaleBox2,         SIGNAL(valueChanged(double)),     this,     SLOT(ScaleBox2Changed(double)));

@@ -78,7 +78,7 @@ UI_LoadMontagewindow::UI_LoadMontagewindow(QWidget *w_parent, char *path)
 
   CloseButton = new QPushButton(LoadMontageDialog);
   CloseButton->setGeometry(690, 140, 100, 25);
-  CloseButton->setText("Close");
+  CloseButton->setText(tr("Close"));
 
   QObject::connect(CloseButton,  SIGNAL(clicked()), LoadMontageDialog, SLOT(close()));
   QObject::connect(LoadButton,   SIGNAL(clicked()), this,              SLOT(LoadButtonClicked()));

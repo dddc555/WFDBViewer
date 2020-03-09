@@ -67,10 +67,14 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 
   dialog1 = new QDialog;
 
-  checkbox1 = new QCheckBox(tr("Relative") + " ");
-  checkbox1->setGeometry(2, 2, 10, 10);
-  checkbox1->setTristate(false);
-  checkbox1->setCheckState(Qt::Checked);
+  comboBoxTimeFormat = new QComboBox;
+
+  comboBoxTimeFormat->setGeometry(2, 2, 10, 10);
+//  comboBoxTimeFormat->
+//  checkbox1->setCheckState(Qt::Checked);
+  comboBoxTimeFormat->addItem(tr("Relative to Start"));
+  comboBoxTimeFormat->addItem(tr("Clock time"));
+  comboBoxTimeFormat->setCurrentIndex(1);
 
   label1 = new QLabel;
   label1->setText(" " + tr("Filter") + ":");
@@ -79,10 +83,13 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   lineedit1 = new QLineEdit;
   lineedit1->setMaxLength(16);
 
-  checkbox2 = new QCheckBox(tr("Inv."));
-  checkbox2->setGeometry(2, 2, 10, 10);
-  checkbox2->setTristate(false);
-  checkbox2->setCheckState(Qt::Unchecked);
+  comboBoxInclude = new QComboBox;
+  comboBoxInclude->setGeometry(2, 2, 10, 10);
+
+//    windowBox->setMinimumSize(70, 25);
+  comboBoxInclude->addItem(tr("Include"));
+  comboBoxInclude->addItem(tr("Exclude"));
+
 
   hrv_button = new QPushButton(tr("hrv"));
   hrv_button->setMaximumWidth(85);
@@ -138,10 +145,10 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   h_layout = new QHBoxLayout;
   h_layout2 = new QHBoxLayout;
 
-  h_layout->addWidget(checkbox1);
+  h_layout->addWidget(comboBoxTimeFormat);
   h_layout->addWidget(label1);
   h_layout->addWidget(lineedit1);
-  h_layout->addWidget(checkbox2);
+  h_layout->addWidget(comboBoxInclude);
 
   h_layout2->addWidget(edit_button);
   h_layout2->addWidget(export_button);
@@ -162,8 +169,10 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 
   QObject::connect(list,                       SIGNAL(itemPressed(QListWidgetItem *)), this, SLOT(annotation_selected(QListWidgetItem *)));
   QObject::connect(docklist,                   SIGNAL(visibilityChanged(bool)),        this, SLOT(hide_editdock(bool)));
-  QObject::connect(checkbox1,                  SIGNAL(stateChanged(int)),              this, SLOT(checkbox1_clicked(int)));
-  QObject::connect(checkbox2,                  SIGNAL(stateChanged(int)),              this, SLOT(checkbox2_clicked(int)));
+//  QObject::connect(checkbox1,                  SIGNAL(stateChanged(int)),              this, SLOT(checkbox1_clicked(int)));
+  QObject::connect(comboBoxTimeFormat,         SIGNAL(currentIndexChanged(int)),       this, SLOT(checkbox1_clicked(int)));
+
+  QObject::connect(comboBoxInclude,            SIGNAL(currentIndexChanged(int)),       this, SLOT(checkbox2_clicked(int)));
 
   QObject::connect(hrv_button,                 SIGNAL(clicked(bool)),                  this, SLOT(show_stats(bool)));
   QObject::connect(edit_button,                SIGNAL(clicked(bool)),                  this, SLOT(edit_button_clicked(bool)));
@@ -185,6 +194,7 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   QObject::connect(filt_ival_time_act,         SIGNAL(triggered(bool)),                this, SLOT(filt_ival_time(bool)));
 
   QObject::connect(lineedit1,                  SIGNAL(textEdited(const QString)),      this, SLOT(filter_edited(const QString)));
+
 }
 
 
@@ -519,14 +529,14 @@ void UI_Annotationswindow::checkbox2_clicked(int state)
 
   if(sz < 1)  return;
 
-  if(state==Qt::Checked)
+  if(state==1)
   {
     if(invert_filter == 0)  changed = 1;
 
     invert_filter = 1;
   }
 
-  if(state==Qt::Unchecked)
+  if(state==0)
   {
     if(invert_filter == 1)  changed = 1;
 
@@ -816,14 +826,14 @@ void UI_Annotationswindow::average_annot(bool)
 
 void UI_Annotationswindow::checkbox1_clicked(int state)
 {
-  if(state==Qt::Checked)
+  if(state==1)
   {
     relative = 1;
 
     mainwindow->annotations_onset_relative = 1;
   }
 
-  if(state==Qt::Unchecked)
+  if(state==0)
   {
     relative = 0;
 
@@ -1140,7 +1150,7 @@ void UI_Annotationswindow::export_button_clicked(bool)
 
     strcpy(f_path, mainwindow->recent_savedir);
 
-    strcpy(f_path, QFileDialog::getSaveFileName(0, "Save file", QString::fromLocal8Bit(f_path), "Annotation CSV files (*.csv *.CSV)").toLocal8Bit().data());
+    strcpy(f_path, QFileDialog::getSaveFileName(0, tr("Save file"), QString::fromLocal8Bit(f_path), "Annotation CSV files (*.csv *.CSV)").toLocal8Bit().data());
 
     if(strlen(f_path) == 0)
     {
@@ -1229,10 +1239,15 @@ void UI_Annotationswindow::updateText(){
     QLabel *label = new QLabel(tr("Annotations"));
     docklist->setTitleBarWidget(label);
 
-    checkbox1->setText(tr("Relative") + " ");
+//    checkbox1->setText(tr("Relative") + " ");
     label1->setText(" " + tr("Filter") + ":");
 
-    checkbox2->setText(tr("Inv."));
+
+    comboBoxInclude->setItemText(0, tr("Include"));
+    comboBoxInclude->setItemText(1, tr("Exclude"));
+
+    comboBoxTimeFormat->addItem(tr("Relative to Start"));
+    comboBoxTimeFormat->addItem(tr("Clock time"));
 
     edit_button->setText(tr("Edit"));
     export_button->setText(tr("Export"));

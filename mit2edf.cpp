@@ -132,7 +132,7 @@ UI_MIT2EDFwindow::UI_MIT2EDFwindow(char *recent_dir, char *save_dir, bool onlySh
 
   myobjectDialog->setMinimumSize(600, 480);
   myobjectDialog->setMaximumSize(600, 480);
-  myobjectDialog->setWindowTitle("MIT to EDF+ converter");
+  myobjectDialog->setWindowTitle(tr("MIT to EDF+ converter"));
   myobjectDialog->setModal(true);
   myobjectDialog->setAttribute(Qt::WA_DeleteOnClose, true);
 
@@ -142,7 +142,7 @@ UI_MIT2EDFwindow::UI_MIT2EDFwindow(char *recent_dir, char *save_dir, bool onlySh
 
   pushButton2 = new QPushButton(myobjectDialog);
   pushButton2->setGeometry(480, 430, 100, 25);
-  pushButton2->setText("Close");
+  pushButton2->setText(tr("Close"));
 
   textEdit1 = new QTextEdit(myobjectDialog);
   textEdit1->setGeometry(20, 20, 560, 380);
@@ -200,7 +200,7 @@ void UI_MIT2EDFwindow::SelectFileButton()
 
   pushButton1->setEnabled(false);
   if(this->wfdb_path == NULL){
-    strcpy(header_filename, QFileDialog::getOpenFileName(0, "Select inputfile", QString::fromLocal8Bit(recent_opendir), "MIT header files (*.hea *.HEA)").toLocal8Bit().data());
+    strcpy(header_filename, QFileDialog::getOpenFileName(0, tr("Select input file"), QString::fromLocal8Bit(recent_opendir), "MIT header files (*.hea *.HEA)").toLocal8Bit().data());
   } else{
     strcpy(header_filename, this->wfdb_path);
   }

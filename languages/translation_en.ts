@@ -586,16 +586,12 @@
 <context>
     <name>SignalCurve</name>
     <message>
-        <source>print</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>cursor</source>
-        <translation type="unfinished">cursor</translation>
+        <translation type="obsolete">cursor</translation>
     </message>
     <message>
         <source>ctls</source>
-        <translation type="unfinished">ctls</translation>
+        <translation type="obsolete">ctls</translation>
     </message>
     <message>
         <source>Frequency</source>
@@ -607,7 +603,7 @@
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished">Print</translation>
+        <translation type="obsolete">Print</translation>
     </message>
     <message>
         <source>to printer</source>
@@ -622,7 +618,35 @@
         <translation type="unfinished">to Image</translation>
     </message>
     <message>
-        <source>to ASCII</source>
+        <source>Export</source>
+        <translation type="unfinished">Export</translation>
+    </message>
+    <message>
+        <source>to CSV</source>
+        <translation type="unfinished">to CSV</translation>
+    </message>
+    <message>
+        <source>blocks of</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>samples</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Distribution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Print to Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Cursor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Controls</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -635,6 +659,21 @@
 </context>
 <context>
     <name>UI_Aboutwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>UI_AnnotFilterWindow</name>
+    <message>
+        <source>Apply</source>
+        <translation type="unfinished">Apply</translation>
+    </message>
+    <message>
+        <source>Undo</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <source>Close</source>
         <translation type="unfinished">Close</translation>
@@ -769,6 +808,29 @@
         <source>HRV</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Save file</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_AsciiExportwindow</name>
+    <message>
+        <source>Export to CSV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error, selected file is in use.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
 </context>
 <context>
     <name>UI_AverageCurveWindow</name>
@@ -790,6 +852,102 @@
     </message>
 </context>
 <context>
+    <name>UI_BDF2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Convert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select all signals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deselect all signals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_BI98002EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_BIOSEMI2BDFPLUSwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_BIOX2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_ColorMenuDialog</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>UI_ECGExport</name>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error, not enough beats.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_EDFCompatwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>UI_EDFDwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UI_EDFhdrwindow</name>
     <message>
         <source>General</source>
@@ -798,6 +956,54 @@
     <message>
         <source>Signals</source>
         <translation type="unfinished">Signals</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>UI_EMSA2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_ExportAnnotationswindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>UI_ExportFilteredSignalsWindow</name>
+    <message>
+        <source>Save file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished">Export</translation>
+    </message>
+</context>
+<context>
+    <name>UI_FINO2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -829,6 +1035,21 @@
     <message>
         <source>Apply</source>
         <translation type="unfinished">Apply</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_FMaudio2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -920,6 +1141,65 @@
     <message>
         <source>Samples</source>
         <translation type="unfinished">Samples</translation>
+    </message>
+</context>
+<context>
+    <name>UI_FreqSpectrumWindow</name>
+    <message>
+        <source>Center</source>
+        <translation type="unfinished">Center</translation>
+    </message>
+</context>
+<context>
+    <name>UI_LoadMontagewindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>UI_MANSCAN2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_MIT2CSVwindow</name>
+    <message>
+        <source>MIT to CSV converter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_MIT2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>MIT to EDF+ converter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1224,6 +1504,47 @@
         <source>Export</source>
         <translation type="unfinished">Export</translation>
     </message>
+    <message>
+        <source>Convert to CSV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save file</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_MortaraEDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_NEXFIN2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_NK2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_OptionsDialog</name>
@@ -1253,7 +1574,7 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Settings</translation>
     </message>
     <message>
         <source>Close</source>
@@ -1534,6 +1855,49 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
 </context>
 <context>
+    <name>UI_RAW2EDFapp</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>UI_ReduceSignalsWindow</name>
+    <message>
+        <source>Save file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>UI_SCPECG2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_SaveMontagewindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>UI_ShowActualMontagewindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
     <name>UI_SignalChooser</name>
     <message>
         <source>Organize signals</source>
@@ -1558,6 +1922,10 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <message>
         <source>Remove</source>
         <translation type="unfinished">Remove</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
     </message>
 </context>
 <context>
@@ -1674,6 +2042,28 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
 </context>
 <context>
+    <name>UI_StatisticWindow</name>
+    <message>
+        <source>Not enough beats.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_UNISENS2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UI_Userdefined_timepage_Dialog</name>
     <message>
         <source>Set timescale</source>
@@ -1689,6 +2079,129 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
 </context>
 <context>
+    <name>UI_ViewMontagewindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>UI_WAV2EDFwindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Select inputfile</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_ZScoreWindow</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Cross-over</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Threshold between low-frequency and high-frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z-threshold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z-page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sleep/Wake</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>differentiation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hysteresis applied to the z-threshold.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calculate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plot the Z-ratio / Z-pages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jump to cursor-position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create annotations from the Z-EEG</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set parameters to default values</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close this window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Trace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add this Z-ratio trace to the mainwindow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Epochs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jump</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annotate</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_activeFileChooserWindow</name>
+    <message>
+        <source>OK</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UI_edit_predefined_mtg_window</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
     <name>UI_headerEditorWindow</name>
     <message>
         <source>Header</source>
@@ -1697,6 +2210,69 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <message>
         <source>Signals</source>
         <translation type="unfinished">Signals</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+</context>
+<context>
+    <name>ViewCurve</name>
+    <message>
+        <source>Ruler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Crosshair</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fit to pane</source>
+        <translation type="unfinished">Fit to pane</translation>
+    </message>
+    <message>
+        <source>Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation type="unfinished">Invert</translation>
+    </message>
+    <message>
+        <source>Spectrum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Z-EEG</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove signal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adjust filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Heart Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Print to Image</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
