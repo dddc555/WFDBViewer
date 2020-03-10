@@ -56,6 +56,7 @@ UI_FIRFilterDialog::UI_FIRFilterDialog(char *recent_dir, char *save_dir, QWidget
   firfilterdialog->setModal(true);
   firfilterdialog->setAttribute(Qt::WA_DeleteOnClose, true);
 
+
   varsLabel = new QLabel(firfilterdialog);
   varsLabel->setGeometry(20, 20, 100, 25);
   varsLabel->setText(tr("Filter taps: 0"));
@@ -68,6 +69,11 @@ UI_FIRFilterDialog::UI_FIRFilterDialog(char *recent_dir, char *save_dir, QWidget
   textEdit->setGeometry(20, 45, 250, 300);
   textEdit->setFrameStyle(QFrame::Panel | QFrame::Sunken);
   textEdit->setReadOnly(false);
+
+  bottomLabel = new QLabel(firfilterdialog);
+  bottomLabel->setText(tr("One tap per line"));
+  bottomLabel->setGeometry(20, 342, 250, 25);
+
 
   list = new QListWidget(firfilterdialog);
   list->setGeometry(440, 45, 160, 300);

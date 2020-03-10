@@ -150,12 +150,11 @@ QLabel         *label1,
                *label13,
                *label14,
 
-               *label4_2,
-               *label4_3,
+
+
                *label4_4,
-               *label4_5,
-               *label4_6,
-               *label4_7,
+
+
 
                *label4_9,
                *label4_10,
@@ -172,9 +171,8 @@ QLabel         *label1,
 QSpinBox       *spinbox2_1,
                *spinbox2_2,
                *spinbox3_1,
-               *spinbox4_1,
-               *spinbox4_2,
-               *spinbox4_3;
+
+               *spinbox4_2;
 
 QDoubleSpinBox *dspinbox3_2,
                *dspinbox4_4;
@@ -190,9 +188,9 @@ QCheckBox      *checkbox1,
                *checkbox4,
                *checkbox5,
 
-               *checkbox4_2,
-               *checkbox4_3,
-               *checkbox4_4,
+
+
+
 
                *checkbox4_6,
                *checkbox2_1,

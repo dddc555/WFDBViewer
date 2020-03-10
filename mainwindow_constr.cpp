@@ -760,21 +760,24 @@ UI_Mainwindow::UI_Mainwindow()
   toolsmenu = new QMenu(this);
   toolsmenu->setTitle(tr("Tools"));
 
-  toolsmenu->addSeparator();
+
 
   tools_detect_qrs_act = new QAction(tr("Detect QRS and generate annotations"));
   toolsmenu->addAction(tools_detect_qrs_act);
+
   connect(tools_detect_qrs_act, SIGNAL(triggered()), this, SLOT(detect_qrs()));
 
-  tools_option_act = new QAction(tr("Settings"));
+  toolsmenu->addSeparator();
+
+  tools_option_act = new QAction(("Settings"));
   toolsmenu->addAction(tools_option_act);
   connect(tools_option_act, SIGNAL(triggered()), this, SLOT(show_options_dialog()));
 
   menubar->addMenu(toolsmenu);
 
   settingsmenu = new QMenu(this);
-  settingsmenu->setTitle("S&ettings");
-  settingsmenu->addAction("Options", this, SLOT(show_options_dialog()));
+  settingsmenu->setTitle("Settings");
+  settingsmenu->addAction("Settings", this, SLOT(show_options_dialog()));
 //  menubar->addMenu(settingsmenu);
 
   no_timesync_act = new QAction("no timelock", this);
@@ -1236,7 +1239,7 @@ void UI_Mainwindow::updateText(){
 
   toolsmenu->setTitle(tr("Tools"));
 
-  tools_option_act->setText(tr("Options"));
+  tools_option_act->setText(tr("Settings"));
 
   language_en_act->setText(tr("English"));
   language_jp_act->setText(tr("Japanese"));

@@ -536,78 +536,12 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   tab4 = new QWidget;
 
-  label4_7 = new QLabel(tab4);
-  label4_7->setGeometry(20, 60, 280, 60);
-  label4_7->setText(tr("Do not read annotations, Biosemi Status signal")+"\n"+
-                    tr("or Nihon Kohden triggers when filesize")+"\n"+
-                    tr("is more than:"));
-
-  spinbox4_3 = new QSpinBox(tab4);
-  spinbox4_3->setGeometry(200, 100, 140, 25);
-  spinbox4_3->setSuffix(" MB");
-  spinbox4_3->setMinimum(100);
-  spinbox4_3->setMaximum(100000);
-  spinbox4_3->setSingleStep(1);
-  spinbox4_3->setValue((int)(mainwindow->maxfilesize_to_readin_annotations / 1048576LL));
-
-  QObject::connect(spinbox4_3, SIGNAL(valueChanged(int)), this, SLOT(spinBox4_3ValueChanged(int)));
-
-  label4_2 = new QLabel(tab4);
-  label4_2->setGeometry(20, 135, 280, 25);
-  label4_2->setText(tr("Read Biosemi Status signal"));
-
-  checkbox4_2 = new QCheckBox(tab4);
-  checkbox4_2->setGeometry(325, 138, 20, 20);
-  checkbox4_2->setTristate(false);
-  if(mainwindow->read_biosemi_status_signal)
-  {
-    checkbox4_2->setCheckState(Qt::Checked);
-  }
-  else
-  {
-    checkbox4_2->setCheckState(Qt::Unchecked);
-  }
-
-  QObject::connect(checkbox4_2, SIGNAL(stateChanged(int)), this, SLOT(checkbox4_2Clicked(int)));
-
-  label4_6 = new QLabel(tab4);
-  label4_6->setGeometry(20, 175, 280, 25);
-  label4_6->setText(tr("Read Nihon Kohden Trigger/Marker signal"));
-
-  checkbox4_3 = new QCheckBox(tab4);
-  checkbox4_3->setGeometry(325, 178, 20, 20);
-  checkbox4_3->setTristate(false);
-  if(mainwindow->read_nk_trigger_signal)
-  {
-    checkbox4_3->setCheckState(Qt::Checked);
-  }
-  else
-  {
-    checkbox4_3->setCheckState(Qt::Unchecked);
-  }
-
-  QObject::connect(checkbox4_3, SIGNAL(stateChanged(int)), this, SLOT(checkbox4_3Clicked(int)));
-
-  label4_3 = new QLabel(tab4);
-  label4_3->setGeometry(20, 215, 200, 25);
-  label4_3->setText(tr("livestream update interval"));
-
-  spinbox4_1 = new QSpinBox(tab4);
-  spinbox4_1->setGeometry(200, 215, 140, 25);
-  spinbox4_1->setSuffix(" mSec");
-  spinbox4_1->setMinimum(100);
-  spinbox4_1->setMaximum(3000);
-  spinbox4_1->setSingleStep(1);
-  spinbox4_1->setValue(mainwindow->live_stream_update_interval);
-
-  QObject::connect(spinbox4_1, SIGNAL(valueChanged(int)), this, SLOT(spinBox4_1ValueChanged(int)));
-
   label4_4 = new QLabel(tab4);
-  label4_4->setGeometry(20, 255, 200, 25);
+  label4_4->setGeometry(20, 15, 200, 25);
   label4_4->setText(tr("Powerline Frequency"));
 
   combobox4_1 = new QComboBox(tab4);
-  combobox4_1->setGeometry(200, 255, 140, 25);
+  combobox4_1->setGeometry(200, 15, 140, 25);
   combobox4_1->addItem("50 Hz");
   combobox4_1->addItem("60 Hz");
   if(mainwindow->powerlinefreq == 50)
@@ -622,12 +556,12 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
   QObject::connect(combobox4_1, SIGNAL(currentIndexChanged(int)), this, SLOT(combobox4_1IndexChanged(int)));
 
   label4_4 = new QLabel(tab4);
-  label4_4->setGeometry(20, 295, 200, 40);
+  label4_4->setGeometry(20, 55, 200, 40);
   label4_4->setText(tr("Mousewheel stepsize")+"\n"+
                     tr("(0 is no scroll)"));
 
   spinbox4_2 = new QSpinBox(tab4);
-  spinbox4_2->setGeometry(200, 295, 140, 25);
+  spinbox4_2->setGeometry(200, 55, 140, 25);
   spinbox4_2->setPrefix(tr("Timescale")+" / ");
   spinbox4_2->setMinimum(0);
   spinbox4_2->setMaximum(100);
@@ -636,31 +570,13 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   QObject::connect(spinbox4_2, SIGNAL(valueChanged(int)), this, SLOT(spinBox4_2ValueChanged(int)));
 
-  label4_5 = new QLabel(tab4);
-  label4_5->setGeometry(20, 335, 280, 25);
-  label4_5->setText(tr("Use Multi-Threading"));
-
-  checkbox4_4 = new QCheckBox(tab4);
-  checkbox4_4->setGeometry(325, 338, 20, 20);
-  checkbox4_4->setTristate(false);
-  if(mainwindow->use_threads)
-  {
-    checkbox4_4->setCheckState(Qt::Checked);
-  }
-  else
-  {
-    checkbox4_4->setCheckState(Qt::Unchecked);
-  }
-
-  QObject::connect(checkbox4_4, SIGNAL(stateChanged(int)), this, SLOT(checkbox4_4Clicked(int)));
-
 
   label4_9 = new QLabel(tab4);
-  label4_9->setGeometry(20, 415, 310, 25);
+  label4_9->setGeometry(20, 95, 310, 25);
   label4_9->setText(tr("Viewtime / fileposition indicator"));
 
   combobox4_2 = new QComboBox(tab4);
-  combobox4_2->setGeometry(200, 415, 140, 25);
+  combobox4_2->setGeometry(200, 95, 140, 25);
   combobox4_2->addItem(tr("relative"));
   combobox4_2->addItem(tr("real (relative)"));
   combobox4_2->addItem(tr("date real (relative)"));
@@ -669,10 +585,10 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
   QObject::connect(combobox4_2, SIGNAL(currentIndexChanged(int)), this, SLOT(combobox4_2IndexChanged(int)));
 
   label4_10 = new QLabel(tab4);
-  label4_10->setGeometry(20, 455, 310, 25);
+  label4_10->setGeometry(20, 135, 310, 25);
   label4_10->setText(tr("Window title content"));
   combobox4_3 = new QComboBox(tab4);
-  combobox4_3->setGeometry(200, 455, 180, 25);
+  combobox4_3->setGeometry(200, 135, 180, 25);
   combobox4_3->addItem(tr("Subject info"));
   combobox4_3->addItem(tr("Filename"));
   combobox4_3->addItem(tr("Filename with full path"));
@@ -681,11 +597,11 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
   QObject::connect(combobox4_3, SIGNAL(currentIndexChanged(int)), this, SLOT(combobox4_3IndexChanged(int)));
 
   label4_11 = new QLabel(tab4);
-  label4_11->setGeometry(20, 495, 310, 25);
+  label4_11->setGeometry(20, 175, 310, 25);
   label4_11->setText(tr("Default amplitude"));
 
   dspinbox4_4 = new QDoubleSpinBox(tab4);
-  dspinbox4_4->setGeometry(200, 495, 140, 25);
+  dspinbox4_4->setGeometry(200, 175, 140, 25);
   dspinbox4_4->setMinimum(0.001);
   dspinbox4_4->setMaximum(10000000);
   dspinbox4_4->setSuffix(" /cm");
@@ -694,11 +610,11 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
   QObject::connect(dspinbox4_4, SIGNAL(valueChanged(double)), this, SLOT(dspinbox4_4ValueChanged(double)));
 
   label4_12 = new QLabel(tab4);
-  label4_12->setGeometry(20, 535, 310, 25);
+  label4_12->setGeometry(20, 215, 310, 25);
   label4_12->setText(tr("Use linear interpolation"));
 
   checkbox4_6 = new QCheckBox(tab4);
-  checkbox4_6->setGeometry(325, 538, 20, 20);
+  checkbox4_6->setGeometry(325, 218, 20, 20);
   checkbox4_6->setTristate(false);
 
   if(mainwindow->linear_interpol)

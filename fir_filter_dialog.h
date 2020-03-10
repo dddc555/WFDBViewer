@@ -92,7 +92,8 @@ QListWidget    *list;
 QPlainTextEdit *textEdit;
 
 QLabel         *listlabel,
-               *varsLabel;
+               *varsLabel,
+               *bottomLabel;
 
 int n_taps;
 
