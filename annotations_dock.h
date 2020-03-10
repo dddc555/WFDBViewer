@@ -103,9 +103,11 @@ private:
 
   QDialog *dialog1;
 
-  QHBoxLayout *h_layout, *h_layout2;
+  QHBoxLayout *h_layout, *h_layout2, *h_layout3, *h_layout4;
 
   QVBoxLayout *v_layout;
+
+  QLabel *labelTimeFormat, *labelFilterType;
 
   QComboBox *comboBoxInclude,
             *comboBoxTimeFormat;

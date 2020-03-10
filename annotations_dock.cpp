@@ -67,6 +67,9 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 
   dialog1 = new QDialog;
 
+  labelTimeFormat = new QLabel;
+  labelTimeFormat->setText(tr("Time format"));
+
   comboBoxTimeFormat = new QComboBox;
 
   comboBoxTimeFormat->setGeometry(2, 2, 10, 10);
@@ -77,16 +80,18 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   comboBoxTimeFormat->setCurrentIndex(1);
 
   label1 = new QLabel;
-  label1->setText(" " + tr("Filter") + ":");
-  qDebug()<<tr("Filter");
+  label1->setText(tr("Filter") + ":");
 
   lineedit1 = new QLineEdit;
+
   lineedit1->setMaxLength(16);
+  lineedit1->setGeometry(2,2,10,10);
 
   comboBoxInclude = new QComboBox;
   comboBoxInclude->setGeometry(2, 2, 10, 10);
 
-//    windowBox->setMinimumSize(70, 25);
+  labelFilterType = new QLabel;
+  labelFilterType->setText(tr("Filter type"));
   comboBoxInclude->addItem(tr("Include"));
   comboBoxInclude->addItem(tr("Exclude"));
 
@@ -144,11 +149,33 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 
   h_layout = new QHBoxLayout;
   h_layout2 = new QHBoxLayout;
+  h_layout3 = new QHBoxLayout;
+  h_layout4 = new QHBoxLayout;
 
+
+  QSizePolicy spLeft(QSizePolicy::Preferred, QSizePolicy::Preferred);
+  spLeft.setHorizontalStretch(1);
+  QSizePolicy spRight(QSizePolicy::Preferred, QSizePolicy::Preferred);
+  spRight.setHorizontalStretch(2);
+
+  labelTimeFormat->setSizePolicy(spLeft);
+  comboBoxTimeFormat->setSizePolicy(spRight);
+
+  h_layout->addWidget(labelTimeFormat);
   h_layout->addWidget(comboBoxTimeFormat);
-  h_layout->addWidget(label1);
-  h_layout->addWidget(lineedit1);
-  h_layout->addWidget(comboBoxInclude);
+
+  label1->setSizePolicy(spLeft);
+  lineedit1->setSizePolicy(spRight);
+
+  h_layout3->addWidget(label1);
+  h_layout3->addWidget(lineedit1);
+
+  labelFilterType->setSizePolicy(spLeft);
+  comboBoxInclude->setSizePolicy(spRight);
+
+  h_layout4->addWidget(labelFilterType);
+  h_layout4->addWidget(comboBoxInclude);
+
 
   h_layout2->addWidget(edit_button);
   h_layout2->addWidget(export_button);
@@ -158,7 +185,11 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 
   v_layout = new QVBoxLayout(dialog1);
   v_layout->addLayout(h_layout);
+  v_layout->addLayout(h_layout3);
+  v_layout->addLayout(h_layout4);
+
   v_layout->addLayout(h_layout2);
+
 
   v_layout->addWidget(list);
   v_layout->setSpacing(1);

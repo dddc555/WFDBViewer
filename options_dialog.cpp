@@ -536,24 +536,6 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   tab4 = new QWidget;
 
-  label4_1 = new QLabel(tab4);
-  label4_1->setGeometry(20, 20, 280, 25);
-  label4_1->setText(tr("Reload last used montage"));
-
-  checkbox4_1 = new QCheckBox(tab4);
-  checkbox4_1->setGeometry(325, 23, 20, 20);
-  checkbox4_1->setTristate(false);
-  if(mainwindow->auto_reload_mtg)
-  {
-    checkbox4_1->setCheckState(Qt::Checked);
-  }
-  else
-  {
-    checkbox4_1->setCheckState(Qt::Unchecked);
-  }
-
-  QObject::connect(checkbox4_1, SIGNAL(stateChanged(int)), this, SLOT(checkbox4_1Clicked(int)));
-
   label4_7 = new QLabel(tab4);
   label4_7->setGeometry(20, 60, 280, 60);
   label4_7->setText(tr("Do not read annotations, Biosemi Status signal")+"\n"+
@@ -672,23 +654,6 @@ UI_OptionsDialog::UI_OptionsDialog(QWidget *w_parent)
 
   QObject::connect(checkbox4_4, SIGNAL(stateChanged(int)), this, SLOT(checkbox4_4Clicked(int)));
 
-  label4_8 = new QLabel(tab4);
-  label4_8->setGeometry(20, 375, 310, 25);
-  label4_8->setText(tr("Check for updates during startup"));
-
-  checkbox4_5 = new QCheckBox(tab4);
-  checkbox4_5->setGeometry(325, 378, 20, 20);
-  checkbox4_5->setTristate(false);
-  if(mainwindow->check_for_updates)
-  {
-    checkbox4_5->setCheckState(Qt::Checked);
-  }
-  else
-  {
-    checkbox4_5->setCheckState(Qt::Unchecked);
-  }
-
-  QObject::connect(checkbox4_5, SIGNAL(stateChanged(int)), this, SLOT(checkbox4_5Clicked(int)));
 
   label4_9 = new QLabel(tab4);
   label4_9->setGeometry(20, 415, 310, 25);
@@ -1239,15 +1204,7 @@ void UI_OptionsDialog::checkbox3_1Clicked(int state)
 
 void UI_OptionsDialog::checkbox4_1Clicked(int state)
 {
-  if(state==Qt::Checked)
-  {
-    mainwindow->auto_reload_mtg = 1;
-  }
 
-  if(state==Qt::Unchecked)
-  {
-    mainwindow->auto_reload_mtg = 0;
-  }
 }
 
 

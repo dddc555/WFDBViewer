@@ -43,7 +43,7 @@ UI_SpikeFilterDialog::UI_SpikeFilterDialog(QWidget *w_parent)
   mainwindow = (UI_Mainwindow *)w_parent;
 
   spikefilterdialog = new QDialog;
-
+  spikefilterdialog ->setWindowFlags(spikefilterdialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   spikefilterdialog->setMinimumSize(620, 365);
   spikefilterdialog->setMaximumSize(620, 365);
   spikefilterdialog->setWindowTitle(tr("Add a spike filter"));

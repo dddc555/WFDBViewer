@@ -1539,7 +1539,6 @@ void UI_Mainwindow::_open_wfdb(char *wfdb_path){
               if(spectrumdock[i]->dock->isHidden())  break;
             }
             spectrumdock[i]->init(0);
-            qDebug()<<"maincurve->width()"<<maincurve->width();
             navtoolbarGroupWidget->setGeometry((maincurve->width() - PLAY_CONTROL_WIDTH) / 2, 0, PLAY_CONTROL_WIDTH, 60);
         }
     }
