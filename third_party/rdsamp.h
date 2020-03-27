@@ -54,6 +54,7 @@ extern "C" {
  " \"http://physionet.org/physiobank/database/XML/wfdb.dtd\">\n"
 
 int convertWFDB2CSV(int argc, char *record, char *output);
+int readWFDB(char *record, double *output, int *outSize);
 
 char *myescapify(char *s);
 #ifdef __cplusplus

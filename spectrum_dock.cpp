@@ -1598,7 +1598,7 @@ void UI_SpectrumDockWindow::updateText(){
     windowBox->setItemText(7, tr("HFT223D"));
     windowBox->setToolTip(tr("Window"));
     dftsz_label->setText(tr("Blocksize") + ":");
-    qDebug()<<tr("Blocksize:");
     spanLabel->setText(tr("Span"));
     centerLabel->setText(tr("Center"));
+    windowing_label->setText(tr("Windowing:"));
 }

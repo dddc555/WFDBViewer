@@ -899,15 +899,86 @@
         <source>Populating list...</source>
         <translation type="vanished">リストを準備しています...</translation>
     </message>
-	<message>
+    <message>
         <source>Include</source>
         <translation type="vanished">含める</translation>
     </message>
-	<message>
+    <message>
         <source>Exclude</source>
         <translation type="vanished">除外する</translation>
     </message>
-	
+    <message>
+        <source>The frequency must over 500Hz for this filter</source>
+        <translation type="vanished">このフィルターの周波数は500Hzを超える必要があります</translation>
+    </message>
+    <message>
+        <source>The frequency must over 4000Hz for this filter</source>
+        <translation type="vanished">このフィルターの周波数は4000Hzを超える必要があります</translation>
+    </message>
+    <message>
+        <source>The frequency must an integer ratio to 50 or 60 Hz</source>
+        <translation type="vanished">周波数は50または60 Hzの整数比でなければなりません</translation>
+    </message>
+    <message>
+        <source>Windowing:</source>
+        <translation type="vanished">ウィンドウ処理:</translation>
+    </message>
+    <message>
+        <source>Time format</source>
+        <translation type="vanished">時間形式</translation>
+    </message>
+    <message>
+        <source>Relative to Start</source>
+        <translation type="vanished">開始を基準</translation>
+    </message>
+    <message>
+        <source>Clock time</source>
+        <translation type="vanished">時刻</translation>
+    </message>
+    <message>
+        <source>Filter type</source>
+        <translation type="vanished">フィルタータイプ</translation>
+    </message>
+    <message>
+        <source>Detect QRS and generate annotations</source>
+        <translation type="vanished">QRSを検出して注釈を生成する</translation>
+    </message>
+    <message>
+        <source>Annotation file is generated with QRS detector</source>
+        <translation type="vanished">注釈ファイルはQRS検出器で生成されます</translation>
+    </message>
+    <message>
+        <source>Please open WFDB file to anaysis with QRS detector.</source>
+        <translation type="vanished">QRS検出器で分析するには、WFDBファイルを開いてください。</translation>
+    </message>
+    <message>
+        <source>HRV Analysis</source>
+        <translation type="vanished">HRV 分析</translation>
+    </message>
+    <message>
+        <source>Select Range</source>
+        <translation type="vanished">範囲を選択</translation>
+    </message>
+    <message>
+        <source>Start Time</source>
+        <translation type="vanished">始まる時間</translation>
+    </message>
+    <message>
+        <source>End Time</source>
+        <translation type="vanished">終了時間</translation>
+    </message>
+    <message>
+        <source>Analysis Result</source>
+        <translation type="vanished">分析結果</translation>
+    </message>
+    <message>
+        <source>Min</source>
+        <translation type="vanished">最小</translation>
+    </message>
+    <message>
+        <source>Max</source>
+        <translation type="vanished">最高</translation>
+    </message>
 </context>
 <context>
     <name>AdjustFilterSettings</name>
@@ -985,6 +1056,53 @@
     <message>
         <source>Print to Image</source>
         <translation type="unfinished">画像に印刷</translation>
+    </message>
+</context>
+<context>
+    <name>SignalTwoCurve</name>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished">エクスポート</translation>
+    </message>
+    <message>
+        <source>to printer</source>
+        <translation type="unfinished">プリンター</translation>
+    </message>
+    <message>
+        <source>to PDF</source>
+        <translation type="unfinished">PDF</translation>
+    </message>
+    <message>
+        <source>to Image</source>
+        <translation type="unfinished">画像</translation>
+    </message>
+    <message>
+        <source>to CSV</source>
+        <translation type="unfinished">CSV</translation>
+    </message>
+    <message>
+        <source>Print to Image</source>
+        <translation type="unfinished">画像に印刷</translation>
+    </message>
+    <message>
+        <source>FFT resolution</source>
+        <translation type="unfinished">FFT解像度</translation>
+    </message>
+    <message>
+        <source>Distribution</source>
+        <translation type="unfinished">分布</translation>
+    </message>
+    <message>
+        <source>blocks of</source>
+        <translation type="unfinished">ブロック　ｘ</translation>
+    </message>
+    <message>
+        <source>samples</source>
+        <translation type="unfinished">サンプル</translation>
+    </message>
+    <message>
+        <source>Frequency</source>
+        <translation type="unfinished">周波数</translation>
     </message>
 </context>
 <context>
@@ -1119,15 +1237,11 @@
     </message>
     <message>
         <source>Relative</source>
-        <translation type="unfinished">相対的</translation>
+        <translation type="obsolete">相対的</translation>
     </message>
     <message>
         <source>Filter</source>
         <translation type="unfinished">フィルタ</translation>
-    </message>
-    <message>
-        <source>Inv.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Busy</source>
@@ -1148,6 +1262,30 @@
     <message>
         <source>Save file</source>
         <translation type="unfinished">ファイルを保存</translation>
+    </message>
+    <message>
+        <source>Time format</source>
+        <translation type="unfinished">時間形式</translation>
+    </message>
+    <message>
+        <source>Relative to Start</source>
+        <translation type="unfinished">開始を基準</translation>
+    </message>
+    <message>
+        <source>Clock time</source>
+        <translation type="unfinished">時刻</translation>
+    </message>
+    <message>
+        <source>Filter type</source>
+        <translation type="unfinished">フィルタータイプ</translation>
+    </message>
+    <message>
+        <source>Include</source>
+        <translation type="unfinished">含める</translation>
+    </message>
+    <message>
+        <source>Exclude</source>
+        <translation type="unfinished">除外する</translation>
     </message>
 </context>
 <context>
@@ -1223,6 +1361,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1234,6 +1376,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1245,6 +1391,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1281,6 +1431,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1307,6 +1461,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1340,6 +1498,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1375,6 +1537,14 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>One tap per line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1386,6 +1556,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1486,6 +1660,89 @@
         <source>Center</source>
         <translation type="unfinished">センター</translation>
     </message>
+    <message>
+        <source>Rectangular</source>
+        <translation type="unfinished">長方形</translation>
+    </message>
+    <message>
+        <source>Hamming</source>
+        <translation type="unfinished">ハミング</translation>
+    </message>
+    <message>
+        <source>4-term Blackman-Harris</source>
+        <translation type="unfinished">4期ブラックマン・ハリス</translation>
+    </message>
+    <message>
+        <source>7-term Blackman-Harris</source>
+        <translation type="unfinished">7期ブラックマン・ハリス</translation>
+    </message>
+    <message>
+        <source>Nuttall3b</source>
+        <translation type="unfinished">Nuttall3b</translation>
+    </message>
+    <message>
+        <source>Nuttall4c</source>
+        <translation type="unfinished">Nuttall4c</translation>
+    </message>
+    <message>
+        <source>Hann</source>
+        <translation type="unfinished">Hann</translation>
+    </message>
+    <message>
+        <source>HFT223D</source>
+        <translation type="unfinished">HFT223D</translation>
+    </message>
+    <message>
+        <source>Window</source>
+        <translation type="unfinished">画面</translation>
+    </message>
+    <message>
+        <source>Span</source>
+        <translation type="unfinished">スパン</translation>
+    </message>
+</context>
+<context>
+    <name>UI_HrvWindow</name>
+    <message>
+        <source>HRV Analysis</source>
+        <translation type="unfinished">HRV 分析</translation>
+    </message>
+    <message>
+        <source>Select Range</source>
+        <translation type="unfinished">範囲を選択</translation>
+    </message>
+    <message>
+        <source>Start Time</source>
+        <translation type="unfinished">始まる時間</translation>
+    </message>
+    <message>
+        <source>End Time</source>
+        <translation type="unfinished">終了時間</translation>
+    </message>
+    <message>
+        <source>Analysis Result</source>
+        <translation type="unfinished">分析結果</translation>
+    </message>
+    <message>
+        <source>Min</source>
+        <translation type="unfinished">最小</translation>
+    </message>
+    <message>
+        <source>Max</source>
+        <translation type="unfinished">最高</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">閉じる</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished">エクスポート</translation>
+    </message>
+    <message>
+        <source>Not enough beats.</source>
+        <translation type="unfinished">ビートが足りません。</translation>
+    </message>
 </context>
 <context>
     <name>UI_LoadMontagewindow</name>
@@ -1502,6 +1759,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1521,6 +1782,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1536,6 +1801,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1815,15 +2084,15 @@
     </message>
     <message>
         <source>Convert MIT (PhysioBank) to EDF+</source>
-        <translation type="unfinished">WFDBをEDF+に変換する</translation>
+        <translation type="obsolete">WFDBをEDF+に変換する</translation>
     </message>
     <message>
         <source>Convert MIT (PhysioBank) to CSV</source>
-        <translation type="unfinished">WFDBをCSVに変換する</translation>
+        <translation type="obsolete">WFDBをCSVに変換する</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished">オプション</translation>
+        <translation type="obsolete">オプション</translation>
     </message>
     <message>
         <source>Language</source>
@@ -1853,6 +2122,54 @@
         <source>Save file</source>
         <translation type="unfinished">ファイルを保存</translation>
     </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">エラー</translation>
+    </message>
+    <message>
+        <source>The frequency must over 500Hz for this filter</source>
+        <translation type="unfinished">このフィルターの周波数は500Hzを超える必要があります</translation>
+    </message>
+    <message>
+        <source>The frequency must an integer ratio to 50 or 60 Hz</source>
+        <translation type="unfinished">周波数は50または60 Hzの整数比でなければなりません</translation>
+    </message>
+    <message>
+        <source>The frequency must over 4000Hz for this filter</source>
+        <translation type="unfinished">このフィルターの周波数は4000Hzを超える必要があります</translation>
+    </message>
+    <message>
+        <source>Detect QRS and generate annotations</source>
+        <translation type="unfinished">QRSを検出して注釈を生成する</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">設定</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
+        <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annotation file exist, are you replace it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annotation file is generated with QRS detector</source>
+        <translation type="unfinished">注釈ファイルはQRS検出器で生成されます</translation>
+    </message>
+    <message>
+        <source>Please open WFDB file to anaysis with QRS detector.</source>
+        <translation type="unfinished">QRS検出器で分析するには、WFDBファイルを開いてください。</translation>
+    </message>
 </context>
 <context>
     <name>UI_MortaraEDFwindow</name>
@@ -1862,6 +2179,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1873,6 +2194,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -1884,6 +2209,10 @@
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -2079,31 +2408,31 @@
     </message>
     <message>
         <source>Reload last used montage</source>
-        <translation type="unfinished">最後に使用したモンタージュを再読み込み</translation>
+        <translation type="obsolete">最後に使用したモンタージュを再読み込み</translation>
     </message>
     <message>
         <source>Do not read annotations, Biosemi Status signal</source>
-        <translation>ファイルサイズが以下以上の場合、アノテーション、Biosemiステータス信号</translation>
+        <translation type="vanished">ファイルサイズが以下以上の場合、アノテーション、Biosemiステータス信号</translation>
     </message>
     <message>
         <source>or Nihon Kohden triggers when filesize</source>
-        <translation>アノテーション、Biosemiステータス信号、日本光電がトリガー</translation>
+        <translation type="vanished">アノテーション、Biosemiステータス信号、日本光電がトリガー</translation>
     </message>
     <message>
         <source>is more than:</source>
-        <translation>を読み取らない：</translation>
+        <translation type="vanished">を読み取らない：</translation>
     </message>
     <message>
         <source>Read Biosemi Status signal</source>
-        <translation type="unfinished">Biosemi Statusシグナルの読み取り</translation>
+        <translation type="obsolete">Biosemi Statusシグナルの読み取り</translation>
     </message>
     <message>
         <source>Read Nihon Kohden Trigger/Marker signal</source>
-        <translation type="unfinished">日本光電電トリガー/マーカー信号の読み取り</translation>
+        <translation type="obsolete">日本光電電トリガー/マーカー信号の読み取り</translation>
     </message>
     <message>
         <source>livestream update interval</source>
-        <translation type="unfinished">ライブストリームの更新間隔</translation>
+        <translation type="obsolete">ライブストリームの更新間隔</translation>
     </message>
     <message>
         <source>Powerline Frequency</source>
@@ -2135,11 +2464,11 @@
     </message>
     <message>
         <source>Use Multi-Threading</source>
-        <translation type="unfinished">マルチスレッドを使用する</translation>
+        <translation type="obsolete">マルチスレッドを使用する</translation>
     </message>
     <message>
         <source>Check for updates during startup</source>
-        <translation type="unfinished">起動時に更新を確認する</translation>
+        <translation type="obsolete">起動時に更新を確認する</translation>
     </message>
     <message>
         <source>Viewtime / fileposition indicator</source>
@@ -2194,7 +2523,7 @@
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">ヘルプ</translation>
+        <translation type="obsolete">ヘルプ</translation>
     </message>
     <message>
         <source>Only signals with a physical dimension V, mV or uV and
@@ -2229,6 +2558,10 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -2358,6 +2691,10 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
         <source>Blocksize</source>
         <translation type="unfinished">ブロックサイズ</translation>
     </message>
+    <message>
+        <source>Windowing:</source>
+        <translation type="unfinished">ウィンドウ処理:</translation>
+    </message>
 </context>
 <context>
     <name>UI_SpikeFilterDialog</name>
@@ -2400,6 +2737,14 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
         <source>Statistics</source>
         <translation type="unfinished">統計</translation>
     </message>
+    <message>
+        <source>Min</source>
+        <translation type="unfinished">最小</translation>
+    </message>
+    <message>
+        <source>Max</source>
+        <translation type="unfinished">最高</translation>
+    </message>
 </context>
 <context>
     <name>UI_UNISENS2EDFwindow</name>
@@ -2409,6 +2754,10 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>
@@ -2442,6 +2791,10 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Select inputfile</source>
+        <translation type="obsolete">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
     </message>
 </context>

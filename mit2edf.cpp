@@ -693,7 +693,7 @@ void UI_MIT2EDFwindow::SelectFileButton()
   if(tempEdfFile.open()){
       strcpy(edf_filename, tempEdfFile.fileName().toLocal8Bit().data());
       strcat(edf_filename, ".edf");
-      qDebug()<<edf_filename;
+      qDebug()<<"edf_filename"<<edf_filename;
   }
   strcat(annot_filename, ".atr");
 

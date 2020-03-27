@@ -85,10 +85,10 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   lineedit1 = new QLineEdit;
 
   lineedit1->setMaxLength(16);
-  lineedit1->setGeometry(2,2,10,10);
+//  lineedit1->setGeometry(2,2,10,10);
 
   comboBoxInclude = new QComboBox;
-  comboBoxInclude->setGeometry(2, 2, 10, 10);
+//  comboBoxInclude->setGeometry(2, 2, 10, 10);
 
   labelFilterType = new QLabel;
   labelFilterType->setText(tr("Filter type"));
@@ -268,9 +268,12 @@ void UI_Annotationswindow::show_stats(bool)
     messagewindow.exec();
     return;
   }
-  int selected = list->currentRow();
-  if (selected < 0) selected = 0;
-  annot = edfplus_annotation_get_item_visible_only(annot_list, selected);
+
+  //  int selected = list->currentRow();
+//  if (selected < 0) selected = 0;
+//  annot = edfplus_annotation_get_item_visible_only(annot_list, selected);
+
+  annot = annot_list->items;
   if(annot == NULL)
   {
     sprintf(str, "Nullpointer returned: file: %s line %i", __FILE__, __LINE__);
@@ -278,8 +281,10 @@ void UI_Annotationswindow::show_stats(bool)
     messagewindow.exec();
     return;
   }
-
-  UI_StatisticWindow stats_wndw(NULL, 0LL, mainwindow, annot_list, annot);
+//  double   data_record_duration = mainwindow->edfheaderlist[file_num]->data_record_duration;
+//  long long long_data_record_duration = mainwindow->edfheaderlist[file_num]->long_data_record_duration;
+  int second = mainwindow->edfheaderlist[file_num]->recording_len_sec;
+  UI_HrvWindow hrv_wndw(NULL, 0LL, mainwindow, annot_list, annot, second);
 }
 
 
@@ -1273,12 +1278,12 @@ void UI_Annotationswindow::updateText(){
 //    checkbox1->setText(tr("Relative") + " ");
     label1->setText(" " + tr("Filter") + ":");
 
-
+    labelFilterType->setText(tr("Filter type"));
     comboBoxInclude->setItemText(0, tr("Include"));
     comboBoxInclude->setItemText(1, tr("Exclude"));
 
-    comboBoxTimeFormat->addItem(tr("Relative to Start"));
-    comboBoxTimeFormat->addItem(tr("Clock time"));
+    comboBoxTimeFormat->setItemText(0, tr("Relative to Start"));
+    comboBoxTimeFormat->setItemText(1, tr("Clock time"));
 
     edit_button->setText(tr("Edit"));
     export_button->setText(tr("Export"));
@@ -1296,4 +1301,5 @@ void UI_Annotationswindow::updateText(){
     unhide_all_BS_triggers_act->setText(tr("Unhide all Biosemi triggers"));
     filt_ival_time_act->setText(tr("Filter Interval Time"));
     hrv_button->setText(tr("HRV"));
+    labelTimeFormat->setText(tr("Time format"));
 }

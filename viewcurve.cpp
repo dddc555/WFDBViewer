@@ -2200,7 +2200,7 @@ void ViewCurve::drawCurve_stage_2(QPainter *painter, int w_width, int w_height, 
   {
     if(ecg_get_hr_statistics(mainwindow->toolbar_stats.ival, mainwindow->toolbar_stats.sz, &hr_stats))
     {
-      mainwindow->nav_toolbar_label->setText("Error");
+//      mainwindow->nav_toolbar_label->setText("Error");
     }
     else
     {
@@ -2636,7 +2636,7 @@ void ViewCurve::drawCurve_stage_1(QPainter *painter, int w_width, int w_height, 
     {
       free(graphicBuf);
     }
-
+qDebug()<<"viewCurve"<<__LINE__;
     graphicBuf = (struct graphicBufStruct *)malloc(sizeof(struct graphicBufStruct) * w * 2 + 4);
 
     graphicBufWidth = w;
@@ -2983,7 +2983,7 @@ void ViewCurve::drawCurve_stage_1(QPainter *painter, int w_width, int w_height, 
             {
               x1 = (int)(((double)(s - 1)) / signalcomp[i]->sample_pixel_ratio);
               x2 = (int)((double)s / signalcomp[i]->sample_pixel_ratio);
-
+              qDebug()<<"viewCurve"<<__LINE__;
               graphicBuf[screensamples[i]].graphicLine[i].x1 = x1 - signalcomp[i]->pixels_shift;
               graphicBuf[screensamples[i]].graphicLine[i].y1 = y1;
               graphicBuf[screensamples[i]].graphicLine[i].x2 = x2 - signalcomp[i]->pixels_shift;
@@ -3121,6 +3121,7 @@ void drawCurve_stage_1_thread::init_vars(UI_Mainwindow *mainwindow_a, struct sig
                                          double printsize_y_factor_a, struct crossHairStruct *crosshair_1_a,
                                          struct crossHairStruct *crosshair_2_a, int cpu_cnt_a, int linear_interpol_a)
 {
+  qDebug()<<"viewCurve"<<__LINE__;
   mainwindow = mainwindow_a;
   signalcomp_b = signalcomp_a;
   i = i_a;
@@ -3486,7 +3487,7 @@ void drawCurve_stage_1_thread::run()
           {
             x1 = (int)(((double)(s - 1)) / signalcomp->sample_pixel_ratio);
             x2 = (int)((double)s / signalcomp->sample_pixel_ratio);
-
+qDebug()<<"viewCurve"<<__LINE__;
             graphicBuf[*screensamples].graphicLine[i].x1 = x1 - signalcomp->pixels_shift;
             graphicBuf[*screensamples].graphicLine[i].y1 = y1;
             graphicBuf[*screensamples].graphicLine[i].x2 = x2 - signalcomp->pixels_shift;

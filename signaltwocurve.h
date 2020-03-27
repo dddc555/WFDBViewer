@@ -27,8 +27,8 @@
 
 
 
-#ifndef SIGNALCURVE_H
-#define SIGNALCURVE_H
+#ifndef SIGNALTWOCURVE_H
+#define SIGNALTWOCURVE_H
 
 
 #include <QtGlobal>
@@ -54,39 +54,27 @@
 #include <string.h>
 
 #include "utils.h"
-
+#include "signalcurve.h"
 
 #define MAXSPECTRUMMARKERS 16
 #define SC_MAX_PATH_LEN 1024
 
 
-struct spectrum_markersblock{
-        int items;
-        double freq[MAXSPECTRUMMARKERS];
-        int color[MAXSPECTRUMMARKERS];
-        char label[MAXSPECTRUMMARKERS][17];
-        double value[MAXSPECTRUMMARKERS];
-        int method;
-        double max_colorbar_value;
-        int auto_adjust;
-       };
 
 
-
-
-
-class SignalCurve: public QWidget
+class SignalTwoCurve: public QWidget
 {
   Q_OBJECT
 
 public:
-  SignalCurve(QWidget *parent=0);
-  ~SignalCurve();
+  SignalTwoCurve(QWidget *parent=0);
+  ~SignalTwoCurve();
 
   QSize sizeHint() const {return minimumSizeHint(); }
   QSize minimumSizeHint() const {return QSize(30,10); }
 
   void setSignalColor(QColor);
+  void setSignal2Color(QColor);
   void setTraceWidth(int);
   void setBackgroundColor(QColor);
   void setRasterColor(QColor);
@@ -99,17 +87,12 @@ public:
   void setUpperLabel1(const char *);
   void setUpperLabel2(const char *);
   void setLowerLabel(const char *);
-  void drawCurve(double *, int , double , double );
-  void drawCurve(int *, int , double , double );
-  void drawCurve( float *, int , double , double );
+
+  void drawCurve( float *,  float *, int , double , double, double , double );
   void drawLine(int, double, int, double, QColor);
   void setLineEnabled(bool);
   void create_button(const char *);
-  void setCursorEnabled(bool);
-  bool isCursorEnabled(void);
-  bool isCursorActive(void);
-  void setPrintEnabled(bool);
-  void setDashBoardEnabled(bool);
+
   void setMarker1Enabled(bool);
   void setMarker1MovableEnabled(bool);
   void setMarker1Position(double);
@@ -133,6 +116,7 @@ public:
   void shiftCursorPixelsRight(int);
   void shiftCursorIndexLeft(int);
   void shiftCursorIndexRight(int);
+  void drawRegion(int _begin, int to);
 
 signals:
   void extra_button_clicked();
@@ -140,12 +124,12 @@ signals:
   void dashBoardClicked();
   void markerHasMoved();
 
-private slots:
+public slots:
 #if QT_VERSION < 0x050000
   void print_to_postscript();
 #endif
   void print_to_pdf();
-  void print_to_image();
+  QPixmap print_to_image();
   void print_to_printer();
   void print_to_ascii();
   void send_button_event();
@@ -153,26 +137,18 @@ private slots:
 
 
 private:
-  QDialog     *sidemenu;
-
-  QPushButton *sidemenuButton1,
-#if QT_VERSION < 0x050000
-              *sidemenuButton2,
-#endif
-              *sidemenuButton3,
-              *sidemenuButton4,
-              *sidemenuButton5,
-              *sidemenuButton6;
 
   QColor SignalColor,
+         Signal2Color,
          BackgroundColor,
          RasterColor,
          BorderColor,
          RulerColor,
          TextColor,
-         crosshair_1_color,
+
          line1Color,
          backup_color_1,
+         backup_color_1_1,
          backup_color_2,
          backup_color_3,
          backup_color_4,
@@ -188,20 +164,20 @@ private:
 
   double max_value,
          min_value,
-         *dbuf,
+         max2_value,
+         min2_value,
+
          h_ruler_startvalue,
          h_ruler_endvalue,
          printsize_x_factor,
          printsize_y_factor,
-         crosshair_1_value,
-         crosshair_1_value_2,
-         crosshair_1_x_position,
+
          line1_start_y,
          line1_end_y,
          marker_1_position,
          marker_2_position;
 
-  float *fbuf;
+  float *fbuf, *fbuf2;
 
   int bufsize,
       bordersize,
@@ -215,10 +191,7 @@ private:
       mouse_y,
       mouse_old_x,
       mouse_old_y,
-      crosshair_1_active,
-      crosshair_1_moving,
-      crosshair_1_y_position,
-      crosshair_1_y_value,
+
       marker_1_moving,
       marker_1_x_position,
       marker_2_moving,
@@ -229,8 +202,8 @@ private:
       h,
       old_w,
       updates_enabled,
-      fillsurface,
-      *ibuf;
+      fillsurface;
+      int begin, to;
   bool isIninitedCursor;
   char h_label[32],
        v_label[21],
@@ -240,17 +213,13 @@ private:
        extra_button_txt[16],
        recent_savedir[SC_MAX_PATH_LEN];
 
-  bool printEnabled,
-       cursorEnabled,
-       dashBoardEnabled,
-       Marker1Enabled,
+  bool Marker1Enabled,
        Marker1MovableEnabled,
        Marker2Enabled,
        Marker2MovableEnabled,
        curveUpSideDown,
        line1Enabled;
 
-  struct spectrum_markersblock *spectrum_color;
 
   void backup_colors_for_printing();
   void restore_colors_after_printing();

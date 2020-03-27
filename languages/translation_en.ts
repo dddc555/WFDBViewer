@@ -651,6 +651,53 @@
     </message>
 </context>
 <context>
+    <name>SignalTwoCurve</name>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished">Export</translation>
+    </message>
+    <message>
+        <source>to printer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>to PDF</source>
+        <translation type="unfinished">to PDF</translation>
+    </message>
+    <message>
+        <source>to Image</source>
+        <translation type="unfinished">to Image</translation>
+    </message>
+    <message>
+        <source>to CSV</source>
+        <translation type="unfinished">to CSV</translation>
+    </message>
+    <message>
+        <source>Print to Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FFT resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Distribution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>blocks of</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>samples</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frequency</source>
+        <translation type="unfinished">Frequency</translation>
+    </message>
+</context>
+<context>
     <name>UI_ASCII2EDFapp</name>
     <message>
         <source>Signals</source>
@@ -781,16 +828,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Relative</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Filter</source>
         <translation type="unfinished">Filter</translation>
-    </message>
-    <message>
-        <source>Inv.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Busy</source>
@@ -810,6 +849,30 @@
     </message>
     <message>
         <source>Save file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Time format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Relative to Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clock time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filter type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Include</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exclude</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -870,11 +933,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Error</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -885,7 +948,7 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -896,7 +959,7 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -907,7 +970,7 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -943,7 +1006,7 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -969,7 +1032,7 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1002,7 +1065,7 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1037,7 +1100,11 @@
         <translation type="unfinished">Apply</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>One tap per line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1048,7 +1115,7 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1149,6 +1216,89 @@
         <source>Center</source>
         <translation type="unfinished">Center</translation>
     </message>
+    <message>
+        <source>Rectangular</source>
+        <translation type="unfinished">Rectangular</translation>
+    </message>
+    <message>
+        <source>Hamming</source>
+        <translation type="unfinished">Hamming</translation>
+    </message>
+    <message>
+        <source>4-term Blackman-Harris</source>
+        <translation type="unfinished">4-term Blackman-Harris</translation>
+    </message>
+    <message>
+        <source>7-term Blackman-Harris</source>
+        <translation type="unfinished">7-term Blackman-Harris</translation>
+    </message>
+    <message>
+        <source>Nuttall3b</source>
+        <translation type="unfinished">Nuttall3b</translation>
+    </message>
+    <message>
+        <source>Nuttall4c</source>
+        <translation type="unfinished">Nuttall4c</translation>
+    </message>
+    <message>
+        <source>Hann</source>
+        <translation type="unfinished">Hann</translation>
+    </message>
+    <message>
+        <source>HFT223D</source>
+        <translation type="unfinished">HFT223D</translation>
+    </message>
+    <message>
+        <source>Window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Span</source>
+        <translation type="unfinished">Span</translation>
+    </message>
+</context>
+<context>
+    <name>UI_HrvWindow</name>
+    <message>
+        <source>HRV Analysis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select Range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>End Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Analysis Result</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Max</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">Close</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished">Export</translation>
+    </message>
+    <message>
+        <source>Not enough beats.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_LoadMontagewindow</name>
@@ -1164,7 +1314,7 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1183,7 +1333,7 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1198,7 +1348,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1474,15 +1624,11 @@
     </message>
     <message>
         <source>Convert MIT (PhysioBank) to EDF+</source>
-        <translation type="unfinished">Convert MIT (PhysioBank) to EDF+</translation>
+        <translation type="obsolete">Convert MIT (PhysioBank) to EDF+</translation>
     </message>
     <message>
         <source>Convert MIT (PhysioBank) to CSV</source>
-        <translation type="unfinished">Convert MIT (PhysioBank) to CSV</translation>
-    </message>
-    <message>
-        <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Convert MIT (PhysioBank) to CSV</translation>
     </message>
     <message>
         <source>Language</source>
@@ -1512,6 +1658,54 @@
         <source>Save file</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The frequency must over 500Hz for this filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The frequency must an integer ratio to 50 or 60 Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The frequency must over 4000Hz for this filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Detect QRS and generate annotations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Settings</translation>
+    </message>
+    <message>
+        <source>Select input file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annotation file exist, are you replace it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annotation file is generated with QRS detector</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please open WFDB file to anaysis with QRS detector.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_MortaraEDFwindow</name>
@@ -1520,7 +1714,7 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1531,7 +1725,7 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1542,7 +1736,7 @@
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1737,34 +1931,6 @@
         <translation type="unfinished">Power Spectrum</translation>
     </message>
     <message>
-        <source>Reload last used montage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do not read annotations, Biosemi Status signal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>or Nihon Kohden triggers when filesize</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>is more than:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Read Biosemi Status signal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Read Nihon Kohden Trigger/Marker signal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>livestream update interval</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Powerline Frequency</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1791,14 +1957,6 @@
     <message>
         <source>Timescale</source>
         <translation type="unfinished">Timescale</translation>
-    </message>
-    <message>
-        <source>Use Multi-Threading</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Check for updates during startup</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Viewtime / fileposition indicator</source>
@@ -1849,10 +2007,6 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
         <source>Apply</source>
         <translation type="unfinished">Apply</translation>
     </message>
-    <message>
-        <source>Help</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>UI_RAW2EDFapp</name>
@@ -1879,7 +2033,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2009,6 +2163,10 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
         <source>Blocksize</source>
         <translation type="unfinished">Blocksize</translation>
     </message>
+    <message>
+        <source>Windowing:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_SpikeFilterDialog</name>
@@ -2051,6 +2209,14 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
         <source>Statistics</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Max</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_UNISENS2EDFwindow</name>
@@ -2059,7 +2225,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2092,7 +2258,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
         <translation type="unfinished">Close</translation>
     </message>
     <message>
-        <source>Select inputfile</source>
+        <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

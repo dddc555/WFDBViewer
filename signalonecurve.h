@@ -27,8 +27,8 @@
 
 
 
-#ifndef SIGNALCURVE_H
-#define SIGNALCURVE_H
+#ifndef SIGNALONECURVE_H
+#define SIGNALONECURVE_H
 
 
 #include <QtGlobal>
@@ -58,30 +58,30 @@
 
 #define MAXSPECTRUMMARKERS 16
 #define SC_MAX_PATH_LEN 1024
+#include "signalcurve.h"
+
+//struct spectrum_markersblock{
+//        int items;
+//        double freq[MAXSPECTRUMMARKERS];
+//        int color[MAXSPECTRUMMARKERS];
+//        char label[MAXSPECTRUMMARKERS][17];
+//        double value[MAXSPECTRUMMARKERS];
+//        int method;
+//        double max_colorbar_value;
+//        int auto_adjust;
+//       };
 
 
-struct spectrum_markersblock{
-        int items;
-        double freq[MAXSPECTRUMMARKERS];
-        int color[MAXSPECTRUMMARKERS];
-        char label[MAXSPECTRUMMARKERS][17];
-        double value[MAXSPECTRUMMARKERS];
-        int method;
-        double max_colorbar_value;
-        int auto_adjust;
-       };
 
 
 
-
-
-class SignalCurve: public QWidget
+class SignalOneCurve: public QWidget
 {
   Q_OBJECT
 
 public:
-  SignalCurve(QWidget *parent=0);
-  ~SignalCurve();
+  SignalOneCurve(QWidget *parent=0);
+  ~SignalOneCurve();
 
   QSize sizeHint() const {return minimumSizeHint(); }
   QSize minimumSizeHint() const {return QSize(30,10); }
@@ -140,12 +140,12 @@ signals:
   void dashBoardClicked();
   void markerHasMoved();
 
-private slots:
+public slots:
 #if QT_VERSION < 0x050000
   void print_to_postscript();
 #endif
-  void print_to_pdf();
-  void print_to_image();
+  void print_to_pdf(QPrinter *curve_printer);
+  QPixmap print_to_image();
   void print_to_printer();
   void print_to_ascii();
   void send_button_event();
@@ -153,16 +153,6 @@ private slots:
 
 
 private:
-  QDialog     *sidemenu;
-
-  QPushButton *sidemenuButton1,
-#if QT_VERSION < 0x050000
-              *sidemenuButton2,
-#endif
-              *sidemenuButton3,
-              *sidemenuButton4,
-              *sidemenuButton5,
-              *sidemenuButton6;
 
   QColor SignalColor,
          BackgroundColor,

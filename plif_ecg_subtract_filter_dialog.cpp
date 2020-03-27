@@ -223,7 +223,6 @@ void UI_PLIF_ECG_filter_dialog::ApplyButtonClicked()
         {
           dthreshold = 5e-6 / mainwindow->signalcomp[s]->edfhdr->edfparam[mainwindow->signalcomp[s]->edfsignal[0]].bitvalue;
         }
-
     mainwindow->signalcomp[s]->plif_ecg_filter = plif_create_subtract_filter(sf, plf, dthreshold);
     if(mainwindow->signalcomp[s]->plif_ecg_filter == NULL)
     {

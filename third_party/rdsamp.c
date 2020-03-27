@@ -451,6 +451,287 @@ int convertWFDB2CSV(int argc, char *record, char *output)
     //    exit(0);
 }
 
+
+int readWFDB(char *record, double *output, int *outSize)
+{
+    *outSize = 9;
+    output = (double *)malloc(sizeof(double) * (9));
+    int i;
+    for(i = 0;i<outSize;i++){
+        output[i] = (double)i;
+    }
+    return 1;
+    char *argv[10];
+    char *search = NULL;
+    char *invalid, *snfmt, *tfmt, *tnfmt, *tufmt, *vfmt, speriod[16], tustr[16];
+    int cflag = 1, highres = 0,  isiglist, nsig, nosig = 0, pflag = 1, s,
+    *sig = NULL, timeunits = SECONDS, vflag = 0, xflag = 0;
+    WFDB_Frequency freq;
+    WFDB_Sample *v;
+    WFDB_Siginfo *si;
+    WFDB_Time from = 0L, maxl = 0L, to = 0L;
+
+    if (record == NULL) {
+        exit(1);
+    }
+    if ((nsig = isigopen(record, NULL, 0)) <= 0) {
+        wfdb_error("Exit %d\n",  nsig);
+        exit(2);
+    }
+    wfdb_error("nsig = %d\n",  nsig);
+    if ((v = (WFDB_Sample*)malloc(nsig * sizeof(WFDB_Sample))) == NULL ||
+    (si = (WFDB_Siginfo*)malloc(nsig * sizeof(WFDB_Siginfo))) == NULL) {
+        (void)fprintf(stderr, "%s: insufficient memory\n", pname);
+        exit(2);
+    }
+    if ((nsig = isigopen(record, si, nsig)) <= 0){
+        wfdb_error("Exit2 %d\n",  nsig);
+//        exit(2);
+        return -1;
+    }
+
+    for (i = 0; i < nsig; i++)
+    if (si[i].gain == 0.0) si[i].gain = WFDB_DEFGAIN;
+    if (highres)
+        setgvmode(WFDB_HIGHRES);
+    freq = sampfreq(NULL);
+    if (from > 0L && (from = strtim(argv[from])) < 0L)
+    from = -from;
+    if (isigsettime(from) < 0)
+    exit(2);
+    if (to > 0L && (to = strtim(argv[to])) < 0L)
+    to = -to;
+    if (nosig) {		/* print samples only from specified signals */
+    if ((sig = (int *)malloc((unsigned)nosig*sizeof(int))) == NULL) {
+        (void)fprintf(stderr, "%s: insufficient memory\n", pname);
+        exit(2);
+    }
+    for (i = 0; i < nosig; i++) {
+        if ((s = findsig(argv[isiglist+i])) < 0) {
+        (void)fprintf(stderr, "%s: can't read signal '%s'\n", pname,
+                  argv[isiglist+i]);
+        exit(2);
+        }
+        sig[i] = s;
+    }
+    nsig = nosig;
+    }
+    else {			/* print samples from all signals */
+    if ((sig = (int *)malloc((unsigned)nsig*sizeof(int))) == NULL) {
+        (void)fprintf(stderr, "%s: insufficient memory\n", pname);
+        exit(2);
+    }
+    for (i = 0; i < nsig; i++)
+        sig[i] = i;
+    }
+
+    /* Reset 'from' if a search was requested. */
+    if (search &&
+    ((s = findsig(search)) < 0 || (from = tnextvec(s, from)) < 0)) {
+    (void)fprintf(stderr, "%s: can't read signal '%s'\n", pname, search);
+    exit(2);
+    }
+
+    /* Reset 'to' if a duration limit was specified. */
+    if (maxl > 0L && (maxl = strtim(argv[maxl])) < 0L)
+    maxl = -maxl;
+    if (maxl && (to == 0L || to > from + maxl))
+    to = from + maxl;
+
+    /* Adjust timeunits if starting time or date is undefined. */
+    if (timeunits == TIMSTR) {
+    char *p = timstr(0L);
+    if (*p != '[') timeunits = HHMMSS;
+    else if (strlen(p) < 16) timeunits = SHORTTIMSTR;
+    else if (freq > 1.0) timeunits = MSTIMSTR;
+    }
+    if (timeunits == HOURS) freq *= 3600.;
+    else if (timeunits == MINUTES) freq *= 60.;
+
+    /* Set formats for output. */
+    if (cflag) {  /* CSV output selected */
+    snfmt = ",'%s'";
+    if (pflag) { 	/* output in physical units */
+        switch (timeunits) {
+          case SAMPLES:     tnfmt = "'sample interval'";
+                        sprintf(tustr, "'%g sec'", 1./freq);
+                tufmt = tustr; break;
+          case SHORTTIMSTR: tnfmt = "'Time'";
+                        tufmt = "'hh:mm:ss.mmm'"; break;
+          case TIMSTR:      tnfmt = "'Time and date'";
+                        tufmt = "'hh:mm:ss dd/mm/yyyy'"; break;
+          case MSTIMSTR:    tnfmt = "'Time and date'";
+                        tufmt = "'hh:mm:ss.mmm dd/mm/yyyy'"; break;
+          case HHMMSS:      tnfmt = "'Elapsed time'";
+                        tufmt = "'hh:mm:ss.mmm'"; break;
+          case HOURS:       tnfmt = "'Elapsed time'";
+                        tufmt = "'hours'"; break;
+          case MINUTES:     tnfmt = "'Elapsed time'";
+                        tufmt = "'minutes'"; break;
+          default:
+          case SECONDS:     tnfmt = "'Elapsed time'";
+                        tufmt = "'seconds'"; break;
+        }
+        invalid = ",-";
+        if (pflag > 1)	/* output in high-precision physical units */
+        vfmt = "%.8lf";
+        else
+        vfmt = "%.3lf";
+    }
+    else {	/* output in raw units */
+        tnfmt = "'sample #'";
+        tfmt = "%ld";
+        vfmt = "%d";
+    }
+    }
+    else {	/* output in tab-separated columns selected */
+    if (pflag) {	/* output in physical units */
+        switch (timeunits) {
+          case SAMPLES:     tnfmt = "sample interval";
+                        sprintf(speriod, "(%g", 1./freq);
+                                speriod[10] = '\0';
+                        sprintf(tustr, "%10s sec)", speriod);
+                tufmt = tustr; break;
+          case SHORTTIMSTR: tnfmt = "     Time";
+                        tufmt = "(hh:mm:ss.mmm)"; break;
+          case TIMSTR:	tnfmt = "   Time      Date    ";
+                        tufmt = "(hh:mm:ss dd/mm/yyyy)"; break;
+          case MSTIMSTR:    tnfmt = "      Time      Date    ";
+                        tufmt = "(hh:mm:ss.mmm dd/mm/yyyy)"; break;
+          case HHMMSS:      tnfmt = "   Elapsed time";
+                        tufmt = "   hh:mm:ss.mmm"; break;
+          case HOURS:       tnfmt = "   Elapsed time";
+                        tufmt = "        (hours)"; break;
+          case MINUTES:     tnfmt = "   Elapsed time";
+                        tufmt = "      (minutes)"; break;
+          default:
+          case SECONDS:     tnfmt = "   Elapsed time";
+                        tufmt = "      (seconds)"; break;
+        }
+        if (pflag > 1) {	/* output in high-precision physical units */
+        snfmt = "\t%15s";
+        invalid = "\t              -";
+        vfmt = "\t%15.8lf";
+        }
+        else {
+        snfmt = "\t%7s";
+        invalid = "\t      -";
+        vfmt = "\t%7.3lf";
+        }
+    }
+    else {	/* output in raw units */
+        snfmt = "\t%7s";
+        tnfmt = "       sample #";
+        tfmt = "%15ld";
+        vfmt = "\t%7d";
+    }
+    }
+
+    /* Print column headers if '-v' option selected. */
+    if (vflag) {
+    char *p, *t;
+    int j, l;
+
+    (void)printf("%s", tnfmt);
+
+    for (i = 0; i < nsig; i++) {
+        /* Check if a default signal description was provided by looking
+           for the string ", signal " in the desc field.  If so, replace it
+           with a shorter string. */
+        p = si[sig[i]].desc;
+        if (strstr(p, ", signal ")) {
+        char *t;
+        if (t = malloc(10*sizeof(char))) {
+            (void)sprintf(t, "sig %d", sig[i]);
+            p = t;
+        }
+        }
+        if (cflag == 0) {
+        l = strlen(p);
+        if (pflag > 1) {
+            if (l > 15) p += l - 15;
+        }
+        else {
+            if (l > 7) p+= l - 7;
+        }
+        }
+        else
+        p = myescapify(p);
+        (void)printf(snfmt, p);
+    }
+
+    (void)printf("\n");
+    }
+
+    /* Print data in physical units if '-p' option selected. */
+    if (pflag) {
+        char *p;
+
+        /* Print units as a second line of column headers if '-v' selected. */
+        if (vflag) {
+            char s[12];
+            (void)printf("%s", tufmt);
+
+            for (i = 0; i < nsig; i++) {
+                p = si[sig[i]].units;
+                if (p == NULL) p = "mV";
+                if (cflag == 0) {
+                    char ustring[16];
+                    int len;
+
+                    len = strlen(p);
+                    if (pflag > 1) { if (len > 13) len = 13; }
+                    else if (len > 5) len = 5;
+                    ustring[0] = '(';
+                    strncpy(ustring+1, p, len);
+                    ustring[len+1] = '\0';
+                    (void)printf(pflag > 1 ? "\t%14s)" : "\t%6s)", ustring);
+                }
+                else {
+                    p = myescapify(p);
+                    (void)printf(",'%s'", p);
+                }
+            }
+
+            (void)printf("\n");
+        }
+        if(nsig == 1)
+            (void)printf("ECG (mv)\n");
+        if(nsig == 3)
+            (void)printf("X,Y,Z\n");
+
+
+
+        while ((to == 0L || from < to) && getvec(v) >= 0) {
+            if (cflag == 0) {
+                switch (timeunits) {
+                case TIMSTR:   (void)printf("%s", timstr(-from)); break;
+                case SHORTTIMSTR:
+                case MSTIMSTR: (void)printf("%s", mstimstr(-from)); break;
+                case HHMMSS:   (void)printf("%15s", from == 0L ?
+                                                "0:00.000" : mstimstr(from)); break;
+                case SAMPLES:  (void)printf("%15ld", from); break;
+                default:
+                case SECONDS:  (void)printf("%15.3lf",(double)from/freq); break;
+                case MINUTES:  (void)printf("%15.5lf",(double)from/freq); break;
+                case HOURS:    (void)printf("%15.7lf",(double)from/freq); break;
+                }
+            }
+
+            from++;
+            for (i = 0; i < nsig; i++) {
+                if (v[sig[i]] != WFDB_INVALID_SAMPLE){
+                    (void)printf(vfmt, ((double)v[sig[i]] - si[sig[i]].baseline)/si[sig[i]].gain);
+                    if(i < nsig - 1) (void)printf(",");
+
+                }
+                else (void)printf("%s", invalid);
+            }
+            (void)printf("\n");
+        }
+    }
+}
+
 char *myescapify(char *s)
 {
     char *p = s, *q = s, *r;

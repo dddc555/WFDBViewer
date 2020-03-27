@@ -29,8 +29,9 @@
 #include "mainwindow.h"
 
 
-void UI_Mainwindow::setup_viewbuf()
+void UI_Mainwindow::save_ecg()
 {
+  qDebug()<<"save_ecg";
   int i, j, k, r, s,
       temp=0,
       skip,
@@ -59,6 +60,7 @@ void UI_Mainwindow::setup_viewbuf()
 
   for(i=0; i<files_open; i++) edfheaderlist[i]->prefiltertime = 0;
 
+  // init pre_time - with filter
   for(i=0; i<signalcomps; i++)
   {
     if(signalcomp[i]->filter_cnt)
@@ -149,8 +151,9 @@ void UI_Mainwindow::setup_viewbuf()
         }
       }
     }
-  }
+  } // end for - init pre_time - with filter
 
+  // if has prefilter
   if(hasprefilter)
   {
     for(i=0; i<signalcomps; i++)
@@ -253,28 +256,30 @@ void UI_Mainwindow::setup_viewbuf()
     {
       if(!i)
       {
-        datarecords = (signalcomp[i]->edfhdr->viewtime - signalcomp[i]->edfhdr->prefiltertime) / signalcomp[i]->edfhdr->long_data_record_duration;
+        for(int mmRecord = 0;mmRecord<edfheaderlist[sel_viewtime]->datarecords;mmRecord++) {
+            datarecords = mmRecord;
 
-        signalcomp[i]->prefilter_starttime = datarecords * signalcomp[i]->edfhdr->long_data_record_duration;
+            signalcomp[i]->prefilter_starttime = datarecords * signalcomp[i]->edfhdr->long_data_record_duration;
 
-        if((signalcomp[i]->viewbufsize>0)&&(datarecords<signalcomp[i]->edfhdr->datarecords))
-        {
-          fseeko(signalcomp[i]->edfhdr->file_hdl, (long long)(signalcomp[i]->edfhdr->hdrsize + (datarecords * signalcomp[i]->edfhdr->recordsize)), SEEK_SET);
+            if((signalcomp[i]->viewbufsize>0)&&(datarecords<signalcomp[i]->edfhdr->datarecords))
+            {
+              fseeko(signalcomp[i]->edfhdr->file_hdl, (long long)(signalcomp[i]->edfhdr->hdrsize + (datarecords * signalcomp[i]->edfhdr->recordsize)), SEEK_SET);
 
-          if(signalcomp[i]->viewbufsize>((signalcomp[i]->edfhdr->datarecords - datarecords) * signalcomp[i]->edfhdr->recordsize))
-          {
-            signalcomp[i]->viewbufsize = (signalcomp[i]->edfhdr->datarecords - datarecords) * signalcomp[i]->edfhdr->recordsize;
-          }
-          qDebug()<<"fread" << __LINE__;
-          if(fread(viewbuf + signalcomp[i]->viewbufoffset, signalcomp[i]->viewbufsize, 1, signalcomp[i]->edfhdr->file_hdl)!=1)
-          {
-            live_stream_active = 0;
-            QMessageBox messagewindow(QMessageBox::Critical, "Error", "A read error occurred. 2");
-            messagewindow.exec();
-            remove_all_signals();
-            return;
-          }
-        }
+              if(signalcomp[i]->viewbufsize>((signalcomp[i]->edfhdr->datarecords - datarecords) * signalcomp[i]->edfhdr->recordsize))
+              {
+                signalcomp[i]->viewbufsize = (signalcomp[i]->edfhdr->datarecords - datarecords) * signalcomp[i]->edfhdr->recordsize;
+              }
+              qDebug()<<"fread" << __LINE__;
+              if(fread(viewbuf + signalcomp[i]->viewbufoffset, signalcomp[i]->viewbufsize, 1, signalcomp[i]->edfhdr->file_hdl)!=1)
+              {
+                live_stream_active = 0;
+                QMessageBox messagewindow(QMessageBox::Critical, "Error", "A read error occurred. 2");
+                messagewindow.exec();
+                remove_all_signals();
+                return;
+              }
+            }
+        }//end mmRecord for
       }
       else
       {
@@ -288,34 +293,36 @@ void UI_Mainwindow::setup_viewbuf()
             break;
           }
         }
+        for(int mmRecord = 0;mmRecord<edfheaderlist[sel_viewtime]->datarecords;mmRecord++) {
 
-        if(!skip)
-        {
-          datarecords = (signalcomp[i]->edfhdr->viewtime - signalcomp[i]->edfhdr->prefiltertime) / signalcomp[i]->edfhdr->long_data_record_duration;
-
-          signalcomp[i]->prefilter_starttime = datarecords * signalcomp[i]->edfhdr->long_data_record_duration;
-
-          if((signalcomp[i]->viewbufsize>0)&&(datarecords<signalcomp[i]->edfhdr->datarecords))
-          {
-            fseeko(signalcomp[i]->edfhdr->file_hdl, (long long)(signalcomp[i]->edfhdr->hdrsize + (datarecords * signalcomp[i]->edfhdr->recordsize)), SEEK_SET);
-
-            if(signalcomp[i]->viewbufsize>((signalcomp[i]->edfhdr->datarecords - datarecords) * signalcomp[i]->edfhdr->recordsize))
+            if(!skip)
             {
-              signalcomp[i]->viewbufsize = (signalcomp[i]->edfhdr->datarecords - datarecords) * signalcomp[i]->edfhdr->recordsize;
+              datarecords = mmRecord;
+
+              signalcomp[i]->prefilter_starttime = datarecords * signalcomp[i]->edfhdr->long_data_record_duration;
+
+              if((signalcomp[i]->viewbufsize>0)&&(datarecords<signalcomp[i]->edfhdr->datarecords))
+              {
+                fseeko(signalcomp[i]->edfhdr->file_hdl, (long long)(signalcomp[i]->edfhdr->hdrsize + (datarecords * signalcomp[i]->edfhdr->recordsize)), SEEK_SET);
+
+                if(signalcomp[i]->viewbufsize>((signalcomp[i]->edfhdr->datarecords - datarecords) * signalcomp[i]->edfhdr->recordsize))
+                {
+                  signalcomp[i]->viewbufsize = (signalcomp[i]->edfhdr->datarecords - datarecords) * signalcomp[i]->edfhdr->recordsize;
+                }
+                qDebug()<<"fread" << __LINE__;
+                if(fread(viewbuf + signalcomp[i]->viewbufoffset, signalcomp[i]->viewbufsize, 1, signalcomp[i]->edfhdr->file_hdl)!=1)
+                {
+                  live_stream_active = 0;
+                  QMessageBox messagewindow(QMessageBox::Critical, "Error", "A read error occurred. 3");
+                  messagewindow.exec();
+                  remove_all_signals();
+                  return;
+                }
+              }
             }
-            qDebug()<<"fread" << __LINE__;
-            if(fread(viewbuf + signalcomp[i]->viewbufoffset, signalcomp[i]->viewbufsize, 1, signalcomp[i]->edfhdr->file_hdl)!=1)
-            {
-              live_stream_active = 0;
-              QMessageBox messagewindow(QMessageBox::Critical, "Error", "A read error occurred. 3");
-              messagewindow.exec();
-              remove_all_signals();
-              return;
-            }
-          }
-        }
+        }// end mmRecord
       }
-    }
+    } // end for(i=0; i<signalcomps; i++)
 
     for(i=0; i<signalcomps; i++)
     {
@@ -508,7 +515,7 @@ void UI_Mainwindow::setup_viewbuf()
         }
       }
     }
-  }
+  } // end if has prefilter
 
   totalsize = 0;
 
@@ -584,7 +591,7 @@ void UI_Mainwindow::setup_viewbuf()
         totalsize += signalcomp[i]->viewbufsize;
       }
     }
-  }
+  } // end for
 
   if(viewbuf!=NULL)
   {
@@ -627,55 +634,52 @@ void UI_Mainwindow::setup_viewbuf()
   {
     if(!i)
     {
-      if(signalcomp[i]->edfhdr->viewtime>=0)
-      {
-        datarecords = signalcomp[i]->edfhdr->viewtime / signalcomp[i]->edfhdr->long_data_record_duration;
-      }
-      else
-      {
-        datarecords = 0;
-      }
+      for(int mmRecord = 0;mmRecord<edfheaderlist[sel_viewtime]->datarecords;mmRecord++) {
+          datarecords = mmRecord;
+          qDebug()<<"datarecords (mmRecord)"<<__LINE__<<"va "<<datarecords;
 
-      dif = signalcomp[i]->edfhdr->datarecords - datarecords;
+          dif = signalcomp[i]->edfhdr->datarecords - datarecords;
 
-      if(dif<=0)
-      {
-        memset(viewbuf + signalcomp[i]->viewbufoffset, 0, signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize);
+          if(dif<=0)
+          {
+            memset(viewbuf + signalcomp[i]->viewbufoffset, 0, signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize);
 
-        signalcomp[i]->sample_stop = 0;
-      }
-      else
-      {
-        if(dif<signalcomp[i]->records_in_viewbuf)
-        {
-          readsize = dif * signalcomp[i]->edfhdr->recordsize;
+            signalcomp[i]->sample_stop = 0;
+          }
+          else
+          {
+            if(dif<signalcomp[i]->records_in_viewbuf)
+            {
+              readsize = dif * signalcomp[i]->edfhdr->recordsize;
 
-          memset(viewbuf + signalcomp[i]->viewbufoffset + readsize, 0, (signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize) - readsize);
+              memset(viewbuf + signalcomp[i]->viewbufoffset + readsize, 0, (signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize) - readsize);
 
-          signalcomp[i]->sample_stop = (dif * signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[0]].smp_per_record) - signalcomp[i]->sample_timeoffset;
-        }
-        else
-        {
-          readsize = signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize;
+              signalcomp[i]->sample_stop = (dif * signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[0]].smp_per_record) - signalcomp[i]->sample_timeoffset;
+            }
+            else
+            {
+              readsize = signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize;
 
-          signalcomp[i]->sample_stop = signalcomp[i]->samples_on_screen;
-        }
+              signalcomp[i]->sample_stop = signalcomp[i]->samples_on_screen;
+            }
 
-        l_temp = signalcomp[i]->edfhdr->hdrsize;
-        l_temp += (datarecords * signalcomp[i]->edfhdr->recordsize);
+            l_temp = signalcomp[i]->edfhdr->hdrsize;
+            l_temp += (datarecords * signalcomp[i]->edfhdr->recordsize);
 
-        fseeko(signalcomp[i]->edfhdr->file_hdl, l_temp, SEEK_SET);
-        //qDebug()<<"fread" << __LINE__<<"signalcomps = "<<signalcomps<<"datarecords"<<datarecords<<"datarecords"<<edfheaderlist[i]->datarecords;
-        if(fread(viewbuf + signalcomp[i]->viewbufoffset, readsize, 1, signalcomp[i]->edfhdr->file_hdl)!=1)
-        {
-          live_stream_active = 0;
-          QMessageBox messagewindow(QMessageBox::Critical, "Error", "A read error occurred. 5");
-          messagewindow.exec();
-          remove_all_signals();
-          return;
-        }
-      }
+            fseeko(signalcomp[i]->edfhdr->file_hdl, l_temp, SEEK_SET);
+            qDebug()<<"fread" << __LINE__<<"signalcomps = "<<signalcomps<<"datarecords"<<datarecords<<"readsize"<<readsize;
+            if(fread(viewbuf + signalcomp[i]->viewbufoffset, readsize, 1, signalcomp[i]->edfhdr->file_hdl)!=1)
+            {
+              live_stream_active = 0;
+              QMessageBox messagewindow(QMessageBox::Critical, "Error", "A read error occurred. 5");
+              messagewindow.exec();
+              remove_all_signals();
+              return;
+            }
+          }
+      }// end mmRecords for
     }
+
     else
     {
       skip = 0;
@@ -688,78 +692,80 @@ void UI_Mainwindow::setup_viewbuf()
           break;
         }
       }
+      qDebug()<<"edfheaderlist[sel_viewtime]->datarecords" <<edfheaderlist[sel_viewtime]->datarecords;
 
-      if(signalcomp[i]->edfhdr->viewtime>=0)
-      {
-        datarecords = signalcomp[i]->edfhdr->viewtime / signalcomp[i]->edfhdr->long_data_record_duration;
-      }
-      else
-      {
-        datarecords = 0;
-      }
+      for(int mmRecord = 0;mmRecord<edfheaderlist[sel_viewtime]->datarecords - 1;mmRecord++) {
 
-      dif = signalcomp[i]->edfhdr->datarecords - datarecords;
+          datarecords = mmRecord;
+          qDebug()<<"datarecords (line)"<<__LINE__<<"datarecords "<<datarecords << "skip"<<skip;
 
-      if(dif<=0)
-      {
-        if(!skip)
-        {
-          memset(viewbuf + signalcomp[i]->viewbufoffset, 0, signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize);
-        }
+          dif = signalcomp[i]->edfhdr->datarecords - datarecords;
 
-        signalcomp[i]->sample_stop = 0;
-      }
-      else
-      {
-        if(dif<signalcomp[i]->records_in_viewbuf)
-        {
-          if(!skip)
+          if(dif<=0)
           {
-            readsize = dif * signalcomp[i]->edfhdr->recordsize;
+            if(!skip)
+            {
+              memset(viewbuf + signalcomp[i]->viewbufoffset, 0, signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize);
+            }
 
-//             printf("viewbuf test: signalcomp: %i  viewbufoffset: %i  readsize: %i  records_in_viewbuf: %lli  recordsize: %i\n"
-//                    "viewtime: %lli  datarecords: %lli  dif: %i  readsize: %i  (records_in_viewbuf * recordsize): %lli\n"
-//                    "viewbufsize: %i\n",
-//                    i, signalcomp[i]->viewbufoffset, readsize, signalcomp[i]->records_in_viewbuf, signalcomp[i]->edfhdr->recordsize,
-//                    signalcomp[i]->edfhdr->viewtime, signalcomp[i]->edfhdr->datarecords, dif, readsize,
-//                    signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize, signalcomp[i]->viewbufsize);
+            signalcomp[i]->sample_stop = 0;
+          }
+          else
+          {
+            if(dif<signalcomp[i]->records_in_viewbuf)
+            {
+              if(!skip)
+              {
+                readsize = dif * signalcomp[i]->edfhdr->recordsize;
 
-            memset(viewbuf + signalcomp[i]->viewbufoffset + readsize, 0, (signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize) - readsize);
+    //             printf("viewbuf test: signalcomp: %i  viewbufoffset: %i  readsize: %i  records_in_viewbuf: %lli  recordsize: %i\n"
+    //                    "viewtime: %lli  datarecords: %lli  dif: %i  readsize: %i  (records_in_viewbuf * recordsize): %lli\n"
+    //                    "viewbufsize: %i\n",
+    //                    i, signalcomp[i]->viewbufoffset, readsize, signalcomp[i]->records_in_viewbuf, signalcomp[i]->edfhdr->recordsize,
+    //                    signalcomp[i]->edfhdr->viewtime, signalcomp[i]->edfhdr->datarecords, dif, readsize,
+    //                    signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize, signalcomp[i]->viewbufsize);
+
+                memset(viewbuf + signalcomp[i]->viewbufoffset + readsize, 0, (signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize) - readsize);
+              }
+
+              signalcomp[i]->sample_stop = (dif * signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[0]].smp_per_record) - signalcomp[i]->sample_timeoffset;
+            }
+            else
+            {
+              if(!skip)
+              {
+                readsize = signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize;
+              }
+
+              signalcomp[i]->sample_stop = signalcomp[i]->samples_on_screen;
+            }
+
+            if(!skip)
+            {
+              l_temp = signalcomp[i]->edfhdr->hdrsize;
+              l_temp += (datarecords * signalcomp[i]->edfhdr->recordsize);
+
+              fseeko(signalcomp[i]->edfhdr->file_hdl, l_temp, SEEK_SET);
+              qDebug()<<"fread" << __LINE__;
+              if(fread(viewbuf + signalcomp[i]->viewbufoffset, readsize, 1, signalcomp[i]->edfhdr->file_hdl)!=1)
+              {
+                live_stream_active = 0;
+                QMessageBox messagewindow(QMessageBox::Critical, "Error", "A read error occurred. 6");
+                messagewindow.exec();
+                remove_all_signals();
+                return;
+              }
+            }
           }
 
-          signalcomp[i]->sample_stop = (dif * signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[0]].smp_per_record) - signalcomp[i]->sample_timeoffset;
-        }
-        else
-        {
-          if(!skip)
-          {
-            readsize = signalcomp[i]->records_in_viewbuf * signalcomp[i]->edfhdr->recordsize;
-          }
-
-          signalcomp[i]->sample_stop = signalcomp[i]->samples_on_screen;
-        }
-
-        if(!skip)
-        {
-          l_temp = signalcomp[i]->edfhdr->hdrsize;
-          l_temp += (datarecords * signalcomp[i]->edfhdr->recordsize);
-
-          fseeko(signalcomp[i]->edfhdr->file_hdl, l_temp, SEEK_SET);
-          qDebug()<<"fread" << __LINE__;
-          if(fread(viewbuf + signalcomp[i]->viewbufoffset, readsize, 1, signalcomp[i]->edfhdr->file_hdl)!=1)
-          {
-            live_stream_active = 0;
-            QMessageBox messagewindow(QMessageBox::Critical, "Error", "A read error occurred. 6");
-            messagewindow.exec();
-            remove_all_signals();
-            return;
-          }
-        }
-      }
+      }// end mmRecord
+      //*/
     }
 
+
     signalcomp[i]->sample_stop += signalcomp[i]->sample_start;
-  }
+  } // end for
+  qDebug()<<"end loop";
 
   if(signalcomps && (!signal_averaging_active))
   {
@@ -857,7 +863,7 @@ void UI_Mainwindow::setup_viewbuf()
 
     remove_trailing_zeros(viewtime_string);
     remove_trailing_zeros(pagetime_string);
-  }
+  } // end if(signalcomps && (!signal_averaging_active))
 
   if(!signal_averaging_active)
   {
@@ -922,33 +928,425 @@ void UI_Mainwindow::setup_viewbuf()
         spectrumdock[r]->rescan();
       }
     }
-  }
+  } // end if(!signal_averaging_active)
 
-//   printf("\n");
-//
-//   for(int n=0; n<signalcomps; n++)
-//   {
-//     printf("signalcomp: %i  filenum: %i  signal: %i  viewbufoffset: %i  buf_offset: %i\n",
-//            n,
-//            signalcomp[n]->filenum, signalcomp[n]->edfsignal[0],
-//            signalcomp[n]->viewbufoffset,
-//            signalcomp[n]->edfhdr->edfparam[signalcomp[n]->edfsignal[0]].buf_offset);
-//   }
+   printf("\n");
+
+   for(int n=0; n<signalcomps; n++)
+   {
+     printf("signalcomp: %i  filenum: %i  signal: %i  viewbufoffset: %i  buf_offset: %i\n",
+            n,
+            signalcomp[n]->filenum, signalcomp[n]->edfsignal[0],
+            signalcomp[n]->viewbufoffset,
+            signalcomp[n]->edfhdr->edfparam[signalcomp[n]->edfsignal[0]].buf_offset);
+   }
+
+   // ---------------------------------------------- wang draw code -----------------------------------------------------
+   drawSimulate();
 }
+void UI_Mainwindow::drawSimulate(){
+    int i, j, k, n, x1, y1, x2, y2,
+        signalcomps,
+        baseline,
+        value,
+        minimum,
+        maximum,
+        runin_samples,
+        stat_zero_crossing=0, h, w;
+    int printsize_y_factor;
+    struct graphicBufStruct *graphicBuf;
+
+    int* screensamples = (int *)calloc(1, sizeof(int[MAXSIGNALS]));
+
+    int printing = 1;
+    long long s, s2;
+    double dig_value=0.0,
+             f_tmp=0.0;
+
+    union {
+          unsigned int one;
+          signed int one_signed;
+          unsigned short two[2];
+          signed short two_signed[2];
+          unsigned char four[4];
+        } var;
+    // else use_threads viewcurve.cpp: line 2681 ~ line 3105
+
+    for(i=0; i<signalcomps; i++)
+    {
+      signalcomp[i]->max_dig_value = -2147483647;
+      signalcomp[i]->min_dig_value = 2147483647;
+      signalcomp[i]->stat_cnt = 0;
+      signalcomp[i]->stat_zero_crossing_cnt = 0;
+      signalcomp[i]->stat_sum = 0.0;
+      signalcomp[i]->stat_sum_sqr = 0.0;
+      signalcomp[i]->stat_sum_rectified = 0.0;
+
+      baseline = h / (signalcomps + 1);
+      baseline *= (i + 1);
+
+      signalcomp[i]->pixels_shift = signalcomp[i]->sample_timeoffset_part / signalcomp[i]->sample_pixel_ratio;
+
+      for(s=signalcomp[i]->sample_start; s<signalcomp[i]->samples_on_screen; s++)
+      {
+        if(s>=signalcomp[i]->sample_stop)  break;
+
+        dig_value = 0.0;
+        s2 = s + signalcomp[i]->sample_timeoffset - signalcomp[i]->sample_start;
+
+        for(j=0; j<signalcomp[i]->num_of_signals; j++)
+        {
+          if(signalcomp[i]->edfhdr->bdf)
+          {
+            var.two[0] = *((unsigned short *)(
+              viewbuf
+              + signalcomp[i]->viewbufoffset
+              + (signalcomp[i]->edfhdr->recordsize * (s2 / signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[j]].smp_per_record))
+              + signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[j]].buf_offset
+              + ((s2 % signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[j]].smp_per_record) * 3)));
+
+            var.four[2] = *((unsigned char *)(
+              viewbuf
+              + signalcomp[i]->viewbufoffset
+              + (signalcomp[i]->edfhdr->recordsize * (s2 / signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[j]].smp_per_record))
+              + signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[j]].buf_offset
+              + ((s2 % signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[j]].smp_per_record) * 3)
+              + 2));
+
+            if(var.four[2]&0x80)
+            {
+              var.four[3] = 0xff;
+            }
+            else
+            {
+              var.four[3] = 0x00;
+            }
+
+            f_tmp = var.one_signed;
+          }
+
+          if(signalcomp[i]->edfhdr->edf)
+          {
+            f_tmp = *(((short *)(
+              viewbuf
+              + signalcomp[i]->viewbufoffset
+              + (signalcomp[i]->edfhdr->recordsize * (s2 / signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[j]].smp_per_record))
+              + signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[j]].buf_offset))
+              + (s2 % signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[j]].smp_per_record));
+          }
+
+          f_tmp += signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[j]].offset;
+          f_tmp *= signalcomp[i]->factor[j];
+
+          dig_value += f_tmp;
+        }
+
+        if(signalcomp[i]->spike_filter)
+        {
+          if(s==signalcomp[i]->sample_start)
+          {
+            if(this->edfheaderlist[signalcomp[i]->filenum]->viewtime<=0)
+            {
+              reset_spike_filter(signalcomp[i]->spike_filter);
+            }
+            else
+            {
+              spike_filter_restore_buf(signalcomp[i]->spike_filter);
+            }
+          }
+
+          dig_value = run_spike_filter(dig_value, signalcomp[i]->spike_filter);
+        }
+
+        for(k=0; k<signalcomp[i]->filter_cnt; k++)
+        {
+          if(s==signalcomp[i]->sample_start)
+          {
+            if(this->edfheaderlist[signalcomp[i]->filenum]->viewtime==0)
+            {
+              reset_filter(dig_value, signalcomp[i]->filter[k]);
+            }
+            else
+            {
+              signalcomp[i]->filter[k]->old_input = signalcomp[i]->filterpreset_a[k];
+              signalcomp[i]->filter[k]->old_output = signalcomp[i]->filterpreset_b[k];
+            }
+          }
+
+          dig_value = first_order_filter(dig_value, signalcomp[i]->filter[k]);
+        }
+
+        for(k=0; k<signalcomp[i]->ravg_filter_cnt; k++)
+        {
+          if(s==signalcomp[i]->sample_start)
+          {
+            if((this->edfheaderlist[signalcomp[i]->filenum]->viewtime <= 0) && signalcomp[i]->ravg_filter_setup[k])
+            {
+              reset_ravg_filter(dig_value, signalcomp[i]->ravg_filter[k]);
+            }
+            else
+            {
+              ravg_filter_restore_buf(signalcomp[i]->ravg_filter[k]);
+            }
+
+            signalcomp[i]->ravg_filter_setup[k] = 0;
+          }
+
+          dig_value = run_ravg_filter(dig_value, signalcomp[i]->ravg_filter[k]);
+        }
+
+        for(k=0; k<signalcomp[i]->fidfilter_cnt; k++)
+        {
+          if(s==signalcomp[i]->sample_start)
+          {
+            if((this->edfheaderlist[signalcomp[i]->filenum]->viewtime <= 0) && signalcomp[i]->fidfilter_setup[k])
+            {
+              runin_samples = signalcomp[i]->edfhdr->edfparam[signalcomp[i]->edfsignal[0]].sf_f / signalcomp[i]->fidfilter_freq[k];
+
+              runin_samples *= 26;
+
+              if(runin_samples < 10)
+              {
+                runin_samples = 10;
+              }
+
+              for(n=0; n<runin_samples; n++)
+              {
+                signalcomp[i]->fidfuncp[k](signalcomp[i]->fidbuf[k], dig_value);
+              }
+
+              memcpy(signalcomp[i]->fidbuf2[k], signalcomp[i]->fidbuf[k], fid_run_bufsize(signalcomp[i]->fid_run[k]));
+            }
+            else
+            {
+              memcpy(signalcomp[i]->fidbuf[k], signalcomp[i]->fidbuf2[k], fid_run_bufsize(signalcomp[i]->fid_run[k]));
+            }
+
+            signalcomp[i]->fidfilter_setup[k] = 0;
+          }
+
+          dig_value = signalcomp[i]->fidfuncp[k](signalcomp[i]->fidbuf[k], dig_value);
+        }
+
+        if(signalcomp[i]->fir_filter != NULL)
+        {
+          if(s==signalcomp[i]->sample_start)
+          {
+            if(this->edfheaderlist[signalcomp[i]->filenum]->viewtime<=0)
+            {
+              reset_fir_filter(0, signalcomp[i]->fir_filter);
+            }
+            else
+            {
+              fir_filter_restore_buf(signalcomp[i]->fir_filter);
+            }
+          }
+
+          dig_value = run_fir_filter(dig_value, signalcomp[i]->fir_filter);
+        }
+
+        if(signalcomp[i]->plif_ecg_filter)
+        {
+          if(s==signalcomp[i]->sample_start)
+          {
+            if(this->edfheaderlist[signalcomp[i]->filenum]->viewtime<=0)
+            {
+              plif_reset_subtract_filter(signalcomp[i]->plif_ecg_filter, 0);
+            }
+            else
+            {
+              plif_subtract_filter_state_copy(signalcomp[i]->plif_ecg_filter, signalcomp[i]->plif_ecg_filter_sav);
+            }
+          }
+
+          dig_value = plif_run_subtract_filter(dig_value, signalcomp[i]->plif_ecg_filter);
+        }
+
+        if(signalcomp[i]->ecg_filter != NULL)
+        {
+          if(s==signalcomp[i]->sample_start)
+          {
+            if(this->edfheaderlist[signalcomp[i]->filenum]->viewtime <= 0LL)
+            {
+              reset_ecg_filter(signalcomp[i]->ecg_filter);
+            }
+            else
+            {
+              ecg_filter_restore_buf(signalcomp[i]->ecg_filter);
+            }
+          }
+
+          dig_value = run_ecg_filter(dig_value, signalcomp[i]->ecg_filter);
+        }
+
+        if(signalcomp[i]->zratio_filter != NULL)
+        {
+          if(s==signalcomp[i]->sample_start)
+          {
+            if(this->edfheaderlist[signalcomp[i]->filenum]->viewtime <= 0LL)
+            {
+              reset_zratio_filter(signalcomp[i]->zratio_filter);
+            }
+            else
+            {
+              zratio_filter_restore_buf(signalcomp[i]->zratio_filter);
+            }
+          }
+
+          dig_value = run_zratio_filter(dig_value, signalcomp[i]->zratio_filter);
+        }
+
+        if(printing)
+        {
+          value = (int)(dig_value * signalcomp[i]->sensitivity[0] * printsize_y_factor) * signalcomp[i]->polarity;
+        }
+        else
+        {
+          value = (int)(dig_value * signalcomp[i]->sensitivity[0]) * signalcomp[i]->polarity;
+
+          signalcomp[i]->stat_cnt++;
+          signalcomp[i]->stat_sum += dig_value;
+          signalcomp[i]->stat_sum_sqr += ((dig_value) * (dig_value));
+          if(dig_value < 0)
+          {
+            signalcomp[i]->stat_sum_rectified += (dig_value * -1.0);
+          }
+          else
+          {
+            signalcomp[i]->stat_sum_rectified += dig_value;
+          }
+
+          if(s==signalcomp[i]->sample_start)
+          {
+            if(dig_value < 0.0)
+            {
+              stat_zero_crossing = 0;
+            }
+            else
+            {
+              stat_zero_crossing = 1;
+            }
+          }
+          else
+          {
+            if(dig_value < 0.0)
+            {
+              if(stat_zero_crossing)
+              {
+                stat_zero_crossing = 0;
+
+                signalcomp[i]->stat_zero_crossing_cnt++;
+              }
+            }
+            else
+            {
+              if(!stat_zero_crossing)
+              {
+                stat_zero_crossing = 1;
+
+                signalcomp[i]->stat_zero_crossing_cnt++;
+              }
+            }
+          }
+        }
+
+        if(((int)dig_value)>signalcomp[i]->max_dig_value)  signalcomp[i]->max_dig_value = dig_value;
+        if(((int)dig_value)<signalcomp[i]->min_dig_value)  signalcomp[i]->min_dig_value = dig_value;
+
+        if(printing)
+        {
+          value = baseline - value + (int)(signalcomp[i]->screen_offset * printsize_y_factor);
+        }
+        else
+        {
+          value = baseline - value + signalcomp[i]->screen_offset;
+        }
+
+        if(s>=signalcomp[i]->sample_start)
+        {
+          x1 = (int)((double)s / signalcomp[i]->sample_pixel_ratio);
+          y1 = signalcomp[i]->oldvalue;
+          x2 = (int)(((double)(s + 1)) / signalcomp[i]->sample_pixel_ratio);
+          y2 = value;
+
+          if(signalcomp[i]->samples_on_screen < w)
+          {
+            if(linear_interpol)
+            {
+              x1 = (int)(((double)(s - 1)) / signalcomp[i]->sample_pixel_ratio);
+              x2 = (int)((double)s / signalcomp[i]->sample_pixel_ratio);
+              qDebug()<<"viewCurve"<<__LINE__;
+              graphicBuf[screensamples[i]].graphicLine[i].x1 = x1 - signalcomp[i]->pixels_shift;
+              graphicBuf[screensamples[i]].graphicLine[i].y1 = y1;
+              graphicBuf[screensamples[i]].graphicLine[i].x2 = x2 - signalcomp[i]->pixels_shift;
+              graphicBuf[screensamples[i]].graphicLine[i].y2 = y2;
+            }
+            else
+            {
+              graphicBuf[screensamples[i]].graphicLine[i].x1 = x1 - signalcomp[i]->pixels_shift;
+              graphicBuf[screensamples[i]].graphicLine[i].y1 = y2;
+              graphicBuf[screensamples[i]].graphicLine[i].x2 = x2 - signalcomp[i]->pixels_shift;
+              graphicBuf[screensamples[i]].graphicLine[i].y2 = y2;
+
+              if(screensamples[i])
+              {
+                screensamples[i]++;
+
+                graphicBuf[screensamples[i]].graphicLine[i].x1 = x1 - signalcomp[i]->pixels_shift;
+                graphicBuf[screensamples[i]].graphicLine[i].y1 = y1;
+                graphicBuf[screensamples[i]].graphicLine[i].x2 = x1 - signalcomp[i]->pixels_shift;
+                graphicBuf[screensamples[i]].graphicLine[i].y2 = y2;
+              }
+            }
+
+            screensamples[i]++;
+          }
+          else
+          {
+            if(!screensamples[i])
+            {
+              graphicBuf[screensamples[i]].graphicLine[i].x1 = x1;
+              graphicBuf[screensamples[i]].graphicLine[i].y1 = y1;
+              graphicBuf[screensamples[i]].graphicLine[i].x2 = x2;
+              graphicBuf[screensamples[i]].graphicLine[i].y2 = y2;
+
+              screensamples[i]++;
+            }
+            else
+            {
+              if((x1==x2)&&(x1==graphicBuf[screensamples[i]-1].graphicLine[i].x1)&&
+                (graphicBuf[screensamples[i]-1].graphicLine[i].x1==graphicBuf[screensamples[i]-1].graphicLine[i].x2))
+              {
+                maximum = y1;
+                if(y2>maximum)  maximum = y2;
+                if(graphicBuf[screensamples[i]-1].graphicLine[i].y1>maximum)  maximum = graphicBuf[screensamples[i]-1].graphicLine[i].y1;
+                if(graphicBuf[screensamples[i]-1].graphicLine[i].y2>maximum)  maximum = graphicBuf[screensamples[i]-1].graphicLine[i].y2;
+
+                minimum = y1;
+                if(y2<minimum)  minimum = y2;
+                if(graphicBuf[screensamples[i]-1].graphicLine[i].y1<minimum)  minimum = graphicBuf[screensamples[i]-1].graphicLine[i].y1;
+                if(graphicBuf[screensamples[i]-1].graphicLine[i].y2<minimum)  minimum = graphicBuf[screensamples[i]-1].graphicLine[i].y2;
+
+                graphicBuf[screensamples[i]-1].graphicLine[i].y1 = maximum;
+                graphicBuf[screensamples[i]-1].graphicLine[i].y2 = minimum;
+              }
+              else
+              {
+                graphicBuf[screensamples[i]].graphicLine[i].x1 = x1;
+                graphicBuf[screensamples[i]].graphicLine[i].y1 = y1;
+                graphicBuf[screensamples[i]].graphicLine[i].x2 = x2;
+                graphicBuf[screensamples[i]].graphicLine[i].y2 = y2;
+
+                if(screensamples[i]<(w * 2))  screensamples[i]++;
+              }
+            }
+          }
+        }
+
+        signalcomp[i]->oldvalue = value;
 
 
+      }
+    } // end for(i=0; i<signalcomps; i++)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

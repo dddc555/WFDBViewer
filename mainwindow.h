@@ -45,6 +45,8 @@
 #include <QDialog>
 #include <QLabel>
 #include <QResizeEvent>
+#include <stdio.h>
+#include <QFileInfo>
 #if QT_VERSION < 0x050000
   #include <QPlastiqueStyle>
   #include <QGtkStyle>
@@ -401,6 +403,9 @@ private:
        recent_file_path[MAX_RECENTFILES][MAX_PATH_LENGTH],
        option_str[MAX_PATH_LENGTH];
   char selectedWFDBHeaderFilePath[MAX_PATH_LENGTH];
+  char targetAnnotation_path[MAX_PATH_LENGTH];
+  FILE *annotationOutputfile;
+  int annotationBeforeTimeIndex;
 
   QPushButton  *former_page_Act,
            *shift_page_left_Act,
@@ -522,6 +527,25 @@ private:
   void record_recent(char *);
   void _open_wfdb(char *wfdb_path);
   void _export2_to_ascii(char *wfdb_path = NULL);
+  void save_ecg();
+  void drawSimulate();
+
+  // qrs detec
+  void drawSimulateQRS();
+  void detect_qrs_edf();
+  HeartRateCalc mHeartRate;
+
+  uint16_t qrs_delay = 0;
+  uint16_t prev_delay = 0;
+  uint16_t sample_count = 0;
+  uint16_t total_sample_count = 0;
+
+
+  bool initQRS();
+  void closeQRSFile();
+  void onECGReceived(int ecg);
+  // qrs detec - end
+
 public slots:
   void remove_all_signals();
   void edfplus_remove_duplicate_annotations();

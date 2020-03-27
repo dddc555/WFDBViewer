@@ -71,7 +71,7 @@ UI_Mainwindow::UI_Mainwindow()
 
   check_for_updates = 1;
 
-  use_threads = 1;
+  use_threads = 0;
 
   auto_dpi = 1;
 
@@ -1236,6 +1236,7 @@ void UI_Mainwindow::updateText(){
   filter_remove_all_fir_act->setText(tr("Remove all FIR filters"));
   filter_spike_act ->setText(tr("Spike"));
   filter_remove_all_spike_act->setText(tr("Remove all spike filters"));
+  tools_detect_qrs_act->setText(tr("Detect QRS and generate annotations"));
 
   toolsmenu->setTitle(tr("Tools"));
 
