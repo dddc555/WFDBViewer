@@ -66,7 +66,7 @@
 #include "edf_annot_list.h"
 #include "annotlist_filter_dialog.h"
 #include "statistics_dialog.h"
-#include "hrv_dialog.h"
+#include "hrv/hrv_dialog.h"
 
 
 class UI_Mainwindow;

@@ -75,7 +75,7 @@ UI_HrvWindow(struct signalcompblock *,
 ~UI_HrvWindow();
 
 UI_Mainwindow *mainwindow;
-QString secondToFormat(int second);
+
 void changedRange();
 
 private:
@@ -115,7 +115,7 @@ QPushButton  *pushButtonClose, *pushButtonExport;
 SignalOneCurve    *curveRight;
 SignalTwoCurve *curveLeft;
 
-int beat_cnt,second,
+int beat_cnt, second,
     bpm_distribution[300],
 
 

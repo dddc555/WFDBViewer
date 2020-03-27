@@ -67,7 +67,7 @@ class SignalTwoCurve: public QWidget
   Q_OBJECT
 
 public:
-  SignalTwoCurve(QWidget *parent=0);
+  SignalTwoCurve(QWidget *parent=0, int second=0);
   ~SignalTwoCurve();
 
   QSize sizeHint() const {return minimumSizeHint(); }
@@ -76,6 +76,7 @@ public:
   void setSignalColor(QColor);
   void setSignal2Color(QColor);
   void setTraceWidth(int);
+  static QString secondToFormat(int second);
   void setBackgroundColor(QColor);
   void setRasterColor(QColor);
   void setBorderColor(QColor);
@@ -128,7 +129,7 @@ public slots:
 #if QT_VERSION < 0x050000
   void print_to_postscript();
 #endif
-  void print_to_pdf();
+  void print_to_pdf(QPrinter *curve_printer);
   QPixmap print_to_image();
   void print_to_printer();
   void print_to_ascii();
@@ -162,6 +163,7 @@ private:
   QPen Marker1Pen,
        Marker2Pen;
 
+  int second;
   double max_value,
          min_value,
          max2_value,

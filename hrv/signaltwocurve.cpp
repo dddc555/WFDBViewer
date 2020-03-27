@@ -30,8 +30,9 @@
 #include "SignalTwoCurve.h"
 
 
-SignalTwoCurve::SignalTwoCurve(QWidget *w_parent) : QWidget(w_parent)
+SignalTwoCurve::SignalTwoCurve(QWidget *w_parent, int _second) : QWidget(w_parent)
 {
+  this->second = _second;
   setAttribute(Qt::WA_OpaquePaintEvent);
 
   recent_savedir[0] = 0;
@@ -444,28 +445,16 @@ void SignalTwoCurve::print_to_postscript()
 #endif
 
 
-void SignalTwoCurve::print_to_pdf()
+void SignalTwoCurve::print_to_pdf(QPrinter *curve_printer)
 {
-  char path[SC_MAX_PATH_LEN];
-  path[0] = 0;
-
-  get_directory_from_path(recent_savedir, path, SC_MAX_PATH_LEN);
-
-  QPrinter curve_printer(QPrinter::HighResolution);
-
-  curve_printer.setOutputFormat(QPrinter::PdfFormat);
-  curve_printer.setOutputFileName(path);
-  curve_printer.setPageSize(QPrinter::A4);
-  curve_printer.setOrientation(QPrinter::Landscape);
-
   backup_colors_for_printing();
 
-  QPainter paint(&curve_printer);
+  QPainter paint(curve_printer);
 #if QT_VERSION >= 0x050000
   paint.setRenderHint(QPainter::Qt4CompatiblePainting, true);
 #endif
 
-  drawWidget_to_printer(&paint, curve_printer.pageRect().width(), curve_printer.pageRect().height());
+  drawWidget_to_printer(&paint, curve_printer->pageRect().width(), curve_printer->pageRect().height());
 
   restore_colors_after_printing();
 }
@@ -519,6 +508,7 @@ void SignalTwoCurve::drawWidget_to_printer(QPainter *painter, int curve_w, int c
 {
   int i, j,
       precision,
+      precision2,
       bordersize_backup=0,
       p_w,
       p_divisor,
@@ -648,7 +638,9 @@ void SignalTwoCurve::drawWidget_to_printer(QPainter *painter, int curve_w, int c
 
       p_tmp = (double)(i - p_ruler_startvalue) * p_pixels_per_unit;
 
-      painter->drawText(bordersize + p_tmp - (30 * p_factor),  curve_h - bordersize + (18 * p_factor), 60 * p_factor, 16 * p_factor, Qt::AlignCenter | Qt::TextSingleLine, str);
+      QString timeStr = secondToFormat(this->second * i / p_ruler_endvalue);
+
+      painter->drawText(bordersize + p_tmp - (30 * p_factor),  curve_h - bordersize + (18 * p_factor), 60 * p_factor, 16 * p_factor, Qt::AlignCenter | Qt::TextSingleLine, timeStr);
 
       painter->drawLine(bordersize + p_tmp, curve_h - bordersize + (5 * p_factor), bordersize + p_tmp, curve_h - bordersize + ((5 + 10) * p_factor));
     }
@@ -753,6 +745,106 @@ void SignalTwoCurve::drawWidget_to_printer(QPainter *painter, int curve_w, int c
         painter->drawText((3 * p_factor), bordersize + p2_tmp - (8 * p_factor), (40 * p_factor), (16 * p_factor), Qt::AlignRight | Qt::AlignVCenter | Qt::TextSingleLine, q_str);
 
         painter->drawLine(bordersize - (5 * p_factor), bordersize + p2_tmp, bordersize - (15 * p_factor), bordersize + p2_tmp);
+      }
+    }
+  }
+
+  // right vertical ruler
+  p_h = curve_h - bordersize - bordersize;
+
+  p2_multiplier = 1;
+
+  while(((max2_value - min2_value) * p2_multiplier) < 10000.0)
+  {
+    p2_multiplier *= 10;
+
+    if(p2_multiplier > 10000000)
+    {
+      break;
+    }
+  }
+
+  p2_ruler_startvalue = min2_value * p2_multiplier;
+
+  p2_ruler_endvalue = max2_value * p2_multiplier;
+
+  p2_range = p2_ruler_endvalue - p2_ruler_startvalue;
+
+  if(p2_range < 0)  p2_range *= -1;
+
+  p2_pixels_per_unit = (double)p_h / (double)p2_range;
+
+  p2_divisor = 1;
+
+  while((p2_range / p2_divisor) > 10)
+  {
+    p2_divisor *= 2;
+
+    if((p2_range / p2_divisor) <= 10)
+    {
+      break;
+    }
+
+    p2_divisor /= 2;
+
+    p2_divisor *= 5;
+
+    if((p2_range / p2_divisor) <= 10)
+    {
+      break;
+    }
+
+    p2_divisor *= 2;
+  }
+
+  if(drawVruler && (bordersize > (29 * p_factor)))
+  {
+    painter->drawLine(curve_w - bordersize + 120, bordersize, curve_w - bordersize + 120, curve_h - bordersize);
+
+    precision2 = 0;
+
+    if((max2_value < 10.0) && (max2_value > -10.0) && (min2_value < 10.0) && (min2_value > -10.0))
+    {
+      precision2 = 1;
+
+      if((max2_value < 1.0) && (max2_value > -1.0) && (min2_value < 1.0) && (min2_value > -1.0))
+      {
+        precision2 = 2;
+
+        if((max2_value < 0.1) && (max2_value > -0.1) && (min2_value < 0.1) && (min2_value > -0.1))
+        {
+          precision2 = 3;
+
+          if((max2_value < 0.01) && (max2_value > -0.01) && (min2_value < 0.01) && (min2_value > -0.01))
+          {
+            precision2 = 4;
+          }
+        }
+      }
+    }
+
+    for(i = (p2_ruler_startvalue / p2_divisor) * p2_divisor; i <= p2_ruler_endvalue; i += p2_divisor)
+    {
+      if(i < p2_ruler_startvalue)
+      {
+        continue;
+      }
+
+      q_str.setNum((double)i / (double)p2_multiplier, 'f', precision2);
+
+      p2_tmp = (double)(i - p2_ruler_startvalue) * p2_pixels_per_unit;
+
+      if(curveUpSideDown == false)
+      {
+        painter->drawText((curve_w - bordersize + 240 ), curve_h - bordersize - p2_tmp - (8 * p_factor), (10 * p_factor), (16 * p_factor), Qt::AlignRight | Qt::AlignVCenter | Qt::TextSingleLine, q_str);
+
+        painter->drawLine(curve_w - bordersize + 120, curve_h - bordersize - p2_tmp, curve_w - bordersize + 270, curve_h - bordersize - p2_tmp);
+      }
+      else
+      {
+        painter->drawText((curve_w - bordersize - 5 + 3 * p_factor), bordersize + p2_tmp - (8 * p_factor), (40 * p_factor), (16 * p_factor), Qt::AlignRight | Qt::AlignVCenter | Qt::TextSingleLine, q_str);
+
+        painter->drawLine(curve_w - bordersize - 5 - (5 * p_factor), bordersize + p2_tmp, bordersize - (15 * p_factor), bordersize + p2_tmp);
       }
     }
   }
@@ -1026,6 +1118,15 @@ void SignalTwoCurve::drawWidget(QPainter *painter, int curve_w, int curve_h)
   {
     return;
   }
+  // draw Heart Rate, RRI Text
+  painter->setPen(SignalColor);
+
+  painter->drawText(bordersize, bordersize - 15, tr("Heart Rate"));
+  QFontMetrics fm(*sigcurve_font);
+  int textWidth = fm.width(tr("RRI"));
+  painter->setPen(Signal2Color);
+  painter->drawText(w - bordersize - textWidth, bordersize - 15, tr("RRI"));
+
 
 /////////////////////////////////// draw the horizontal ruler ///////////////////////////////////////////
 
@@ -1100,13 +1201,14 @@ void SignalTwoCurve::drawWidget(QPainter *painter, int curve_w, int curve_h)
         continue;
       }
 
-      convert_to_metric_suffix(str, (double)lk / (double)p_multiplier, 4);
+//      convert_to_metric_suffix(str, (double)lk / (double)p_multiplier, 4);
+      QString timeStr = secondToFormat(this->second * lk/ p_ruler_endvalue);
 
-      remove_trailing_zeros(str);
+//      remove_trailing_zeros(str);
 
       p_tmp = (double)(lk - p_ruler_startvalue) * p_pixels_per_unit;
 
-      painter->drawText(bordersize + p_tmp - 30,  curve_h - bordersize + 18, 60, 16, Qt::AlignCenter | Qt::TextSingleLine, str);
+      painter->drawText(bordersize + p_tmp - 30,  curve_h - bordersize + 18, 60, 16, Qt::AlignCenter | Qt::TextSingleLine, timeStr);
 
       painter->drawLine(bordersize + p_tmp, curve_h - bordersize + 5, bordersize + p_tmp, curve_h - bordersize + 5 + 10);
     }
@@ -1648,7 +1750,7 @@ void SignalTwoCurve::drawWidget(QPainter *painter, int curve_w, int curve_h)
       }
     }// end fbuf2
   }
-  painter->fillRect(QRectF(float(h_step * begin ), 0, h_step * (to-begin), (float)(h * 0.8f)), QBrush(QColor(0xFF,0xB5,0xB5, 75)));
+  painter->fillRect(QRectF(float(h_step * begin ), 0, h_step * (to-begin), (float)(h * 0.02f)), QBrush(QColor(0xFF,0xB5,0xB5, 190)));
   /////////////////////////////////// draw the line ///////////////////////////////////////////
 
   if(line1Enabled == true)
@@ -2028,3 +2130,16 @@ int SignalTwoCurve::get_directory_from_path(char *dest, const char *src, int ssi
   return strlen(dest);
 }
 
+
+static QString SignalTwoCurve::secondToFormat(int _second) {
+    QString str;
+    int minutes = _second / 60;
+    if(minutes <=0){
+          str.sprintf("00:%.2i", _second);
+          return str;
+    }
+    _second = _second / 60;
+    int hours = _second / 60;
+    str.sprintf("%.2i:%.2i", hours, minutes);
+    return str;
+}

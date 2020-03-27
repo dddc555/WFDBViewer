@@ -638,12 +638,12 @@ void SignalOneCurve::print_to_pdf(QPrinter *curve_printer)
 {
   backup_colors_for_printing();
 
-  QPainter paint(&curve_printer);
+  QPainter paint(curve_printer);
 #if QT_VERSION >= 0x050000
   paint.setRenderHint(QPainter::Qt4CompatiblePainting, true);
 #endif
 
-  drawWidget_to_printer(&paint, curve_printer.pageRect().width(), curve_printer.pageRect().height());
+  drawWidget_to_printer(&paint, curve_printer->pageRect().width(), curve_printer->pageRect().height());
 
   restore_colors_after_printing();
 }

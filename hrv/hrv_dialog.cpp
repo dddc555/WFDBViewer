@@ -90,7 +90,7 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
     StatDialog->setMinimumSize(1200, 400);
     StatDialog->setSizeGripEnabled(true);
 
-    curveLeft = new SignalTwoCurve(StatDialog);
+    curveLeft = new SignalTwoCurve(StatDialog, second);
     curveLeft->setSignalColor(QColor(0x70,0xAD,0x47));
     curveLeft->setSignal2Color(QColor(0x44, 0x72, 0xC4));
 
@@ -133,7 +133,7 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
     labelStartTimeValue->setText("00:00");
     labelEndTimeValue = new QLabel;
 
-    QString  str = secondToFormat(second);
+    QString  str = SignalTwoCurve::secondToFormat(second);
     qDebug()<<"hours forma"<<str;
 
     labelEndTimeValue->setText(str);
@@ -425,17 +425,10 @@ void UI_HrvWindow::exec_sidemenu()
 {
   sidemenu = new QDialog(StatDialog);
   sidemenu ->setWindowFlags(sidemenu ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
-  bool extra_button = true;
-  if(extra_button)
-  {
-    sidemenu->setMinimumSize(120, 190);
-    sidemenu->setMaximumSize(120, 190);
-  }
-  else
-  {
-    sidemenu->setMinimumSize(120, 160);
-    sidemenu->setMaximumSize(120, 160);
-  }
+
+  sidemenu->setMinimumSize(120, 160);
+  sidemenu->setMaximumSize(120, 160);
+
   sidemenu->setWindowTitle(tr("Export"));
   sidemenu->setModal(true);
   sidemenu->setAttribute(Qt::WA_DeleteOnClose, true);
@@ -462,22 +455,12 @@ void UI_HrvWindow::exec_sidemenu()
   sidemenuButton5->setGeometry(10, 130, 100, 20);
   sidemenuButton5->setText(tr("to CSV"));
   QPushButton *sidemenuButton6;
-  if(extra_button)
-  {
-   sidemenuButton6 = new QPushButton(sidemenu);
-    sidemenuButton6->setGeometry(10, 160, 100, 20);
-    sidemenuButton6->setText("Extra");
-  }
 
   QObject::connect(sidemenuButton1, SIGNAL(clicked()), this, SLOT(print_to_printer()));
 
   QObject::connect(sidemenuButton3, SIGNAL(clicked()), this, SLOT(print_to_pdf()));
   QObject::connect(sidemenuButton4, SIGNAL(clicked()), this, SLOT(print_to_image()));
   QObject::connect(sidemenuButton5, SIGNAL(clicked()), this, SLOT(print_to_ascii()));
-  if(extra_button)
-  {
-    QObject::connect(sidemenuButton6, SIGNAL(clicked()), this, SLOT(send_button_event()));
-  }
 
   sidemenu->exec();
 }
@@ -489,7 +472,7 @@ void UI_HrvWindow::print_to_printer(){
     curve_printer.setPageSize(QPrinter::A4);
     curve_printer.setOrientation(QPrinter::Landscape);
 
-    QPrintDialog printerdialog(&curve_printer, this);
+    QPrintDialog printerdialog(&curve_printer, StatDialog);
     printerdialog.setWindowTitle(tr("Print"));
 
     if(!(printerdialog.exec()==QDialog::Accepted))
@@ -524,7 +507,7 @@ void UI_HrvWindow::print_to_pdf(){
     curve_printer.setOutputFileName(path);
     curve_printer.setPageSize(QPrinter::A4);
     curve_printer.setOrientation(QPrinter::Landscape);
-    curveRight->print_to_pdf(&curve_printer);
+//    curveRight->print_to_pdf(&curve_printer);
     curveLeft->print_to_pdf(&curve_printer);
 }
 
@@ -551,17 +534,28 @@ void UI_HrvWindow::print_to_image(){
 
     get_directory_from_path(mainwindow->recent_savedir, path, SC_MAX_PATH_LEN);
 
-    QPixmap pixmap = curveRight->print_to_image();
-    QPixmap pixmap2 = curveLeft->print_to_image();
+    QPixmap pixmap2 = curveRight->print_to_image();
+    QPixmap pixmap = curveLeft->print_to_image();
 
     int height = pixmap.height();
     if( height < pixmap2.height() ) height = pixmap2.height();
+
+//    QPixmap pixmapTotal(pixmap.width() + pixmap2.width(), height);
+//    QPainter painter(&pixmapTotal);
+//    painter.drawPixmap(
+//            QRectF(0, 0, pixmap.width(), pixmap.height()), pixmap,
+//            QRectF(pixmap.width(), 0, pixmap2.width(), pixmap2.height()));
 
     QPixmap pixmapTotal(pixmap.width() + pixmap2.width(), height);
     QPainter painter(&pixmapTotal);
     painter.drawPixmap(
             QRectF(0, 0, pixmap.width(), pixmap.height()), pixmap,
-            QRectF(pixmap.width(), 0, pixmap2.width(), pixmap2.height()));
+            QRectF(0, 0, pixmap.width(), pixmap.height()));
+
+    painter.drawPixmap(
+            QRectF(pixmap.width(), 0, pixmap2.width(), pixmap2.height()), pixmap2,
+            QRectF(pixmap2.rect()));
+
 
     qDebug()<<"pixmap"<<pixmap.width()<<pixmap.height()<<pixmap2.width()<<pixmap2.height();
     pixmapTotal.save(path, "PNG", 90);
@@ -785,18 +779,6 @@ UI_HrvWindow::~UI_HrvWindow(){
     free(beat_interval_list);
 }
 
-QString UI_HrvWindow::secondToFormat(int _second) {
-    QString str;
-    int minutes = _second / 60;
-    if(minutes <=0){
-          str.sprintf("00:%.2i", _second);
-          return str;
-    }
-    _second = _second / 60;
-    int hours = _second / 60;
-    str.sprintf("%.2i:%.2i", hours, minutes);
-    return str;
-}
 
 void UI_HrvWindow::startSliderMoved(int)
 {
@@ -869,8 +851,8 @@ void UI_HrvWindow::startTimeSliderMoved(int)
     int currentSecond = this->second * beat_from / beat_cnt;
     int endSecond = this->second * beat_to / beat_cnt;
 
-    labelStartTimeValue->setText(secondToFormat(currentSecond));
-    labelEndTimeValue->setText(secondToFormat(endSecond));
+    labelStartTimeValue->setText(SignalTwoCurve::secondToFormat(currentSecond));
+    labelEndTimeValue->setText(SignalTwoCurve::secondToFormat(endSecond));
 
     curveLeft->drawRegion(beat_from, beat_to);
 
@@ -898,8 +880,8 @@ void UI_HrvWindow::endTimeSliderMoved(int)
     int currentSecond = this->second * beat_from / beat_cnt;
     int endSecond = this->second * beat_to / beat_cnt;
 
-    labelStartTimeValue->setText(secondToFormat(currentSecond));
-    labelEndTimeValue->setText(secondToFormat(endSecond));
+    labelStartTimeValue->setText(SignalTwoCurve::secondToFormat(currentSecond));
+    labelEndTimeValue->setText(SignalTwoCurve::secondToFormat(endSecond));
 
     curveLeft->drawRegion(beat_from, beat_to);
 

@@ -99,9 +99,10 @@ HEADERS += save_annots.h
 HEADERS += filtercurve.h
 HEADERS += utils.h
 HEADERS += signalcurve.h
-HEADERS += signalonecurve.h
 
-HEADERS += signaltwocurve.h
+HEADERS += hrv/signalonecurve.h
+HEADERS += hrv/signaltwocurve.h
+
 HEADERS += spectrumanalyzer.h
 HEADERS += bi9800.h
 HEADERS += edflib.h
@@ -125,7 +126,7 @@ HEADERS += averager_curve_wnd.h
 HEADERS += ecg_filter.h
 HEADERS += ecg_export.h
 HEADERS += statistics_dialog.h
-HEADERS += hrv_dialog.h
+HEADERS += hrv/hrv_dialog.h
 
 HEADERS += filteredblockread.h
 HEADERS += flywheel.h
@@ -222,9 +223,10 @@ SOURCES += save_annots.cpp
 SOURCES += filtercurve.cpp
 SOURCES += utils.c
 SOURCES += signalcurve.cpp
-SOURCES += signalonecurve.cpp
 
-SOURCES += signaltwocurve.cpp
+SOURCES += hrv/signalonecurve.cpp
+SOURCES += hrv/signaltwocurve.cpp
+
 SOURCES += spectrumanalyzer.cpp
 SOURCES += bi9800.cpp
 SOURCES += edflib.c
@@ -248,7 +250,7 @@ SOURCES += averager_curve_wnd.cpp
 SOURCES += ecg_filter.c
 SOURCES += ecg_export.cpp
 SOURCES += statistics_dialog.cpp
-SOURCES += hrv_dialog.cpp
+SOURCES += hrv/hrv_dialog.cpp
 SOURCES += filteredblockread.cpp
 SOURCES += flywheel.cpp
 SOURCES += z_score_dialog.cpp
