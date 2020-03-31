@@ -1059,30 +1059,65 @@
     </message>
 </context>
 <context>
-    <name>SignalTwoCurve</name>
+    <name>SignalOneCurve</name>
+    <message>
+        <source>FFT resolution</source>
+        <translation type="unfinished">FFT解像度</translation>
+    </message>
+    <message>
+        <source>Distribution</source>
+        <translation type="unfinished">分布</translation>
+    </message>
+    <message>
+        <source>blocks of</source>
+        <translation type="unfinished">ブロック　ｘ</translation>
+    </message>
+    <message>
+        <source>samples</source>
+        <translation type="unfinished">サンプル</translation>
+    </message>
+    <message>
+        <source>Frequency</source>
+        <translation type="unfinished">周波数</translation>
+    </message>
     <message>
         <source>Export</source>
         <translation type="unfinished">エクスポート</translation>
     </message>
     <message>
+        <source>Show Cursor</source>
+        <translation type="unfinished">カーソル</translation>
+    </message>
+    <message>
+        <source>Show Controls</source>
+        <translation type="unfinished">コントロール</translation>
+    </message>
+</context>
+<context>
+    <name>SignalTwoCurve</name>
+    <message>
+        <source>Export</source>
+        <translation type="obsolete">エクスポート</translation>
+    </message>
+    <message>
         <source>to printer</source>
-        <translation type="unfinished">プリンター</translation>
+        <translation type="obsolete">プリンター</translation>
     </message>
     <message>
         <source>to PDF</source>
-        <translation type="unfinished">PDF</translation>
+        <translation type="obsolete">PDF</translation>
     </message>
     <message>
         <source>to Image</source>
-        <translation type="unfinished">画像</translation>
+        <translation type="obsolete">画像</translation>
     </message>
     <message>
         <source>to CSV</source>
-        <translation type="unfinished">CSV</translation>
+        <translation type="obsolete">CSV</translation>
     </message>
     <message>
         <source>Print to Image</source>
-        <translation type="unfinished">画像に印刷</translation>
+        <translation type="obsolete">画像に印刷</translation>
     </message>
     <message>
         <source>FFT resolution</source>
@@ -1103,6 +1138,14 @@
     <message>
         <source>Frequency</source>
         <translation type="unfinished">周波数</translation>
+    </message>
+    <message>
+        <source>Heart Rate</source>
+        <translation type="unfinished">心拍数</translation>
+    </message>
+    <message>
+        <source>RRI</source>
+        <translation type="unfinished">RRI</translation>
     </message>
 </context>
 <context>
@@ -1257,7 +1300,7 @@
     </message>
     <message>
         <source>HRV</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HRV</translation>
     </message>
     <message>
         <source>Save file</source>
@@ -1300,7 +1343,7 @@
     </message>
     <message>
         <source>Error, selected file is in use.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">エラー、選択したファイルは使用中です。</translation>
     </message>
     <message>
         <source>Close</source>
@@ -1334,15 +1377,15 @@
     </message>
     <message>
         <source>Convert</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">変換</translation>
     </message>
     <message>
         <source>Select all signals</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">すべての信号を選択</translation>
     </message>
     <message>
         <source>Deselect all signals</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">すべての信号の選択を解除</translation>
     </message>
     <message>
         <source>Select input file</source>
@@ -1742,6 +1785,34 @@
     <message>
         <source>Not enough beats.</source>
         <translation type="unfinished">ビートが足りません。</translation>
+    </message>
+    <message>
+        <source>to printer</source>
+        <translation type="unfinished">プリンター</translation>
+    </message>
+    <message>
+        <source>to PDF</source>
+        <translation type="unfinished">PDF</translation>
+    </message>
+    <message>
+        <source>to Image</source>
+        <translation type="unfinished">画像</translation>
+    </message>
+    <message>
+        <source>to CSV</source>
+        <translation type="unfinished">CSV</translation>
+    </message>
+    <message>
+        <source>Print</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Print to Image</source>
+        <translation type="unfinished">画像に印刷</translation>
+    </message>
+    <message>
+        <source>Heart Rate</source>
+        <translation type="unfinished">心拍数</translation>
     </message>
 </context>
 <context>
@@ -2152,11 +2223,11 @@
     </message>
     <message>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">警告</translation>
     </message>
     <message>
         <source>Annotation file exist, are you replace it</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">注釈ファイルが存在します、それを置き換えますか</translation>
     </message>
     <message>
         <source>Message</source>
@@ -2922,7 +2993,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <name>ViewCurve</name>
     <message>
         <source>Ruler</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">定規</translation>
     </message>
     <message>
         <source>Crosshair</source>
@@ -2958,7 +3029,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Adjust filter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">フィルターを調整する</translation>
     </message>
     <message>
         <source>Statistics</source>
@@ -2966,7 +3037,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Heart Rate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">心拍数</translation>
     </message>
     <message>
         <source>Close</source>

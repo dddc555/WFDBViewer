@@ -311,6 +311,12 @@ long long UI_AnnotationEditwindow::annotEditGetOnset(void)
   tmp *= TIME_DIMENSION;
   tmp += (onset_timeEdit->time().msec() * (TIME_DIMENSION / 1000));
 
+  qDebug()<<"mainwindow->annotations_onset_relative"<<mainwindow->annotations_onset_relative;
+  //**
+  //
+  if(mainwindow->annotations_onset_relative == 0) {
+       tmp -= mainwindow->edfheaderlist[file_num]->l_starttime;
+  }
   if(posNegTimebox->currentIndex() == 1)
   {
     tmp *= -1LL;
@@ -347,30 +353,45 @@ void UI_AnnotationEditwindow::set_selected_annotation(int file_nr, int annot_nr)
 
   annot_descript_lineEdit->setText(QString::fromUtf8(annot->annotation));
 
-  l_tmp = annot->onset - mainwindow->edfheaderlist[annot->file_num]->starttime_offset;
 
-  if(l_tmp < 0LL)
+  //
+  if(mainwindow->annotations_onset_relative)
   {
-    onset_daySpinbox->setValue((-(l_tmp)) / TIME_DIMENSION / 86400);
+      l_tmp = annot->onset - mainwindow->edfheaderlist[annot->file_num]->starttime_offset;
 
-    ta.setHMS(((-(l_tmp)) / TIME_DIMENSION / 3600) % 24,
-            (((-(l_tmp)) / TIME_DIMENSION) % 3600) / 60,
-            ((-(l_tmp)) / TIME_DIMENSION) % 60,
-            ((-(l_tmp)) % TIME_DIMENSION) / 10000);
+      if(l_tmp < 0LL)
+      {
+        onset_daySpinbox->setValue((-(l_tmp)) / TIME_DIMENSION / 86400);
 
-    posNegTimebox->setCurrentIndex(1);
+        ta.setHMS(((-(l_tmp)) / TIME_DIMENSION / 3600) % 24,
+                (((-(l_tmp)) / TIME_DIMENSION) % 3600) / 60,
+                ((-(l_tmp)) / TIME_DIMENSION) % 60,
+                ((-(l_tmp)) % TIME_DIMENSION) / 10000);
+
+        posNegTimebox->setCurrentIndex(1);
+      }
+      else
+      {
+        onset_daySpinbox->setValue(l_tmp / TIME_DIMENSION / 86400);
+
+        ta.setHMS((l_tmp / TIME_DIMENSION / 3600) % 24,
+                ((l_tmp / TIME_DIMENSION) % 3600) / 60,
+                (l_tmp / TIME_DIMENSION) % 60,
+                (l_tmp % TIME_DIMENSION) / 10000);
+
+        posNegTimebox->setCurrentIndex(0);
+      }
   }
   else
   {
-    onset_daySpinbox->setValue(l_tmp / TIME_DIMENSION / 86400);
-
-    ta.setHMS((l_tmp / TIME_DIMENSION / 3600) % 24,
-            ((l_tmp / TIME_DIMENSION) % 3600) / 60,
-            (l_tmp / TIME_DIMENSION) % 60,
-            (l_tmp % TIME_DIMENSION) / 10000);
-
-    posNegTimebox->setCurrentIndex(0);
+      l_tmp = annot->onset + mainwindow->edfheaderlist[annot->file_num]->l_starttime;
+      ta.setHMS((l_tmp / TIME_DIMENSION / 3600) % 24,
+              ((l_tmp / TIME_DIMENSION) % 3600) / 60,
+              (l_tmp / TIME_DIMENSION) % 60,
+              (l_tmp % TIME_DIMENSION) / 10000);
+      posNegTimebox->setCurrentIndex(0);
   }
+  //
   onset_timeEdit->setTime(ta);
 
   if(strlen(annot->duration))

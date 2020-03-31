@@ -77,7 +77,8 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 //  checkbox1->setCheckState(Qt::Checked);
   comboBoxTimeFormat->addItem(tr("Relative to Start"));
   comboBoxTimeFormat->addItem(tr("Clock time"));
-  comboBoxTimeFormat->setCurrentIndex(1);
+
+  comboBoxTimeFormat->setCurrentIndex(mainwindow->annotations_onset_relative == 1? 0 : 1);
 
   label1 = new QLabel;
   label1->setText(tr("Filter") + ":");
@@ -158,17 +159,17 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   QSizePolicy spRight(QSizePolicy::Preferred, QSizePolicy::Preferred);
   spRight.setHorizontalStretch(2);
 
-  labelTimeFormat->setSizePolicy(spLeft);
-  comboBoxTimeFormat->setSizePolicy(spRight);
-
   h_layout->addWidget(labelTimeFormat);
   h_layout->addWidget(comboBoxTimeFormat);
 
-  label1->setSizePolicy(spLeft);
-  lineedit1->setSizePolicy(spRight);
-
   h_layout3->addWidget(label1);
   h_layout3->addWidget(lineedit1);
+
+  labelTimeFormat->setSizePolicy(spLeft);
+  comboBoxTimeFormat->setSizePolicy(spRight);
+
+  label1->setSizePolicy(spLeft);
+  lineedit1->setSizePolicy(spRight);
 
   labelFilterType->setSizePolicy(spLeft);
   comboBoxInclude->setSizePolicy(spRight);
@@ -862,14 +863,14 @@ void UI_Annotationswindow::average_annot(bool)
 
 void UI_Annotationswindow::checkbox1_clicked(int state)
 {
-  if(state==1)
+  if(state==0)
   {
     relative = 1;
 
     mainwindow->annotations_onset_relative = 1;
   }
 
-  if(state==0)
+  if(state==1)
   {
     relative = 0;
 
@@ -1060,7 +1061,7 @@ void UI_Annotationswindow::updateList(void)
     if(selected>=0)
     {
       list->setCurrentRow(selected, QItemSelectionModel::ClearAndSelect);
-
+      qDebug()<<"set_selected_annotation 1064";
       mainwindow->annotationEditDock->set_selected_annotation(file_num, selected);
 
       if(jump)
@@ -1108,6 +1109,7 @@ void UI_Annotationswindow::annotation_selected(QListWidgetItem * item, int cente
 
   if(mainwindow->annot_editor_active)
   {
+    qDebug()<<"set_selected_annotation 1112";
     mainwindow->annotationEditDock->set_selected_annotation(file_num, n);
   }
 

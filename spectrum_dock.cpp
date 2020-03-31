@@ -91,6 +91,7 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
 
 //  dock->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
 //  dock->setFeatures(QDockWidget::DockWidgetMovable);
+  dock->setFeatures(dock->features()  & ~QDockWidget::DockWidgetClosable);
   dock->setAllowedAreas(Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);
   dock->setMinimumHeight(300);
   if(dashboard)

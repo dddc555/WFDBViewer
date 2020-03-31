@@ -651,30 +651,57 @@
     </message>
 </context>
 <context>
-    <name>SignalTwoCurve</name>
+    <name>SignalOneCurve</name>
+    <message>
+        <source>FFT resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Distribution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>blocks of</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>samples</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frequency</source>
+        <translation type="unfinished">Frequency</translation>
+    </message>
     <message>
         <source>Export</source>
         <translation type="unfinished">Export</translation>
     </message>
     <message>
-        <source>to printer</source>
+        <source>Show Cursor</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Controls</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SignalTwoCurve</name>
+    <message>
+        <source>Export</source>
+        <translation type="obsolete">Export</translation>
     </message>
     <message>
         <source>to PDF</source>
-        <translation type="unfinished">to PDF</translation>
+        <translation type="obsolete">to PDF</translation>
     </message>
     <message>
         <source>to Image</source>
-        <translation type="unfinished">to Image</translation>
+        <translation type="obsolete">to Image</translation>
     </message>
     <message>
         <source>to CSV</source>
-        <translation type="unfinished">to CSV</translation>
-    </message>
-    <message>
-        <source>Print to Image</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">to CSV</translation>
     </message>
     <message>
         <source>FFT resolution</source>
@@ -695,6 +722,14 @@
     <message>
         <source>Frequency</source>
         <translation type="unfinished">Frequency</translation>
+    </message>
+    <message>
+        <source>Heart Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RRI</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1297,6 +1332,34 @@
     </message>
     <message>
         <source>Not enough beats.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>to printer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>to PDF</source>
+        <translation type="unfinished">to PDF</translation>
+    </message>
+    <message>
+        <source>to Image</source>
+        <translation type="unfinished">to Image</translation>
+    </message>
+    <message>
+        <source>to CSV</source>
+        <translation type="unfinished">to CSV</translation>
+    </message>
+    <message>
+        <source>Print</source>
+        <translation type="unfinished">Print</translation>
+    </message>
+    <message>
+        <source>Print to Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Heart Rate</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

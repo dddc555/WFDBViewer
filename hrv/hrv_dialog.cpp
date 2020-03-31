@@ -91,18 +91,18 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
     StatDialog->setSizeGripEnabled(true);
 
     curveLeft = new SignalTwoCurve(StatDialog, second);
-    curveLeft->setSignalColor(QColor(0x70,0xAD,0x47));
+    curveLeft->setSignalColor(QColor(0x4a,0x98,0x15));//QColor(0x70,0xAD,0x47)
     curveLeft->setSignal2Color(QColor(0x44, 0x72, 0xC4));
 
     curveLeft->setBackgroundColor(Qt::black);
-    curveLeft->setRasterColor(Qt::gray);
+    curveLeft->setRasterColor(QColor(0xa9,0xa9,0xa9, 70));//Qt::gray;
     curveLeft->setTraceWidth(0);
 
-//    curveLeft->setLowerLabel("HR (beats/min)");
+    //    curveLeft->setLowerLabel("HR (beats/min)");
 
     strcpy(stat_str, "Distribution ");
     strcat(stat_str, annot->annotation);
-//    curveLeft->setUpperLabel1(stat_str);
+    //    curveLeft->setUpperLabel1(stat_str);
 
     curveLeft->setFillSurfaceEnabled(false);
     // end curve2
@@ -118,17 +118,14 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
     startTimeSlider = new QSlider;
     startTimeSlider->setOrientation(Qt::Horizontal);
     startTimeSlider->setMinimum(0);
-    startTimeSlider->setMaximum(295);
+    //    startTimeSlider->setMaximum(295);
     startTimeSlider->setValue(0);
 
     endTimeSlider = new QSlider;
     endTimeSlider->setOrientation(Qt::Horizontal);
-    endTimeSlider->setMinimum(5);
-//    endTimeSlider->setMaximum(300);
-//    endTimeSlider->setValue(300);
+    //    endTimeSlider->setMinimum(5);
 
-
-//    int totalTime = this->mainwindow->
+    //    int totalTime = this->mainwindow->
     labelStartTimeValue = new QLabel;
     labelStartTimeValue->setText("00:00");
     labelEndTimeValue = new QLabel;
@@ -144,16 +141,22 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
     heartrateMaxValue->setText("0 bpm");
 
     hlayoutStartTime = new QHBoxLayout;
+
     labelStartTime = new QLabel(tr("Start Time"));
+    labelStartTime->setFixedWidth(57);
+    hlayoutStartTime->setSpacing(10);
     hlayoutStartTime->addWidget(labelStartTime);
     hlayoutStartTime->addWidget(labelStartTimeValue);
     hlayoutStartTime->addWidget(startTimeSlider);
 
     hlayoutEndTime = new QHBoxLayout;
     labelEndTime = new QLabel(tr("End Time"));
+    hlayoutEndTime->setSpacing(10);
     hlayoutEndTime->addWidget(labelEndTime);
     hlayoutEndTime->addWidget(labelEndTimeValue);
     hlayoutEndTime->addWidget(endTimeSlider);
+
+    labelEndTime->setFixedWidth(57);
 
 
     startSlider = new QSlider;
@@ -203,9 +206,9 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
     hlayoutMin = new QHBoxLayout;
     labelMin = new QLabel(tr("Min"));
 
-//    labelMin->setSizePolicy(spOne);
-//    heartrateMinValue->setSizePolicy(spTwo);
-//    startSlider->setSizePolicy(spThree);
+    //    labelMin->setSizePolicy(spOne);
+    //    heartrateMinValue->setSizePolicy(spTwo);
+    //    startSlider->setSizePolicy(spThree);
 
     hlayoutMin->addWidget(labelMin);
     hlayoutMin->addWidget(heartrateMinValue);
@@ -267,14 +270,16 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
 
     vlayoutTotal->addLayout(hlayoutTotal);
     hlayoutButton = new QHBoxLayout;
-    hlayoutButtonRemain = new QHBoxLayout;
+
+    QLabel *labelRemain = new QLabel();
+    labelRemain->setText(" ");
+
     hlayoutButton->setSpacing(20);
 
     hlayoutButton->addWidget(pushButtonClose, 1);
     hlayoutButton->addWidget(pushButtonExport, 1);
-    pushButtonClose->setMaximumSize(150, 50);
-    pushButtonExport->setMaximumSize(150, 50);
-    hlayoutButton->addLayout(hlayoutButtonRemain, 100);
+
+    hlayoutButton->addWidget(labelRemain, 100);
 
     vlayoutTotal->addLayout(hlayoutButton);
 
@@ -334,7 +339,7 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
     else
     {
         for(int i = 0;i<beat_cnt;i++) {
-            if(beat_interval_list[i] == 0) beat_interval_list[i] = 0.0001;
+            if(beat_interval_list[i] < 0.2f) beat_interval_list[i] = 0.2f;
         }
 
         heartRateList = (float *)malloc(sizeof(float) * beat_cnt);
@@ -343,7 +348,6 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
             heartRateList[i] = 60.0f / beat_interval_list[i];
             if(heartRateList[i]>300) {
                 heartRateList[i] = 300;
-                beat_interval_list[i] = 0.2f;
             }
         }
         beat_from = 0;
@@ -367,6 +371,12 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
             if(min2 > beat_interval_list[i]) min2 = beat_interval_list[i];
             if(max2 < beat_interval_list[i]) max2 = beat_interval_list[i];
         }
+        max1 = fmax(200, max1);
+        min1 = fmin(0, min1);
+
+        max2 = fmax(2, max2);
+        min2 = fmin(0.2, min2);
+
 
         QString str;
 
@@ -386,22 +396,13 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
 
         curveLeft->setLineEnabled(true);
 
-        qDebug()<<"min1"<<min1<<max1<<min2<<max2;
 
         curveLeft->drawCurve(heartRateList, rriList, beat_to - beat_from, (int)(max1 * 1.1) + 1, min1, (int)(max2 * 1.1) + 1, min2);
         // end
         changedRange();
 
-
-
         QObject::connect(startSlider, SIGNAL(valueChanged(int)), this, SLOT(startSliderMoved(int)));
         QObject::connect(stopSlider,  SIGNAL(valueChanged(int)), this, SLOT(stopSliderMoved(int)));
-
-//        QObject::connect(startTimeSlider, SIGNAL(valueChanged(int)), this, SLOT(startTimeSliderMoved(int)));
-//        QObject::connect(endTimeSlider,  SIGNAL(valueChanged(int)), this, SLOT(endTimeSliderMoved(int)));
-
-//        QObject::connect(startTimeSlider, SIGNAL(sliderMoved(int)), this, SLOT(startTimeSliderMoved(int)));
-//        QObject::connect(endTimeSlider,  SIGNAL(sliderMoved(int)), this, SLOT(endTimeSliderMoved(int)));
 
         QObject::connect(startTimeSlider,  SIGNAL(sliderReleased()), this, SLOT(_startTimeSliderMouseRelase()));
         QObject::connect(endTimeSlider,  SIGNAL(sliderReleased()), this, SLOT(_endTimeSliderMouseRelase()));
@@ -423,46 +424,46 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
 
 void UI_HrvWindow::exec_sidemenu()
 {
-  sidemenu = new QDialog(StatDialog);
-  sidemenu ->setWindowFlags(sidemenu ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    sidemenu = new QDialog(StatDialog);
+    sidemenu ->setWindowFlags(sidemenu ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
-  sidemenu->setMinimumSize(120, 160);
-  sidemenu->setMaximumSize(120, 160);
+    sidemenu->setMinimumSize(120, 160);
+    sidemenu->setMaximumSize(120, 160);
 
-  sidemenu->setWindowTitle(tr("Export"));
-  sidemenu->setModal(true);
-  sidemenu->setAttribute(Qt::WA_DeleteOnClose, true);
+    sidemenu->setWindowTitle(tr("Export"));
+    sidemenu->setModal(true);
+    sidemenu->setAttribute(Qt::WA_DeleteOnClose, true);
 
-  QPushButton *sidemenuButton1 = new QPushButton(sidemenu);
-  sidemenuButton1->setGeometry(10, 10, 100, 20);
-  sidemenuButton1->setText(tr("to printer"));
+    QPushButton *sidemenuButton1 = new QPushButton(sidemenu);
+    sidemenuButton1->setGeometry(10, 10, 100, 20);
+    sidemenuButton1->setText(tr("to printer"));
 
 #if QT_VERSION < 0x050000
-  QPushButton *sidemenuButton2 = new QPushButton(sidemenu);
-  sidemenuButton2->setGeometry(10, 40, 100, 20);
-  sidemenuButton2->setText("to Postscript");
+    QPushButton *sidemenuButton2 = new QPushButton(sidemenu);
+    sidemenuButton2->setGeometry(10, 40, 100, 20);
+    sidemenuButton2->setText("to Postscript");
 #endif
 
-  QPushButton *sidemenuButton3 = new QPushButton(sidemenu);
-  sidemenuButton3->setGeometry(10, 70, 100, 20);
-  sidemenuButton3->setText(tr("to PDF"));
+    QPushButton *sidemenuButton3 = new QPushButton(sidemenu);
+    sidemenuButton3->setGeometry(10, 70, 100, 20);
+    sidemenuButton3->setText(tr("to PDF"));
 
-  QPushButton *sidemenuButton4 = new QPushButton(sidemenu);
-  sidemenuButton4->setGeometry(10, 100, 100, 20);
-  sidemenuButton4->setText(tr("to Image"));
+    QPushButton *sidemenuButton4 = new QPushButton(sidemenu);
+    sidemenuButton4->setGeometry(10, 100, 100, 20);
+    sidemenuButton4->setText(tr("to Image"));
 
-  QPushButton* sidemenuButton5 = new QPushButton(sidemenu);
-  sidemenuButton5->setGeometry(10, 130, 100, 20);
-  sidemenuButton5->setText(tr("to CSV"));
-  QPushButton *sidemenuButton6;
+    QPushButton* sidemenuButton5 = new QPushButton(sidemenu);
+    sidemenuButton5->setGeometry(10, 130, 100, 20);
+    sidemenuButton5->setText(tr("to CSV"));
+    QPushButton *sidemenuButton6;
 
-  QObject::connect(sidemenuButton1, SIGNAL(clicked()), this, SLOT(print_to_printer()));
+    QObject::connect(sidemenuButton1, SIGNAL(clicked()), this, SLOT(print_to_printer()));
 
-  QObject::connect(sidemenuButton3, SIGNAL(clicked()), this, SLOT(print_to_pdf()));
-  QObject::connect(sidemenuButton4, SIGNAL(clicked()), this, SLOT(print_to_image()));
-  QObject::connect(sidemenuButton5, SIGNAL(clicked()), this, SLOT(print_to_ascii()));
+    QObject::connect(sidemenuButton3, SIGNAL(clicked()), this, SLOT(print_to_pdf()));
+    QObject::connect(sidemenuButton4, SIGNAL(clicked()), this, SLOT(print_to_image()));
+    QObject::connect(sidemenuButton5, SIGNAL(clicked()), this, SLOT(print_to_ascii()));
 
-  sidemenu->exec();
+    sidemenu->exec();
 }
 
 void UI_HrvWindow::print_to_printer(){
@@ -477,7 +478,7 @@ void UI_HrvWindow::print_to_printer(){
 
     if(!(printerdialog.exec()==QDialog::Accepted))
     {
-      return;
+        return;
     }
 
 }
@@ -488,8 +489,8 @@ void UI_HrvWindow::print_to_pdf(){
     path[0] = 0;
     if(mainwindow->recent_savedir[0]!=0)
     {
-      strcpy(path, mainwindow->recent_savedir);
-      strcat(path, "/");
+        strcpy(path, mainwindow->recent_savedir);
+        strcat(path, "/");
     }
     strcat(path, "curve.pdf");
 
@@ -498,7 +499,7 @@ void UI_HrvWindow::print_to_pdf(){
     if(!strcmp(path, ""))
     {
 
-      return;
+        return;
     }
     get_directory_from_path(mainwindow->recent_savedir, path, SC_MAX_PATH_LEN);
     QPrinter curve_printer(QPrinter::HighResolution);
@@ -507,7 +508,7 @@ void UI_HrvWindow::print_to_pdf(){
     curve_printer.setOutputFileName(path);
     curve_printer.setPageSize(QPrinter::A4);
     curve_printer.setOrientation(QPrinter::Landscape);
-//    curveRight->print_to_pdf(&curve_printer);
+    //    curveRight->print_to_pdf(&curve_printer);
     curveLeft->print_to_pdf(&curve_printer);
 }
 
@@ -518,8 +519,8 @@ void UI_HrvWindow::print_to_image(){
     path[0] = 0;
     if(mainwindow->recent_savedir[0]!=0)
     {
-      strcpy(path, mainwindow->recent_savedir);
-      strcat(path, "/");
+        strcpy(path, mainwindow->recent_savedir);
+        strcat(path, "/");
     }
     strcat(path, "curve.png");
 
@@ -527,9 +528,9 @@ void UI_HrvWindow::print_to_image(){
 
     if(!strcmp(path, ""))
     {
-      sidemenu->close();
+        sidemenu->close();
 
-      return;
+        return;
     }
 
     get_directory_from_path(mainwindow->recent_savedir, path, SC_MAX_PATH_LEN);
@@ -540,21 +541,21 @@ void UI_HrvWindow::print_to_image(){
     int height = pixmap.height();
     if( height < pixmap2.height() ) height = pixmap2.height();
 
-//    QPixmap pixmapTotal(pixmap.width() + pixmap2.width(), height);
-//    QPainter painter(&pixmapTotal);
-//    painter.drawPixmap(
-//            QRectF(0, 0, pixmap.width(), pixmap.height()), pixmap,
-//            QRectF(pixmap.width(), 0, pixmap2.width(), pixmap2.height()));
+    //    QPixmap pixmapTotal(pixmap.width() + pixmap2.width(), height);
+    //    QPainter painter(&pixmapTotal);
+    //    painter.drawPixmap(
+    //            QRectF(0, 0, pixmap.width(), pixmap.height()), pixmap,
+    //            QRectF(pixmap.width(), 0, pixmap2.width(), pixmap2.height()));
 
     QPixmap pixmapTotal(pixmap.width() + pixmap2.width(), height);
     QPainter painter(&pixmapTotal);
     painter.drawPixmap(
-            QRectF(0, 0, pixmap.width(), pixmap.height()), pixmap,
-            QRectF(0, 0, pixmap.width(), pixmap.height()));
+                QRectF(0, 0, pixmap.width(), pixmap.height()), pixmap,
+                QRectF(0, 0, pixmap.width(), pixmap.height()));
 
     painter.drawPixmap(
-            QRectF(pixmap.width(), 0, pixmap2.width(), pixmap2.height()), pixmap2,
-            QRectF(pixmap2.rect()));
+                QRectF(pixmap.width(), 0, pixmap2.width(), pixmap2.height()), pixmap2,
+                QRectF(pixmap2.rect()));
 
 
     qDebug()<<"pixmap"<<pixmap.width()<<pixmap.height()<<pixmap2.width()<<pixmap2.height();
@@ -565,83 +566,89 @@ void UI_HrvWindow::print_to_image(){
 
 void UI_HrvWindow::print_to_ascii()
 {
-  int i;
+    int i;
 
-  char path[SC_MAX_PATH_LEN];
+    char path[SC_MAX_PATH_LEN];
 
-  FILE *outputfile;
+    FILE *outputfile;
 
-  path[0] = 0;
-  if(mainwindow->recent_savedir[0]!=0)
-  {
-    strcpy(path, mainwindow->recent_savedir);
-    strcat(path, "/");
-  }
-  strcat(path, "curve.csv");
+    path[0] = 0;
+    if(mainwindow->recent_savedir[0]!=0)
+    {
+        strcpy(path, mainwindow->recent_savedir);
+        strcat(path, "/");
+    }
+    strcat(path, "curve.csv");
 
-  strcpy(path, QFileDialog::getSaveFileName(0, "Print to ASCII / CSV", QString::fromLocal8Bit(path), "ASCII / CSV files (*.csv *.CSV *.txt *.TXT)").toLocal8Bit().data());
+    strcpy(path, QFileDialog::getSaveFileName(0, "Print to ASCII / CSV", QString::fromLocal8Bit(path), "ASCII / CSV files (*.csv *.CSV *.txt *.TXT)").toLocal8Bit().data());
 
-  if(!strcmp(path, ""))
-  {
+    if(!strcmp(path, ""))
+    {
+        sidemenu->close();
+        return;
+    }
+
+    get_directory_from_path(mainwindow->recent_savedir, path, SC_MAX_PATH_LEN);
+
+    outputfile = fopen(path, "wb");
+    if(outputfile == NULL)
+    {
+        QMessageBox messagewindow(QMessageBox::Critical, "Error", "Can not open outputfile for writing.");
+        messagewindow.exec();
+        return;
+    }
+
+    /*
+     *  "Beats:    %3i\n\n"
+            "Mean RR:  %3.1f ms\n\n"
+            "SDNN RR:  %3.1f ms\n\n"
+            "RMSSD RR: %3.1f ms\n\n"
+            "Mean HR:  %3.1f bpm\n\n"
+            "SDNN HR:  %3.1f bpm\n\n"
+            "NN20:     %3i\n\n"
+            "pNN20:    %3.1f %%\n\n"
+            "NN50:     %3i\n\n"
+            "pNN50:    %3.1f %%\n\n",
+     */
+    fprintf(outputfile, "HRV Metric, Value\n");
+    fprintf(outputfile, "Beats, %d\n", hr_stat.beat_cnt);
+    fprintf(outputfile, "Mean RR(ms), %3.1f\n", hr_stat.mean_rr);
+    fprintf(outputfile, "SDNN RR(ms), %3.1f\n", hr_stat.sdnn_rr);
+    fprintf(outputfile, "RMSSD RR(ms), %3.1f\n", hr_stat.rmssd_rr);
+    fprintf(outputfile, "Mean HR (bpm), %3.1f\n", hr_stat.mean_hr);
+    fprintf(outputfile, "SDNN HR (bpm), %3.1f\n", hr_stat.sdnn_hr);
+    fprintf(outputfile, "NN20, %d\n", hr_stat.NN20);
+    fprintf(outputfile, "pNN20(%), %3.1f\n", hr_stat.pNN20);
+    fprintf(outputfile, "NN50, %d\n", hr_stat.NN50);
+    fprintf(outputfile, "pNN50(%), %3.1f\n", hr_stat.pNN50);
+    fprintf(outputfile, "\n");
+    fprintf(outputfile, "HR Distribution, Counts\n");
+
+    int tmp;
+
+    for(i=0; i<300; i++)
+    {
+        bpm_distribution[i] = 0;
+    }
+
+
+    for(i = beat_from; i < beat_to; i++)
+    {
+        tmp = 60.0 / beat_interval_list[i];
+
+        if((tmp > 0) && (tmp < 301))
+        {
+            bpm_distribution[tmp-1]++;
+        }
+    }
+    for(int i = 0;i<300;i++){
+        if(bpm_distribution[i] > 0)
+            fprintf(outputfile, "%d, %d\n", i, bpm_distribution[i]);
+    }
+
+    fclose(outputfile);
+
     sidemenu->close();
-    return;
-  }
-
-  get_directory_from_path(mainwindow->recent_savedir, path, SC_MAX_PATH_LEN);
-
-  outputfile = fopen(path, "wb");
-  if(outputfile == NULL)
-  {
-    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Can not open outputfile for writing.");
-    messagewindow.exec();
-    return;
-  }
-
-  fprintf(outputfile, "HRV Metric, Value\n");
-  fprintf(outputfile, "Beats, %d\n", 88);
-  fprintf(outputfile, "Mean RR(ms), %d\n", 88);
-  fprintf(outputfile, "SDNN RR(ms), %d\n", 88);
-  fprintf(outputfile, "RMSSD RR(ms), %d\n", 88);
-  fprintf(outputfile, "Mean HR (bpm), %d\n", 88);
-  fprintf(outputfile, "SDNN HR (bpm), %d\n", 88);
-  fprintf(outputfile, "NN20, %d\n", 88);
-  fprintf(outputfile, "pNN20(%), %d\n", 88);
-  fprintf(outputfile, "NN50, %d\n", 88);
-  fprintf(outputfile, "pNN50(%), %d\n", 88);
-  fprintf(outputfile, "\n", 88);
-  fprintf(outputfile, "HR Distribution, Counts\n");
-  for(int i = 0;i<10;i++){
-    fprintf(outputfile, "%d, %d\n", 88, 3);
-  }
-
-
-//  if(ibuf != NULL)
-//  {
-//    for(i=0; i<bufsize; i++)
-//    {
-//      fprintf(outputfile, "%i\n", ibuf[i]);
-//    }
-//  }
-
-//  if(dbuf != NULL)
-//  {
-//    for(i=0; i<bufsize; i++)
-//    {
-//      fprintf(outputfile, "%.8f\n", dbuf[i]);
-//    }
-//  }
-
-//  if(fbuf != NULL)
-//  {
-//    for(i=0; i<bufsize; i++)
-//    {
-//      fprintf(outputfile, "%.8f\n", fbuf[i]);
-//    }
-//  }
-
-  fclose(outputfile);
-
-  sidemenu->close();
 }
 
 
@@ -655,11 +662,12 @@ void UI_HrvWindow::changedRange() {
         bpm_distribution[i] = 0;
     }
 
-    double *sub_beat_interval_list = NULL;
-    sub_beat_interval_list = (double *)malloc(sizeof(double) * beat_to - beat_from);
+    double *sub_beat_interval_list = (double *)malloc(sizeof(double) * beat_to - beat_from);
+
     for(i = beat_from; i < beat_to; i++) {
         sub_beat_interval_list[i - beat_from] = beat_interval_list[i];
     }
+    if(beat_to - beat_from < 3) return;
     int err = ecg_get_hr_statistics(sub_beat_interval_list, beat_to - beat_from, &hr_stat);
     if(err)
     {
@@ -771,6 +779,7 @@ void UI_HrvWindow::changedRange() {
 
     QString str1 (stat_str);
     str1.replace("Not enough beats.", tr("Not enough beats."));
+    str1.replace("Heart Rate", tr("Heart Rate"));
     Label1->setText(str1);
 }
 
@@ -845,6 +854,7 @@ void UI_HrvWindow::startTimeSliderMoved(int)
     if(beat_to < (beat_from + 5))
     {
         beat_to = beat_from + 5;
+        beat_to = fmin(beat_to, beat_cnt);
 
         endTimeSlider->setValue(beat_to);
     }
@@ -873,6 +883,7 @@ void UI_HrvWindow::endTimeSliderMoved(int)
     if(beat_from > (beat_to - 5))
     {
         beat_from = beat_to - 5;
+        beat_from = fmax(beat_from, 0);
 
         startTimeSlider->setValue(beat_from);
     }
@@ -893,7 +904,10 @@ void UI_HrvWindow::endTimeSliderMoved(int)
 
 void UI_HrvWindow::exportButtonClicked()
 {
-  exec_sidemenu();
+    qDebug()<<endTimeSlider->maximum();
+    qDebug()<<endTimeSlider->value();
+
+    exec_sidemenu();
 }
 
 

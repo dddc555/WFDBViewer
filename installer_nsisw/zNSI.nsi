@@ -21,7 +21,7 @@ BrandingText " "
  !define licensefile license.txt
  
 ; icons must be Microsoft .ICO files
- !define icon "images/edf.ico"
+ !define icon "edf.ico"
  
 ; installer background screen
 #!define screenimage splash.png

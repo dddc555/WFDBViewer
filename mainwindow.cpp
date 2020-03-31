@@ -4033,6 +4033,8 @@ void UI_Mainwindow::resizeEvent(QResizeEvent* event){
     QMainWindow::resizeEvent(event);
 }
 
+#define SKIP_BEAT 59
+
 void UI_Mainwindow::export_wfdb_button_clicked()
 {
     int file_num = 0;// ?
@@ -4087,14 +4089,14 @@ void UI_Mainwindow::export_wfdb_button_clicked()
 
 
     get_directory_from_path( recent_savedir, f_path, MAX_PATH_LENGTH);
-    FILE *outputfile = fopeno(targetAnnotation_path, "wb");
+    FILE *annotationFile = fopeno(targetAnnotation_path, "wb");
 
-    if(outputfile == NULL)
+    if(annotationFile == NULL)
     {
         snprintf(txt_string, ASCII_MAX_LINE_LEN, "Can not open file %s for writing.", f_path);
         QMessageBox messagewindow(QMessageBox::Critical, "Error", txt_string);
         messagewindow.exec();
-        fclose(outputfile);
+        fclose(annotationFile);
         return;
     }
 
@@ -4116,10 +4118,11 @@ void UI_Mainwindow::export_wfdb_button_clicked()
            << edfheaderlist[file_num]->edfparam->sf_f
            <<edfheaderlist[file_num]->edfparam->sf_int
            <<edfheaderlist[file_num]->edfparam->smpls;
-    long long beforeTimeIndex = -1;
-    int beforeCode = -1;
+    long long beforeTimeIndex = 0;
+    int beforeCode;
     int frequency =  edfheaderlist[file_num]->edfparam->sf_int;
     long long starttime_offset = edfheaderlist[file_num]->starttime_offset;
+
     for(j=0; j<sz; j++)
     {
         annot = edfplus_annotation_get_item(annot_list, j);
@@ -4132,22 +4135,44 @@ void UI_Mainwindow::export_wfdb_button_clicked()
         long long timeIndex = time * frequency / TIME_DIMENSION;
         qDebug()<<frequency<<timeIndex;
 
-        if(beforeTimeIndex != -1) {
-            int word = (beforeCode << 10) + ((timeIndex - beforeTimeIndex) & 0xFFF);
-            unsigned char arrByte[10];
+        beforeCode = getAnnotCode(annot->annotation);
+        unsigned char arrByte[10];
+        int word;
+
+        int diff = timeIndex - beforeTimeIndex;
+        if(diff > 1023){
+            qDebug()<<"skip"<<diff;
+            word = (SKIP_BEAT << 10) + ((0) & 0xFFF); //skip
+
             arrByte[0] =  (byte(word & 0x00FF));
             arrByte[1] = ((byte) ((word & 0xFF00) >> 8));
-            fwrite(arrByte, 2,1,outputfile);
+            fwrite(arrByte, 2, 1 , annotationFile);
+
+            word = diff;
+            arrByte[3] = ((byte) ((word & 0xFF00) >> 8));
+            arrByte[2] = ((byte) ((word & 0xFF)));
+            arrByte[1] = ((byte) ((word & 0xff000000) >> 24));
+            arrByte[0] = ((byte) ((word & 0xFF0000) >> 16));
+            fwrite(arrByte, 4, 1 , annotationFile);
+
+            diff = 0;
         }
+
+        word = (beforeCode << 10) + ((diff) & 0xFFF);
+
+        arrByte[0] =  (byte(word & 0x00FF));
+        arrByte[1] = ((byte) ((word & 0xFF00) >> 8));
+        fwrite(arrByte, 2,1,annotationFile);
+
         beforeTimeIndex = timeIndex;
-        beforeCode = getAnnotCode(annot->annotation);
+
     }
 
     unsigned char arrByte[2];
     arrByte[0] = 0;
     arrByte[1] = 0;
-    fwrite(arrByte, 2,1,outputfile);
-    fclose(outputfile);
+    fwrite(arrByte, 2,1,annotationFile);
+    fclose(annotationFile);
     //*/
 }
 

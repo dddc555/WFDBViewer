@@ -199,6 +199,12 @@ void UI_Mainwindow::detect_qrs()
     }
 
     mit_hdr.sf = atoi(charpntr + p);
+    qrs_wfdb_frequency = mit_hdr.sf;
+
+    mHeartRate.QRSDetect_setup_frequency(qrs_wfdb_frequency);
+    mHeartRate.QRSDetect(0, 1);
+
+
     snprintf(txt_string, 2048, "mit_hdr.sf = %d\n", mit_hdr.sf);
     //textEdit1->append(txt_string);
 
@@ -832,8 +838,11 @@ OUT2:
     free(buf);
     progress.reset();
     closeQRSFile();
+
     QMessageBox messagewindow(QMessageBox::Information, tr("Message"), tr("Annotation file is generated with QRS detector"));
     messagewindow.exec();
+    if(this->selectedWFDBHeaderFilePath != NULL)
+        _open_wfdb(selectedWFDBHeaderFilePath);
 }
 
 bool UI_Mainwindow::initQRS(){
@@ -858,7 +867,8 @@ bool UI_Mainwindow::initQRS(){
         return false;
     }
 
-    mHeartRate.QRSDetect(0, 1);
+    //mHeartRate.QRSDetect_setup_frequency(frequency);
+    //mHeartRate.QRSDetect(0, 1);
 
     qrs_delay = 0;
     prev_delay = 0;
@@ -911,9 +921,9 @@ bool UI_Mainwindow::initQRS(){
 
 void UI_Mainwindow::onECGReceived(int ecg){
 
-    if(annotationOutputfile == NULL)return;
+    if(annotationOutputfile == NULL || qrs_wfdb_frequency == 0)return;
     int file_num = 0;
-    int frequency =  edfheaderlist[file_num]->edfparam->sf_int;
+    int frequency =  qrs_wfdb_frequency;
 
     sample_count ++;
     total_sample_count ++;

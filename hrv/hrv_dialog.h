@@ -75,7 +75,7 @@ UI_HrvWindow(struct signalcompblock *,
 ~UI_HrvWindow();
 
 UI_Mainwindow *mainwindow;
-
+static QString secondToFormat(int second);
 void changedRange();
 
 private:
@@ -85,7 +85,7 @@ QDialog     *StatDialog;
 QVBoxLayout *vlayoutTotal;
 
 QHBoxLayout *hlayoutTotal;
-QHBoxLayout *hlayoutButton, *hlayoutButtonRemain;
+QHBoxLayout *hlayoutButton;
 
 QHBoxLayout *hlayoutRight,
             *hlayout1_1_1,

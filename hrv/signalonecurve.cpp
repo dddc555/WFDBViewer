@@ -79,7 +79,7 @@ SignalOneCurve::SignalOneCurve(QWidget *w_parent) : QWidget(w_parent)
   extra_button = 0;
   extra_button_txt[0] = 0;
   use_move_events = 0;
-  crosshair_1_active = 1;
+  crosshair_1_active = 0;
   crosshair_1_moving = 0;
   crosshair_1_value = 0.0;
   crosshair_1_value_2 = 0.0;

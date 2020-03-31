@@ -534,7 +534,7 @@ private:
   void drawSimulateQRS();
   void detect_qrs_edf();
   HeartRateCalc mHeartRate;
-
+  int qrs_wfdb_frequency = 0;
   uint16_t qrs_delay = 0;
   uint16_t prev_delay = 0;
   uint16_t sample_count = 0;

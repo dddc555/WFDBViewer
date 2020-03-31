@@ -4,40 +4,6 @@
 #include <stdint.h>
 #include <string.h>
 #include <math.h>
-#define SAMPLE_RATE		250	// Sample rate in Hz
-#define MS_PER_SAMPLE	4
-
-#define MS10	((int16_t) (10 / MS_PER_SAMPLE))
-#define MS25	((int16_t) (25 / MS_PER_SAMPLE))
-#define MS30	((int16_t) (30 / MS_PER_SAMPLE))
-#define MS50	((int16_t) (50 / MS_PER_SAMPLE))
-#define MS80	((int16_t) (80 / MS_PER_SAMPLE))
-#define MS95	((int16_t) (95 / MS_PER_SAMPLE))
-#define MS100	((int16_t) (100 / MS_PER_SAMPLE))
-#define MS125	((int16_t) (125 / MS_PER_SAMPLE))
-#define MS150	((int16_t) (150 / MS_PER_SAMPLE))
-#define MS160	((int16_t) (160 / MS_PER_SAMPLE))
-#define MS175	((int16_t) (175 / MS_PER_SAMPLE))
-#define MS195	((int16_t) (195 / MS_PER_SAMPLE))
-#define MS200	((int16_t) (200 / MS_PER_SAMPLE))
-#define MS220	((int16_t) (220 / MS_PER_SAMPLE))
-#define MS250	((int16_t) (250 / MS_PER_SAMPLE))
-#define MS300	((int16_t) (300 / MS_PER_SAMPLE))
-#define MS360	((int16_t) (360 / MS_PER_SAMPLE))
-#define MS450	((int16_t) (450 / MS_PER_SAMPLE))
-#define MS1000	SAMPLE_RATE
-#define MS1500	((int16_t) (1500 / MS_PER_SAMPLE))
-
-#define DERIV_LENGTH	MS10
-#define LPBUFFER_LGTH	MS50
-#define HPBUFFER_LGTH	MS125
-
-#define WINDOW_WIDTH	MS80 // Moving window integration width
-#define	FILTER_DELAY (int16_t)(((double)DERIV_LENGTH / 2) + ((double)LPBUFFER_LGTH / 2 - 1) + (((double)HPBUFFER_LGTH - 1) / 2) + PRE_BLANK)  // filter delays plus 200 ms blanking delay
-#define DER_DELAY	WINDOW_WIDTH + FILTER_DELAY + MS100	// 253
-
-#define PRE_BLANK		MS200
-#define MIN_PEAK_AMP	50 // Prevents detections of peaks smaller than...
 
 namespace heartRate_module {
     struct HeartRateCalc {
@@ -81,7 +47,7 @@ namespace heartRate_module {
         int16_t lpfilt(int16_t datum, uint8_t init)
         {
             static int32_t y1 = 0, y2 = 0;
-            static int16_t data[LPBUFFER_LGTH], ptr = 0;
+            static int16_t data[1000], ptr = 0;
             int32_t y0;
             int16_t output, halfPtr;
 
@@ -118,7 +84,7 @@ namespace heartRate_module {
         int16_t hpfilt(int16_t datum, uint8_t init)
         {
             static int32_t y = 0;
-            static int16_t data[HPBUFFER_LGTH], ptr = 0;
+            static int16_t data[1000], ptr = 0;
             int16_t z, halfPtr;
 
             if(init)
@@ -151,7 +117,7 @@ namespace heartRate_module {
 */
         int16_t deriv(int16_t x, uint8_t init)
         {
-            static int16_t derBuff[DERIV_LENGTH], derI = 0;
+            static int16_t derBuff[1000], derI = 0;
             int16_t y;
 
             if(init != 0)
@@ -175,7 +141,7 @@ namespace heartRate_module {
         int16_t mvwint(int16_t datum, uint8_t init)
         {
             static int32_t sum = 0;
-            static int16_t data[WINDOW_WIDTH], ptr = 0;
+            static int16_t data[1000], ptr = 0;
             int16_t output;
 
             if(init)
@@ -198,12 +164,48 @@ namespace heartRate_module {
 
             return output;
         }
+int16_t SAMPLE_RATE	  =	250;	// Sample rate in Hz
+int16_t MS_PER_SAMPLE =	4;
+
+int16_t MS10	=((int16_t) (10 / MS_PER_SAMPLE));
+int16_t MS25	=((int16_t) (25 / MS_PER_SAMPLE));
+int16_t MS30	=((int16_t) (30 / MS_PER_SAMPLE));
+int16_t MS50	=((int16_t) (50 / MS_PER_SAMPLE));
+int16_t MS80	=((int16_t) (80 / MS_PER_SAMPLE));
+int16_t MS95	=((int16_t) (95 / MS_PER_SAMPLE));
+int16_t MS100	=((int16_t) (100 / MS_PER_SAMPLE));
+int16_t MS125	=((int16_t) (125 / MS_PER_SAMPLE));
+int16_t MS150	=((int16_t) (150 / MS_PER_SAMPLE));
+int16_t MS160	=((int16_t) (160 / MS_PER_SAMPLE));
+int16_t MS175	=((int16_t) (175 / MS_PER_SAMPLE));
+int16_t MS195	=((int16_t) (195 / MS_PER_SAMPLE));
+int16_t MS200	=((int16_t) (200 / MS_PER_SAMPLE));
+int16_t MS220	=((int16_t) (220 / MS_PER_SAMPLE));
+int16_t MS250	=((int16_t) (250 / MS_PER_SAMPLE));
+int16_t MS300	=((int16_t) (300 / MS_PER_SAMPLE));
+int16_t MS360	=((int16_t) (360 / MS_PER_SAMPLE));
+int16_t MS450	=((int16_t) (450 / MS_PER_SAMPLE));
+int16_t MS1000	=SAMPLE_RATE;
+int16_t MS1500	=((int16_t) (1500 / MS_PER_SAMPLE));
+
+int16_t DERIV_LENGTH	=MS10;
+int16_t LPBUFFER_LGTH	=MS50;
+int16_t HPBUFFER_LGTH	=MS125;
+
+int16_t WINDOW_WIDTH	=MS80; // Moving window integration width
+int16_t	FILTER_DELAY    =(int16_t)(((double)DERIV_LENGTH / 2) + ((double)LPBUFFER_LGTH / 2 - 1) + (((double)HPBUFFER_LGTH - 1) / 2) + PRE_BLANK);  // filter delays plus 200 ms blanking delay
+int16_t DER_DELAY	    =WINDOW_WIDTH + FILTER_DELAY + MS100;	// 253
+
+int16_t PRE_BLANK		=MS200;
+int16_t MIN_PEAK_AMP	=50; // Prevents detections of peaks smaller than...
+
 
 
         const float TH = 0.425;
         const int16_t MEMMOVELEN = 7 * sizeof(int16_t);
 
-        int16_t DDBuffer[DER_DELAY], DDptr; // Buffer holding derivative data
+        int16_t DDptr; // Buffer holding derivative data
+        int16_t DDBuffer[3000];//DDBuffer[DER_DELAY]; // Buffer holding derivative data
          int16_t dly = 0;
 
 #define MIN_HRM			39
@@ -213,6 +215,44 @@ namespace heartRate_module {
 #define HRM_THRESHOLD	5
 
         uint16_t hrm_que[MAX_HRM_COUNT] = {0xFF,};
+
+        void QRSDetect_setup_frequency(int16_t frequency){
+            SAMPLE_RATE	  =	frequency;	// Sample rate in Hz
+            MS_PER_SAMPLE =	1000 / frequency;
+
+            MS10	=((int16_t) (10 / MS_PER_SAMPLE));
+            MS25	=((int16_t) (25 / MS_PER_SAMPLE));
+            MS30	=((int16_t) (30 / MS_PER_SAMPLE));
+            MS50	=((int16_t) (50 / MS_PER_SAMPLE));
+            MS80	=((int16_t) (80 / MS_PER_SAMPLE));
+            MS95	=((int16_t) (95 / MS_PER_SAMPLE));
+            MS100	=((int16_t) (100 / MS_PER_SAMPLE));
+            MS125	=((int16_t) (125 / MS_PER_SAMPLE));
+            MS150	=((int16_t) (150 / MS_PER_SAMPLE));
+            MS160	=((int16_t) (160 / MS_PER_SAMPLE));
+            MS175	=((int16_t) (175 / MS_PER_SAMPLE));
+            MS195	=((int16_t) (195 / MS_PER_SAMPLE));
+            MS200	=((int16_t) (200 / MS_PER_SAMPLE));
+            MS220	=((int16_t) (220 / MS_PER_SAMPLE));
+            MS250	=((int16_t) (250 / MS_PER_SAMPLE));
+            MS300	=((int16_t) (300 / MS_PER_SAMPLE));
+            MS360	=((int16_t) (360 / MS_PER_SAMPLE));
+            MS450	=((int16_t) (450 / MS_PER_SAMPLE));
+            MS1000	=SAMPLE_RATE;
+            MS1500	=((int16_t) (1500 / MS_PER_SAMPLE));
+
+            DERIV_LENGTH	=MS10;
+            LPBUFFER_LGTH	=MS50;
+            HPBUFFER_LGTH	=MS125;
+
+            WINDOW_WIDTH	=MS80; // Moving window integration width
+            FILTER_DELAY    =(int16_t)(((double)DERIV_LENGTH / 2) + ((double)LPBUFFER_LGTH / 2 - 1) + (((double)HPBUFFER_LGTH - 1) / 2) + PRE_BLANK);  // filter delays plus 200 ms blanking delay
+            DER_DELAY	    =WINDOW_WIDTH + FILTER_DELAY + MS100;	// 253
+
+            PRE_BLANK		=MS200;
+            MIN_PEAK_AMP	=50; // Prevents detections of peaks smaller than...
+
+        }
 
         int16_t QRSDetect(int16_t datum, uint8_t init)
         {
