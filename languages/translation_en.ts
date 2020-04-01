@@ -1352,7 +1352,7 @@
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished">Print</translation>
+        <translation type="obsolete">Print</translation>
     </message>
     <message>
         <source>Print to Image</source>

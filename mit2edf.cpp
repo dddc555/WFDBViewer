@@ -129,6 +129,7 @@ UI_MIT2EDFwindow::UI_MIT2EDFwindow(char *recent_dir, char *save_dir, bool onlySh
   recent_savedir = save_dir;
 
   myobjectDialog = new QDialog;
+  myobjectDialog ->setWindowFlags(myobjectDialog ->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
   myobjectDialog->setMinimumSize(600, 480);
   myobjectDialog->setMaximumSize(600, 480);
@@ -887,7 +888,9 @@ void UI_MIT2EDFwindow::SelectFileButton()
 
   blocks = filesize / (mit_hdr.sf_block * mit_hdr.chns);
 
-  QProgressDialog progress("Converting digitized signals ...", "Abort", 0, blocks);
+  QProgressDialog progress(tr("Converting digitized signals ..."), tr("Abort"), 0, blocks);
+  progress.setWindowFlags(progress.windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
   progress.setWindowModality(Qt::WindowModal);
   progress.setMinimumDuration(200);
 
@@ -1145,7 +1148,7 @@ OUT:
       fseeko(annot_inputfile, 0LL, SEEK_END);
       filesize = ftello(annot_inputfile);
 
-      progress.setLabelText("Converting annotations ...");
+      progress.setLabelText(tr("Converting annotations ..."));
       progress.setMinimum(0);
       progress.setMaximum(filesize);
 

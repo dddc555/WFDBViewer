@@ -979,6 +979,19 @@
         <source>Max</source>
         <translation type="vanished">最高</translation>
     </message>
+    <message>
+        <source>Converting digitized signals ...</source>
+        <translation type="vanished">デジタル化された信号の変換...</translation>
+    </message>
+    <message>
+        <source>Abort</source>
+        <translation type="vanished">アボート</translation>
+    </message>
+    <message>
+        <source>Converting annotations ...</source>
+        <translation type="vanished">注釈を変換しています...</translation>
+    </message>
+
 </context>
 <context>
     <name>AdjustFilterSettings</name>
@@ -1801,10 +1814,6 @@
     <message>
         <source>to CSV</source>
         <translation type="unfinished">CSV</translation>
-    </message>
-    <message>
-        <source>Print</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Print to Image</source>
