@@ -942,6 +942,7 @@ void SignalTwoCurve::drawWidget_to_printer(QPainter *painter, int curve_w, int c
 
   h_step = (double)curve_w / (double)bufsize;
 
+//  painter->setPen(QPen(Qt::black, 10));
   if(fbuf)
   {
     for(i = 0; i < bufsize; i++)
@@ -984,6 +985,8 @@ void SignalTwoCurve::drawWidget_to_printer(QPainter *painter, int curve_w, int c
     }
   }
 
+//  painter->setPen(Signal2Color);
+//  painter->setPen(QPen(Qt::black, 1));
   if(fbuf2)
   {
     for(i = 0; i < bufsize; i++)
@@ -1044,7 +1047,7 @@ void SignalTwoCurve::drawWidget_to_printer(QPainter *painter, int curve_w, int c
   {
     painter->drawLine(curve_w * marker_2_position, 0, curve_w * marker_2_position, curve_h);
   }
-
+  painter->fillRect(QRectF(float(h_step * begin ), 0, h_step * (to-begin), (float)(curve_h * 0.02f)), QBrush(QColor(0x00,0x00,0x00, 90)));
 
   bordersize = bordersize_backup;
 }

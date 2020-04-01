@@ -49,7 +49,8 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   docklist->setAllowedAreas( Qt::RightDockWidgetArea);
 //  docklist->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable);
   docklist->setFeatures(QDockWidget::DockWidgetMovable);
-
+  docklist->setMinimumWidth(310);
+  docklist->setMaximumWidth(500);
   palette.setColor(QPalette::Text, mainwindow->maincurve->text_color);
   palette.setColor(QPalette::Base, mainwindow->maincurve->backgroundcolor);
 
@@ -73,8 +74,7 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   comboBoxTimeFormat = new QComboBox;
 
   comboBoxTimeFormat->setGeometry(2, 2, 10, 10);
-//  comboBoxTimeFormat->
-//  checkbox1->setCheckState(Qt::Checked);
+
   comboBoxTimeFormat->addItem(tr("Relative to Start"));
   comboBoxTimeFormat->addItem(tr("Clock time"));
 
@@ -86,10 +86,8 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   lineedit1 = new QLineEdit;
 
   lineedit1->setMaxLength(16);
-//  lineedit1->setGeometry(2,2,10,10);
 
   comboBoxInclude = new QComboBox;
-//  comboBoxInclude->setGeometry(2, 2, 10, 10);
 
   labelFilterType = new QLabel;
   labelFilterType->setText(tr("Filter type"));
@@ -98,16 +96,12 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 
 
   hrv_button = new QPushButton(tr("hrv"));
-  hrv_button->setMaximumWidth(85);
 
   edit_button = new QPushButton(tr("Edit"));
-  edit_button->setMaximumWidth(85);
 
   export_button = new QPushButton(tr("Export"));
-  export_button->setMaximumWidth(85);
 
   export_wfdb_button = new QPushButton(tr("WFDB Export"));
-  export_wfdb_button->setMaximumWidth(60);
 
 
   list = new QListWidget(dialog1);
@@ -177,11 +171,12 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   h_layout4->addWidget(labelFilterType);
   h_layout4->addWidget(comboBoxInclude);
 
+  edit_button->setSizePolicy(spLeft);
+  export_button->setSizePolicy(spLeft);
+  hrv_button->setSizePolicy(spLeft);
 
   h_layout2->addWidget(edit_button);
   h_layout2->addWidget(export_button);
-//  h_layout2->addWidget(export_wfdb_button);
-
   h_layout2->addWidget(hrv_button);
 
   v_layout = new QVBoxLayout(dialog1);
@@ -190,7 +185,6 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   v_layout->addLayout(h_layout4);
 
   v_layout->addLayout(h_layout2);
-
 
   v_layout->addWidget(list);
   v_layout->setSpacing(1);
@@ -201,7 +195,7 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
 
   QObject::connect(list,                       SIGNAL(itemPressed(QListWidgetItem *)), this, SLOT(annotation_selected(QListWidgetItem *)));
   QObject::connect(docklist,                   SIGNAL(visibilityChanged(bool)),        this, SLOT(hide_editdock(bool)));
-//  QObject::connect(checkbox1,                  SIGNAL(stateChanged(int)),              this, SLOT(checkbox1_clicked(int)));
+
   QObject::connect(comboBoxTimeFormat,         SIGNAL(currentIndexChanged(int)),       this, SLOT(checkbox1_clicked(int)));
 
   QObject::connect(comboBoxInclude,            SIGNAL(currentIndexChanged(int)),       this, SLOT(checkbox2_clicked(int)));
@@ -210,7 +204,6 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   QObject::connect(edit_button,                SIGNAL(clicked(bool)),                  this, SLOT(edit_button_clicked(bool)));
   QObject::connect(export_button,              SIGNAL(clicked(bool)),                  this, SLOT(export_button_clicked(bool)));
   QObject::connect(export_wfdb_button,         SIGNAL(clicked(bool)),                  this, SLOT(export_wfdb_button_clicked(bool)));
-
 
   QObject::connect(hide_annot_act,             SIGNAL(triggered(bool)),                this, SLOT(hide_annot(bool)));
   QObject::connect(unhide_annot_act,           SIGNAL(triggered(bool)),                this, SLOT(unhide_annot(bool)));
@@ -226,7 +219,6 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   QObject::connect(filt_ival_time_act,         SIGNAL(triggered(bool)),                this, SLOT(filt_ival_time(bool)));
 
   QObject::connect(lineedit1,                  SIGNAL(textEdited(const QString)),      this, SLOT(filter_edited(const QString)));
-
 }
 
 
@@ -287,7 +279,6 @@ void UI_Annotationswindow::show_stats(bool)
   int second = mainwindow->edfheaderlist[file_num]->recording_len_sec;
   UI_HrvWindow hrv_wndw(NULL, 0LL, mainwindow, annot_list, annot, second);
 }
-
 
 void UI_Annotationswindow::filt_ival_time(bool)
 {

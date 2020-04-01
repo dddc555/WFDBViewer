@@ -94,6 +94,7 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
   dock->setFeatures(dock->features()  & ~QDockWidget::DockWidgetClosable);
   dock->setAllowedAreas(Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);
   dock->setMinimumHeight(300);
+  dock->setMinimumWidth(600);
   if(dashboard)
   {
     dock->setWidget(SpectrumDialog);

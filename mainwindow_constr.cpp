@@ -35,7 +35,7 @@ UI_Mainwindow::UI_Mainwindow()
 {
   int i, j, k;
 
-  setMinimumSize(640, 480);
+  setMinimumSize(1024, 480);
   setWindowTitle(PROGRAM_NAME);
   setWindowIcon(QIcon(":/images/edf.png"));
 

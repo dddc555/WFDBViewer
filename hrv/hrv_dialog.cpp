@@ -492,7 +492,7 @@ void UI_HrvWindow::print_to_pdf(){
         strcpy(path, mainwindow->recent_savedir);
         strcat(path, "/");
     }
-    strcat(path, "curve.pdf");
+    strcat(path, "hrv.pdf");
 
     strcpy(path, QFileDialog::getSaveFileName(0, "Print to PDF", QString::fromLocal8Bit(path), "PDF files (*.pdf *.PDF)").toLocal8Bit().data());
 
@@ -508,8 +508,9 @@ void UI_HrvWindow::print_to_pdf(){
     curve_printer.setOutputFileName(path);
     curve_printer.setPageSize(QPrinter::A4);
     curve_printer.setOrientation(QPrinter::Landscape);
-    //    curveRight->print_to_pdf(&curve_printer);
+
     curveLeft->print_to_pdf(&curve_printer);
+//    curveRight->print_to_pdf(&curve_printer);
 }
 
 void UI_HrvWindow::print_to_image(){
@@ -522,7 +523,7 @@ void UI_HrvWindow::print_to_image(){
         strcpy(path, mainwindow->recent_savedir);
         strcat(path, "/");
     }
-    strcat(path, "curve.png");
+    strcat(path, "hrv.png");
 
     strcpy(path, QFileDialog::getSaveFileName(0, tr("Print to Image"), QString::fromLocal8Bit(path), "PNG files (*.png *.PNG)").toLocal8Bit().data());
 
@@ -578,7 +579,7 @@ void UI_HrvWindow::print_to_ascii()
         strcpy(path, mainwindow->recent_savedir);
         strcat(path, "/");
     }
-    strcat(path, "curve.csv");
+    strcat(path, "hrv.csv");
 
     strcpy(path, QFileDialog::getSaveFileName(0, "Print to ASCII / CSV", QString::fromLocal8Bit(path), "ASCII / CSV files (*.csv *.CSV *.txt *.TXT)").toLocal8Bit().data());
 
