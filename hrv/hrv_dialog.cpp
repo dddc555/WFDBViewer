@@ -467,19 +467,20 @@ void UI_HrvWindow::exec_sidemenu()
 }
 
 void UI_HrvWindow::print_to_printer(){
-    QPrinter curve_printer(QPrinter::HighResolution);
+    //    QPrinter curve_printer(QPrinter::HighResolution);
 
-    curve_printer.setOutputFormat(QPrinter::NativeFormat);
-    curve_printer.setPageSize(QPrinter::A4);
-    curve_printer.setOrientation(QPrinter::Landscape);
+    //    curve_printer.setOutputFormat(QPrinter::NativeFormat);
+    //    curve_printer.setPageSize(QPrinter::A4);
+    //    curve_printer.setOrientation(QPrinter::Landscape);
 
-    QPrintDialog printerdialog(&curve_printer, StatDialog);
-    printerdialog.setWindowTitle(tr("Print"));
+    //    QPrintDialog printerdialog(&curve_printer, StatDialog);
+    //    printerdialog.setWindowTitle(tr("Print"));
 
-    if(!(printerdialog.exec()==QDialog::Accepted))
-    {
-        return;
-    }
+    //    if(!(printerdialog.exec()==QDialog::Accepted))
+    //    {
+    //        return;
+    //    }
+    curveRight->print_to_printer();
 
 }
 
@@ -509,8 +510,8 @@ void UI_HrvWindow::print_to_pdf(){
     curve_printer.setPageSize(QPrinter::A4);
     curve_printer.setOrientation(QPrinter::Landscape);
 
-    curveLeft->print_to_pdf(&curve_printer);
-//    curveRight->print_to_pdf(&curve_printer);
+    //    curveLeft->print_to_pdf(&curve_printer);
+    curveRight->print_to_pdf(&curve_printer);
 }
 
 void UI_HrvWindow::print_to_image(){
@@ -547,19 +548,52 @@ void UI_HrvWindow::print_to_image(){
     //    painter.drawPixmap(
     //            QRectF(0, 0, pixmap.width(), pixmap.height()), pixmap,
     //            QRectF(pixmap.width(), 0, pixmap2.width(), pixmap2.height()));
-
-    QPixmap pixmapTotal(pixmap.width() + pixmap2.width(), height);
+    int analytic_result_width = 120;
+    QPixmap pixmapTotal(pixmap.width() + analytic_result_width + pixmap2.width(), height);
     QPainter painter(&pixmapTotal);
     painter.drawPixmap(
                 QRectF(0, 0, pixmap.width(), pixmap.height()), pixmap,
                 QRectF(0, 0, pixmap.width(), pixmap.height()));
 
+
     painter.drawPixmap(
-                QRectF(pixmap.width(), 0, pixmap2.width(), pixmap2.height()), pixmap2,
+                QRectF(pixmap.width() + analytic_result_width, 0, pixmap2.width(), pixmap2.height()), pixmap2,
                 QRectF(pixmap2.rect()));
 
 
-    qDebug()<<"pixmap"<<pixmap.width()<<pixmap.height()<<pixmap2.width()<<pixmap2.height();
+    char stat_str[2048]={""};
+    sprintf(stat_str,
+            "Heart Rate\n"
+            "Beats:    %3i\n"
+            "Mean RR:  %3.1f ms\n"
+            "SDNN RR:  %3.1f ms\n"
+            "RMSSD RR: %3.1f ms\n"
+            "Mean HR:  %3.1f bpm\n"
+            "SDNN HR:  %3.1f bpm\n"
+            "NN20:     %3i\n"
+            "pNN20:    %3.1f %%\n"
+            "NN50:     %3i\n"
+            "pNN50:    %3.1f %%\n",
+            hr_stat.beat_cnt,
+            hr_stat.mean_rr,
+            hr_stat.sdnn_rr,
+            hr_stat.rmssd_rr,
+            hr_stat.mean_hr,
+            hr_stat.sdnn_hr,
+            hr_stat.NN20,
+            hr_stat.pNN20,
+            hr_stat.NN50,
+            hr_stat.pNN50);
+    painter.setFont(*curveLeft->sigcurve_font);
+    painter.fillRect(QRectF(float(pixmap.width()), 0.0f, (float)(analytic_result_width), (float)height), QBrush(QColor(0xf0,0xf0,0xf0, 255)));
+    painter.setPen(Qt::black);
+    QString str = QString(stat_str);
+    QStringList strList = str.split("\n");
+    for(int i = 0;i<strList.length();i++){
+        painter.drawText(pixmap.width()+ 5, 5 + i * 20 + 10, strList[i]);
+    }
+
+
     pixmapTotal.save(path, "PNG", 90);
 
     sidemenu->close();

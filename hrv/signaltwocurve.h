@@ -158,8 +158,8 @@ private:
 
   QPrinter *printer;
 
-  QFont *sigcurve_font;
-
+ public: QFont *sigcurve_font;
+ private:
   QPen Marker1Pen,
        Marker2Pen;
 
