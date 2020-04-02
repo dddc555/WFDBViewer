@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>Save as</source>
-        <translation type="vanished">新規保存</translation>
+        <translation type="vanished">名前を付けて保存</translation>
     </message>
     <message>
         <source>to Image</source>
@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>Remove all</source>
-        <translation type="vanished">削除</translation>
+        <translation type="vanished">全て削除</translation>
     </message>
     <message>
         <source>Timescale</source>
@@ -189,7 +189,7 @@
     </message>
     <message>
         <source>Threshold between low-frequency and high-frequency</source>
-        <translation type="vanished">低周波と高周波の間のしきい値</translation>
+        <translation type="vanished">低周波と高周波のしきい値</translation>
     </message>
     <message>
         <source>Z-threshold</source>
@@ -209,7 +209,7 @@
     </message>
     <message>
         <source>Hysteresis applied to the z-threshold.</source>
-        <translation type="vanished">zしきい値に適用されるヒステリシス。</translation>
+        <translation type="vanished">Zしきい値に適用されるヒステリシス。</translation>
     </message>
     <message>
         <source>Calculate</source>
@@ -233,7 +233,7 @@
     </message>
     <message>
         <source>Create annotations from the Z-EEG</source>
-        <translation type="vanished">Z-EEGから注釈を作成します</translation>
+        <translation type="vanished">Z-EEGから注釈を作成する</translation>
     </message>
     <message>
         <source>Default</source>
@@ -261,11 +261,11 @@
     </message>
     <message>
         <source>Pages</source>
-        <translation type="vanished">Pages</translation>
+        <translation type="vanished">ページ</translation>
     </message>
     <message>
         <source>Print to Image</source>
-        <translation type="vanished">画像に印刷</translation>
+        <translation type="vanished">画像に出力</translation>
     </message>
     <message>
         <source>Language</source>
@@ -505,11 +505,11 @@
     </message>
     <message>
         <source>Show Controls</source>
-        <translation type="vanished">コントロール</translation>
+        <translation type="vanished">コントロールを表示</translation>
     </message>
     <message>
         <source>Show Cursor</source>
-        <translation type="vanished">カーソル</translation>
+        <translation type="vanished">カーソルを表示</translation>
     </message>
     <message>
         <source>Edit</source>
@@ -541,7 +541,7 @@
     </message>
     <message>
         <source>Error, not enough beats.</source>
-        <translation type="vanished">エラー、ビートが足りません。</translation>
+        <translation type="vanished">エラー：ビートが足りません</translation>
     </message>
     <message>
         <source>Not enough beats.</source>
@@ -637,7 +637,7 @@
     </message>
     <message>
         <source>Baseline color</source>
-        <translation type="vanished">ベースライン色</translation>
+        <translation type="vanished">ベースラインの色</translation>
     </message>
     <message>
         <source>Crosshair color</source>
@@ -741,7 +741,7 @@
     </message>
     <message>
         <source>Do not read annotations, Biosemi Status signal</source>
-        <translation type="vanished">ファイルサイズが以下以上の場合、アノテーション、Biosemiステータス信号</translation>
+        <translation type="vanished">ファイルサイズが次以上の場合、</translation>
     </message>
     <message>
         <source>or Nihon Kohden triggers when filesize</source>
@@ -753,7 +753,7 @@
     </message>
     <message>
         <source>Read Biosemi Status signal</source>
-        <translation type="vanished">Biosemi Statusシグナルを読み取り</translation>
+        <translation type="vanished">Biosemi ステータス信号を読み取り</translation>
     </message>
     <message>
         <source>Read Nihon Kohden Trigger/Marker signal</source>
@@ -909,15 +909,15 @@
     </message>
     <message>
         <source>The frequency must over 500Hz for this filter</source>
-        <translation type="vanished">このフィルターの周波数は500Hzを超える必要があります</translation>
+        <translation type="vanished">このフィルターを使うにはサンプリング周波数が500Hzを超える必要があります</translation>
     </message>
     <message>
         <source>The frequency must over 4000Hz for this filter</source>
-        <translation type="vanished">このフィルターの周波数は4000Hzを超える必要があります</translation>
+        <translation type="vanished">このフィルターを使うにはサンプリング周波数が4000Hzを超える必要があります</translation>
     </message>
     <message>
         <source>The frequency must an integer ratio to 50 or 60 Hz</source>
-        <translation type="vanished">周波数は50または60 Hzの整数比でなければなりません</translation>
+        <translation type="vanished">サンプリング周波数が50または60 Hzの整数比でなければなりません</translation>
     </message>
     <message>
         <source>Windowing:</source>
@@ -933,7 +933,7 @@
     </message>
     <message>
         <source>Clock time</source>
-        <translation type="vanished">時刻</translation>
+        <translation type="vanished">時計時刻</translation>
     </message>
     <message>
         <source>Filter type</source>
@@ -945,11 +945,11 @@
     </message>
     <message>
         <source>Annotation file is generated with QRS detector</source>
-        <translation type="vanished">注釈ファイルはQRS検出器で生成されます</translation>
+        <translation type="vanished">注釈ファイルはQRS検出アルゴリズムで生成されます</translation>
     </message>
     <message>
         <source>Please open WFDB file to anaysis with QRS detector.</source>
-        <translation type="vanished">QRS検出器で分析するには、WFDBファイルを開いてください。</translation>
+        <translation type="vanished">QRS検出アルゴリズムで分析するWFDBファイルを開いてください</translation>
     </message>
     <message>
         <source>HRV Analysis</source>
@@ -961,7 +961,7 @@
     </message>
     <message>
         <source>Start Time</source>
-        <translation type="vanished">始まる時間</translation>
+        <translation type="vanished">開始時間</translation>
     </message>
     <message>
         <source>End Time</source>
@@ -991,7 +991,18 @@
         <source>Converting annotations ...</source>
         <translation type="vanished">注釈を変換しています...</translation>
     </message>
-
+    <message>
+        <source>There are unsaved annotations</source>
+        <translation type="vanished">保存されていない注釈があります</translation>
+    </message>
+    <message>
+        <source>are you sure you want to quit?</source>
+        <translation type="vanished">本当にやめる気？</translation>
+    </message>
+    <message>
+        <source>are you sure you want to close this file?</source>
+        <translation type="vanished">このファイルを閉じてもよろしいですか？</translation>
+    </message>
 </context>
 <context>
     <name>AdjustFilterSettings</name>
@@ -1012,11 +1023,11 @@
     </message>
     <message>
         <source>Show Cursor</source>
-        <translation type="unfinished">カーソル</translation>
+        <translation type="unfinished">カーソルを表示</translation>
     </message>
     <message>
         <source>Show Controls</source>
-        <translation type="unfinished">コントロール</translation>
+        <translation type="unfinished">コントロールを表示</translation>
     </message>
     <message>
         <source>Frequency</source>
@@ -1068,7 +1079,7 @@
     </message>
     <message>
         <source>Print to Image</source>
-        <translation type="unfinished">画像に印刷</translation>
+        <translation type="unfinished">画像に出力</translation>
     </message>
 </context>
 <context>
@@ -1099,11 +1110,11 @@
     </message>
     <message>
         <source>Show Cursor</source>
-        <translation type="unfinished">カーソル</translation>
+        <translation type="unfinished">カーソルを表示</translation>
     </message>
     <message>
         <source>Show Controls</source>
-        <translation type="unfinished">コントロール</translation>
+        <translation type="unfinished">コントロールを表示</translation>
     </message>
 </context>
 <context>
@@ -1130,7 +1141,7 @@
     </message>
     <message>
         <source>Print to Image</source>
-        <translation type="obsolete">画像に印刷</translation>
+        <translation type="obsolete">画像に出力</translation>
     </message>
     <message>
         <source>FFT resolution</source>
@@ -1194,7 +1205,7 @@
     <name>UI_AnnotationEditwindow</name>
     <message>
         <source>Annotation editor</source>
-        <translation type="unfinished">アノテーションエディター</translation>
+        <translation type="unfinished">アノテーションエディタ</translation>
     </message>
     <message>
         <source>Description</source>
@@ -1469,7 +1480,7 @@
     </message>
     <message>
         <source>Error, not enough beats.</source>
-        <translation type="unfinished">エラー、ビートが足りません。</translation>
+        <translation type="unfinished">エラー、ビートが足りません</translation>
     </message>
 </context>
 <context>
@@ -1597,7 +1608,7 @@
     </message>
     <message>
         <source>One tap per line</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1行毎にタップを設定してください</translation>
     </message>
     <message>
         <source>Select input file</source>
@@ -1769,7 +1780,7 @@
     </message>
     <message>
         <source>Start Time</source>
-        <translation type="unfinished">始まる時間</translation>
+        <translation type="unfinished">開始時間</translation>
     </message>
     <message>
         <source>End Time</source>
@@ -1797,7 +1808,7 @@
     </message>
     <message>
         <source>Not enough beats.</source>
-        <translation type="unfinished">ビートが足りません。</translation>
+        <translation type="unfinished">ビートが足りません</translation>
     </message>
     <message>
         <source>to printer</source>
@@ -1816,8 +1827,12 @@
         <translation type="unfinished">CSV</translation>
     </message>
     <message>
+        <source>Print</source>
+        <translation type="obsolete">出力</translation>
+    </message>
+    <message>
         <source>Print to Image</source>
-        <translation type="unfinished">画像に印刷</translation>
+        <translation type="unfinished">画像に出力</translation>
     </message>
     <message>
         <source>Heart Rate</source>
@@ -1850,11 +1865,11 @@
     <name>UI_MIT2CSVwindow</name>
     <message>
         <source>MIT to CSV converter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">WFDB ＞　CSV変換</translation>
     </message>
     <message>
         <source>Select File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ファイルを選択</translation>
     </message>
     <message>
         <source>Close</source>
@@ -1877,7 +1892,7 @@
     </message>
     <message>
         <source>MIT to EDF+ converter</source>
-        <translation type="unfinished">WFDBをEDF+に変換する</translation>
+        <translation type="unfinished">WFDB　＞　EDF+変換</translation>
     </message>
     <message>
         <source>Select inputfile</source>
@@ -1886,6 +1901,18 @@
     <message>
         <source>Select input file</source>
         <translation type="unfinished">入力ファイルを選択</translation>
+    </message>
+    <message>
+        <source>Converting digitized signals ...</source>
+        <translation type="unfinished">デジタル化された信号の変換...</translation>
+    </message>
+    <message>
+        <source>Abort</source>
+        <translation type="unfinished">アボート</translation>
+    </message>
+    <message>
+        <source>Converting annotations ...</source>
+        <translation type="unfinished">注釈を変換しています...</translation>
     </message>
 </context>
 <context>
@@ -1928,7 +1955,7 @@
     </message>
     <message>
         <source>Save as</source>
-        <translation type="unfinished">新規保存</translation>
+        <translation type="unfinished">名前を付けて保存</translation>
     </message>
     <message>
         <source>File</source>
@@ -2128,7 +2155,7 @@
     </message>
     <message>
         <source>New</source>
-        <translation type="unfinished">新着</translation>
+        <translation type="unfinished">新規</translation>
     </message>
     <message>
         <source>Adjust</source>
@@ -2196,7 +2223,7 @@
     </message>
     <message>
         <source>Convert to CSV</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CSVに変換</translation>
     </message>
     <message>
         <source>Save file</source>
@@ -2208,15 +2235,15 @@
     </message>
     <message>
         <source>The frequency must over 500Hz for this filter</source>
-        <translation type="unfinished">このフィルターの周波数は500Hzを超える必要があります</translation>
+        <translation type="unfinished">このフィルターを使うにはサンプリング周波数が500Hzを超える必要があります</translation>
     </message>
     <message>
         <source>The frequency must an integer ratio to 50 or 60 Hz</source>
-        <translation type="unfinished">周波数は50または60 Hzの整数比でなければなりません</translation>
+        <translation type="unfinished">サンプリング周波数が50または60 Hzの整数比でなければなりません</translation>
     </message>
     <message>
         <source>The frequency must over 4000Hz for this filter</source>
-        <translation type="unfinished">このフィルターの周波数は4000Hzを超える必要があります</translation>
+        <translation type="unfinished">このフィルターを使うにはサンプリング周波数が4000Hzを超える必要があります</translation>
     </message>
     <message>
         <source>Detect QRS and generate annotations</source>
@@ -2244,11 +2271,23 @@
     </message>
     <message>
         <source>Annotation file is generated with QRS detector</source>
-        <translation type="unfinished">注釈ファイルはQRS検出器で生成されます</translation>
+        <translation type="unfinished">注釈ファイルはQRS検出アルゴリズムで生成されます</translation>
     </message>
     <message>
         <source>Please open WFDB file to anaysis with QRS detector.</source>
-        <translation type="unfinished">QRS検出器で分析するには、WFDBファイルを開いてください。</translation>
+        <translation type="unfinished">QRS検出アルゴリズムで分析するWFDBファイルを開いてください</translation>
+    </message>
+    <message>
+        <source>There are unsaved annotations</source>
+        <translation type="unfinished">保存されていない注釈があります</translation>
+    </message>
+    <message>
+        <source>are you sure you want to quit?</source>
+        <translation type="unfinished">本当にやめる気？</translation>
+    </message>
+    <message>
+        <source>are you sure you want to close this file?</source>
+        <translation type="unfinished">このファイルを閉じてもよろしいですか？</translation>
     </message>
 </context>
 <context>
@@ -2492,7 +2531,7 @@
     </message>
     <message>
         <source>Do not read annotations, Biosemi Status signal</source>
-        <translation type="vanished">ファイルサイズが以下以上の場合、アノテーション、Biosemiステータス信号</translation>
+        <translation type="vanished">ファイルサイズが次以上の場合、</translation>
     </message>
     <message>
         <source>or Nihon Kohden triggers when filesize</source>
@@ -2590,7 +2629,7 @@
                    &quot;a samplerate of &gt;= 500Hz and\n&quot;
                    &quot;an integer ratio to 50 or 60 Hz will be listed here.&quot;</source>
         <translation type="vanished">&quot;物理単位が V, mV or uV かつ、\n&quot;
-                   &quot;サンプリング周波数が of &gt;= 500Hz かつ、\n&quot;
+                   &quot;サンプリング周波数が &gt;= 500Hz かつ、\n&quot;
                    &quot;50 or 60 Hz の整数倍数である信号が表示されます。&quot;</translation>
     </message>
     <message>
@@ -2609,7 +2648,8 @@
         <source>Only signals with a physical dimension V, mV or uV and
 a samplerate of &gt;= 500Hz and
 an integer ratio to 50 or 60 Hz will be listed here.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">物理単位が V, mV or uV かつ、サンプリング周波数が　500Hz かつ
+		50 or 60 Hz の整数倍数である信号が表示されます。</translation>
     </message>
 </context>
 <context>
@@ -2811,7 +2851,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <name>UI_StatisticWindow</name>
     <message>
         <source>Not enough beats.</source>
-        <translation type="unfinished">ビートが足りません。</translation>
+        <translation type="unfinished">ビートが足りません</translation>
     </message>
     <message>
         <source>Statistics</source>
@@ -2890,7 +2930,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Threshold between low-frequency and high-frequency</source>
-        <translation type="unfinished">低周波と高周波の間のしきい値</translation>
+        <translation type="unfinished">低周波と高周波のしきい値</translation>
     </message>
     <message>
         <source>Z-threshold</source>
@@ -2910,7 +2950,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Hysteresis applied to the z-threshold.</source>
-        <translation type="unfinished">zしきい値に適用されるヒステリシス。</translation>
+        <translation type="unfinished">Zしきい値に適用されるヒステリシス。</translation>
     </message>
     <message>
         <source>Calculate</source>
@@ -3054,7 +3094,7 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Print to Image</source>
-        <translation type="unfinished">画像に印刷</translation>
+        <translation type="unfinished">画像に出力</translation>
     </message>
 </context>
 </TS>

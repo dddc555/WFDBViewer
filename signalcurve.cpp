@@ -1697,7 +1697,7 @@ void SignalCurve::drawWidget(QPainter *painter, int curve_w, int curve_h)
     if(tr("Export") == "Export") {
       painter->drawText(curve_w - 228 - 4, 36, tr("Show Cursor"));
     } else {
-      painter->drawText(curve_w - 228 + 12, 36, tr("Show Cursor"));
+      painter->drawText(curve_w - 228 - 7, 36, tr("Show Cursor"));
     }
   }
   if(dashBoardEnabled == true)
@@ -1707,7 +1707,7 @@ void SignalCurve::drawWidget(QPainter *painter, int curve_w, int curve_h)
     if(tr("Export") == "Export") {
         painter->drawText(curve_w - 128 - 6, 36, tr("Show Controls"));
     }else{
-        painter->drawText(curve_w - 128 + 4, 36, tr("Show Controls"));
+        painter->drawText(curve_w - 128 - 12, 36, tr("Show Controls"));
     }
   }
 

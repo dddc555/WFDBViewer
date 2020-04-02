@@ -1414,6 +1414,18 @@
         <source>Select input file</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Converting digitized signals ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Abort</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Converting annotations ...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_Mainwindow</name>
@@ -1767,6 +1779,18 @@
     </message>
     <message>
         <source>Please open WFDB file to anaysis with QRS detector.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There are unsaved annotations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>are you sure you want to quit?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>are you sure you want to close this file?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -97,7 +97,7 @@ void UI_Mainwindow::closeEvent(QCloseEvent *cl_event)
     if(annotations_edited)
     {
         QMessageBox messagewindow;
-        messagewindow.setText("There are unsaved annotations,\n are you sure you want to quit?");
+        messagewindow.setText(tr("There are unsaved annotations")+"\n "+ tr("are you sure you want to quit?"));
         messagewindow.setIcon(QMessageBox::Question);
         messagewindow.setStandardButtons(QMessageBox::Cancel | QMessageBox::Close);
         messagewindow.setDefaultButton(QMessageBox::Cancel);
@@ -941,6 +941,7 @@ void UI_Mainwindow::add_plif_ecg_filter()
     {
         QMessageBox messagewindow(QMessageBox::Critical, tr("Error"), tr("The frequency must over 500Hz for this filter"));
         messagewindow.exec();
+        return;
     }
 
     if((sf % 50) && (sf % 60))  /* don't list signals that can not be filtered */
@@ -972,7 +973,8 @@ void UI_Mainwindow::add_spike_filter()
     if(sf < 4000)  /* don't list signals that have low samplerate */
     {
         QMessageBox messagewindow(QMessageBox::Critical, tr("Error"), tr("The frequency must over 4000Hz for this filter"));
-        messagewindow.exec(); return;
+        messagewindow.exec();
+        return;
     }
 
     UI_SpikeFilterDialog spikefilterdialog(this);
@@ -2468,7 +2470,7 @@ bool UI_Mainwindow::close_all_files()
     if(annotations_edited)
     {
         QMessageBox messagewindow;
-        messagewindow.setText("There are unsaved annotations,\n are you sure you want to close this file?");
+        messagewindow.setText(tr("There are unsaved annotations")+",\n "+tr("are you sure you want to close this file?"));
         messagewindow.setIcon(QMessageBox::Question);
         messagewindow.setStandardButtons(QMessageBox::Cancel | QMessageBox::Close);
         messagewindow.setDefaultButton(QMessageBox::Cancel);
@@ -4173,6 +4175,9 @@ void UI_Mainwindow::export_wfdb_button_clicked()
     arrByte[1] = 0;
     fwrite(arrByte, 2,1,annotationFile);
     fclose(annotationFile);
+    this->annotations_edited = 0;
+    this->save_act->setEnabled(false);
+
     //*/
 }
 

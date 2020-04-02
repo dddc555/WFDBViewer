@@ -49,7 +49,7 @@ UI_Annotationswindow::UI_Annotationswindow(int file_number, QWidget *w_parent)
   docklist->setAllowedAreas( Qt::RightDockWidgetArea);
 //  docklist->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable);
   docklist->setFeatures(QDockWidget::DockWidgetMovable);
-  docklist->setMinimumWidth(310);
+  docklist->setMinimumWidth(320);
   docklist->setMaximumWidth(500);
   palette.setColor(QPalette::Text, mainwindow->maincurve->text_color);
   palette.setColor(QPalette::Base, mainwindow->maincurve->backgroundcolor);
