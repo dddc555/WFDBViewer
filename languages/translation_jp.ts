@@ -380,10 +380,6 @@
         <translation type="vanished">信号を選択:</translation>
     </message>
     <message>
-        <source>Apply</source>
-        <translation type="vanished">適用</translation>
-    </message>
-    <message>
         <source>Undo</source>
         <translation type="vanished">元に戻す</translation>
     </message>
@@ -1006,14 +1002,6 @@
 </context>
 <context>
     <name>AdjustFilterSettings</name>
-    <message>
-        <source>Remove</source>
-        <translation type="unfinished">削除</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>SignalCurve</name>
@@ -1048,10 +1036,6 @@
     <message>
         <source>to PDF</source>
         <translation type="unfinished">PDF</translation>
-    </message>
-    <message>
-        <source>to Image</source>
-        <translation type="unfinished">画像</translation>
     </message>
     <message>
         <source>to ASCII</source>
@@ -1132,10 +1116,6 @@
         <translation type="obsolete">PDF</translation>
     </message>
     <message>
-        <source>to Image</source>
-        <translation type="obsolete">画像</translation>
-    </message>
-    <message>
         <source>to CSV</source>
         <translation type="obsolete">CSV</translation>
     </message>
@@ -1173,32 +1153,10 @@
     </message>
 </context>
 <context>
-    <name>UI_ASCII2EDFapp</name>
-    <message>
-        <source>Signals</source>
-        <translation type="unfinished">信号</translation>
-    </message>
-</context>
-<context>
-    <name>UI_Aboutwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-</context>
-<context>
     <name>UI_AnnotFilterWindow</name>
-    <message>
-        <source>Apply</source>
-        <translation type="unfinished">適用</translation>
-    </message>
     <message>
         <source>Undo</source>
         <translation type="unfinished">元に戻す</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
     </message>
 </context>
 <context>
@@ -1369,10 +1327,6 @@
         <source>Error, selected file is in use.</source>
         <translation type="unfinished">エラー、選択したファイルは使用中です。</translation>
     </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>UI_AverageCurveWindow</name>
@@ -1395,10 +1349,6 @@
 </context>
 <context>
     <name>UI_BDF2EDFwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
     <message>
         <source>Convert</source>
         <translation type="unfinished">変換</translation>
@@ -1423,10 +1373,6 @@
 <context>
     <name>UI_BI98002EDFwindow</name>
     <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-    <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
     </message>
@@ -1437,10 +1383,6 @@
 </context>
 <context>
     <name>UI_BIOSEMI2BDFPLUSwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
     <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
@@ -1453,10 +1395,6 @@
 <context>
     <name>UI_BIOX2EDFwindow</name>
     <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-    <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
     </message>
@@ -1467,10 +1405,6 @@
 </context>
 <context>
     <name>UI_ColorMenuDialog</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>UI_ECGExport</name>
@@ -1485,17 +1419,9 @@
 </context>
 <context>
     <name>UI_EDFCompatwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>UI_EDFDwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
     <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
@@ -1515,17 +1441,9 @@
         <source>Signals</source>
         <translation type="unfinished">信号</translation>
     </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>UI_EMSA2EDFwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
     <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
@@ -1537,10 +1455,6 @@
 </context>
 <context>
     <name>UI_ExportAnnotationswindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>UI_ExportFilteredSignalsWindow</name>
@@ -1549,20 +1463,12 @@
         <translation type="unfinished">ファイルを保存</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-    <message>
         <source>Export</source>
         <translation type="unfinished">エクスポート</translation>
     </message>
 </context>
 <context>
     <name>UI_FINO2EDFwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
     <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
@@ -1587,20 +1493,8 @@
         <translation type="unfinished">信号を選択:</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-    <message>
-        <source>File</source>
-        <translation type="unfinished">ファイル</translation>
-    </message>
-    <message>
         <source>Load values from text file</source>
         <translation type="unfinished">テキストファイルから値を読み込む</translation>
-    </message>
-    <message>
-        <source>Apply</source>
-        <translation type="unfinished">適用</translation>
     </message>
     <message>
         <source>Select inputfile</source>
@@ -1617,10 +1511,6 @@
 </context>
 <context>
     <name>UI_FMaudio2EDFwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
     <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
@@ -1709,10 +1599,6 @@
         <translation type="unfinished">キャンセル</translation>
     </message>
     <message>
-        <source>Apply</source>
-        <translation type="unfinished">適用</translation>
-    </message>
-    <message>
         <source>passband ripple</source>
         <translation type="unfinished">通過帯域リップル</translation>
     </message>
@@ -1799,10 +1685,6 @@
         <translation type="unfinished">最高</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-    <message>
         <source>Export</source>
         <translation type="unfinished">エクスポート</translation>
     </message>
@@ -1817,10 +1699,6 @@
     <message>
         <source>to PDF</source>
         <translation type="unfinished">PDF</translation>
-    </message>
-    <message>
-        <source>to Image</source>
-        <translation type="unfinished">画像</translation>
     </message>
     <message>
         <source>to CSV</source>
@@ -1841,17 +1719,9 @@
 </context>
 <context>
     <name>UI_LoadMontagewindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>UI_MANSCAN2EDFwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
     <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
@@ -1872,10 +1742,6 @@
         <translation type="unfinished">ファイルを選択</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-    <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
     </message>
@@ -1886,10 +1752,6 @@
 </context>
 <context>
     <name>UI_MIT2EDFwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
     <message>
         <source>MIT to EDF+ converter</source>
         <translation type="unfinished">WFDB　＞　EDF+変換</translation>
@@ -1918,18 +1780,6 @@
 <context>
     <name>UI_Mainwindow</name>
     <message>
-        <source>Recent files</source>
-        <translation type="unfinished">最近使用したファイル</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-    <message>
-        <source>to Image</source>
-        <translation type="unfinished">画像</translation>
-    </message>
-    <message>
         <source>Print</source>
         <translation type="obsolete">エクスポート</translation>
     </message>
@@ -1952,18 +1802,6 @@
     <message>
         <source>to CSV</source>
         <translation type="unfinished">CSV</translation>
-    </message>
-    <message>
-        <source>Save as</source>
-        <translation type="unfinished">名前を付けて保存</translation>
-    </message>
-    <message>
-        <source>File</source>
-        <translation type="unfinished">ファイル</translation>
-    </message>
-    <message>
-        <source>Open WFDB</source>
-        <translation type="unfinished">WFDBを開く</translation>
     </message>
     <message>
         <source>Exit</source>
@@ -2293,10 +2131,6 @@
 <context>
     <name>UI_MortaraEDFwindow</name>
     <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-    <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
     </message>
@@ -2308,10 +2142,6 @@
 <context>
     <name>UI_NEXFIN2EDFwindow</name>
     <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-    <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
     </message>
@@ -2322,10 +2152,6 @@
 </context>
 <context>
     <name>UI_NK2EDFwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
     <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
@@ -2364,10 +2190,6 @@
     <message>
         <source>Settings</source>
         <translation type="unfinished">設定</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
     </message>
     <message>
         <source>Background color</source>
@@ -2460,10 +2282,6 @@
     <message>
         <source>rectangles and enter the values.</source>
         <translation type="unfinished">測定し値を入力</translation>
-    </message>
-    <message>
-        <source>Apply</source>
-        <translation type="unfinished">適用</translation>
     </message>
     <message>
         <source>Calibration</source>
@@ -2633,14 +2451,6 @@
                    &quot;50 or 60 Hz の整数倍数である信号が表示されます。&quot;</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-    <message>
-        <source>Apply</source>
-        <translation type="unfinished">適用</translation>
-    </message>
-    <message>
         <source>Help</source>
         <translation type="obsolete">ヘルプ</translation>
     </message>
@@ -2654,10 +2464,6 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
 </context>
 <context>
     <name>UI_RAW2EDFapp</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>UI_ReduceSignalsWindow</name>
@@ -2665,17 +2471,9 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
         <source>Save file</source>
         <translation type="unfinished">ファイルを保存</translation>
     </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>UI_SCPECG2EDFwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
     <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
@@ -2687,17 +2485,9 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
 </context>
 <context>
     <name>UI_SaveMontagewindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>UI_ShowActualMontagewindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>UI_SignalChooser</name>
@@ -2720,14 +2510,6 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <message>
         <source>Invert</source>
         <translation type="unfinished">反転</translation>
-    </message>
-    <message>
-        <source>Remove</source>
-        <translation type="unfinished">削除</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
     </message>
 </context>
 <context>
@@ -2869,10 +2651,6 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
 <context>
     <name>UI_UNISENS2EDFwindow</name>
     <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
-    <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
     </message>
@@ -2898,17 +2676,9 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
 </context>
 <context>
     <name>UI_ViewMontagewindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>UI_WAV2EDFwindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
     <message>
         <source>Select inputfile</source>
         <translation type="obsolete">入力ファイルを選択</translation>
@@ -2920,10 +2690,6 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
 </context>
 <context>
     <name>UI_ZScoreWindow</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
     <message>
         <source>Cross-over</source>
         <translation type="unfinished">クロスオーバー</translation>
@@ -3018,10 +2784,6 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
 </context>
 <context>
     <name>UI_edit_predefined_mtg_window</name>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
-    </message>
 </context>
 <context>
     <name>UI_headerEditorWindow</name>
@@ -3032,10 +2794,6 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <message>
         <source>Signals</source>
         <translation type="unfinished">信号</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
     </message>
 </context>
 <context>
@@ -3087,10 +2845,6 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     <message>
         <source>Heart Rate</source>
         <translation type="unfinished">心拍数</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
     </message>
     <message>
         <source>Print to Image</source>
