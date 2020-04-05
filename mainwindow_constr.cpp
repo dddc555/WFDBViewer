@@ -834,7 +834,7 @@ UI_Mainwindow::UI_Mainwindow()
 //  helpmenu->addAction("Manual",  this, SLOT(show_help()));
 //#endif
   helpmenu->addAction("Keyboard shortcuts", this, SLOT(show_kb_shortcuts()));
-  helpmenu->addAction("About WFDBbrowser", this, SLOT(show_about_dialog()));
+  helpmenu->addAction("About Cardio Analyzer", this, SLOT(show_about_dialog()));
   helpmenu->addAction("Show splashscreen", this, SLOT(show_splashscreen()));
 //  menubar->addMenu(helpmenu);
   languagemenu =  new QMenu(this);
@@ -1147,7 +1147,7 @@ UI_Mainwindow::UI_Mainwindow()
 
   if((QT_VERSION < MINIMUM_QT4_VERSION) || ((QT_VERSION >= 0x050000) && (QT_VERSION < MINIMUM_QT5_VERSION)))
   {
-    QMessageBox messagewindow(QMessageBox::Critical, "Error", "WFDBbrowser has been compiled with a version of Qt\n"
+    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Cardio Analyzer has been compiled with a version of Qt\n"
                                                               "which is too old and will likely cause problems!");
     messagewindow.exec();
   }

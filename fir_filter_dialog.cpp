@@ -289,7 +289,7 @@ void UI_FIRFilterDialog::filebuttonpressed()
 void UI_FIRFilterDialog::helpbuttonpressed()
 {
 #ifdef Q_OS_LINUX
-  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/wfdbbrowser/manual.html#Custom_fir_filter"));
+  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/Cardio_Analyzer/manual.html#Custom_fir_filter"));
 #endif
 
 #ifdef Q_OS_WIN32
@@ -297,7 +297,7 @@ void UI_FIRFilterDialog::helpbuttonpressed()
 
   strcpy(p_path, "file:///");
   strcat(p_path, mainwindow->specialFolder(CSIDL_PROGRAM_FILES).toLocal8Bit().data());
-  strcat(p_path, "\\WFDBbrowser\\manual.html#Custom_fir_filter");
+  strcat(p_path, "\\Cardio_Analyzer\\manual.html#Custom_fir_filter");
   QDesktopServices::openUrl(QUrl(p_path));
 #endif
 }

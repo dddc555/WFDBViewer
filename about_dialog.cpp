@@ -70,7 +70,7 @@ UI_Aboutwindow::UI_Aboutwindow(UI_Mainwindow *mainwindow)
         "\n Copyright (C) 2007 - 2019 Teunis van Beelen.\n"
         "\n Disclaimer:\n"
         " Despite this software is intend to be useful, there is no warranty, use this software at your own risk!\n"
-        " WFDBbrowser may NOT be used in safety-critical applications, such as life-support medical systems.\n"
+        " Cardio Analyzer may NOT be used in safety-critical applications, such as life-support medical systems.\n"
         " The author is NOT responsible for any consequences. For research and educational purpose only.\n");
   textedit1->append(str);
   textedit1->append(

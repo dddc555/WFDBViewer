@@ -64,7 +64,7 @@
 #define EDFLIB_MALLOC_ERROR                 -1
 #define EDFLIB_NO_SUCH_FILE_OR_DIRECTORY    -2
 
-/* when this error occurs, try to open the file with WFDBbrowser,
+/* when this error occurs, try to open the file with Cardio Analyzer,
    it will give you full details about the cause of the error. */
 #define EDFLIB_FILE_CONTAINS_FORMAT_ERRORS  -3
 

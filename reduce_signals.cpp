@@ -1370,7 +1370,7 @@ void UI_ReduceSignalsWindow::showpopupmessage(const char *str1, const char *str2
 void UI_ReduceSignalsWindow::helpbuttonpressed()
 {
 #ifdef Q_OS_LINUX
-  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/wfdbbrowser/manual.html#Reduce_signals"));
+  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/Cardio_Analyzer/manual.html#Reduce_signals"));
 #endif
 
 #ifdef Q_OS_WIN32
@@ -1378,7 +1378,7 @@ void UI_ReduceSignalsWindow::helpbuttonpressed()
 
   strcpy(p_path, "file:///");
   strcat(p_path, mainwindow->specialFolder(CSIDL_PROGRAM_FILES).toLocal8Bit().data());
-  strcat(p_path, "\\WFDBbrowser\\manual.html#Reduce_signals");
+  strcat(p_path, "\\Cardio_Analyzer\\manual.html#Reduce_signals");
   QDesktopServices::openUrl(QUrl(p_path));
 #endif
 }

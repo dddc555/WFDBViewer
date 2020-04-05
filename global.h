@@ -26,8 +26,8 @@
 */
 
 
-#ifndef WFDBBROWSER_GLOBAL_H
-#define WFDBBROWSER_GLOBAL_H
+#ifndef CardioAnalyzer_GLOBAL_H
+#define CardioAnalyzer_GLOBAL_H
 
 #include <stdio.h>
 

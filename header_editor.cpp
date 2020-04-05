@@ -1714,7 +1714,7 @@ int UI_headerEditorWindow::calculate_chars_left_recording(const QString &)
 void UI_headerEditorWindow::helpbuttonpressed()
 {
 #ifdef Q_OS_LINUX
-  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/wfdbbrowser/manual.html#Header_editor"));
+  QDesktopServices::openUrl(QUrl("file:///usr/share/doc/Cardio_Analyzer/manual.html#Header_editor"));
 #endif
 
 #ifdef Q_OS_WIN32
@@ -1722,7 +1722,7 @@ void UI_headerEditorWindow::helpbuttonpressed()
 
   strcpy(p_path, "file:///");
   strcat(p_path, mainwindow->specialFolder(CSIDL_PROGRAM_FILES).toLocal8Bit().data());
-  strcat(p_path, "\\WFDBbrowser\\manual.html#Header_editor");
+  strcat(p_path, "\\Cardio_Analyzer\\manual.html#Header_editor");
   QDesktopServices::openUrl(QUrl(p_path));
 #endif
 }

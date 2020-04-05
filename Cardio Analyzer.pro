@@ -25,7 +25,7 @@ contains(QT_MINOR_VERSION, 9) {
 
 
 TEMPLATE = app
-TARGET = wfdbbrowser
+TARGET = "Cardio Analyzer"
 DEPENDPATH += .
 INCLUDEPATH += .
 CONFIG += qt
@@ -281,17 +281,17 @@ SOURCES += third_party/fidlib/fidlib.c
 RESOURCES = images.qrc
 
 win32 {
- RC_FILE = wfdbbrowser.rc
+ RC_FILE = cardio_analyzer.rc
 }
 
 QMAKE_CXXFLAGS += -Wextra -Wshadow -Wformat-nonliteral -Wformat-security -Wtype-limits -Wfatal-errors -fpermissive -pedantic
 
 unix {
 target.path = /usr/bin
-target.files = wfdbbrowser
+target.files = "Cardio Analyzer"
 INSTALLS += target
 
-documentation.path = /usr/share/doc/wfdbbrowser
+documentation.path = /usr/share/doc/Cardio
 documentation.files = doc/*
 INSTALLS += documentation
 
@@ -312,11 +312,11 @@ icon_d.files = images/edf.png
 INSTALLS += icon_d
 
 desktop_link.path += /usr/share/applications
-desktop_link.files += install/wfdbbrowser.desktop
+desktop_link.files += install/cardio_analyzer.desktop
 INSTALLS += desktop_link
 
 mime.path += /usr/share/mime/packages
-mime.files += install/wfdbbrowser.xml
+mime.files += install/cardio_analyzer.xml
 INSTALLS += mime
 }
 

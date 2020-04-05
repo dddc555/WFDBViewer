@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-edf">
+    <comment>European Data Format 16-bits</comment>
+    <magic priority="50">
+      <match type="string" offset="0" value="0       "/>
+    </magic>
+    <generic-icon name="edf"/>
+    <glob pattern="*.edf"/>
+  </mime-type>
+  <mime-type type="application/x-bdf">
+    <comment>European Data Format 24-bits</comment>
+    <magic priority="50">
+      <match type="string" offset="1" value="BIOSEMI"/>
+    </magic>
+    <generic-icon name="edf"/>
+    <glob pattern="*.bdf"/>
+  </mime-type>
+</mime-info>

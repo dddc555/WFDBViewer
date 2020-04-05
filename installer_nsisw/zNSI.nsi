@@ -1,18 +1,18 @@
 BrandingText " "
-!define setup "../WFDBBrowser_setup.exe"
+!define setup "../Cardio_Analyzer_setup.exe"
  
 ; change this to wherever the files to be packaged reside
 !define srcdir "."
  
 !define company "EMC Healthcare"
  
-!define prodname "WFDBBrowser"
-!define exec "wfdbbrowser.exe"
+!define prodname "Cardio Analyzer"
+!define exec "Cardio Analyzer.exe"
  
 # optional stuff
  
 ; Set the text which prompts the user to enter the installation directory
- DirText "WFDBBrowser."
+ DirText "Cardio Analyzer"
  
 ; text file to open in notepad after installation
 !define notefile "license.txt"

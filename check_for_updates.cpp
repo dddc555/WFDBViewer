@@ -98,7 +98,7 @@ void Check_for_updates::replyFinished()
 
   buf[30] = 0;
 
-  if(strncmp(buf, "WFDBbrowser latest version: ", 27))
+  if(strncmp(buf, "Cardio Analyzer latest version: ", 27))
   {
     return;
   }

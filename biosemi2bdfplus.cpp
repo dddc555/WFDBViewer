@@ -205,7 +205,7 @@ void UI_BIOSEMI2BDFPLUSwindow::SelectFileButton()
                                                 break;
       case EDFLIB_NO_SUCH_FILE_OR_DIRECTORY   : strcpy(str, "EDFlib: no such file or directory.");
                                                 break;
-      case EDFLIB_FILE_CONTAINS_FORMAT_ERRORS : strcpy(str, "EDFlib: file contains format errors.\nOpen the file in WFDBbrowser to get more info.");
+      case EDFLIB_FILE_CONTAINS_FORMAT_ERRORS : strcpy(str, "EDFlib: file contains format errors.\nOpen the file in Cardio Analyzer to get more info.");
                                                 break;
       case EDFLIB_MAXFILES_REACHED            : strcpy(str, "EDFlib: maximum amount of files reached.");
                                                 break;
@@ -416,7 +416,7 @@ void UI_BIOSEMI2BDFPLUSwindow::SelectFileButton()
 
   if(mainwindow->file_is_opened(outputpath))
   {
-    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Outputfile is already opened in WFDBbrowser.\nClose the file and try again.");
+    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Outputfile is already opened in Cardio Analyzer.\nClose the file and try again.");
     messagewindow.exec();
     edfclose_file(hdl_in);
     return;
