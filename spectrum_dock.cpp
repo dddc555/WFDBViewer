@@ -341,7 +341,7 @@ UI_SpectrumDockWindow::UI_SpectrumDockWindow(QWidget *w_parent)
   QObject::connect(vlogButton,      SIGNAL(toggled(bool)),           this, SLOT(vlogButtonClicked(bool)));
   QObject::connect(colorBarButton,  SIGNAL(toggled(bool)),           this, SLOT(colorBarButtonClicked(bool)));
   QObject::connect(curve1,          SIGNAL(extra_button_clicked()),  this, SLOT(print_to_txt()));
-  QObject::connect(curve1,          SIGNAL(extra_button2_clicked()), this, SLOT(print_to_txt()));
+  QObject::connect(curve1,          SIGNAL(extra_button2_clicked()), this, SLOT(print_to_csv()));
 
   QObject::connect(curve1,          SIGNAL(dashBoardClicked()),      this, SLOT(setdashboard()));
   QObject::connect(flywheel1,       SIGNAL(dialMoved(int)),          this, SLOT(update_flywheel(int)));

@@ -604,65 +604,65 @@ void SignalCurve::restore_colors_after_printing(void)
 
 void SignalCurve::print_to_ascii()
 {
-  int i;
+//  int i;
 
-  char path[SC_MAX_PATH_LEN];
+//  char path[SC_MAX_PATH_LEN];
 
-  FILE *outputfile;
+//  FILE *outputfile;
 
-  path[0] = 0;
-  if(recent_savedir[0]!=0)
-  {
-    strcpy(path, recent_savedir);
-    strcat(path, "/");
-  }
-  strcat(path, "curve.csv");
+//  path[0] = 0;
+//  if(recent_savedir[0]!=0)
+//  {
+//    strcpy(path, recent_savedir);
+//    strcat(path, "/");
+//  }
+//  strcat(path, "curve.csv");
 
-  strcpy(path, QFileDialog::getSaveFileName(0, "Print to ASCII / CSV", QString::fromLocal8Bit(path), "ASCII / CSV files (*.csv *.CSV *.txt *.TXT)").toLocal8Bit().data());
+//  strcpy(path, QFileDialog::getSaveFileName(0, "Print to ASCII / CSV", QString::fromLocal8Bit(path), "ASCII / CSV files (*.csv *.CSV *.txt *.TXT)").toLocal8Bit().data());
 
-  if(!strcmp(path, ""))
-  {
-    sidemenu->close();
+//  if(!strcmp(path, ""))
+//  {
+//    sidemenu->close();
 
-    return;
-  }
+//    return;
+//  }
 
-  get_directory_from_path(recent_savedir, path, SC_MAX_PATH_LEN);
+//  get_directory_from_path(recent_savedir, path, SC_MAX_PATH_LEN);
 
-  outputfile = fopen(path, "wb");
-  if(outputfile == NULL)
-  {
-    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Can not open outputfile for writing.");
-    messagewindow.exec();
-    return;
-  }
+//  outputfile = fopen(path, "wb");
+//  if(outputfile == NULL)
+//  {
+//    QMessageBox messagewindow(QMessageBox::Critical, "Error", "Can not open outputfile for writing.");
+//    messagewindow.exec();
+//    return;
+//  }
 
-  if(ibuf != NULL)
-  {
-    for(i=0; i<bufsize; i++)
-    {
-      fprintf(outputfile, "%i\n", ibuf[i]);
-    }
-  }
+//  if(ibuf != NULL)
+//  {
+//    for(i=0; i<bufsize; i++)
+//    {
+//      fprintf(outputfile, "%i\n", ibuf[i]);
+//    }
+//  }
 
-  if(dbuf != NULL)
-  {
-    for(i=0; i<bufsize; i++)
-    {
-      fprintf(outputfile, "%.8f\n", dbuf[i]);
-    }
-  }
+//  if(dbuf != NULL)
+//  {
+//    for(i=0; i<bufsize; i++)
+//    {
+//      fprintf(outputfile, "%.8f\n", dbuf[i]);
+//    }
+//  }
 
-  if(fbuf != NULL)
-  {
-    for(i=0; i<bufsize; i++)
-    {
-      fprintf(outputfile, "%.8f\n", fbuf[i]);
-    }
-  }
+//  if(fbuf != NULL)
+//  {
+//    for(i=0; i<bufsize; i++)
+//    {
+//      fprintf(outputfile, "%.8f\n", fbuf[i]);
+//    }
+//  }
 
-  fclose(outputfile);
-
+//  fclose(outputfile);
+  emit extra_button2_clicked();
   sidemenu->close();
 }
 
