@@ -2226,7 +2226,7 @@ void ViewCurve::drawCurve_stage_2(QPainter *painter, int w_width, int w_height, 
               hr_stats.NN50,
               hr_stats.pNN50);
 
-//      mainwindow->nav_toolbar_label->setText(str4);
+      mainwindow->nav_toolbar_label->setText(str4);
     }
   }
   else

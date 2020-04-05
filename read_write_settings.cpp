@@ -1864,6 +1864,11 @@ void UI_Mainwindow::write_settings()
   strcpy(cfg_path, specialFolder(CSIDL_APPDATA).toLocal8Bit().data());
   strcat(cfg_path, "\\");
   strcat(cfg_path, PROGRAM_NAME);
+  QDir dir(cfg_path);
+  QString directoryString(cfg_path);
+  if ( !dir.exists()){
+      QDir().mkdir(directoryString);
+  }
   strcat(cfg_path, "\\");
   strcat(cfg_path, SETTING_FILE_NAME);
 #else
