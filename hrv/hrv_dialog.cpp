@@ -101,7 +101,7 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
     //    curveLeft->setLowerLabel("HR (beats/min)");
 
     strcpy(stat_str, "Distribution ");
-    strcat(stat_str, annot->annotation);
+//    strcat(stat_str, annot->annotation);
     //    curveLeft->setUpperLabel1(stat_str);
 
     curveLeft->setFillSurfaceEnabled(false);
@@ -182,7 +182,7 @@ UI_HrvWindow::UI_HrvWindow(struct signalcompblock *signalcomp,
 
 
     strcpy(stat_str, "Distribution ");
-    strcat(stat_str, annot->annotation);
+//    strcat(stat_str, annot->annotation);
     curveRight->setUpperLabel1(stat_str);
 
     curveRight->setFillSurfaceEnabled(true);

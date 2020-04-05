@@ -320,7 +320,7 @@ UI_Mainwindow::UI_Mainwindow()
   printmenu->addAction(to_CSV_act);
   connect(to_CSV_act, SIGNAL(triggered()), this, SLOT(print_to_csv()));
 
-  save_act = new QAction(tr("Save as"), this);
+  save_act = new QAction(tr("Save Annotations"), this);
   save_act->setShortcut(QKeySequence::Save);
   save_act->setEnabled(false);
   connect(save_act, SIGNAL(triggered()), this, SLOT(save_file()));
@@ -1203,7 +1203,7 @@ void UI_Mainwindow::updateText(){
   to_EDF_act->setText(tr("to EDF"));
   to_BDF_act->setText(tr("to BDF"));
   to_CSV_act->setText(tr("to CSV"));
-  save_act->setText(tr("Save as"));
+  save_act->setText(tr("Save Annotations"));
   
   filemenu->setTitle("&"+tr("File"));
 

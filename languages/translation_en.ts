@@ -1467,7 +1467,7 @@
     </message>
     <message>
         <source>Save as</source>
-        <translation type="unfinished">Save as</translation>
+        <translation type="obsolete">Save as</translation>
     </message>
     <message>
         <source>File</source>
@@ -1730,10 +1730,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1786,11 +1782,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>are you sure you want to quit?</source>
+        <source>are you sure you want to close this file?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>are you sure you want to close this file?</source>
+        <source>There are unsaved annotations.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to quit?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save Annotations</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2240,10 +2244,6 @@ an integer ratio to 50 or 60 Hz will be listed here.</source>
     </message>
     <message>
         <source>Log</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Blocksize:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

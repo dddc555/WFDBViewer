@@ -33,10 +33,12 @@ var message = function (_source, _translation, _index) {
     this.index = _index;
 }
 message.prototype.toString = function () {
-    return `    <message>
+    return "" +
+        `    <message>
         <source>${this.source}</source>
         <translation type="vanished">${this.translation}</translation>
-    </message>`
+    </message>
+`
 }
 
 var stringToMessageList = (contents) => {
@@ -95,6 +97,6 @@ var xml_bottom = `</context>
 `
 fs.writeFileSync(resultFile, xml_header, 'utf-8');
 newMsgList.forEach(msg => {
-    fs.appendFileSync(resultFile, msg.toString(),'utf-8');
+    fs.appendFileSync(resultFile, msg.toString(), 'utf-8');
 })
 fs.appendFileSync(resultFile, xml_bottom, 'utf-8');

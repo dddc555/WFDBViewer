@@ -97,66 +97,29 @@ void UI_Mainwindow::closeEvent(QCloseEvent *cl_event)
     if(annotations_edited)
     {
         QMessageBox messagewindow;
-        messagewindow.setText(tr("There are unsaved annotations")+"\n "+ tr("are you sure you want to quit?"));
+        messagewindow.setText(tr("There are unsaved annotations.")+"\n "+ tr("Are you sure you want to quit?"));
         messagewindow.setIcon(QMessageBox::Question);
-        messagewindow.setStandardButtons(QMessageBox::Cancel | QMessageBox::Close);
-        messagewindow.setDefaultButton(QMessageBox::Cancel);
+        messagewindow.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        messagewindow.setDefaultButton(QMessageBox::Discard);
         button_nr = messagewindow.exec();
     }
 
-    if(button_nr == QMessageBox::Cancel)
+    if(button_nr == QMessageBox::Discard) {
+        _exit(cl_event);
+    }
+
+    else if(button_nr == QMessageBox::Cancel)
     {
         cl_event->ignore();
     }
-    else
+    else if(button_nr == QMessageBox::Save)
     {
-        exit_in_progress = 1;
-
-        for(i=0; i<MAXSPECTRUMDIALOGS; i++)
-        {
-            if(spectrumdialog[i] != NULL)
-            {
-                delete spectrumdialog[i];
-
-                spectrumdialog[i] = NULL;
-            }
-        }
-
-        for(i=0; i<MAXAVERAGECURVEDIALOGS; i++)
-        {
-            if(averagecurvedialog[i] != NULL)
-            {
-                delete averagecurvedialog[i];
-
-                averagecurvedialog[i] = NULL;
-            }
-        }
-
-        for(i=0; i<MAXZSCOREDIALOGS; i++)
-        {
-            if(zscoredialog[i] != NULL)
-            {
-                delete zscoredialog[i];
-
-                zscoredialog[i] = NULL;
-            }
-        }
-
-        annotations_edited = 0;
-
-        close_all_files();
-
-        write_settings();
-
-        free(spectrum_colorbar);
-        free(zoomhistory);
-        free(import_annotations_var);
-        free(export_annotations_var);
-        free(video_player);
-        free(annot_filter);
-
-        cl_event->accept();
+        export_wfdb_button_clicked();
+        _exit(cl_event);
+    } else {
+        _exit(cl_event);
     }
+
 }
 
 
@@ -170,6 +133,56 @@ void UI_Mainwindow::closeEvent(QCloseEvent *cl_event)
 //
 //
 // }
+
+
+void UI_Mainwindow::_exit(QCloseEvent *cl_event){
+    exit_in_progress = 1;
+    int i;
+    for(i=0; i<MAXSPECTRUMDIALOGS; i++)
+    {
+        if(spectrumdialog[i] != NULL)
+        {
+            delete spectrumdialog[i];
+
+            spectrumdialog[i] = NULL;
+        }
+    }
+
+    for(i=0; i<MAXAVERAGECURVEDIALOGS; i++)
+    {
+        if(averagecurvedialog[i] != NULL)
+        {
+            delete averagecurvedialog[i];
+
+            averagecurvedialog[i] = NULL;
+        }
+    }
+
+    for(i=0; i<MAXZSCOREDIALOGS; i++)
+    {
+        if(zscoredialog[i] != NULL)
+        {
+            delete zscoredialog[i];
+
+            zscoredialog[i] = NULL;
+        }
+    }
+
+    annotations_edited = 0;
+
+    close_all_files();
+
+    write_settings();
+
+    free(spectrum_colorbar);
+    free(zoomhistory);
+    free(import_annotations_var);
+    free(export_annotations_var);
+    free(video_player);
+    free(annot_filter);
+
+    cl_event->accept();
+}
 
 
 void UI_Mainwindow::Escape_fun()
@@ -198,7 +211,6 @@ void UI_Mainwindow::Escape_fun()
 
     maincurve->update();
 }
-
 
 void UI_Mainwindow::open_stream()
 {
@@ -4050,8 +4062,9 @@ void UI_Mainwindow::export_wfdb_button_clicked()
 
     strcpy(f_path, recent_savedir);
     char directory_path[MAX_PATH_LENGTH];
-    strcpy(directory_path, QFileDialog::getExistingDirectory(0, tr("Save file"), QString::fromLocal8Bit(f_path)).toLocal8Bit().data());
-    qDebug()<<"wang" <<directory_path;
+
+//    strcpy(directory_path, QFileDialog::getExistingDirectory(0, tr("Save file"), QString::fromLocal8Bit(f_path)).toLocal8Bit().data());
+    get_directory_from_path(directory_path, selectedWFDBHeaderFilePath, MAX_PATH_LENGTH);
     if(strlen(directory_path) == 0)
     {
         return;
@@ -4086,8 +4099,19 @@ void UI_Mainwindow::export_wfdb_button_clicked()
     strcat(targetAnnotation_path, ".atr");
     qDebug()<<"path " << targetData_path;
 
-    QFile::copy(selectedWFDBHeaderFilePath, targetHeader_path);
-    QFile::copy(data_file_path, targetData_path);
+//    QFile::copy(selectedWFDBHeaderFilePath, targetHeader_path);
+//    QFile::copy(data_file_path, targetData_path);
+
+    if(QFileInfo(targetAnnotation_path).exists()){
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, tr("Warning"),tr("Annotation file exist, are you replace it"),  QMessageBox::Yes|QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            qDebug() << "Yes was clicked";
+
+        } else {
+            return;
+        }
+    }
 
 
     get_directory_from_path( recent_savedir, f_path, MAX_PATH_LENGTH);

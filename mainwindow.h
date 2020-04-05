@@ -540,7 +540,7 @@ private:
   uint16_t sample_count = 0;
   uint16_t total_sample_count = 0;
 
-
+  void _exit(QCloseEvent *cl_event);
   bool initQRS();
   void closeQRSFile();
   void onECGReceived(int ecg);
