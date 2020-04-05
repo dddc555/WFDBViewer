@@ -43,8 +43,8 @@
 
 #endif
 
-#define PROGRAM_NAME "WFDBbrowser"
-#define PROGRAM_VERSION "1.67"
+#define PROGRAM_NAME "Cardio Analyzer"
+#define PROGRAM_VERSION "1.0"
 #define MINIMUM_QT4_VERSION 0x040701
 #define MINIMUM_QT5_VERSION 0x050901
 #define MAXFILES 32
