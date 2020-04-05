@@ -1216,10 +1216,6 @@
         <translation type="vanished">ヘルプ</translation>
     </message>
     <message>
-        <source>Blocksize:</source>
-        <translation type="vanished">ブロックサイズ:</translation>
-    </message>
-    <message>
         <source>&amp;Close</source>
         <translation type="vanished">&amp;閉じる</translation>
     </message>

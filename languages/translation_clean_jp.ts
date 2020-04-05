@@ -2563,10 +2563,6 @@
         <translation type="vanished">ログ</translation>
     </message>
     <message>
-        <source>Blocksize:</source>
-        <translation type="vanished">ブロックサイズ:</translation>
-    </message>
-    <message>
         <source>Blocksize</source>
         <translation type="vanished">ブロックサイズ</translation>
     </message>
