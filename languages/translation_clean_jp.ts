@@ -356,6 +356,10 @@
         <translation type="vanished">ノッチ</translation>
     </message>
     <message>
+        <source>Notch Q-factor</source>
+        <translation type="vanished">ノッチQファクター</translation>
+    </message>
+    <message>
         <source>Bandpass</source>
         <translation type="vanished">バンドパス</translation>
     </message>
@@ -1103,6 +1107,15 @@
         <source>&amp;Close</source>
         <translation type="vanished">&amp;閉じる</translation>
     </message>
+    <message>
+        <source>Apply</source>
+        <translation type="vanished">適応</translation>
+    </message>
+    <message>
+        <source>bandwidth:</source>
+        <translation type="vanished">帯域幅:</translation>
+    </message>
+    bandwidth
     <message>
         <source>&amp;Apply</source>
         <translation type="vanished">&amp;適応</translation>

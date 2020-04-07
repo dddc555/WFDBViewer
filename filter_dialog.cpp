@@ -103,7 +103,7 @@ UI_FilterDialog::UI_FilterDialog(QWidget *w_parent)
 
   freqbox2label = new QLabel(filterdialog);
   freqbox2label->setGeometry(300, 20, 120, 25);
-  freqbox2label->setText(tr("Frequency 2"));
+  freqbox2label->setText(tr("Frequency") + " 2");
   freqbox2label->setVisible(false);
 
   orderboxlabel = new QLabel(filterdialog);
@@ -400,12 +400,12 @@ void UI_FilterDialog::filtermodelboxvaluechanged(int model)
 
   last_model = model;
 
-  freqboxlabel->setText("Frequency");
+  freqboxlabel->setText(tr("Frequency"));
   freqbox->setVisible(true);
 
   if(type != FILTERTYPE_NOTCH)
   {
-    orderboxlabel->setText("Order");
+    orderboxlabel->setText(tr("Order"));
     orderboxlabel->setVisible(true);
 
     if((type == FILTERTYPE_BANDPASS) || (type == FILTERTYPE_BANDSTOP))
@@ -517,7 +517,7 @@ void UI_FilterDialog::orderboxvaluechanged(int order)
 
     if(model == FILTERMODEL_BUTTERWORTH)
     {
-      orderlabel->setText("Slope roll-off:");
+      orderlabel->setText(tr("Slope roll-off:"));
       orderlabel->setVisible(true);
       ordervaluelabel->setText(QString::number(6 * last_order, 'f', 0).append(" dB / octave"));
       ordervaluelabel->setVisible(true);
@@ -525,7 +525,7 @@ void UI_FilterDialog::orderboxvaluechanged(int order)
 
     if(model == FILTERMODEL_CHEBYSHEV)
     {
-      orderlabel->setText("passband ripple");
+      orderlabel->setText(tr("passband ripple"));
       orderlabel->setVisible(true);
       ordervaluelabel->setVisible(false);
     }
@@ -560,14 +560,14 @@ void UI_FilterDialog::filtertypeboxvaluechanged(int type)
   if(type == FILTERTYPE_NOTCH)
   {
     ripplebox->setVisible(false);
-    orderboxlabel->setText("Notch Q-factor");
+    orderboxlabel->setText(tr("Notch Q-factor"));
     orderboxlabel->setVisible(true);
     orderbox->setMaximum(100);
     orderbox->setSingleStep(1);
     orderbox->setMinimum(3);
     orderbox->setValue(last_qfactor);
     orderbox->setVisible(true);
-    orderlabel->setText("-3 dB bandwidth:");
+    orderlabel->setText("-3 dB " + tr("bandwidth:"));
     sprintf(str,"%f Hz", freqbox->value() / orderbox->value());
     remove_trailing_zeros(str);
     ordervaluelabel->setText(str);
@@ -578,7 +578,7 @@ void UI_FilterDialog::filtertypeboxvaluechanged(int type)
   }
   else
   {
-    orderboxlabel->setText("Order");
+    orderboxlabel->setText(tr("Order"));
     orderboxlabel->setVisible(true);
     if((type == FILTERTYPE_BANDPASS) || (type == FILTERTYPE_BANDSTOP))
     {
@@ -612,7 +612,7 @@ void UI_FilterDialog::filtertypeboxvaluechanged(int type)
         ordervaluelabel->setVisible(false);
         orderlabel->setVisible(false);
         ordervaluelabel->setVisible(false);
-        orderboxlabel->setText("Samples");
+        orderboxlabel->setText(tr("Samples"));
         orderboxlabel->setVisible(true);
         orderbox->setMaximum(10000);
         orderbox->setSingleStep(1);
@@ -629,7 +629,7 @@ void UI_FilterDialog::filtertypeboxvaluechanged(int type)
     if(last_model == FILTERMODEL_BUTTERWORTH)
     {
       ripplebox->setVisible(false);
-      orderlabel->setText("Slope roll-off:");
+      orderlabel->setText(tr("Slope roll-off:"));
       orderlabel->setVisible(true);
       ordervaluelabel->setText(QString::number(6 * last_order, 'f', 0).append(" dB / octave"));
       ordervaluelabel->setVisible(true);
@@ -639,7 +639,7 @@ void UI_FilterDialog::filtertypeboxvaluechanged(int type)
     {
       ordervaluelabel->setVisible(false);
       ripplebox->setVisible(true);
-      orderlabel->setText("passband ripple");
+      orderlabel->setText(tr("passband ripple"));
       orderlabel->setVisible(true);
     }
 
@@ -651,21 +651,21 @@ void UI_FilterDialog::filtertypeboxvaluechanged(int type)
     }
 
     modelbox->clear();
-    modelbox->addItem("Butterworth");
-    modelbox->addItem("Chebyshev");
-    modelbox->addItem("Bessel");
+    modelbox->addItem(tr("Butterworth"));
+    modelbox->addItem(tr("Chebyshev"));
+    modelbox->addItem(tr("Bessel"));
     if((type == FILTERTYPE_HIGHPASS) || (type == FILTERTYPE_LOWPASS))
     {
-      modelbox->addItem("Moving Average");
+      modelbox->addItem(tr("Moving Average"));
     }
     modelbox->setCurrentIndex(last_model);
   }
 
   if((type == FILTERTYPE_BANDPASS) || (type == FILTERTYPE_BANDSTOP))
   {
-    freqboxlabel->setText("Frequency 1");
+    freqboxlabel->setText(tr("Frequency") + " 1");
     freqboxlabel->setVisible(true);
-    freqbox2label->setText("Frequency 2");
+    freqbox2label->setText(tr("Frequency") + " 2");
     freqbox2label->setVisible(true);
     freqbox->setVisible(true);
     freq2box->setVisible(true);
@@ -683,7 +683,7 @@ void UI_FilterDialog::filtertypeboxvaluechanged(int type)
     }
     else
     {
-      freqboxlabel->setText("Frequency");
+      freqboxlabel->setText(tr("Frequency"));
       freqboxlabel->setVisible(true);
     }
   }

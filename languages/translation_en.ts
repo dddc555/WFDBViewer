@@ -1170,7 +1170,7 @@
     </message>
     <message>
         <source>Frequency 2</source>
-        <translation type="unfinished">Frequency 2</translation>
+        <translation type="obsolete">Frequency 2</translation>
     </message>
     <message>
         <source>Order</source>
@@ -1243,6 +1243,14 @@
     <message>
         <source>Samples</source>
         <translation type="unfinished">Samples</translation>
+    </message>
+    <message>
+        <source>Notch Q-factor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>bandwidth:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
