@@ -392,6 +392,7 @@ private:
   *filter_remove_all_spike_act,
   *tools_option_act,
   *tools_detect_qrs_act,
+  *tools_hrv_analysis_act,
 
   *language_en_act,
   *language_jp_act
@@ -604,6 +605,8 @@ private slots:
   void show_annotations();
   void show_options_dialog();
   void detect_qrs();
+  void hrv_analysis();
+
 
   long long get_long_time(char *);
   void nk2edf_converter();

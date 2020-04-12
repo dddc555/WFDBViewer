@@ -32,6 +32,8 @@ void UI_Mainwindow::detect_qrs()
 {
     if(!initQRS())return;
 
+    edfplus_annotation_empty_list(&edfheaderlist[0]->annot_list);
+
     struct {
         int chns;
         int sf;
@@ -839,10 +841,10 @@ OUT2:
     progress.reset();
     closeQRSFile();
 
-    QMessageBox messagewindow(QMessageBox::Information, tr("Message"), tr("Annotation file is generated with QRS detector"));
-    messagewindow.exec();
-    if(this->selectedWFDBHeaderFilePath != NULL)
-        _open_wfdb(selectedWFDBHeaderFilePath);
+//    QMessageBox messagewindow(QMessageBox::Information, tr("Message"), tr("Annotation file is generated with QRS detector"));
+//    messagewindow.exec();
+//    if(this->selectedWFDBHeaderFilePath != NULL)
+//        _open_wfdb(selectedWFDBHeaderFilePath);
 }
 
 bool UI_Mainwindow::initQRS(){
@@ -899,20 +901,20 @@ bool UI_Mainwindow::initQRS(){
     strcat(targetAnnotation_path, file_name);
     strcat(targetAnnotation_path, ".atr");
     qDebug()<<"targetAnnotation_path"<<targetAnnotation_path;
-    if(QFileInfo(targetAnnotation_path).exists()){
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(this, tr("Warning"),tr("Annotation file exist, are you replace it"),  QMessageBox::Yes|QMessageBox::No);
-        if (reply == QMessageBox::Yes) {
-            qDebug() << "Yes was clicked";
+//    if(QFileInfo(targetAnnotation_path).exists()){
+//        QMessageBox::StandardButton reply;
+//        reply = QMessageBox::question(this, tr("Warning"),tr("Annotation file exist, are you replace it"),  QMessageBox::Yes|QMessageBox::No);
+//        if (reply == QMessageBox::Yes) {
+//            qDebug() << "Yes was clicked";
 
-        } else {
-            return false;
-        }
-    }
+//        } else {
+//            return false;
+//        }
+//    }
     annotationBeforeTimeIndex = 0;
 
-    annotationOutputfile = fopeno(targetAnnotation_path, "wb");
-    return annotationOutputfile != NULL;
+//    annotationOutputfile = fopeno(targetAnnotation_path, "wb");
+//    return annotationOutputfile != NULL;
 }
 
 #define NORMAL_BEAT 1
@@ -921,7 +923,7 @@ bool UI_Mainwindow::initQRS(){
 
 void UI_Mainwindow::onECGReceived(int ecg){
 
-    if(annotationOutputfile == NULL || qrs_wfdb_frequency == 0)return;
+    if(/*annotationOutputfile == NULL ||*/ qrs_wfdb_frequency == 0)return;
     int file_num = 0;
     int frequency =  qrs_wfdb_frequency;
 
@@ -937,11 +939,10 @@ void UI_Mainwindow::onECGReceived(int ecg){
             FLOAT hr = mHeartRate.hrm_calc();
 
             if (MIN_HRM < hr && hr < MAX_HRM) {
-                FLOAT rri = 60 / hr;
-                //                qDebug()<<"rr = " <<rri;
-
+                qDebug()<<"hr"<<hr;
+                /*
                 int diff = total_sample_count - annotationBeforeTimeIndex - qrs_delay;
-                qDebug()<<"total_sample_count - annotationBeforeTimeIndex"<<diff<<qrs_delay;
+
                 int word;
                 unsigned char arrByte[10];
 
@@ -968,13 +969,18 @@ void UI_Mainwindow::onECGReceived(int ecg){
                 arrByte[0] =  (byte(word & 0x00FF));
                 arrByte[1] = ((byte) ((word & 0xFF00) >> 8));
                 fwrite(arrByte, 2, 1 , annotationOutputfile);
+                //*/
+                struct annotationblock annotblock;
+                memset(&annotblock, 0, sizeof(annotationblock));
+                annotblock.file_num = edfheaderlist[0]->file_num;
+                annotblock.onset = (total_sample_count - qrs_delay) * TIME_DIMENSION / frequency ;
+
+                strcpy(annotblock.annotation, "normal beat");
+
+                edfplus_annotation_add_item(&edfheaderlist[0]->annot_list, annotblock);
 
                 annotationBeforeTimeIndex = total_sample_count - qrs_delay;
-            } else{
-                qDebug()<<"else 2";
             }
-        } else{
-            qDebug()<<"else 1";
         }
 
         prev_delay = qrs_delay;
@@ -984,11 +990,35 @@ void UI_Mainwindow::onECGReceived(int ecg){
 }
 
 void UI_Mainwindow::closeQRSFile(){
-    if(annotationOutputfile == NULL)return;
-    unsigned char arrByte[2];
-    arrByte[0] = 0;
-    arrByte[1] = 0;
-    fwrite(arrByte, 2,1,annotationOutputfile);
-    fclose(annotationOutputfile);
+//    if(annotationOutputfile == NULL)return;
+//    unsigned char arrByte[2];
+//    arrByte[0] = 0;
+//    arrByte[1] = 0;
+//    fwrite(arrByte, 2,1,annotationOutputfile);
+//    fclose(annotationOutputfile);
     qDebug()<<"total_sample_count"<<total_sample_count;
+
+    if(annotations_dock[0] != NULL){
+        if(edfplus_annotation_size(&edfheaderlist[0]->annot_list) > 0)
+        {
+            if(annotations_dock[0] != NULL)
+            {
+                annotations_dock[0]->docklist->show();
+            }
+        }
+        annotations_dock[0]->updateList();
+
+    }
+    else{
+        annotations_dock[0] = new UI_Annotationswindow(0, this);
+        QObject::connect(annotations_dock[0],  SIGNAL(on_edit_button_clicked()),    this, SLOT(annotation_editor()));
+
+        addDockWidget(Qt::RightDockWidgetArea, annotations_dock[0]->docklist, Qt::Vertical);
+        annotations_dock[0]->updateList();
+    }
+
+    maincurve->update();
+
+    this->annotations_edited = 1;
+    save_act->setEnabled(true);
 }

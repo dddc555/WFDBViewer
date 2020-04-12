@@ -691,12 +691,12 @@ UI_Mainwindow::UI_Mainwindow()
   filtermenu->addSeparator();
 
   filter_spike_act = new QAction(tr("Spike"));
-  filtermenu->addAction(filter_spike_act);
-  connect(filter_spike_act, SIGNAL(triggered()), this, SLOT(add_spike_filter()));
+//  filtermenu->addAction(filter_spike_act);
+//  connect(filter_spike_act, SIGNAL(triggered()), this, SLOT(add_spike_filter()));
 
   filter_remove_all_spike_act = new QAction(tr("Remove all spike filters"));
-  filtermenu->addAction(filter_remove_all_spike_act);
-  connect(filter_remove_all_spike_act, SIGNAL(triggered()), this, SLOT(remove_all_spike_filters()));
+//  filtermenu->addAction(filter_remove_all_spike_act);
+//  connect(filter_remove_all_spike_act, SIGNAL(triggered()), this, SLOT(remove_all_spike_filters()));
   
   menubar->addMenu(filtermenu);
 
@@ -766,6 +766,11 @@ UI_Mainwindow::UI_Mainwindow()
   toolsmenu->addAction(tools_detect_qrs_act);
 
   connect(tools_detect_qrs_act, SIGNAL(triggered()), this, SLOT(detect_qrs()));
+
+  tools_hrv_analysis_act = new QAction(tr("HRV Analysis"));
+  toolsmenu->addAction(tools_hrv_analysis_act);
+
+  connect(tools_hrv_analysis_act, SIGNAL(triggered()), this, SLOT(hrv_analysis()));
 
   toolsmenu->addSeparator();
 
@@ -1237,6 +1242,7 @@ void UI_Mainwindow::updateText(){
   filter_spike_act ->setText(tr("Spike"));
   filter_remove_all_spike_act->setText(tr("Remove all spike filters"));
   tools_detect_qrs_act->setText(tr("Detect QRS and generate annotations"));
+  tools_hrv_analysis_act ->setText(tr("HRV Analysis"));
 
   toolsmenu->setTitle(tr("Tools"));
 

@@ -4107,7 +4107,6 @@ void UI_Mainwindow::export_wfdb_button_clicked()
         reply = QMessageBox::question(this, tr("Warning"),tr("Annotation file exist, are you replace it"),  QMessageBox::Yes|QMessageBox::No);
         if (reply == QMessageBox::Yes) {
             qDebug() << "Yes was clicked";
-
         } else {
             return;
         }
@@ -4228,3 +4227,8 @@ void UI_Mainwindow::export_wfdb_button_clicked()
 //      arrByte[8] = ((byte) 66); // 'B'
 //      arrByte[9] = ((byte) 0);  //  make (2 * n) bytes
 //      fwrite(arrByte, 10,1,outputfile);
+
+void UI_Mainwindow::hrv_analysis(){
+    if(annotations_dock[files_open] == NULL)return;
+    annotations_dock[files_open]->show_stats(true);
+}
