@@ -159,6 +159,7 @@ private slots:
   void unhide_all_NK_triggers(bool);
   void unhide_all_BS_triggers(bool);
   void filt_ival_time(bool);
+public slots:
   void show_stats(bool);
 };
 

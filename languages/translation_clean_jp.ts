@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Save Annotations</source>
-        <translation type="vanished">保存アノテーション</translation>
+        <translation type="vanished">アノテーションを保存</translation>
     </message>
     <message>
         <source>to Image</source>
@@ -356,10 +356,6 @@
         <translation type="vanished">ノッチ</translation>
     </message>
     <message>
-        <source>Notch Q-factor</source>
-        <translation type="vanished">ノッチQファクター</translation>
-    </message>
-    <message>
         <source>Bandpass</source>
         <translation type="vanished">バンドパス</translation>
     </message>
@@ -501,11 +497,11 @@
     </message>
     <message>
         <source>Show Controls</source>
-        <translation type="vanished">コントロールを表示</translation>
+        <translation type="vanished">コントロールの表示</translation>
     </message>
     <message>
         <source>Show Cursor</source>
-        <translation type="vanished">カーソルを表示</translation>
+        <translation type="vanished">カーソルの表示</translation>
     </message>
     <message>
         <source>Edit</source>
@@ -881,7 +877,7 @@
     </message>
     <message>
         <source>FFT resolution</source>
-        <translation type="vanished">FFT解像度</translation>
+        <translation type="vanished">FFT分解度</translation>
     </message>
     <message>
         <source>Busy</source>
@@ -981,7 +977,7 @@
     </message>
     <message>
         <source>Abort</source>
-        <translation type="vanished">アボート</translation>
+        <translation type="vanished">このソフトウェアについて</translation>
     </message>
     <message>
         <source>Converting annotations ...</source>
@@ -993,11 +989,11 @@
     </message>
     <message>
         <source>Are you sure you want to quit?</source>
-        <translation type="vanished">本当にやめる気？</translation>
+        <translation type="vanished">本当に終了しますか？</translation>
     </message>
     <message>
         <source>are you sure you want to close this file?</source>
-        <translation type="vanished">このファイルを閉じてもよろしいですか？</translation>
+        <translation type="vanished">本当にこのファイルを閉じますか？</translation>
     </message>
     <message>
         <source>print</source>
@@ -1115,7 +1111,6 @@
         <source>bandwidth:</source>
         <translation type="vanished">帯域幅:</translation>
     </message>
-    bandwidth
     <message>
         <source>&amp;Apply</source>
         <translation type="vanished">&amp;適応</translation>
@@ -1131,6 +1126,14 @@
     <message>
         <source>Adjust filter</source>
         <translation type="vanished">フィルターを調整する</translation>
+    </message>
+    <message>
+        <source>Day</source>
+        <translation type="vanished">日</translation>
+    </message>
+    <message>
+        <source>Time</source>
+        <translation type="vanished">時間</translation>
     </message>
 </context>
 </TS>

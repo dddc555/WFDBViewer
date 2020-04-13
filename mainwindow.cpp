@@ -4229,6 +4229,6 @@ void UI_Mainwindow::export_wfdb_button_clicked()
 //      fwrite(arrByte, 10,1,outputfile);
 
 void UI_Mainwindow::hrv_analysis(){
-    if(annotations_dock[files_open] == NULL)return;
-    annotations_dock[files_open]->show_stats(true);
+    if(annotations_dock[0] == NULL)return;
+    annotations_dock[0]->show_stats(true);
 }

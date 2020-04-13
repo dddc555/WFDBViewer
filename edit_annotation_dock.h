@@ -99,11 +99,14 @@ private:
 
   QLabel *onsetLabel,
          *durationLabel,
-         *descriptionLabel;
+         *descriptionLabel,
+         *timeLabel,
+         *dateLabel;
 
   QLineEdit *annot_descript_lineEdit;
 
   QTimeEdit *onset_timeEdit;
+  QDateEdit *onset_dateEdit;
 
   QSpinBox  *onset_daySpinbox;
 

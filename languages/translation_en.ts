@@ -791,6 +791,14 @@
         <source>Create</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Time</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UI_Annotationswindow</name>
@@ -1774,14 +1782,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Annotation file is generated with QRS detector</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Please open WFDB file to anaysis with QRS detector.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1803,6 +1803,10 @@
     </message>
     <message>
         <source>Save Annotations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HRV Analysis</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

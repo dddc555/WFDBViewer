@@ -57,22 +57,36 @@ UI_AnnotationEditwindow::UI_AnnotationEditwindow(QWidget *w_parent)
   onsetLabel->setGeometry(250, 10, 48, 25);
   onsetLabel->setText(tr("Onset"));
 
-  posNegTimebox = new QComboBox(annot_edit_dialog);
-  posNegTimebox->setGeometry(300, 10, 35, 25);
-  posNegTimebox->setEditable(false);
-  posNegTimebox->addItem("+");
-  posNegTimebox->addItem("-");
+//  posNegTimebox = new QComboBox(annot_edit_dialog);
+//  posNegTimebox->setGeometry(300, 10, 35, 25);
+//  posNegTimebox->setEditable(false);
+//  posNegTimebox->addItem("+");
+//  posNegTimebox->addItem("-");
 
   onset_daySpinbox = new QSpinBox(annot_edit_dialog);
-  onset_daySpinbox->setGeometry(335, 10, 45, 25);
+  onset_daySpinbox->setGeometry(320, 10, 60, 25);
   onset_daySpinbox->setRange(0, 99);
   onset_daySpinbox->setSingleStep(1);
   onset_daySpinbox->setValue(0);
+
+
 
   onset_timeEdit = new QTimeEdit(annot_edit_dialog);
   onset_timeEdit->setGeometry(380, 10, 100, 25);
   onset_timeEdit->setDisplayFormat("hh:mm:ss.zzz");
   onset_timeEdit->setMinimumTime(QTime(-1, 0, 0, 0));
+
+  dateLabel = new QLabel(annot_edit_dialog);
+  dateLabel->setAlignment(Qt::AlignHCenter|Qt::AlignBottom);
+
+  dateLabel->setGeometry(320, -14, 60, 25);
+  dateLabel->setText(tr("Day"));
+
+  timeLabel = new QLabel(annot_edit_dialog);
+  timeLabel->setAlignment(Qt::AlignHCenter|Qt::AlignBottom);
+  timeLabel->setGeometry(380, -14, 100, 25);
+
+  timeLabel->setText(tr("Time"));
 
   durationLabel = new QLabel(annot_edit_dialog);
   durationLabel->setGeometry(490, 10, 58, 25);
@@ -148,10 +162,10 @@ void UI_AnnotationEditwindow::modifyButtonClicked()
 
   annot->onset = annotEditGetOnset();
 
-  if(posNegTimebox->currentIndex() == 1)
-  {
-    annot->onset = -(annot->onset);
-  }
+//  if(posNegTimebox->currentIndex() == 1)
+//  {
+//    annot->onset = -(annot->onset);
+//  }
 
   annot->onset += mainwindow->edfheaderlist[file_num]->starttime_offset;
 
@@ -229,10 +243,10 @@ void UI_AnnotationEditwindow::createButtonClicked()
 
   annotation.onset = annotEditGetOnset();
 
-  if(posNegTimebox->currentIndex() == 1)
-  {
-    annotation.onset = -(annotation.onset);
-  }
+//  if(posNegTimebox->currentIndex() == 1)
+//  {
+//    annotation.onset = -(annotation.onset);
+//  }
 
   annotation.onset += mainwindow->edfheaderlist[file_num]->starttime_offset;
 
@@ -281,7 +295,7 @@ void UI_AnnotationEditwindow::annotEditSetOnset(long long onset)
             ((-(onset)) / TIME_DIMENSION) % 60,
             ((-(onset)) % TIME_DIMENSION) / 10000);
 
-    posNegTimebox->setCurrentIndex(1);
+//    posNegTimebox->setCurrentIndex(1);
   }
   else
   {
@@ -292,7 +306,7 @@ void UI_AnnotationEditwindow::annotEditSetOnset(long long onset)
             (onset / TIME_DIMENSION) % 60,
             (onset % TIME_DIMENSION) / 10000);
 
-    posNegTimebox->setCurrentIndex(0);
+//    posNegTimebox->setCurrentIndex(0);
   }
 
   onset_timeEdit->setTime(ta);
@@ -317,10 +331,10 @@ long long UI_AnnotationEditwindow::annotEditGetOnset(void)
   if(mainwindow->annotations_onset_relative == 0) {
        tmp -= mainwindow->edfheaderlist[file_num]->l_starttime;
   }
-  if(posNegTimebox->currentIndex() == 1)
-  {
-    tmp *= -1LL;
-  }
+//  if(posNegTimebox->currentIndex() == 1)
+//  {
+//    tmp *= -1LL;
+//  }
 
   return tmp;
 }
@@ -368,7 +382,7 @@ void UI_AnnotationEditwindow::set_selected_annotation(int file_nr, int annot_nr)
                 ((-(l_tmp)) / TIME_DIMENSION) % 60,
                 ((-(l_tmp)) % TIME_DIMENSION) / 10000);
 
-        posNegTimebox->setCurrentIndex(1);
+//        posNegTimebox->setCurrentIndex(1);
       }
       else
       {
@@ -379,7 +393,7 @@ void UI_AnnotationEditwindow::set_selected_annotation(int file_nr, int annot_nr)
                 (l_tmp / TIME_DIMENSION) % 60,
                 (l_tmp % TIME_DIMENSION) / 10000);
 
-        posNegTimebox->setCurrentIndex(0);
+//        posNegTimebox->setCurrentIndex(0);
       }
   }
   else
@@ -389,7 +403,7 @@ void UI_AnnotationEditwindow::set_selected_annotation(int file_nr, int annot_nr)
               ((l_tmp / TIME_DIMENSION) % 3600) / 60,
               (l_tmp / TIME_DIMENSION) % 60,
               (l_tmp % TIME_DIMENSION) / 10000);
-      posNegTimebox->setCurrentIndex(0);
+//      posNegTimebox->setCurrentIndex(0);
   }
   //
   onset_timeEdit->setTime(ta);
@@ -440,7 +454,7 @@ void UI_AnnotationEditwindow::set_selected_annotation(struct annotationblock *an
             ((-(l_tmp)) / TIME_DIMENSION) % 60,
             ((-(l_tmp)) % TIME_DIMENSION) / 10000);
 
-    posNegTimebox->setCurrentIndex(1);
+//    posNegTimebox->setCurrentIndex(1);
   }
   else
   {
@@ -451,7 +465,7 @@ void UI_AnnotationEditwindow::set_selected_annotation(struct annotationblock *an
             (l_tmp / TIME_DIMENSION) % 60,
             (l_tmp % TIME_DIMENSION) / 10000);
 
-    posNegTimebox->setCurrentIndex(0);
+//    posNegTimebox->setCurrentIndex(0);
   }
   onset_timeEdit->setTime(ta);
 
@@ -482,5 +496,8 @@ void UI_AnnotationEditwindow::updateText(){
       modifybutton->setText(tr("Modify"));
       deletebutton->setText(tr("Delete"));
       createbutton->setText(tr("Create"));
+
+      timeLabel->setText(tr("Time"));
+      dateLabel->setText(tr("Day"));
     }
 }
